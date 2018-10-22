@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers/byId should add fetched todos to empty map 1`] = `
+Object {
+  "1": Object {
+    "completed": true,
+    "id": 1,
+    "text": "hey",
+  },
+  "2": Object {
+    "completed": true,
+    "id": 2,
+    "text": "ho",
+  },
+  "3": Object {
+    "completed": false,
+    "id": 3,
+    "text": "let's go",
+  },
+}
+`;
+
+exports[`reducers/byId should add fetched todos to non-empty map 1`] = `
+Object {
+  "1": Object {
+    "completed": true,
+    "id": 1,
+    "text": "hey",
+  },
+  "2": Object {
+    "completed": true,
+    "id": 2,
+    "text": "ho",
+  },
+  "3": Object {
+    "completed": false,
+    "id": 3,
+    "text": "let's go",
+  },
+  "4": Object {
+    "completed": false,
+    "id": 4,
+    "text": "wow",
+  },
+  "5": Object {
+    "completed": true,
+    "id": 5,
+    "text": "cool",
+  },
+}
+`;
+
+exports[`reducers/byId should add todo to empty map 1`] = `
+Object {
+  "4": Object {
+    "completed": false,
+    "id": 4,
+    "text": "wow",
+  },
+}
+`;
+
+exports[`reducers/byId should add todo to non-empty map 1`] = `
+Object {
+  "1": Object {
+    "completed": true,
+    "id": 1,
+    "text": "hey",
+  },
+  "2": Object {
+    "completed": true,
+    "id": 2,
+    "text": "ho",
+  },
+  "3": Object {
+    "completed": false,
+    "id": 3,
+    "text": "let's go",
+  },
+  "4": Object {
+    "completed": false,
+    "id": 4,
+    "text": "wow",
+  },
+}
+`;
+
+exports[`reducers/byId should toggle todo to non-empty map 1`] = `
+Object {
+  "1": Object {
+    "completed": false,
+    "id": 1,
+    "text": "hey",
+  },
+  "2": Object {
+    "completed": true,
+    "id": 2,
+    "text": "ho",
+  },
+  "3": Object {
+    "completed": false,
+    "id": 3,
+    "text": "let's go",
+  },
+}
+`;

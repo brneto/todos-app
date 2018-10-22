@@ -1,0 +1,52 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Text to be normalized
+*.php text
+*.css text
+*.js text
+*.htm text
+*.html text
+*.xml text
+*.txt text
+*.ini text
+*.inc text
+*.DBK text eol=crlf
+*.DEC text eol=crlf
+*.REC text eol=crlf
+
+# Documents
+*.pdf diff=astextplain
+*.PDF diff=astextplain
+*.doc diff=astextplain
+*.DOC diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.xls diff=astextplain
+*.XLS diff=astextplain
+*.xlsx diff=astextplain
+*.XLSX diff=astextplain
+*.rtf diff=astextplain
+*.RTF diff=astextplain
+
+# Images
+*.jpg binary
+*.png binary
+*.git binary
+
+# Audio
+*.mp3 binary
+*.ogg binary
+
+# Videos
+*.m4v binary
+*.mp4 binary
+*.mpg binary
+*.mkv binary
+
+# Compiled sources
+*.class binary
+*.pyc binary
+*.out binary
+*.exe binary
+*.com binary

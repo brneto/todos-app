@@ -1,0 +1,18 @@
+{
+	// See http://go.microsoft.com/fwlink/?LinkId=827846
+	// for the documentation about the extensions.json format
+	"recommendations": [
+    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    "mgmcdermott.vscode-language-babel",
+    "naumovs.theme-oceanicnext",
+    "dbaeumer.vscode-eslint",
+    "nuclleaR.vscode-extension-auto-import",
+    "donjayamanne.githistory",
+    "msjsdiag.debugger-for-chrome",
+    "editorConfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "orta.vscode-jest",
+    "shinnn.stylelint",
+    "yzhang.markdown-all-in-one"
+	]
+}

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actions addTodo 1`] = `
+Object {
+  "payload": "hello!",
+  "type": "ADD_TODO",
+}
+`;
+
+exports[`actions fetchTodos 1`] = `
+Object {
+  "type": "FETCH_TODOS",
+}
+`;
+
+exports[`actions setAddTodo 1`] = `
+Object {
+  "payload": "responseData",
+  "type": "SET_ADD_TODO",
+}
+`;
+
+exports[`actions setAddTodo 2`] = `
+Object {
+  "error": true,
+  "payload": [Error: Boom!],
+  "type": "SET_ADD_TODO",
+}
+`;
+
+exports[`actions setFetchTodos 1`] = `
+Object {
+  "meta": Object {
+    "filter": "filterName",
+  },
+  "payload": "responseData",
+  "type": "SET_FETCH_TODOS",
+}
+`;
+
+exports[`actions setFetchTodos 2`] = `
+Object {
+  "error": true,
+  "meta": Object {
+    "filter": "filterName",
+  },
+  "payload": [Error: Boom!],
+  "type": "SET_FETCH_TODOS",
+}
+`;
+
+exports[`actions setToggleFetching 1`] = `
+Object {
+  "meta": Object {
+    "filter": "filterName",
+  },
+  "payload": null,
+  "type": "SET_TOGGLE_FETCHING",
+}
+`;
+
+exports[`actions setToggleFetching 2`] = `
+Object {
+  "error": true,
+  "meta": Object {
+    "filter": "filterName",
+  },
+  "payload": [Error: Boom!],
+  "type": "SET_TOGGLE_FETCHING",
+}
+`;
+
+exports[`actions setToggleTodo 1`] = `
+Object {
+  "payload": "responseData",
+  "type": "SET_TOGGLE_TODO",
+}
+`;
+
+exports[`actions setToggleTodo 2`] = `
+Object {
+  "error": true,
+  "payload": [Error: Boom!],
+  "type": "SET_TOGGLE_TODO",
+}
+`;
+
+exports[`actions toggleTodo 1`] = `
+Object {
+  "payload": "123",
+  "type": "TOGGLE_TODO",
+}
+`;

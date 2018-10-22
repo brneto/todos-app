@@ -1,0 +1,48 @@
+{
+  // Specifies the color theme used in the workbench.
+  "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+
+  // Configure file associations to languages (e.g.
+  // `"*.extension": "html"`). These have precedence over the
+  // default associations of the languages installed.
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+
+  "[javascriptreact]": {
+    // Render vertical rulers after a certain number of
+    // monospace characters. Use multiple values for multiple
+    // rulers. No rulers are drawn if array is empty.
+    "editor.rulers": [80]
+  },
+
+  // Enable/disable JavaScript validation.
+  "javascript.validate.enable": false,
+
+  // Use 'prettier-eslint' instead of 'prettier'. Other
+  // settings will only be fallbacks in case they could not be
+  // inferred from eslint rules.
+  "prettier.eslintIntegration": true,
+
+  // Controls the printing of trailing commas wherever possible.
+  //     'es5' - Trailing commas where valid in ES5 (objects, arrays, etc)
+  "prettier.trailingComma": "es5",
+
+  // Enable/disable default JSON formatter
+  "json.format.enable": false,
+
+  // Enables or disables all validations.
+  "css.validate": false,
+
+  // Enables or disables all validations.
+  "less.validate": false,
+
+  // Enables or disables all validations.
+  "scss.validate": false,
+
+  // Auto show preview to side
+  "markdown.extension.preview.autoShowPreviewToSide": true,
+
+  // GitHub Compatibility
+  "markdown.extension.toc.githubCompatibility": true,
+}

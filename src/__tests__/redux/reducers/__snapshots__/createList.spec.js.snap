@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducers/createList should add fetched todos saves error message 1`] = `
+Object {
+  "errorMessage": "Boom!",
+  "ids": Array [
+    1,
+    2,
+    3,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should add fetched todos to empty list 1`] = `
+Object {
+  "errorMessage": null,
+  "ids": Array [
+    1,
+    2,
+    3,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should add fetched todos to non-empty list 1`] = `
+Object {
+  "errorMessage": null,
+  "ids": Array [
+    4,
+    5,
+    6,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should add todo save error message 1`] = `
+Object {
+  "errorMessage": "Boom!",
+  "ids": Array [
+    1,
+    2,
+    3,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should add todo to empty list 1`] = `
+Object {
+  "errorMessage": null,
+  "ids": Array [
+    4,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should add todo to non-empty list 1`] = `
+Object {
+  "errorMessage": null,
+  "ids": Array [
+    1,
+    2,
+    3,
+    4,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should toggle todo remove one id from list 1`] = `
+Object {
+  "errorMessage": null,
+  "ids": Array [
+    2,
+    3,
+  ],
+  "isFetching": false,
+}
+`;
+
+exports[`reducers/createList should toggle todo saves error message 1`] = `
+Object {
+  "errorMessage": "Boom!",
+  "ids": Array [
+    1,
+    2,
+    3,
+  ],
+  "isFetching": false,
+}
+`;
