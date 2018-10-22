@@ -86,8 +86,8 @@ Generated files will be in the `dist` folder.
 
 Contributing
 ------
-Bugs, feature requests and more, in [GitHub Issues](https://github.com/brneto/react-todos/issues).
+Bugs, feature requests and more, in [GitHub Issues](https://github.com/brneto/todos-app/issues).
 
 License
 -------
-[MIT License](https://github.com/brneto/react-todos/blob/master/LICENSE.md).
+[MIT License](https://github.com/brneto/todos-app/blob/master/LICENSE.md).
