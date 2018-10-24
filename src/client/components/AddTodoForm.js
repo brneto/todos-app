@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Title = styled.h1`
@@ -40,5 +41,9 @@ const AddTodoForm = ({ input }) => (
     <Input placeholder="What needs to be done?" {...input} />
   </header>
 );
+
+AddTodoForm.propTypes = {
+  input: PropTypes.object.isRequired
+};
 
 export default AddTodoForm;
