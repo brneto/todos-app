@@ -2,3 +2,9 @@
 //https://github.com/babel/babel/commit/c8bb4500326700e7dc68ce8c4b90b6482c48d82f
 import 'core-js/fn/array/flat-map';
 import 'core-js/fn/string/match-all';
+
+// add some helpful assertions
+import 'jest-dom/extend-expect';
+
+// this is basically: afterEach(cleanup)
+import 'react-testing-library/cleanup-after-each';

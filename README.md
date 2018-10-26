@@ -56,7 +56,9 @@ Testing tools
 ------
 [Jest](https://jestjs.io/)
 
-[Enzyme](https://airbnb.io/enzyme/)
+[React Testing Library](https://github.com/kentcdodds/react-testing-library)
+
+[Custom Jest Matchers](https://github.com/gnapse/jest-dom)
 
 [Nock](https://github.com/nock/nock)
 
