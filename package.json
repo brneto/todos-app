@@ -52,7 +52,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "connected-react-router": "^4.5.0",
-    "immer": "^1.7.3",
+    "immer": "^1.7.4",
     "lodash": "^4.17.11",
     "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
@@ -125,7 +125,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga-test-plan": "^3.7.0",
     "style-loader": "^0.23.1",
-    "stylelint": "^9.6.0",
+    "stylelint": "^9.7.0",
     "stylelint-config-recommended": "^2.1.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-config-styled-components": "^0.1.1",
