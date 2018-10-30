@@ -16,13 +16,6 @@ export const PUBLIC_PATH = '/';
 export const HTML_INDEX = 'index.html';
 export const FAVICON = path.join(TEMPLATE_PATH, 'favicon.ico');
 
-// const sassLoaderOptions = {
-//   importer: url =>
-//     url.startsWith('@material')
-//       ? { file: path.resolve(`./node_modules/${url}`) }
-//       : { file: url }
-// };
-
 export const htmlPluginOptions = {
   title: TITLE,
   filename: HTML_INDEX,
@@ -151,7 +144,9 @@ const commonConfig = {
           },
           // {
           //   loader: 'sass-loader',
-          //   options: sassLoaderOptions
+          //   options: {
+          //     includePaths: ['./node_modules']
+          //   }
           // }
         ]
       }
