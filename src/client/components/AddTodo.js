@@ -20,7 +20,7 @@ class AddTodo extends Component {
       draft.todo = target.value;
     }));
 
-  handleNewTodoKeyDown = ({ keyCode }) => {
+  handleKeyDown = ({ keyCode }) => {
     if (keyCode === 13) { //ENTER_KEY
       this.setState(produce(draft => {
         this.addTodo(draft.todo.trim());
@@ -34,7 +34,7 @@ class AddTodo extends Component {
       input: {
         value: this.state.todo,
         onChange: this.handleChange,
-        onKeyDown: this.handleNewTodoKeyDown
+        onKeyDown: this.handleKeyDown
       }
     };
 

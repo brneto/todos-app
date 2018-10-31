@@ -38,7 +38,7 @@ const Input = styled.input`
 const AddTodoForm = ({ input }) => (
   <header>
     <Title>todos</Title>
-    <Input placeholder="What needs to be done?" {...input} />
+    <Input name="todo" placeholder="What needs to be done?" {...input} />
   </header>
 );
 

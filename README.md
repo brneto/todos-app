@@ -54,17 +54,17 @@ Development Aid Tools
 
 Testing tools
 ------
-[Jest](https://jestjs.io/)
+:black_joker: [Jest](https://jestjs.io/)
 
-[React Testing Library](https://github.com/kentcdodds/react-testing-library)
+:goat: [React Testing Library](https://github.com/kentcdodds/react-testing-library)
 
-[Custom Jest Matchers](https://github.com/gnapse/jest-dom)
+:owl: [Jest DOM](https://github.com/gnapse/jest-dom) (Custom Jest Matchers)
 
-[Nock](https://github.com/nock/nock)
+:door: [Nock](https://github.com/nock/nock)
 
-[Deep Freeze](https://github.com/substack/deep-freeze)
+:snowflake: [Deep Freeze](https://github.com/substack/deep-freeze)
 
-[Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
+:book: [Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
 
 Usage
 ------

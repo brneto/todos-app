@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/AddTodo should call handle methods 1`] = `
+<header>
+  <h1
+    class="AddTodoForm__Title-sc-14qkjg5-0 hEqYMt"
+  >
+    todos
+  </h1>
+  <input
+    class="AddTodoForm__Input-sc-14qkjg5-1 cQsMZo"
+    name="todo"
+    placeholder="What needs to be done?"
+    value=""
+  />
+</header>
+`;
