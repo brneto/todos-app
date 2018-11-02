@@ -45,10 +45,6 @@ export const getVisibleTodos = createSelector(
   ],
   (ids, getTodo) => ids.map(getTodo)
 );
-// export const getVisibleTodos = (state) => {
-//   const ids = fromList.getIds(getListByFilter(state));
-//   return ids.map(id => fromById.getTodo(state.byId, id));
-// };
 
 export const getIsFetching = createSelector(
   [state => fromList.getIsFetching(getListByFilter(state))],
