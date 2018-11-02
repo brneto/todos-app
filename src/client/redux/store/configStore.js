@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import todos from '../reducers';
 import rootSaga from '../sagas';
 
-const configStore = (history) => {
+const configStore = history => {
   // Recommendation: Put redux-saga last in the middleware call chain.
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [
