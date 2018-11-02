@@ -18,17 +18,13 @@ const Section = styled.section`
   z-index: 2;
 `;
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   filter: getFilter(state),
   isFetching: getIsFetching(state),
   errorMessage: getErrorMessage(state),
   todos: getVisibleTodos(state),
 });
-// thunks = {
-//   fetchTodos: Function
-//   addTodo: Function,
-//   toggleTodo: Function,
-// }
+
 const mapDispatchToProps = {
   fetchTodos,
   toggleTodo,
@@ -45,7 +41,7 @@ class VisibleTodoList extends Component {
     todos: PropTypes.array.isRequired,
   };
 
-  //boundActionCreators = bindActionCreators(thunks, this.props.dispatch);
+  fetchData = this.props.fetchTodos;
 
   componentDidMount() {
     this.fetchData();
@@ -55,11 +51,6 @@ class VisibleTodoList extends Component {
     if (this.props.filter !== prevProps.filter) {
       this.fetchData();
     }
-  }
-
-  fetchData() {
-    //const { fetchTodos } = this.boundActionCreators;
-    this.props.fetchTodos();
   }
 
   render() {
@@ -80,7 +71,7 @@ class VisibleTodoList extends Component {
       render = (
         <FetchError
           message={errorMessage}
-          onRetry={::this.fetchData}
+          onRetry={this.fetchData}
         />
       );
     }
