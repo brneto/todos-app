@@ -41,9 +41,9 @@ const getListByFilter = createSelector(
 export const getVisibleTodos = createSelector(
   [
     state => fromList.getIds(getListByFilter(state)),
-    state => fromById.getTodos(state.byId),
+    state => fromById.createGetTodo(state.byId),
   ],
-  (ids, todos) => ids.map(todos)
+  (ids, getTodo) => ids.map(getTodo)
 );
 // export const getVisibleTodos = (state) => {
 //   const ids = fromList.getIds(getListByFilter(state));

@@ -22,7 +22,7 @@ const byId = handleActions(
 export default byId;
 
 // SELECTORS
-export const getTodos = createSelector(
+export const createGetTodo = createSelector(
   [state => id => state[id]],
-  todo => todo
+  getTodo => getTodo
 );
