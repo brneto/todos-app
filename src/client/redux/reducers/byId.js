@@ -1,4 +1,5 @@
 import { combineActions, handleActions } from 'redux-actions';
+import { flip, prop, identity, merge } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import { setFetchTodos, setAddTodo, setToggleTodo } from '../actions';
@@ -12,7 +13,7 @@ const byId = handleActions(
   {
     [combineActions(setFetchTodos, setAddTodo, setToggleTodo)]: {
       next: produce((draft, { payload: { entities } }) =>
-        Object.assign(draft, entities.todos) //modify the current state
+        merge(draft, entities.todos) //return an entirely new state
       ),
     }
   },
@@ -22,7 +23,4 @@ const byId = handleActions(
 export default byId;
 
 // SELECTORS
-export const createGetTodo = createSelector(
-  [state => id => state[id]],
-  getTodo => getTodo
-);
+export const createGetTodo = createSelector([flip(prop)], identity);

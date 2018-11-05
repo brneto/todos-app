@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { curry, compose, reject, equals } from 'ramda';
+import { curry, compose, reject, equals, prop, identity } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
@@ -12,7 +12,7 @@ import {
 } from '../actions';
 
 const createList = filter => {
-  const isFilter = value => filter === value;
+  const isFilter = equals(filter);
   // const ids = (state = [], { type, payload, meta }) => {
   //   switch (type) {
   //     case 'FETCH_TODOS_SUCCESS':
@@ -140,15 +140,6 @@ const createList = filter => {
 export default createList;
 
 // SELECTORS
-export const getIds = createSelector(
-  [state => state.ids],
-  ids => ids
-);
-export const getIsFetching = createSelector(
-  [state => state.isFetching],
-  isFetching => isFetching
-);
-export const getErrorMessage = createSelector(
-  [state => state.errorMessage],
-  errorMessage => errorMessage
-);
+export const getIds = createSelector([prop('ids')], identity);
+export const getIsFetching = createSelector([prop('isFetching')], identity);
+export const getErrorMessage = createSelector([prop('errorMessage')], identity);
