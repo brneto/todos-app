@@ -1,9 +1,9 @@
 import { applyMiddleware, createStore } from 'redux';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import todos from '../reducers';
+import createRootReduder from '../reducers';
 import rootSaga from '../sagas';
 
 const configStore = history => {
@@ -19,7 +19,7 @@ const configStore = history => {
 
   // Recommendation: Separate the “server data” and the
   // “auxiliary/temporary data” under different root keys.
-  const rootReducer = connectRouter(history)(todos);
+  const rootReducer = createRootReduder(history);
   const storeEnhancers = composeWithDevTools(applyMiddleware(...middlewares));
   const store = createStore(rootReducer, storeEnhancers);
 

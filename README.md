@@ -8,6 +8,8 @@ Libraries
 
 :hammer_and_wrench: [Lodash](https://lodash.com/)
 
+:ram: [Ramda](https://ramdajs.com/)
+
 :nail_care: [Styled Components](https://www.styled-components.com/)
 
 :gift: [React Router v4](https://github.com/ReactTraining/react-router)

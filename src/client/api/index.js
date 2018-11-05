@@ -23,7 +23,7 @@ const delay = (ms) =>
   new Promise(resolve => setTimeout(resolve, ms));
 
 export const fetchTodos = (filter) =>
-  delay(5000).then(() => {
+  delay(3000).then(() => {
     if (Math.random() > 0.5) {
       throw new Error('Boom!');
     }
@@ -41,7 +41,7 @@ export const fetchTodos = (filter) =>
   });
 
 export const addTodo = (text) =>
-  delay(5000).then(() => {
+  delay(3000).then(() => {
     const todo = {
       id: uuidv4(),
       text,
@@ -52,7 +52,7 @@ export const addTodo = (text) =>
   });
 
 export const toggleTodo = (id) =>
-  delay(5000).then(() => {
+  delay(3000).then(() => {
     const todo = fakeDatabase.todos.find(t => t.id === id);
     todo.completed = !todo.completed;
     return todo;

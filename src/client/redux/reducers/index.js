@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { createMatchSelector } from 'connected-react-router';
+import { connectRouter, createMatchSelector } from 'connected-react-router';
 import { createSelector } from 'reselect';
 import routes from '../../libs/routes';
 import byId, * as fromById from './byId';
@@ -11,13 +11,14 @@ const listByFilter = combineReducers({
   completed: createList('completed'),
 });
 
-const todos = combineReducers({
+const createRootReducer = history => combineReducers({
+  router: connectRouter(history),
   byId,
   listByFilter,
 });
 
 // Recommendation: The reducer function is always default export.
-export default todos;
+export default createRootReducer;
 
 // Recommendation: Always put the selectors together with its related reducer.
 export const getFilter = createSelector(

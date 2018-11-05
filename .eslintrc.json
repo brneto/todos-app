@@ -24,6 +24,7 @@
   },
   "plugins": [
     "babel",
+    "ramda",
     "redux-saga"
   ],
   "extends": [
@@ -31,6 +32,7 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:react/recommended",
+    "plugin:ramda/recommended",
     "plugin:redux-saga/recommended"
   ],
   "rules": {
