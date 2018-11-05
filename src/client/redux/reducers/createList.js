@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { curry, reject, equals } from 'ramda';
+import { curry, compose, reject, equals } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
@@ -51,7 +51,8 @@ const createList = filter => {
               (isFilter('completed') && !completed)
             )
           );
-          const removeToggledTodo = reject(shouldRemove(toggledId));
+          const createRemoveTodo = compose(reject, shouldRemove);
+          const removeToggledTodo = createRemoveTodo(toggledId);
 
           return removeToggledTodo(draft); //return an entirely new state
         }),
