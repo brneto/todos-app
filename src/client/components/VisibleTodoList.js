@@ -18,6 +18,10 @@ const Section = styled.section`
   z-index: 2;
 `;
 
+const OnFetch = styled.p`
+  margin-left: 1em;
+`;
+
 const mapStateToProps = state => ({
   filter: getFilter(state),
   isFetching: getIsFetching(state),
@@ -64,7 +68,7 @@ class VisibleTodoList extends Component {
     );
 
     if (isFetching && !todos.length) {
-      render = <p>Loading...</p>;
+      render = <OnFetch>Loading...</OnFetch>;
     }
 
     if (errorMessage && !todos.length) {

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { reject, equals } from 'ramda';
+import { curry, reject, equals } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
@@ -45,9 +45,11 @@ const createList = filter => {
           const { result: toggledId } = payload;
           const { entities: { todos } } = payload;
           const { completed } = todos[toggledId];
-          const shouldRemove = a => b => equals(a, b) && (
-            (isFilter('active') && completed) ||
-            (isFilter('completed') && !completed)
+          const shouldRemove = curry(
+            (a, b) => equals(a, b) && (
+              (isFilter('active') && completed) ||
+              (isFilter('completed') && !completed)
+            )
           );
           const removeToggledTodo = reject(shouldRemove(toggledId));
 

@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const OnError = styled.label`
+  margin-left: 1em;
+`;
 
 const FetchError = ({ message, onRetry }) => (
-  <div>
-    <p>Could not fetch todos. {message}</p>
+  <OnError>Could not fetch todos. {message} &nbsp;
     <button onClick={onRetry}>Retry</button>
-  </div>
+  </OnError>
 );
+
 FetchError.propTypes = {
   message: PropTypes.string.isRequired,
   onRetry: PropTypes.func.isRequired,
