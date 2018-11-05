@@ -45,6 +45,7 @@ const createList = filter => {
           const { result: toggledId } = payload;
           const { entities: { todos } } = payload;
           const { completed } = todos[toggledId];
+
           const shouldRemove = curry(
             (a, b) => equals(a, b) && (
               (isFilter('active') && completed) ||
