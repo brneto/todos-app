@@ -138,7 +138,7 @@
     "stylelint-webpack-plugin": "^0.10.5",
     "thread-loader": "^1.2.0",
     "url-loader": "^1.1.2",
-    "webpack": "^4.24.0",
+    "webpack": "^4.25.0",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-manifest-plugin": "^2.0.4",
