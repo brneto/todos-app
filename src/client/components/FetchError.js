@@ -4,10 +4,14 @@ import styled from 'styled-components';
 
 const OnError = styled.label`
   margin-left: 1em;
+
+  button {
+    margin: 1em .5em;
+  }
 `;
 
 const FetchError = ({ message, onRetry }) => (
-  <OnError>Could not fetch todos. {message} &nbsp;
+  <OnError>Could not fetch todos. {message}
     <button onClick={onRetry}>Retry</button>
   </OnError>
 );

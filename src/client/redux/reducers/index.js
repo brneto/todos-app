@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { map, compose, prop, identity } from 'ramda';
+import { map, compose, o, prop, defaultTo, identity, juxt, apply } from 'ramda';
 import { connectRouter, createMatchSelector } from 'connected-react-router';
 import { createSelector } from 'reselect';
 import routes from '../../libs/routes';
@@ -32,28 +32,28 @@ export const getFilter = createSelector(
   //   exact // optional, defaults to false
   // }
   [createMatchSelector({ ...routes.main })],
-  match => match.params.filter || 'all'
+  compose(defaultTo('all'), prop('filter'), prop('params'))
 );
 
 const getListByFilter = createSelector(
-  [state => state.listByFilter[getFilter(state)]],
+  [o(apply(prop), juxt([getFilter, prop('listByFilter')]))],
   identity
 );
 
 export const getVisibleTodos = createSelector(
   [
-    compose(fromById.createGetTodo, prop('byId')),
-    compose(fromList.getIds, getListByFilter),
+    o(fromById.createGetTodo, prop('byId')),
+    o(fromList.getIds, getListByFilter),
   ],
   map
 );
 
 export const getIsFetching = createSelector(
-  [compose(fromList.getIsFetching, getListByFilter)],
+  [o(fromList.getIsFetching, getListByFilter)],
   identity
 );
 
 export const getErrorMessage = createSelector(
-  [compose(fromList.getErrorMessage, getListByFilter)],
+  [o(fromList.getErrorMessage, getListByFilter)],
   identity
 );

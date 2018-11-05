@@ -51,7 +51,7 @@
   "homepage": "https://gitlab.com/learning-concepts/redux#README",
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "connected-react-router": "^5.0.0",
+    "connected-react-router": "^5.0.1",
     "immer": "^1.7.4",
     "lodash": "^4.17.11",
     "normalizr": "^3.3.0",
@@ -138,7 +138,7 @@
     "stylelint-webpack-plugin": "^0.10.5",
     "thread-loader": "^1.2.0",
     "url-loader": "^1.1.2",
-    "webpack": "^4.25.0",
+    "webpack": "^4.25.1",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-manifest-plugin": "^2.0.4",
