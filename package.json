@@ -52,6 +52,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "connected-react-router": "^5.0.1",
+    "history": "^4.7.2",
     "immer": "^1.7.4",
     "lodash": "^4.17.11",
     "normalizr": "^3.3.0",
