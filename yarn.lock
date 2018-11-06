@@ -854,9 +854,9 @@
     vxx "1.2.2"
 
 "@pm2/js-api@^0.5.15":
-  version "0.5.29"
-  resolved "https://registry.yarnpkg.com/@pm2/js-api/-/js-api-0.5.29.tgz#80a34713ccfa8a7d810677ab20f97c6bd5d4700e"
-  integrity sha512-Ysncol61c55Tw+OoZm1ZcGR9WIPOf09mvUHH0wO6R3hglXW0OnuZWshy/CuS5Yp4UHwHCIwlxp5OTB95u1WVtQ==
+  version "0.5.30"
+  resolved "https://registry.yarnpkg.com/@pm2/js-api/-/js-api-0.5.30.tgz#d655d4aa33cf76e723e0e51031003e133e90ff35"
+  integrity sha512-kx0Fd3CBmq89OcX9eigcIc86nMuydn2MxZurPRhR5JhQcH7WINf8mrtqAntJtVo8Hv6IlQJslzaJ5UMKsxLKvw==
   dependencies:
     async "^2.4.1"
     axios "^0.16.2"
@@ -1978,9 +1978,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000898, caniuse-lite@^1.0.30000899:
-  version "1.0.30000905"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000905.tgz#8f731ecf5b8553c7154a691c3df3a635a1a3fda5"
-  integrity sha512-cR6ICguvhRrkAjFfBoe54vJQMVOEz7vFmqrV6oor1a7GRg6DdswI40lkiV/QQvAMb4txzTkjSaLaJaiAtSuQzA==
+  version "1.0.30000906"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000906.tgz#7c44e498a2504f7a5db3b4f91285bbc821157a77"
+  integrity sha512-ME7JFX6h0402om/nC/8Lw+q23QvPe2ust9U0ntLmkX9F2zaGwq47fZkjlyHKirFBuq1EM+T/LXBcDdW4bvkCTA==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -5326,10 +5326,10 @@ jest-docblock@^23.2.0:
   dependencies:
     detect-newline "^2.1.0"
 
-jest-dom@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-2.1.0.tgz#ddd2c75d284ae0c9d17528cfd820727e964f8dd3"
-  integrity sha512-1kUVHGqvsJYK9u0sTAihDp9IRIwngMH7JghRaQWB6WluWf0/2L6MxTEE2U4x7aRN6H89bfPeCu8zjlO+/nBqgw==
+jest-dom@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/jest-dom/-/jest-dom-2.1.1.tgz#c75515ef31147bd9684c860b0cba9605638fd4dd"
+  integrity sha512-jE1LRnP/wVGdQy6sVJ+dPwMq6rXXuvYTnzWEb8hDwfxhQesoaaukJzZaZYi14JPpdmhrncdpUsZpagN7HjuTsw==
   dependencies:
     chalk "^2.4.1"
     css "^2.2.3"
@@ -8262,7 +8262,7 @@ readable-stream@1.0:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@^3.0.6:
+"readable-stream@2 || 3", readable-stream@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.0.6.tgz#351302e4c68b5abd6a2ed55376a7f9a25be3057a"
   integrity sha512-9E1oLoOWfhSXHGv6QlwXJim7uNzd9EVlWK+21tCU9Ju/kR0/p2AZYPz4qSchgO8PlLIH4FpZYfzwS+rEksZjIg==
@@ -9631,11 +9631,11 @@ throat@^4.0.0:
   integrity sha1-iQN8vJLFarGJJua6TLsgDhVnKmo=
 
 through2@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
-  integrity sha1-AARWmzfHx0ujnEPzzteNGtlBQL4=
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.4.tgz#e8362dec238b7590f5743b060342f27b452f4450"
+  integrity sha512-q030OX7royN1Bo549nYMOpKwiGJIzUppv10IgB6ALN6DiJ/XgsRIehiz18x5RWCA3+s4G6ovKqtzgU+pYhjvvg==
   dependencies:
-    readable-stream "^2.1.5"
+    readable-stream "2 || 3"
     xtend "~4.0.1"
 
 through@2, through@^2.3.6, through@^2.3.8, through@~2.3, through@~2.3.4:

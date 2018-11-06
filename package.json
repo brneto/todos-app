@@ -111,7 +111,7 @@
     "hard-source-webpack-plugin": "^0.12.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
-    "jest-dom": "^2.1.0",
+    "jest-dom": "^2.1.1",
     "mini-css-extract-plugin": "^0.4.4",
     "morgan": "^1.9.1",
     "nock": "^10.0.2",
