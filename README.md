@@ -28,6 +28,8 @@ Libraries
 
 :wavy_dash: [Connected React Router](https://github.com/supasate/connected-react-router)
 
+:hourglass: [Moment](https://github.com/moment/moment/)
+
 Development Aid Tools
 ------
 [ESLint](https://eslint.org/)
