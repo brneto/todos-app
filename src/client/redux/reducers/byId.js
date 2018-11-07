@@ -23,4 +23,5 @@ const byId = handleActions(
 export default byId;
 
 // SELECTORS
+// flip(prop) :: {s: a} -> s -> a | Undefined
 export const createGetTodo = createSelector([flip(prop)], identity);

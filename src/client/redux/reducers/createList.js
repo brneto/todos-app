@@ -129,6 +129,7 @@ const createList = filter => {
 export default createList;
 
 // SELECTORS
+// prop :: s -> {s: a} -> a | Undefined
 export const getIds = createSelector([prop('ids')], identity);
 export const getIsFetching = createSelector([prop('isFetching')], identity);
 export const getErrorMessage = createSelector([prop('errorMessage')], identity);
