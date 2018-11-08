@@ -1,4 +1,5 @@
 import { normalize } from 'normalizr';
+import { curry, prop, compose } from 'ramda';
 import { call, put, select, cancel } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as selectors from '../reducers';
@@ -19,35 +20,50 @@ export function* fetchTodos() {
     const data = normalize(response, schema.todoList);
 
     yield put(actions.setFetchedTodos(data, filter));
-  } catch(error) {
+  } catch (error) {
     yield put(actions.setFetchedTodos(error, filter));
   } finally {
     yield put(actions.setToggleFetching(filter));
   }
 }
 
-function* todo(api, payload, action) {
+export function* addTodo({ payload: text }) {
   try {
-    const response = yield call(api, payload);
+    const response = yield call(api.addTodo, text);
     const data = normalize(response, schema.todo);
 
-    yield put(action(data));
-  } catch(error) {
-    yield put(action(error));
+    yield put(actions.setAddedTodo(data));
+  } catch (error) {
+    yield put(actions.setAddedTodo(error));
   }
 }
 
-export function* setTodo(action) {
-  const { type, payload } = action;
-  const { addTodo, setAddedTodo, toggleTodo, setToggledTodo } = actions;
+export function* toggleTodo({ payload: id }) {
+  try {
+    const response = yield call(api.toggleTodo, id);
+    const data = normalize(response, schema.todo);
 
-  switch (type) {
-    case addTodo.toString():
-      yield* todo(api.addTodo, payload, setAddedTodo);
-      break;
+    const getCompleted = compose(
+      prop('completed'),
+      prop(data.result),
+      prop('todos'),
+      prop('entities')
+    );
+    const createAddId = curry((f, i) => actions.setToggledTodoAdd(i, f));
+    const createRemoveId = curry((f, i) => actions.setToggledTodoRemove(i, f));
 
-    case toggleTodo.toString():
-      yield* todo(api.toggleTodo, payload, setToggledTodo);
-      break;
+    const completed = getCompleted(data);
+    const add = completed
+      ? createAddId('completed')
+      : createAddId('active');
+    const remove = completed
+      ? createRemoveId('active')
+      : createRemoveId('completed');
+
+    yield put(add(id));
+    yield put(remove(id));
+    yield put(actions.setToggledTodo(data));
+  } catch (error) {
+    yield put(actions.setToggledTodo(error));
   }
 }

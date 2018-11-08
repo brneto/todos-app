@@ -1,6 +1,8 @@
 import { createActions } from 'redux-actions';
 import { identity } from 'ramda';
 
+const filterHandler = [identity, (_, filter) => ({ filter })];
+
 export const {
   fetchTodos,
   addTodo,
@@ -10,9 +12,13 @@ export const {
   setFetchedTodos,
   setAddedTodo,
   setToggledTodo,
+  setToggledTodoAdd,
+  setToggledTodoRemove,
 } = createActions(
   {
-    SET_FETCHED_TODOS: [identity, (_, filter) => ({ filter })],
+    SET_FETCHED_TODOS: filterHandler,
+    SET_TOGGLED_TODO_ADD: filterHandler,
+    SET_TOGGLED_TODO_REMOVE: filterHandler,
   },
   'SET_TOGGLE_FETCHING',
   'SET_ADDED_TODO',

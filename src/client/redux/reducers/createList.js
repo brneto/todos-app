@@ -1,32 +1,22 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import { both, reject, equals, prop, identity, always } from 'ramda';
+import { reject, equals, prop, identity, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
   setFetchedTodos,
   setAddedTodo,
+
   setToggledTodo,
+  setToggledTodoAdd,
+  setToggledTodoRemove,
 
   setToggleFetching,
 } from '../actions';
 
 const createList = filter => {
   const isFilter = equals(filter);
-  // const ids = (state = [], { type, payload, meta }) => {
-  //   switch (type) {
-  //     case 'FETCH_TODOS_SUCCESS':
-  //       return filter === meta.filter ? payload.response.result : state;
-  //     case 'ADD_TODO_SUCCESS':
-  //       return filter !== 'completed'
-  //       ? [...state, payload.response.result]
-  //       : state;
-  //     case 'TOGGLE_TODO_SUCCESS':
-  //       return handleToggleTodo(state, payload);
-  //     default:
-  //       return state;
-  //   }
-  // };
+
   const idsInitialState = [];
   const ids = handleActions(
     {
@@ -42,21 +32,16 @@ const createList = filter => {
             draft.push(payload.result); //modify the current draft state
         }),
       },
-      [setToggledTodo]: {
-        next: produce((draft, { payload }) => {
-          const { result: toggledId } = payload;
-          const { entities: { todos } } = payload;
-          const { completed } = todos[toggledId];
-
-          const shouldRemove = both(always(
-              (isFilter('active') && completed) ||
-              (isFilter('completed') && !completed)
-            ),
-            equals(toggledId)
-          );
-          const removeToggledTodo = reject(shouldRemove);
-
-          return removeToggledTodo(draft); //return an entirely new state
+      [setToggledTodoAdd]: {
+        next: produce((draft, { payload, meta }) => {
+          if(isFilter(meta.filter))
+            draft.push(payload); //modify the current draft state
+        }),
+      },
+      [setToggledTodoRemove]: {
+        next: produce((draft, { payload, meta }) => {
+          if(isFilter(meta.filter))
+            return reject(equals(payload), draft); //return an entirely new state
         }),
       },
     },

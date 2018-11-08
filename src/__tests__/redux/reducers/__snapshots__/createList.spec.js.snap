@@ -71,6 +71,19 @@ Object {
 }
 `;
 
+exports[`reducers/createList should toggle todo add one id from list 1`] = `
+Object {
+  "errorMessage": null,
+  "ids": Array [
+    1,
+    2,
+    3,
+    5,
+  ],
+  "isFetching": false,
+}
+`;
+
 exports[`reducers/createList should toggle todo remove one id from list 1`] = `
 Object {
   "errorMessage": null,

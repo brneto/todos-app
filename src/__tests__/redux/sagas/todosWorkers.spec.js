@@ -58,7 +58,7 @@ describe('sagas/TodosWorkers', () => {
     };
     const data = normalize(response, schema.todo);
 
-    testSaga(sagas.setTodo, actions.addTodo(text))
+    testSaga(sagas.addTodo, actions.addTodo(text))
     .next()
     .call(api.addTodo, text)
     .next(response)
@@ -76,10 +76,14 @@ describe('sagas/TodosWorkers', () => {
     };
     const data = normalize(response, schema.todo);
 
-    testSaga(sagas.setTodo, actions.toggleTodo(id))
+    testSaga(sagas.toggleTodo, actions.toggleTodo(id))
     .next()
     .call(api.toggleTodo, id)
     .next(response)
+    .put(actions.setToggledTodoAdd(id, 'active'))
+    .next()
+    .put(actions.setToggledTodoRemove(id, 'completed'))
+    .next()
     .put(actions.setToggledTodo(data))
     .next()
     .isDone();

@@ -6,6 +6,7 @@ export default function* rootSaga() {
 // eslint-disable-next-line redux-saga/no-unhandled-errors
   yield all({
     fetchTodosWatcher: takeEvery(fetchTodos, workers.fetchTodos),
-    todoWatcher: takeEvery([addTodo, toggleTodo], workers.setTodo)
+    addTodoWatcher: takeEvery(addTodo, workers.addTodo),
+    toggleTodoWatcher: takeEvery(toggleTodo, workers.toggleTodo),
   });
 }

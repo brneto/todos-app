@@ -4,6 +4,8 @@ import {
   setFetchedTodos,
   setAddedTodo,
   setToggledTodo,
+  setToggledTodoAdd,
+  setToggledTodoRemove,
   setToggleFetching
 } from '../../../client/redux/actions';
 
@@ -61,21 +63,17 @@ describe('reducers/createList', () => {
     .toMatchSnapshot();
   });
 
-  it('should toggle todo remove one id from list', () => {
-    const testData = {
-      entities: {
-        todos: {
-          1: {
-            id: 1,
-            text: 'Learn Redux',
-            completed: true
-          }
-        }
-      },
-      result: 1
-    };
+  it('should toggle todo add one id from list', () => {
+    const testId = 5;
 
-    expect(listByFilter(baseState, setToggledTodo(testData, filter)))
+    expect(listByFilter(baseState, setToggledTodoAdd(testId, filter)))
+    .toMatchSnapshot();
+  });
+
+  it('should toggle todo remove one id from list', () => {
+    const testId = 1;
+
+    expect(listByFilter(baseState, setToggledTodoRemove(testId, filter)))
     .toMatchSnapshot();
   });
 
