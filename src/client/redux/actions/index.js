@@ -1,4 +1,5 @@
 import { createActions } from 'redux-actions';
+import { identity } from 'ramda';
 
 export const {
   fetchTodos,
@@ -6,23 +7,16 @@ export const {
   toggleTodo,
 
   setToggleFetching,
-
-  setFetchTodos,
-  setAddTodo,
-  setToggleTodo,
+  setFetchedTodos,
+  setAddedTodo,
+  setToggledTodo,
 } = createActions(
   {
-    SET_TOGGLE_FETCHING: [
-      () => null,
-      (payload, meta) => ({ filter: payload instanceof Error ? meta : payload })
-    ],
-    SET_FETCH_TODOS: [
-      payload => payload,
-      (todos, filter) => ({ filter })
-    ],
+    SET_FETCHED_TODOS: [identity, (_, filter) => ({ filter })],
   },
-  'SET_ADD_TODO',
-  'SET_TOGGLE_TODO',
+  'SET_TOGGLE_FETCHING',
+  'SET_ADDED_TODO',
+  'SET_TOGGLED_TODO',
   'FETCH_TODOS',
   'ADD_TODO',
   'TOGGLE_TODO',

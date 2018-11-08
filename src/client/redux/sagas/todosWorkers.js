@@ -18,33 +18,36 @@ export function* fetchTodos() {
     const response = yield call(api.fetchTodos, filter);
     const data = normalize(response, schema.todoList);
 
-    yield put(actions.setFetchTodos(data, filter));
+    yield put(actions.setFetchedTodos(data, filter));
   } catch(error) {
-    yield put(actions.setFetchTodos(error, filter));
+    yield put(actions.setFetchedTodos(error, filter));
   } finally {
     yield put(actions.setToggleFetching(filter));
   }
 }
 
-
-export function* addTodo({ payload: text }) {
+function* todo(api, payload, action) {
   try {
-    const response = yield call(api.addTodo, text);
+    const response = yield call(api, payload);
     const data = normalize(response, schema.todo);
 
-    yield put(actions.setAddTodo(data));
+    yield put(action(data));
   } catch(error) {
-    yield put(actions.setAddTodo(error));
+    yield put(action(error));
   }
 }
 
-export function* toggleTodo({ payload: id }) {
-  try {
-    const response = yield call(api.toggleTodo, id);
-    const data = normalize(response, schema.todo);
+export function* setTodo(action) {
+  const { type, payload } = action;
+  const { addTodo, setAddedTodo, toggleTodo, setToggledTodo } = actions;
 
-    yield put(actions.setToggleTodo(data));
-  } catch(error) {
-    yield put(actions.setToggleTodo(error));
+  switch (type) {
+    case addTodo.toString():
+      yield* todo(api.addTodo, payload, setAddedTodo);
+      break;
+
+    case toggleTodo.toString():
+      yield* todo(api.toggleTodo, payload, setToggledTodo);
+      break;
   }
 }

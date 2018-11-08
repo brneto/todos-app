@@ -13,48 +13,45 @@ Object {
 }
 `;
 
-exports[`actions setAddTodo 1`] = `
+exports[`actions setAddedTodo 1`] = `
 Object {
   "payload": "responseData",
-  "type": "SET_ADD_TODO",
+  "type": "SET_ADDED_TODO",
 }
 `;
 
-exports[`actions setAddTodo 2`] = `
+exports[`actions setAddedTodo 2`] = `
 Object {
   "error": true,
   "payload": [Error: Boom!],
-  "type": "SET_ADD_TODO",
+  "type": "SET_ADDED_TODO",
 }
 `;
 
-exports[`actions setFetchTodos 1`] = `
+exports[`actions setFetchedTodos 1`] = `
 Object {
   "meta": Object {
     "filter": "filterName",
   },
   "payload": "responseData",
-  "type": "SET_FETCH_TODOS",
+  "type": "SET_FETCHED_TODOS",
 }
 `;
 
-exports[`actions setFetchTodos 2`] = `
+exports[`actions setFetchedTodos 2`] = `
 Object {
   "error": true,
   "meta": Object {
     "filter": "filterName",
   },
   "payload": [Error: Boom!],
-  "type": "SET_FETCH_TODOS",
+  "type": "SET_FETCHED_TODOS",
 }
 `;
 
 exports[`actions setToggleFetching 1`] = `
 Object {
-  "meta": Object {
-    "filter": "filterName",
-  },
-  "payload": null,
+  "payload": "filterName",
   "type": "SET_TOGGLE_FETCHING",
 }
 `;
@@ -62,26 +59,23 @@ Object {
 exports[`actions setToggleFetching 2`] = `
 Object {
   "error": true,
-  "meta": Object {
-    "filter": "filterName",
-  },
   "payload": [Error: Boom!],
   "type": "SET_TOGGLE_FETCHING",
 }
 `;
 
-exports[`actions setToggleTodo 1`] = `
+exports[`actions setToggledTodo 1`] = `
 Object {
   "payload": "responseData",
-  "type": "SET_TOGGLE_TODO",
+  "type": "SET_TOGGLED_TODO",
 }
 `;
 
-exports[`actions setToggleTodo 2`] = `
+exports[`actions setToggledTodo 2`] = `
 Object {
   "error": true,
   "payload": [Error: Boom!],
-  "type": "SET_TOGGLE_TODO",
+  "type": "SET_TOGGLED_TODO",
 }
 `;
 

@@ -2,7 +2,7 @@ import { combineActions, handleActions } from 'redux-actions';
 import { flip, prop, identity } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
-import { setFetchTodos, setAddTodo, setToggleTodo } from '../actions';
+import { setFetchedTodos, setAddedTodo, setToggledTodo } from '../actions';
 
 // const byId = (state = {}, { payload }) =>
 //   payload?.response
@@ -11,7 +11,7 @@ import { setFetchTodos, setAddTodo, setToggleTodo } from '../actions';
 const initialState = {};
 const byId = handleActions(
   {
-    [combineActions(setFetchTodos, setAddTodo, setToggleTodo)]: {
+    [combineActions(setFetchedTodos, setAddedTodo, setToggledTodo)]: {
       next: produce((draft, { payload: { entities } }) => {
         Object.assign(draft, entities.todos); //modify the current draft state
       }),

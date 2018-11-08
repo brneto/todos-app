@@ -1,9 +1,9 @@
 import deepFreeze from 'deep-freeze';
 import createList from '../../../client/redux/reducers/createList';
 import {
-  setFetchTodos,
-  setAddTodo,
-  setToggleTodo,
+  setFetchedTodos,
+  setAddedTodo,
+  setToggledTodo,
   setToggleFetching
 } from '../../../client/redux/actions';
 
@@ -13,7 +13,7 @@ describe('reducers/createList', () => {
   const initialState = deepFreeze(listByFilter(undefined, { type: 'INIT' }));
   const baseData = { result: [1, 2, 3] };
   const baseState = deepFreeze(
-    listByFilter(initialState, setFetchTodos(baseData, filter))
+    listByFilter(initialState, setFetchedTodos(baseData, filter))
   );
   const error = new Error('Boom!');
 
@@ -23,7 +23,7 @@ describe('reducers/createList', () => {
 
   it('should add fetched todos to empty list', () => {
     expect(
-      listByFilter(initialState, setFetchTodos(baseData, filter))
+      listByFilter(initialState, setFetchedTodos(baseData, filter))
     ).toMatchSnapshot();
   });
 
@@ -31,12 +31,12 @@ describe('reducers/createList', () => {
     const testData = { result: [4, 5, 6] };
 
     expect(
-      listByFilter(baseState, setFetchTodos(testData, filter))
+      listByFilter(baseState, setFetchedTodos(testData, filter))
     ).toMatchSnapshot();
   });
 
   it('should add fetched todos saves error message', () => {
-    expect(listByFilter(baseState, setFetchTodos(error, filter)))
+    expect(listByFilter(baseState, setFetchedTodos(error, filter)))
     .toMatchSnapshot();
   });
 
@@ -44,7 +44,7 @@ describe('reducers/createList', () => {
     const testData = { result: 4 };
 
     expect(
-      listByFilter(initialState, setAddTodo(testData, filter))
+      listByFilter(initialState, setAddedTodo(testData, filter))
     ).toMatchSnapshot();
   });
 
@@ -52,12 +52,12 @@ describe('reducers/createList', () => {
     const testData = { result: 4 };
 
     expect(
-      listByFilter(baseState, setAddTodo(testData, filter))
+      listByFilter(baseState, setAddedTodo(testData, filter))
     ).toMatchSnapshot();
   });
 
   it('should add todo save error message', () => {
-    expect(listByFilter(baseState, setAddTodo(error)))
+    expect(listByFilter(baseState, setAddedTodo(error)))
     .toMatchSnapshot();
   });
 
@@ -75,7 +75,7 @@ describe('reducers/createList', () => {
       result: 1
     };
 
-    expect(listByFilter(baseState, setToggleTodo(testData, filter)))
+    expect(listByFilter(baseState, setToggledTodo(testData, filter)))
     .toMatchSnapshot();
   });
 
@@ -85,10 +85,10 @@ describe('reducers/createList', () => {
     const initialState = deepFreeze(listByFilter(undefined, { type: 'INIT' }));
     const baseData = { result: [1, 2, 3] };
     const baseState = deepFreeze(
-      listByFilter(initialState, setFetchTodos(baseData, filter))
+      listByFilter(initialState, setFetchedTodos(baseData, filter))
     );
 
-    expect(listByFilter(baseState, setToggleTodo(error)))
+    expect(listByFilter(baseState, setToggledTodo(error)))
     .toMatchSnapshot();
   });
 

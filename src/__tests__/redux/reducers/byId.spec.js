@@ -1,9 +1,9 @@
 import deepFreeze from 'deep-freeze';
 import byId from '../../../client/redux/reducers/byId';
 import {
-  setFetchTodos,
-  setAddTodo,
-  setToggleTodo
+  setFetchedTodos,
+  setAddedTodo,
+  setToggledTodo
 } from '../../../client/redux/actions';
 
 describe('reducers/byId', () => {
@@ -31,7 +31,7 @@ describe('reducers/byId', () => {
     }
   };
   const baseState = deepFreeze(
-    byId(initialState, setFetchTodos(baseData, filter))
+    byId(initialState, setFetchedTodos(baseData, filter))
   );
 
   it('should handle unknown actions', () => {
@@ -40,7 +40,7 @@ describe('reducers/byId', () => {
 
   it('should add fetched todos to empty map', () => {
     expect(
-      byId(initialState, setFetchTodos(baseData, filter))
+      byId(initialState, setFetchedTodos(baseData, filter))
     ).toMatchSnapshot();
   });
 
@@ -62,7 +62,7 @@ describe('reducers/byId', () => {
       }
     };
 
-    expect(byId(baseState, setFetchTodos(testData, filter))).toMatchSnapshot();
+    expect(byId(baseState, setFetchedTodos(testData, filter))).toMatchSnapshot();
   });
 
   it('should add todo to empty map', () => {
@@ -78,7 +78,7 @@ describe('reducers/byId', () => {
       }
     };
 
-    expect(byId(initialState, setAddTodo(testData))).toMatchSnapshot();
+    expect(byId(initialState, setAddedTodo(testData))).toMatchSnapshot();
   });
 
   it('should add todo to non-empty map', () => {
@@ -94,7 +94,7 @@ describe('reducers/byId', () => {
       }
     };
 
-    expect(byId(baseState, setAddTodo(testData))).toMatchSnapshot();
+    expect(byId(baseState, setAddedTodo(testData))).toMatchSnapshot();
   });
 
   it('should toggle todo to non-empty map', () => {
@@ -110,6 +110,6 @@ describe('reducers/byId', () => {
       }
     };
 
-    expect(byId(baseState, setToggleTodo(testData))).toMatchSnapshot();
+    expect(byId(baseState, setToggledTodo(testData))).toMatchSnapshot();
   });
 });

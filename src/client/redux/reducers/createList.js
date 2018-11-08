@@ -4,9 +4,9 @@ import { both, reject, equals, prop, identity, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
-  setFetchTodos,
-  setAddTodo,
-  setToggleTodo,
+  setFetchedTodos,
+  setAddedTodo,
+  setToggledTodo,
 
   setToggleFetching,
 } from '../actions';
@@ -30,19 +30,19 @@ const createList = filter => {
   const idsInitialState = [];
   const ids = handleActions(
     {
-      [setFetchTodos]: {
+      [setFetchedTodos]: {
         next: produce((draft, { payload, meta }) => {
           if(isFilter(meta.filter))
             return payload.result; //return an entirely new state
         }),
       },
-      [setAddTodo]: {
+      [setAddedTodo]: {
         next: produce((draft, { payload }) => {
           if(!isFilter('completed'))
             draft.push(payload.result); //modify the current draft state
         }),
       },
-      [setToggleTodo]: {
+      [setToggledTodo]: {
         next: produce((draft, { payload }) => {
           const { result: toggledId } = payload;
           const { entities: { todos } } = payload;
@@ -82,8 +82,8 @@ const createList = filter => {
   const isFetchingInitialState = false;
   const isFetching = handleActions(
     {
-      [setToggleFetching]: produce((draft, { meta }) => {
-        if(isFilter(meta.filter))
+      [setToggleFetching]: produce((draft, { payload }) => {
+        if(isFilter(payload))
           return !draft; //return an entirely new state
       }),
     },
@@ -94,21 +94,21 @@ const createList = filter => {
   const errorMessageInitialState = null;
   const errorMessage = handleActions(
     {
-      [setFetchTodos]: {
+      [setFetchedTodos]: {
         next: produce(always(null)),
         throw: produce((draft, { payload, meta }) => {
           if(isFilter(meta.filter))
             return getErrorMessage(payload); //return an entirely new state
         })
       },
-      [setAddTodo]: {
+      [setAddedTodo]: {
         next: produce(always(null)),
         throw: produce((draft, { payload }) => {
           if(!isFilter('completed'))
             return getErrorMessage(payload); //return an entirely new state
         })
       },
-      [setToggleTodo]: {
+      [setToggledTodo]: {
         next: produce(always(null)),
         throw: produce((draft, { payload }) => {
           if(isFilter('all'))

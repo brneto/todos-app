@@ -12,7 +12,7 @@ const OnError = styled.label`
 
 const FetchError = ({ message, onRetry }) => (
   <OnError>Could not fetch todos. {message}
-    <button onClick={onRetry}>Retry</button>
+    <button onClick={() => onRetry()}>Retry</button>
   </OnError>
 );
 

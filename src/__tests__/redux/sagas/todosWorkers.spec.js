@@ -34,7 +34,7 @@ describe('sagas/TodosWorkers', () => {
     .next()
     .call(api.fetchTodos, filter)
     .next(response)
-    .put(actions.setFetchTodos(data, filter))
+    .put(actions.setFetchedTodos(data, filter))
     .next()
     .put(actions.setToggleFetching(filter))
     .next()
@@ -58,11 +58,11 @@ describe('sagas/TodosWorkers', () => {
     };
     const data = normalize(response, schema.todo);
 
-    testSaga(sagas.addTodo, { payload: text })
+    testSaga(sagas.setTodo, actions.addTodo(text))
     .next()
     .call(api.addTodo, text)
     .next(response)
-    .put(actions.setAddTodo(data))
+    .put(actions.setAddedTodo(data))
     .next()
     .isDone();
   });
@@ -76,11 +76,11 @@ describe('sagas/TodosWorkers', () => {
     };
     const data = normalize(response, schema.todo);
 
-    testSaga(sagas.toggleTodo, { payload: id })
+    testSaga(sagas.setTodo, actions.toggleTodo(id))
     .next()
     .call(api.toggleTodo, id)
     .next(response)
-    .put(actions.setToggleTodo(data))
+    .put(actions.setToggledTodo(data))
     .next()
     .isDone();
   });

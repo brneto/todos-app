@@ -5,9 +5,9 @@ import {
 
   setToggleFetching,
 
-  setFetchTodos,
-  setAddTodo,
-  setToggleTodo,
+  setFetchedTodos,
+  setAddedTodo,
+  setToggledTodo,
 } from '../../../client/redux/actions';
 
 describe('actions', () => {
@@ -29,22 +29,22 @@ describe('actions', () => {
 
   it('setToggleFetching', () => {
     expect(setToggleFetching(filter)).toMatchSnapshot();
-    expect(setToggleFetching(error, filter)).toMatchSnapshot();
+    expect(setToggleFetching(error)).toMatchSnapshot();
   });
 
-  it('setFetchTodos', () => {
-    expect(setFetchTodos(response, filter)).toMatchSnapshot();
-    expect(setFetchTodos(error, filter)).toMatchSnapshot();
+  it('setFetchedTodos', () => {
+    expect(setFetchedTodos(response, filter)).toMatchSnapshot();
+    expect(setFetchedTodos(error, filter)).toMatchSnapshot();
   });
 
-  it('setAddTodo', () => {
-    expect(setAddTodo(response)).toMatchSnapshot();
-    expect(setAddTodo(error)).toMatchSnapshot();
+  it('setAddedTodo', () => {
+    expect(setAddedTodo(response)).toMatchSnapshot();
+    expect(setAddedTodo(error)).toMatchSnapshot();
   });
 
-  it('setToggleTodo', () => {
-    expect(setToggleTodo(response)).toMatchSnapshot();
-    expect(setToggleTodo(error)).toMatchSnapshot();
+  it('setToggledTodo', () => {
+    expect(setToggledTodo(response)).toMatchSnapshot();
+    expect(setToggledTodo(error)).toMatchSnapshot();
   });
 });
 
