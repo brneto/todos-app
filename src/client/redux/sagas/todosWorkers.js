@@ -1,7 +1,6 @@
 import { normalize } from 'normalizr';
 import { call, put, select, cancel } from 'redux-saga/effects';
 import * as actions from '../actions';
-//import { getFilter, getIsFetching } from '../reducers';
 import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
