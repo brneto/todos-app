@@ -42,26 +42,31 @@ export function* toggleTodo({ payload: id }) {
   try {
     const response = yield call(api.toggleTodo, id);
     const data = normalize(response, schema.todo);
+    const toggledId = data.result;
 
     const getCompleted = compose(
       prop('completed'),
-      prop(data.result),
+      prop(toggledId),
       prop('todos'),
       prop('entities')
     );
-    const createAddId = curry((f, i) => actions.setToggledTodoAdd(i, f));
-    const createRemoveId = curry((f, i) => actions.setToggledTodoRemove(i, f));
+    const createAddToggledTodo = curry((f, i) =>
+      actions.setToggledTodoAdd(i, f)
+    );
+    const createRemoveToggledTodo = curry((f, i) =>
+      actions.setToggledTodoRemove(i, f)
+    );
 
     const completed = getCompleted(data);
-    const add = completed
-      ? createAddId('completed')
-      : createAddId('active');
-    const remove = completed
-      ? createRemoveId('active')
-      : createRemoveId('completed');
+    const addToggledTodo = completed
+      ? createAddToggledTodo('completed')
+      : createAddToggledTodo('active');
+    const removeToggledTodo = completed
+      ? createRemoveToggledTodo('active')
+      : createRemoveToggledTodo('completed');
 
-    yield put(add(id));
-    yield put(remove(id));
+    yield put(addToggledTodo(id));
+    yield put(removeToggledTodo(id));
     yield put(actions.setToggledTodo(data));
   } catch (error) {
     yield put(actions.setToggledTodo(error));
