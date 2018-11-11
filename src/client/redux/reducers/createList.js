@@ -1,15 +1,7 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import {
-  reject,
-  append,
-  prop,
-  identity,
-  always,
-  equals,
-  when,
-  not
-} from 'ramda';
+import { prop, identity, equals, always } from 'ramda';
+import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
   setFetchedTodos,
@@ -29,28 +21,29 @@ const createList = filter => {
   const ids = handleActions(
     {
       [setFetchedTodos]: {
-        next: (state, { payload, meta }) => when(
-          always(isFilter(meta.filter)),
-          always(payload.result) //return an entirely new state
-        )(state),
+        next: produce((draft, { payload, meta }) => {
+          if(isFilter(meta.filter))
+            return payload.result; //return an entirely new state
+        }),
       },
       [setAddedTodo]: {
-        next: (state, { payload }) => when(
-          always(!isFilter('completed')),
-          append(payload.result)
-        )(state),
+        next: produce((draft, { payload }) => {
+          if(!isFilter('completed'))
+            draft.push(payload.result); //modify the current draft state
+        }),
       },
       [setToggledTodoAdd]: {
-        next: (state, { payload, meta }) => when(
-          always(isFilter(meta.filter)),
-          append(payload) //return an entirely new state
-        )(state),
+        next: produce((draft, { payload, meta }) => {
+          if(isFilter(meta.filter))
+            draft.push(payload); //modify the current draft state
+        }),
       },
       [setToggledTodoRemove]: {
-        next: (state, { payload, meta }) => when(
-          always(isFilter(meta.filter)),
-          reject(equals(payload)) //return an entirely new state
-        )(state),
+        next: produce((draft, { payload, meta }) => {
+          const notEquals = a => b => a !== b;
+          if(isFilter(meta.filter))
+            return draft.filter(notEquals(payload)); //return an entirely new state
+        }),
       },
     },
     idsInitialState
@@ -75,37 +68,37 @@ const createList = filter => {
   const isFetchingInitialState = false;
   const isFetching = handleActions(
     {
-      [setToggleFetching]: (state, { payload }) => when(
-        always(isFilter(payload)),
-        not
-      )(state), //return an entirely new state
+      [setToggleFetching]: produce((draft, { payload }) => {
+        if(isFilter(payload))
+          return !draft; //return an entirely new state
+      }),
     },
     isFetchingInitialState
   );
 
 
-  const getErrorMessage = (test, state, { message }) =>
-    when(
-      always(test),
-      always(message || 'Something went wrong.')
-    )(state);
+  const getErrorMessage = (test, { message }) =>
+    test ? (message || 'Something went wrong.') : void 0;
   const errorMessageInitialState = null;
   const errorMessage = handleActions(
     {
       [setFetchedTodos]: {
         next: always(null),
-        throw: (state, { payload, meta }) =>
-          getErrorMessage(isFilter(meta.filter), state, payload)
+        throw: produce((draft, { payload, meta }) =>
+          getErrorMessage(isFilter(meta.filter), payload) //return an entirely new state
+        )
       },
       [setAddedTodo]: {
         next: always(null),
-        throw: (state, { payload }) =>
-          getErrorMessage(!isFilter('completed'), state, payload)
+        throw: produce((draft, { payload }) =>
+          getErrorMessage(!isFilter('completed'), payload) //return an entirely new state
+        )
       },
       [setToggledTodo]: {
         next: always(null),
-        throw: (state, { payload }) =>
-          getErrorMessage(isFilter('all'), state, payload)
+        throw: produce((state, { payload }) =>
+          getErrorMessage(isFilter('all'), payload) //return an entirely new state
+        )
       },
     },
     errorMessageInitialState
