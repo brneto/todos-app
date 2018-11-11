@@ -29,28 +29,28 @@ const createList = filter => {
   const ids = handleActions(
     {
       [setFetchedTodos]: {
-        next: (draft, { payload, meta }) => when(
+        next: (state, { payload, meta }) => when(
           always(isFilter(meta.filter)),
           always(payload.result) //return an entirely new state
-        )(draft),
+        )(state),
       },
       [setAddedTodo]: {
-        next: (draft, { payload }) => when(
+        next: (state, { payload }) => when(
           always(!isFilter('completed')),
           append(payload.result)
-        )(draft),
+        )(state),
       },
       [setToggledTodoAdd]: {
-        next: (draft, { payload, meta }) => when(
+        next: (state, { payload, meta }) => when(
           always(isFilter(meta.filter)),
           append(payload) //return an entirely new state
-        )(draft),
+        )(state),
       },
       [setToggledTodoRemove]: {
-        next: (draft, { payload, meta }) => when(
+        next: (state, { payload, meta }) => when(
           always(isFilter(meta.filter)),
           reject(equals(payload)) //return an entirely new state
-        )(draft),
+        )(state),
       },
     },
     idsInitialState
@@ -75,10 +75,10 @@ const createList = filter => {
   const isFetchingInitialState = false;
   const isFetching = handleActions(
     {
-      [setToggleFetching]: (draft, { payload }) => when(
+      [setToggleFetching]: (state, { payload }) => when(
         always(isFilter(payload)),
         not
-      )(draft), //return an entirely new state
+      )(state), //return an entirely new state
     },
     isFetchingInitialState
   );
@@ -94,18 +94,18 @@ const createList = filter => {
     {
       [setFetchedTodos]: {
         next: always(null),
-        throw: (draft, { payload, meta }) =>
-          getErrorMessage(isFilter(meta.filter), draft, payload)
+        throw: (state, { payload, meta }) =>
+          getErrorMessage(isFilter(meta.filter), state, payload)
       },
       [setAddedTodo]: {
         next: always(null),
-        throw: (draft, { payload }) =>
-          getErrorMessage(!isFilter('completed'), draft, payload)
+        throw: (state, { payload }) =>
+          getErrorMessage(!isFilter('completed'), state, payload)
       },
       [setToggledTodo]: {
         next: always(null),
-        throw: (draft, { payload }) =>
-          getErrorMessage(isFilter('all'), draft, payload)
+        throw: (state, { payload }) =>
+          getErrorMessage(isFilter('all'), state, payload)
       },
     },
     errorMessageInitialState

@@ -11,7 +11,7 @@ const initialState = {};
 const byId = handleActions(
   {
     [combineActions(setFetchedTodos, setAddedTodo, setToggledTodo)]: {
-      next: (draft, { payload: { entities } }) => merge(draft, entities.todos),
+      next: (state, { payload: { entities } }) => merge(state, entities.todos),
     }
   },
   initialState
