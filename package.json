@@ -68,7 +68,7 @@
     "redux-actions": "^2.6.4",
     "redux-saga": "^0.16.2",
     "reselect": "^4.0.0",
-    "styled-components": "^4.0.3",
+    "styled-components": "^4.1.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
