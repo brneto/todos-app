@@ -4,4 +4,4 @@ import configStore from './configStore';
 const history = createBrowserHistory();
 const store = configStore(history);
 
-export default { store, history };
+export default { history, store };
