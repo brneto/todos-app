@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import routes from '../libs/routes';
 import App from './App';
 
-const Root = ({ store, history }) => (
+const Root = ({ history, store }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Route {...routes.main} component={App} />
