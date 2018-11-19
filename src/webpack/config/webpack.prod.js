@@ -1,7 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -22,14 +22,13 @@ const prodConfig = merge(commonConfig, {
   optimization: {
     minimizer: [
       // Minify the code.
-      new UglifyJsPlugin({
+      new TerserPlugin({
         // Use multi-process parallel running to improve the build speed
         // Default number of concurrent runs: os.cpus().length - 1
         parallel: true,
         sourceMap: true,
-        uglifyOptions: {
-          ecma: 8,
-          warnings: true,
+        extractComments: true,
+        terserOptions: {
           compress: {
             warnings: true,
             // Disabled because of an issue with Uglify breaking seemingly valid code:
@@ -45,7 +44,9 @@ const prodConfig = merge(commonConfig, {
             // Turned on because emoji and regex is not minified properly using default
             // https://github.com/facebook/create-react-app/issues/2488
             ascii_only: true
-          }
+          },
+          ecma: 8,
+          warnings: true,
         }
       }),
       new OptimizeCSSAssetsPlugin()
