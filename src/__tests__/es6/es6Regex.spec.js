@@ -12,7 +12,7 @@ describe('Regex', () => {
 
       expect(/hello.world/s.test(input)).toBe(true);
 
-      expect(/hello.world/su.test(input)).toBe(false); // Why the regex is false here?
+      expect(/hello.world/su.test(input)).toBe(true);
     });
   });
 
@@ -64,16 +64,14 @@ describe('Regex', () => {
   //   });
   // });
 
-// @babel/plugin-transform-named-capturing-groups-regex
-  // Still not support by Babel yet
-  // describe('Named capture groups support', () => {
-  //   const pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
-  //   const result = pattern.exec('2018-05-09');
-  //   it('should capture each group by name', () => {
-  //     expect(result.groups.year).toBe('2018');
-  //     expect(result.groups.month).toBe('05');
-  //     expect(result.groups.day).toBe('09');
-  //   });
-  // });
+  describe('Named capture groups support', () => {
+    const pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+    const result = pattern.exec('2018-05-09');
+    it('should capture each group by name', () => {
+      expect(result.groups.year).toBe('2018');
+      expect(result.groups.month).toBe('05');
+      expect(result.groups.day).toBe('09');
+    });
+  });
 
 });
