@@ -1,38 +1,37 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 
-class Media extends Component {
+class Width extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
   };
 
   state = {
-    matches: null,
+    width: window.innerWidth,
   };
 
+  handleResize = () => this.setState({ width: window.innerWidth });
+
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+
   render() {
-    return this.props.children(this.state.matches);
+    const { width } = this.state;
+    return this.props.children(width);
   }
 }
 
-const App = () => (
-  <Media query="(max-width: 400px)">
-    {small => (
-      <Media query="(min-width: 800px)">
-        {large => (
-          <div className="Media">
-            <h1>Media</h1>
-            <p>
-              Small? {small ? 'Yep' : 'Nope'}.
-            </p>
-            <p>
-              Large? {large ? 'Yep' : 'Nope'}.
-            </p>
-          </div>
-        )}
-      </Media>
+const MyResponsiveComponent = () => (
+  <Width>
+    {width => (
+      <p>Window width is {width}</p>
     )}
-  </Media>
+  </Width>
 );
 
-export default App;
+export default MyResponsiveComponent;
