@@ -10,6 +10,12 @@ const routes = {
     strict: false,
     exact: false,
   },
+  hook: {
+    path: '/hook'
+  },
+  noHook: {
+    path: '/nohook'
+  },
 };
 
 export default routes;
