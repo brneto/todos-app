@@ -7,10 +7,12 @@ class Width extends Component {
   };
 
   state = {
-    width: window.innerWidth,
+    width: window.innerWidth
   };
 
-  handleResize = () => this.setState({ width: window.innerWidth });
+  handleResize = () => this.setState({
+    width: window.innerWidth
+  });
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
@@ -21,17 +23,16 @@ class Width extends Component {
   }
 
   render() {
+    const { children } = this.props;
     const { width } = this.state;
-    return this.props.children(width);
+    return children(width);
   }
 }
 
-const MyResponsiveComponent = () => (
+const WithoutHooksComponent = () => (
   <Width>
-    {width => (
-      <p>Window width is {width}</p>
-    )}
+    {width => <h1>Window width is {width}.</h1>}
   </Width>
 );
 
-export default MyResponsiveComponent;
+export default WithoutHooksComponent;
