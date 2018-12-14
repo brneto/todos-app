@@ -25,7 +25,8 @@
   "plugins": [
     "babel",
     "ramda",
-    "redux-saga"
+    "redux-saga",
+    "react-hooks"
   ],
   "extends": [
     "eslint:recommended",
@@ -63,6 +64,7 @@
     "react/boolean-prop-naming": 1,
     "react/no-array-index-key": 1,
     "react/no-unused-prop-types": 1,
-    "react/no-unused-state": 1
+    "react/no-unused-state": 1,
+    "react-hooks/rules-of-hooks": 2
   }
 }
