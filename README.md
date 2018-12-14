@@ -6,6 +6,8 @@ Libraries
 ------
 :atom_symbol: [React](https://reactjs.org/)
 
+:pushpin: [Hooks](https://reactjs.org/docs/hooks-overview.html)
+
 :hammer_and_wrench: [Lodash](https://lodash.com/)
 
 :ram: [Ramda](https://ramdajs.com/)

@@ -878,6 +878,11 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
+"@types/unist@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.2.tgz#5dc0a7f76809b7518c0df58689cd16a19bd751c6"
+  integrity sha512-iHI60IbyfQilNubmxsq4zqSjdynlmc2Q/QvH9kjzg9+CCYVVzq1O6tc7VBzSygIwnmOt07w80IG6HDQvjv3Liw==
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
@@ -2005,9 +2010,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000912, caniuse-lite@^1.0.30000914:
-  version "1.0.30000918"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000918.tgz#6288f79da3c5c8b45e502f47ad8f3eb91f1379a9"
-  integrity sha512-CAZ9QXGViBvhHnmIHhsTPSWFBujDaelKnUj7wwImbyQRxmXynYqKGi3UaZTSz9MoVh+1EVxOS/DFIkrJYgR3aw==
+  version "1.0.30000921"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000921.tgz#7a607c1623444b22351d834e093aedda3c42fbe8"
+  integrity sha512-Bu09ciy0lMWLgpYC77I0YGuI8eFRBPPzaSOYJK1jTI64txCphYCqnWbxJYjHABYVt/TYX/p3jNjLBR87u1Bfpw==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -3168,9 +3173,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.86:
-  version "1.3.90"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.90.tgz#b4c51b8303beff18f2b74817402bf4898e09558a"
-  integrity sha512-IjJZKRhFbWSOX1w0sdIXgp4CMRguu6UYcTckyFF/Gjtemsu/25eZ+RXwFlV+UWcIueHyQA1UnRJxocTpH5NdGA==
+  version "1.3.91"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.91.tgz#d74437a753b122aa6eca7c722055004d3627635d"
+  integrity sha512-wOWwM4vQpmb97VNkExnwE5e/sUMUb7NXurlEnhE89JOarUp6FOOMKjtTGgj9bmqskZkeRA7u+p0IztJ/y2OP5Q==
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -10290,10 +10295,11 @@ vfile-location@^2.0.0:
   integrity sha512-KRL5uXQPoUKu+NGvQVL4XLORw45W62v4U4gxJ3vRlDfI9QsT4ZN1PNXn/zQpKUulqGDpYuT0XDfp5q9O87/y/w==
 
 vfile-message@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/vfile-message/-/vfile-message-1.0.2.tgz#0f8a62584c5dff0f81760531b8e34f3cea554ebc"
-  integrity sha512-dNdEXHfPCvzyOlEaaQ+DcXpcxEz+pFvdrebKLiAMjobjaBC2bMeWoHOKPwJ+I8A4jQOEUDH7uoVcLWDLF1qhVQ==
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vfile-message/-/vfile-message-1.1.0.tgz#4c7416dbeb35e1ce8151c018917a4a76f21dcb98"
+  integrity sha512-D9E9mTcn6b2uWxUgNSBQPWFywPxP87dZCkemuh01vNb7zntXgHtsrTorZdURrKSpFM0O1IlQVpfdmHuJuy6EGw==
   dependencies:
+    "@types/unist" "^2.0.2"
     unist-util-stringify-position "^1.1.1"
 
 vfile@^2.0.0:

@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  getFilter,
-  getIsFetching,
-  getErrorMessage,
-  getVisibleTodos
+  getFilter, getIsFetching,
+  getErrorMessage, getVisibleTodos
 } from '../redux/reducers';
 import { fetchTodos, toggleTodo } from '../redux/actions';
 import TodoList from './TodoList';
@@ -22,6 +20,39 @@ const OnFetch = styled.p`
   margin-left: 1em;
 `;
 
+function VisibleTodoList(props) {
+ const {
+   isFetching,
+   errorMessage,
+   fetchTodos,
+   toggleTodo,
+   todos,
+   filter,
+  } = props;
+
+  useEffect(() => {fetchTodos();}, [filter]);
+
+  let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
+  if(!todos.length) {
+    if(isFetching)
+      render = <OnFetch>Loading...</OnFetch>;
+
+    if(errorMessage)
+      render = <FetchError message={errorMessage} onRetry={fetchTodos} />;
+  }
+
+  return <Section>{render}</Section>;
+}
+
+VisibleTodoList.propTypes = {
+  fetchTodos: PropTypes.func.isRequired,
+  toggleTodo: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
+  todos: PropTypes.array.isRequired,
+};
+
 const mapStateToProps = state => ({
   filter: getFilter(state),
   isFetching: getIsFetching(state),
@@ -34,56 +65,7 @@ const mapDispatchToProps = {
   toggleTodo,
 };
 
-@connect(mapStateToProps, mapDispatchToProps)
-class VisibleTodoList extends Component {
-  static propTypes = {
-    fetchTodos: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired,
-    filter: PropTypes.string.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.string,
-    todos: PropTypes.array.isRequired,
-  };
-
-  fetchData = this.props.fetchTodos;
-
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.filter !== prevProps.filter) {
-      this.fetchData();
-    }
-  }
-
-  render() {
-    const { isFetching, errorMessage, toggleTodo, todos } = this.props;
-
-    let render = (
-      <TodoList
-        todos={todos}
-        onTodoClick={toggleTodo}
-      />
-    );
-
-    if (isFetching && !todos.length) {
-      render = <OnFetch>Loading...</OnFetch>;
-    }
-
-    if (errorMessage && !todos.length) {
-      render = (
-        <FetchError
-          message={errorMessage}
-          onRetry={this.fetchData}
-        />
-      );
-    }
-
-    return (
-      <Section>{render}</Section>
-    );
-  }
-}
-
-export default VisibleTodoList;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VisibleTodoList);
