@@ -6,7 +6,7 @@ Libraries
 ------
 :atom_symbol: [React](https://reactjs.org/)
 
-:pushpin: [Hooks](https://reactjs.org/docs/hooks-overview.html)
+:pushpin: [Hooks](https://reactjs.org/hooks)
 
 :hammer_and_wrench: [Lodash](https://lodash.com/)
 
