@@ -12,7 +12,7 @@ describe('Regex', () => {
 
       expect(/hello.world/s.test(input)).toBe(true);
 
-      expect(/hello.world/su.test(input)).toBe(false); // Why the regex is false here?
+      expect(/hello.world/su.test(input)).toBe(true);
     });
   });
 
