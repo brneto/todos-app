@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import AddTodo from './AddTodo';
-import AddTodoForm from './AddTodoForm';
 import VisibleTodoList from './VisibleTodoList';
 import Footer from './Footer';
 
@@ -16,7 +15,7 @@ const TodoApp = styled.div`
 
 const App = () => (
   <TodoApp>
-    <AddTodo render={AddTodoForm} />
+    <AddTodo />
     <VisibleTodoList />
     <Footer />
   </TodoApp>

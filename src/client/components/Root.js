@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import routes from '../libs/routes';
-import withHooks from './hooks/withHooks';
-import withoutHooks from './hooks/withoutHooks';
+import withHooks from '../hooks/examples/withHooks';
+import withoutHooks from '../hooks/examples/withoutHooks';
 import App from './App';
 
 const Root = ({ history, store }) => (
