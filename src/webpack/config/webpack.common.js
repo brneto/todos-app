@@ -95,6 +95,7 @@ const commonConfig = {
                 '@babel/plugin-proposal-function-bind',
                 '@babel/plugin-proposal-optional-chaining',
                 '@babel/plugin-proposal-throw-expressions',
+                '@babel/plugin-proposal-optional-catch-binding',
                 // It's required Babel Syntax Dynamic Import Plugin to
                 // Webpack Dynamic Imports work.
                 '@babel/plugin-syntax-dynamic-import',
