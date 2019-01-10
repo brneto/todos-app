@@ -2,7 +2,7 @@
   "root": true,
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 8,
     "sourceType": "module",
     "ecmaFeatures": {
       "impliedStrict": true,
@@ -11,7 +11,7 @@
   },
   "settings": {
     "react": {
-      "version": "16.6"
+      "version": "16.8"
     }
   },
   "env": {
