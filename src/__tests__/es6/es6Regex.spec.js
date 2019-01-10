@@ -51,29 +51,26 @@ describe('Regex', () => {
     });
   });
 
-// Lookbehind not yet supported
-  // describe('Lookbehind support', () => {
-  //   it('should support positive lookbehind', () => {
-  //     const pattern = /(?<=\$\d+)/u;
-  //     expect(pattern.exec('$42')[0]).toBe('42');
-  //   });
+  describe('Lookbehind support', () => {
+    it('should support positive lookbehind', () => {
+      const pattern = /(?<=\$)\d+/u;
+      expect(pattern.exec('$42')[0]).toBe('42');
+    });
 
-  //   it('should support negative lookbehind', () => {
-  //     const pattern = /(?<!\$\d+)/u;
-  //     expect(pattern.exec('&42')[0]).toBe('42');
-  //   });
-  // });
+    it('should support negative lookbehind', () => {
+      const pattern = /(?<!\$)\d+/u;
+      expect(pattern.exec('&42')[0]).toBe('42');
+    });
+  });
 
-// @babel/plugin-transform-named-capturing-groups-regex
-  // Still not support by Babel yet
-  // describe('Named capture groups support', () => {
-  //   const pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
-  //   const result = pattern.exec('2018-05-09');
-  //   it('should capture each group by name', () => {
-  //     expect(result.groups.year).toBe('2018');
-  //     expect(result.groups.month).toBe('05');
-  //     expect(result.groups.day).toBe('09');
-  //   });
-  // });
+  describe('Named capture groups support', () => {
+    const pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+    const result = pattern.exec('2018-05-09');
+    it('should capture each group by name', () => {
+      expect(result.groups.year).toBe('2018');
+      expect(result.groups.month).toBe('05');
+      expect(result.groups.day).toBe('09');
+    });
+  });
 
 });
