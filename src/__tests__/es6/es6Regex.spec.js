@@ -51,18 +51,17 @@ describe('Regex', () => {
     });
   });
 
-// Lookbehind not yet supported
-  // describe('Lookbehind support', () => {
-  //   it('should support positive lookbehind', () => {
-  //     const pattern = /(?<=\$\d+)/u;
-  //     expect(pattern.exec('$42')[0]).toBe('42');
-  //   });
+  describe('Lookbehind support', () => {
+    it('should support positive lookbehind', () => {
+      const pattern = /(?<=\$)\d+/u;
+      expect(pattern.exec('$42')[0]).toBe('42');
+    });
 
-  //   it('should support negative lookbehind', () => {
-  //     const pattern = /(?<!\$\d+)/u;
-  //     expect(pattern.exec('&42')[0]).toBe('42');
-  //   });
-  // });
+    it('should support negative lookbehind', () => {
+      const pattern = /(?<!\$)\d+/u;
+      expect(pattern.exec('&42')[0]).toBe('42');
+    });
+  });
 
   describe('Named capture groups support', () => {
     const pattern = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
