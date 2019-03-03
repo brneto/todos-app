@@ -6,7 +6,7 @@ import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
-import WorkboxWebpackPlugin from 'workbox-webpack-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
 import commonConfig, {
   htmlPluginOptions,
@@ -81,7 +81,7 @@ const prodConfig = merge(commonConfig, {
 
     // Generate a service worker script that will precache, and keep up to date,
     // the HTML & assets that are part of the Webpack build.
-    new WorkboxWebpackPlugin.GenerateSW({
+    new WorkboxPlugin.GenerateSW({
       // these options encourage the ServiceWorkers to get in there fast
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
