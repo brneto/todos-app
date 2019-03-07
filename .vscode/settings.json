@@ -45,4 +45,6 @@
 
   // GitHub Compatibility
   "markdown.extension.toc.githubCompatibility": true,
+  "search.usePCRE2": true,
+  "eslint.packageManager": "yarn",
 }
