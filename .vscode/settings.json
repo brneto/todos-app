@@ -1,4 +1,7 @@
 {
+  // Sets the package manager to use to install node modules
+  "eslint.packageManager": "yarn",
+
   // Specifies the color theme used in the workbench.
   "workbench.colorTheme": "Oceanic Next (dimmed bg)",
 
@@ -45,6 +48,7 @@
 
   // GitHub Compatibility
   "markdown.extension.toc.githubCompatibility": true,
-  "search.usePCRE2": true,
-  "eslint.packageManager": "yarn",
+
+  // Enable advanced regex features like lookahead and backreferences
+  "search.usePCRE2": true
 }
