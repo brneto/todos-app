@@ -2,7 +2,8 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
-import StyleLintPlugin from 'stylelint-webpack-plugin';
+import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
+//import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 const isDevEnv = process.env.NODE_ENV !== 'production';
 
@@ -166,10 +167,14 @@ const commonConfig = {
     }),
 
     // Lint styled components
-    new StyleLintPlugin({
-      files: ['src/client/**/*.js'],
-      syntax: 'styled'
+    new StylelintBarePlugin({
+      files: 'src/client/**/*.js'
     }),
+    // Lint styled components
+    // new StyleLintPlugin({
+    //   files: ['src/client/**/*.js'],
+    //   syntax: 'styled'
+    // }),
     // Lint sass files
     // new StyleLintPlugin({
     //   files: ['src/client/**/*.scss'],
