@@ -2,6 +2,7 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
+//import StyleLintPlugin from 'stylelint-webpack-plugin';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
 
 const isDevEnv = process.env.NODE_ENV !== 'production';
@@ -78,20 +79,20 @@ const commonConfig = {
               cacheCompression: false,
               sourceMaps: false,
               presets: [
+                '@babel/preset-react',
                 ['@babel/preset-env',  {
                   forceAllTransforms: !isDevEnv,
                   modules: false,
                   // Important, @babel/polyfill still needs to be installed.
                   useBuiltIns: 'usage',
-                  corejs: 3,
                   debug: false
-                }],
-                '@babel/preset-react',
+                }]
               ],
               plugins: [
                 'react-hot-loader/babel',
                 ['@babel/plugin-proposal-decorators', { legacy: true }],
                 ['@babel/plugin-proposal-class-properties', { loose: true }],
+                '@babel/plugin-proposal-object-rest-spread',
                 '@babel/plugin-proposal-function-bind',
                 '@babel/plugin-proposal-optional-chaining',
                 '@babel/plugin-proposal-throw-expressions',
@@ -167,9 +168,9 @@ const commonConfig = {
 
     // Lint styled components
     new StylelintBarePlugin({
-      files: 'src/client/**/*.js',
-      configFile: '.stylelintrc.yml'
+      files: 'src/client/**/*.js'
     }),
+
     // Lint styled components
     // new StyleLintPlugin({
     //   files: ['src/client/**/*.js'],
