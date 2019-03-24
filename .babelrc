@@ -2,7 +2,8 @@
   "presets": [
     ["@babel/preset-env", {
       "targets": { "node": "current" },
-      "useBuiltIns": "usage"
+      "useBuiltIns": "usage",
+      "corejs": 3
     }],
     "@babel/preset-react"
   ],
