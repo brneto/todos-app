@@ -17,7 +17,7 @@
     "lint": "run-s lint:*",
     "watch:lint": "yarn lint:js --watch",
     "test": "jest",
-    "watch:test": "TERM=dumb yarn test -o --watch",
+    "watch:test": "TERM=dumb yarn test --watch",
     "prebuild": "yarn lint test poststop",
     "build": "pm2 start process.json --env production",
     "postbuild": "yarn watch:app",
@@ -26,7 +26,7 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "./jest.setup.js"
+      "<rootDir>/jest.setup.js"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!@material)"
@@ -89,7 +89,6 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.0",
-    "babel-core": "^7.0.0-bridge",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
