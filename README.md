@@ -70,6 +70,8 @@ Testing tools
 
 :book: [Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
 
+[Watchman](https://facebook.github.io/watchman/)
+
 Usage
 ------
 Download modules:
