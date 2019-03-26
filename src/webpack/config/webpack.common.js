@@ -78,14 +78,15 @@ const commonConfig = {
               cacheCompression: false,
               sourceMaps: false,
               presets: [
-                '@babel/preset-react',
                 ['@babel/preset-env',  {
                   forceAllTransforms: !isDevEnv,
                   modules: false,
                   // Important, @babel/polyfill still needs to be installed.
                   useBuiltIns: 'usage',
+                  corejs: 3,
                   debug: false
-                }]
+                }],
+                '@babel/preset-react',
               ],
               plugins: [
                 'react-hot-loader/babel',
@@ -167,7 +168,8 @@ const commonConfig = {
 
     // Lint styled components
     new StylelintBarePlugin({
-      files: 'src/client/**/*.js'
+      files: 'src/client/**/*.js',
+      configFile: '.stylelintrc.yml'
     }),
     // Lint styled components
     // new StyleLintPlugin({
