@@ -11,7 +11,7 @@
     "poststart": "run-p watch:*",
     "stop": "pm2 stop ecosystem.config.js",
     "poststop": "pm2 flush; pm2 delete all; yarn rmcache; exit 0",
-    "plist": "pm2 l",
+    "ps": "pm2 l",
     "lint:js": "esw src",
     "lint:css": "stylelint 'src/client/**/*.js'",
     "lint": "run-s lint:*",
