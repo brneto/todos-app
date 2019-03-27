@@ -2,14 +2,14 @@ module.exports = {
   // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
   apps : [{
     name: 'app',
-    script: 'src/server/index.js',
+    script: 'src/server.js',
     interpreter: 'node_modules/.bin/babel-node',
     autorestart: false,
-    watch: ['src/server', 'src/webpack', 'src/builder'],
-    ignore_watch: '/__tests__/.*|(\\.|/)(test|spec)\\.[jt]sx?$',
+    watch: ['src/server.js', 'src/builder'],
+    ignore_watch: '*.test.js',
     output: 'logs/app-out.log',
-    error: 'logs/app-err.log',
-    log: 'logs/app-outerr.log',
+    error: 'logs/app-err.err',
+    log: 'logs/app.log',
     env: {
       NODE_ENV: 'development'
     },
