@@ -1,7 +1,7 @@
 {
-	// See http://go.microsoft.com/fwlink/?LinkId=827846
-	// for the documentation about the extensions.json format
-	"recommendations": [
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
     // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
     "mgmcdermott.vscode-language-babel",
     "naumovs.theme-oceanicnext",
@@ -15,6 +15,7 @@
     "shinnn.stylelint",
     "yzhang.markdown-all-in-one",
     "eamodio.gitlens",
-    "shyykoserhiy.vscode-spotify"
-	]
+    "shyykoserhiy.vscode-spotify",
+    "humao.rest-client"
+  ]
 }
