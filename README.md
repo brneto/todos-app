@@ -6,8 +6,6 @@ Libraries
 ------
 :atom_symbol: [React](https://reactjs.org/)
 
-:pushpin: [Hooks](https://reactjs.org/hooks)
-
 :hammer_and_wrench: [Lodash](https://lodash.com/)
 
 :ram: [Ramda](https://ramdajs.com/)
@@ -71,6 +69,8 @@ Testing tools
 :snowflake: [Deep Freeze](https://github.com/substack/deep-freeze)
 
 :book: [Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
+
+[Watchman](https://facebook.github.io/watchman/)
 
 Usage
 ------
