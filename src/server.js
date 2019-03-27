@@ -16,8 +16,8 @@ console.log(chalk.green(`Starting app in ${process.env.NODE_ENV} mode...`));
 
 webpackBuilder().then(middleware => {
   app.use(morgan('combined'), compression(), middleware);
-  server.listen(port,
+  server.listen(port, err => async () =>
     // eslint-disable-next-line no-console
-    err => (err ? console.log(err) : open(`http://localhost:${port}`))
+    err ? console.log(err) : await open(`http://localhost:${port}`)
   );
 });
