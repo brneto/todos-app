@@ -1,8 +1,7 @@
 {
-  // See http://go.microsoft.com/fwlink/?LinkId=827846
-  // for the documentation about the extensions.json format
+  // For the documentation about the extensions.json format
+  // see http://go.microsoft.com/fwlink/?LinkId=827846
   "recommendations": [
-    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
     "mgmcdermott.vscode-language-babel",
     "naumovs.theme-oceanicnext",
     "dbaeumer.vscode-eslint",
