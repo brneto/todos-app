@@ -15,6 +15,9 @@
     "yzhang.markdown-all-in-one",
     "eamodio.gitlens",
     "shyykoserhiy.vscode-spotify",
-    "humao.rest-client"
+    "humao.rest-client",
+    "peterjausovec.vscode-docker",
+    "jhartell.vscode-line-endings",
+    "redhat.vscode-xml"
   ]
 }
