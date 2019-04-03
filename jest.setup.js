@@ -8,3 +8,7 @@ import 'jest-dom/extend-expect';
 
 // this is basically: afterEach(cleanup)
 import 'react-testing-library/cleanup-after-each';
+
+//https://github.com/axios/axios/issues/1754
+//https://stackoverflow.com/questions/42677387/jest-returns-network-error-when-doing-an-authenticated-request-with-axios/43020260#43020260
+global.XMLHttpRequest = undefined;
