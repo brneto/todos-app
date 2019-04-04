@@ -13,7 +13,6 @@
     "@babel/plugin-proposal-function-bind",
     "@babel/plugin-proposal-optional-chaining",
     "@babel/plugin-proposal-throw-expressions",
-    "@babel/plugin-proposal-optional-catch-binding",
     "dynamic-import-node",
     "styled-components"
   ]
