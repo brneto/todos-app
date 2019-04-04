@@ -3,7 +3,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
-//import StyleLintPlugin from 'stylelint-webpack-plugin';
 
 const isDevEnv = process.env.NODE_ENV !== 'production';
 
@@ -93,11 +92,9 @@ const commonConfig = {
                 'react-hot-loader/babel',
                 ['@babel/plugin-proposal-decorators', { legacy: true }],
                 ['@babel/plugin-proposal-class-properties', { loose: true }],
-                '@babel/plugin-proposal-object-rest-spread',
                 '@babel/plugin-proposal-function-bind',
                 '@babel/plugin-proposal-optional-chaining',
                 '@babel/plugin-proposal-throw-expressions',
-                '@babel/plugin-proposal-optional-catch-binding',
                 // It's required Babel Syntax Dynamic Import Plugin to
                 // Webpack Dynamic Imports work.
                 '@babel/plugin-syntax-dynamic-import',
