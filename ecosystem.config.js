@@ -6,7 +6,7 @@ module.exports = {
     interpreter: 'node_modules/.bin/babel-node',
     autorestart: false,
     watch: ['src/server', 'src/webpack', 'src/builder'],
-    ignore_watch: '*.test.js',
+    ignore_watch: '*.(test|spec).js',
     output: 'logs/app-out.log',
     error: 'logs/app-err.err',
     log: 'logs/app.log',
