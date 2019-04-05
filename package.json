@@ -6,6 +6,7 @@
   "main": "src/server/index.js",
   "scripts": {
     "pull": "git pull && yarn && yarn outdated",
+    "iupg": "yarn upgrade-interactive --latest",
     "prestart": "yarn lint",
     "start": "pm2 start ecosystem.config.js",
     "poststart": "run-p watch:*",
