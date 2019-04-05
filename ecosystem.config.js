@@ -8,7 +8,7 @@ module.exports = {
     watch: ['src/server', 'src/webpack', 'src/builder'],
     ignore_watch: '*.(test|spec).js',
     output: 'logs/app-out.log',
-    error: 'logs/app-err.err',
+    error: 'logs/app-err.log',
     log: 'logs/app-outerr.log',
     env: {
       NODE_ENV: 'development'
