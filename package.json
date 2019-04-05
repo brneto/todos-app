@@ -6,7 +6,8 @@
   "main": "src/server/index.js",
   "scripts": {
     "pull": "git pull && yarn && yarn outdated",
-    "prestart": "yarn lint",
+    "upgi": "yarn upgrade-interactive --latest",
+    "prestart": "yarn lint && yarn test",
     "start": "pm2 start ecosystem.config.js",
     "poststart": "run-p watch:*",
     "stop": "pm2 stop ecosystem.config.js",
@@ -56,7 +57,7 @@
     "connected-react-router": "^6.3.2",
     "core-js": "^3.0.0",
     "history": "^4.9.0",
-    "immer": "^2.1.4",
+    "immer": "^2.1.5",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "normalizr": "^3.3.0",
