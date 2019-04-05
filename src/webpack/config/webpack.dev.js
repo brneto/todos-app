@@ -10,7 +10,7 @@ const devConfig = merge(commonConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: [
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true'
   ],
   plugins: [
     // Recompile only updated code without vendor
