@@ -7,7 +7,7 @@
   "scripts": {
     "pull": "git pull && yarn && yarn outdated",
     "upgi": "yarn upgrade-interactive --latest",
-    "prestart": "yarn lint",
+    "prestart": "yarn lint && yarn test",
     "start": "pm2 start ecosystem.config.js",
     "poststart": "run-p watch:*",
     "stop": "pm2 stop ecosystem.config.js",
