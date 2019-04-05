@@ -30,9 +30,6 @@ const hotMiddleware = webpackHot(compiler, {
 const getResource = createResourceBuffer(devConfig, devMiddleware.fileSystem);
 const indexFilename = 'index.html';
 
-const spaMiddleware = (req, res, next) => {
-  const runRules = spaServerRules(indexFilename, getResource);
-  runRules(req, res, next);
-};
+const spaMiddleware = spaServerRules(indexFilename, getResource);
 
 export default [devMiddleware, hotMiddleware, spaMiddleware];
