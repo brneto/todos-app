@@ -48,7 +48,8 @@
 
   // GitHub Compatibility
   "markdown.extension.toc.githubCompatibility": true,
-
-  // Enable advanced regex features like lookahead and backreferences
-  "search.usePCRE2": true
+  
+  // Enable advanced regex features like lookahead an
+  "search.usePCRE2": true,
+  "eslint.packageManager": "yarn",
 }

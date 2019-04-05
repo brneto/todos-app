@@ -18,6 +18,7 @@
     "humao.rest-client",
     "peterjausovec.vscode-docker",
     "jhartell.vscode-line-endings",
-    "redhat.vscode-xml"
+    "redhat.vscode-xml",
+    "peterjausovec.vscode-docker"
   ]
 }
