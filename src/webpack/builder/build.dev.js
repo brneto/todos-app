@@ -24,7 +24,7 @@ const devMiddleware = webpackDev(compiler, {
 const hotMiddleware = webpackHot(compiler, {
   log: console.log,
   path: '/__webpack_hmr',
-  heartbeat: 10000
+  heartbeat: 1000
 });
 
 const getResource = createResourceBuffer(devConfig, devMiddleware.fileSystem);
