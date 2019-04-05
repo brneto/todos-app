@@ -1,5 +1,5 @@
+// Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
 module.exports = {
-  // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
   apps : [{
     name: 'app',
     script: 'src/server/index.js',
