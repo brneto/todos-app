@@ -65,8 +65,7 @@
     "react/boolean-prop-naming": "warn",
     "react/no-array-index-key": "warn",
     "react/no-unused-prop-types": "warn",
-    "react/no-unused-state": "warn",
-    "react-hooks/rules-of-hooks": "error"
+    "react/no-unused-state": "warn"
   },
   "overrides": [{
     "files": ["src/server/**"],
