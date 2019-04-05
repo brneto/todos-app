@@ -51,5 +51,4 @@
   
   // Enable advanced regex features like lookahead an
   "search.usePCRE2": true,
-  "eslint.packageManager": "yarn",
 }
