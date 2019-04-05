@@ -9,7 +9,7 @@ module.exports = {
     ignore_watch: '*.(test|spec).js',
     output: 'logs/app-out.log',
     error: 'logs/app-err.err',
-    log: 'logs/app.log',
+    log: 'logs/app-outerr.log',
     env: {
       NODE_ENV: 'development'
     },
