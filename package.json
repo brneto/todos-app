@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "Add todos",
-  "main": "src/server.js",
+  "main": "src/server/index.js",
   "scripts": {
     "pull": "git pull && yarn && yarn outdated",
     "prestart": "yarn lint",
@@ -126,7 +126,7 @@
     "postcss-loader": "^3.0.0",
     "react-hot-loader": "^4.8.2",
     "react-test-renderer": "^16.8.6",
-    "react-testing-library": "^6.0.3",
+    "react-testing-library": "^6.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-saga-test-plan": "^4.0.0-beta.2",
