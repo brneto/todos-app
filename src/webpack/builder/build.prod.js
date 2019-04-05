@@ -49,8 +49,9 @@ const spaMiddleware = (req, res, next) => {
   );
 
   watcher.on('add', file => {
-    console.log(`File ${file} has been added.`);
     const runRules = spaServerRules(indexFilename, getResource);
+
+    console.log(`File ${file} has been added.`);
     runRules(req, res, next);
 
     watcher.close();
