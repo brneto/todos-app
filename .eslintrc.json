@@ -38,21 +38,21 @@
     "plugin:redux-saga/recommended"
   ],
   "rules": {
-    "no-console": 1,
-    "no-alert": 1,
-    "no-debugger": 1,
-    "no-unused-vars": 1,
-    "new-cap": 0,
-    "no-invalid-this": 0,
-    "object-curly-spacing": 0,
-    "quotes": 0,
-    "semi": 0,
-    "babel/new-cap": 1,
-    "babel/no-invalid-this": 1,
-    "babel/object-curly-spacing": [1, "always"],
-    "babel/quotes": [2, "single", { "allowTemplateLiterals": true }],
-    "babel/semi": 2,
-    "import/order": [1,
+    "no-console": "warn",
+    "no-alert": "warn",
+    "no-debugger": "warn",
+    "no-unused-vars": "warn",
+    "new-cap": "off",
+    "no-invalid-this": "off",
+    "object-curly-spacing": "off",
+    "quotes": "off",
+    "semi": "off",
+    "babel/new-cap": "warn",
+    "babel/no-invalid-this": "warn",
+    "babel/object-curly-spacing": ["warn", "always"],
+    "babel/quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "babel/semi": "error",
+    "import/order": ["warn",
       {"groups": [
         "builtin",
         "external",
@@ -62,11 +62,21 @@
         "index"
       ]}
     ],
-    "import/newline-after-import": 1,
-    "react/boolean-prop-naming": 1,
-    "react/no-array-index-key": 1,
-    "react/no-unused-prop-types": 1,
-    "react/no-unused-state": 1,
-    "react-hooks/rules-of-hooks": 2
-  }
+    "import/newline-after-import": "warn",
+    "react/boolean-prop-naming": "warn",
+    "react/no-array-index-key": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/no-unused-state": "warn",
+    "react-hooks/rules-of-hooks": "error"
+  },
+  "overrides": [{
+    "files": ["src/server/**"],
+    "rules": {
+      "no-console": "off",
+      "no-restricted-syntax": ["error", {
+        "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        "message": "Unexpected property on console object was called"
+      }]
+    }
+  }]
 }
