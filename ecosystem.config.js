@@ -1,4 +1,4 @@
-// Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
+//https://pm2.io/doc/en/runtime/reference/ecosystem-file/
 module.exports = {
   apps : [{
     name: 'app',
