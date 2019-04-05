@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import open from 'open';
 import express from 'express';
-import webpackBuilder from './webpack';
+import webpackBuilder from '../webpack';
 
 const port = 3000;
 const app = express();

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "Add todos",
-  "main": "src/server.js",
+  "main": "src/server/index.js",
   "scripts": {
     "pull": "git pull && yarn && yarn outdated",
     "prestart": "yarn lint",
