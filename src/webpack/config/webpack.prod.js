@@ -16,7 +16,7 @@ import commonConfig, {
   FAVICON,
 } from './webpack.common.js';
 
-const prodConfig = merge(commonConfig, {
+const webpackConfig = merge(commonConfig, {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
@@ -132,4 +132,4 @@ const prodConfig = merge(commonConfig, {
   ]
 });
 
-export default prodConfig;
+export default webpackConfig;
