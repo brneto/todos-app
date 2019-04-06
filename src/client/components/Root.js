@@ -26,4 +26,4 @@ Root.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-export default hot(module)(Root);
+export default hot(Root);
