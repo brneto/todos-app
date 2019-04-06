@@ -33,6 +33,7 @@ compiler.run((err, stats) => {
 });
 
 const prodMiddleware = express.static(outputPath);
+
 const getResource = createResourceBuffer(prodConfig, fs);
 const indexFilename = 'index.html';
 const runRules = spaServerRules(indexFilename, getResource);
