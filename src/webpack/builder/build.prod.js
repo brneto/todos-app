@@ -36,7 +36,7 @@ const prodMiddleware = express.static(outputPath);
 
 const getResource = createResourceBuffer(prodConfig, fs);
 const indexFilename = 'index.html';
-const runRules = spaServerRules(indexFilename, getResource);
+const runRules = spaServerRules(getResource, indexFilename);
 const watcher = chokidar.watch(
   getResourcePath(prodConfig, indexFilename),
   { ignoreInitial: true }
