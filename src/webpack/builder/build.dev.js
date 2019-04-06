@@ -29,6 +29,6 @@ const hotMiddleware = webpackHot(compiler, {
 
 const getResource = createResourceBuffer(devConfig, devMiddleware.fileSystem);
 const indexFilename = 'index.html';
-const spaMiddleware = spaServerRules(indexFilename, getResource);
+const spaMiddleware = spaServerRules(getResource, indexFilename);
 
 export default [devMiddleware, hotMiddleware, spaMiddleware];
