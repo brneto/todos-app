@@ -8,13 +8,13 @@ import {
   spaServerRules
 } from './build.util';
 
-/* eslint-disable no-console */
+const compiler = webpack(devConfig);
+
 console.log(chalk.blue(
   '[dev-build]',
   'Generating in-memory bundle for development via Webpack.',
   'wait a moment...'
 ));
-const compiler = webpack(devConfig);
 
 const devMiddleware = webpackDev(compiler, {
   logLevel: 'trace',
