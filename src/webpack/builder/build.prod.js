@@ -35,20 +35,21 @@ compiler.run((err, stats) => {
 const prodMiddleware = express.static(outputPath);
 const getResource = createResourceBuffer(prodConfig, fs);
 const indexFilename = 'index.html';
+const runRules = spaServerRules(indexFilename, getResource);
+const watcher = chokidar.watch(
+  getResourcePath(prodConfig, indexFilename),
+  { ignoreInitial: true }
+);
+
 
 const spaMiddleware = (req, res, next) => {
-  const watcher = chokidar.watch(
-    getResourcePath(prodConfig, indexFilename),
-    { ignoreInitial: true }
-  );
+  watcher.on('ready', () => {
+    watcher.on('add', file => {
+      console.log(`File ${file} has been added.`);
+      runRules(req, res, next);
 
-  watcher.on('add', file => {
-    const runRules = spaServerRules(indexFilename, getResource);
-
-    console.log(`File ${file} has been added.`);
-    runRules(req, res, next);
-
-    watcher.close();
+      watcher.close();
+    });
   });
 };
 
