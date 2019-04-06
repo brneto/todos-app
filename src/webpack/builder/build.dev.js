@@ -1,13 +1,10 @@
-//https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/server.js
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 import chalk from 'chalk';
 import devConfig from '../config/webpack.dev';
-import {
-  createResourceBuffer,
-  spaServerRules
-} from './build.util';
+import spaHandler from '../../server/spaHandler';
+import { createResourceBuffer } from './build.util';
 
 const compiler = webpack(devConfig);
 
@@ -30,6 +27,6 @@ const hotMiddleware = webpackHot(compiler, {
 
 const getResource = createResourceBuffer(devConfig, devMiddleware.fileSystem);
 const indexFilename = 'index.html';
-const spaMiddleware = spaServerRules(getResource, indexFilename);
+const spaMiddleware = spaHandler(getResource, indexFilename);
 
 export default [devMiddleware, hotMiddleware, spaMiddleware];
