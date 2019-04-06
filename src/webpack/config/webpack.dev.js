@@ -6,7 +6,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import commonConfig, { htmlPluginOptions } from './webpack.common.js';
 
-const devConfig = merge(commonConfig, {
+const webpackConfig = merge(commonConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: [
@@ -46,4 +46,4 @@ const devConfig = merge(commonConfig, {
   }
 });
 
-export default devConfig;
+export default webpackConfig;
