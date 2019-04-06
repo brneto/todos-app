@@ -4,10 +4,10 @@ import webpack from 'webpack';
 import express from 'express';
 import chalk from 'chalk';
 import prodConfig from '../config/webpack.prod';
+import spaHandler from '../../server/spaHandler';
 import {
   getResourcePath,
-  createResourceBuffer,
-  spaServerRules
+  createResourceBuffer
 } from './build.util';
 
 console.log(chalk.blue(
@@ -36,7 +36,7 @@ const prodMiddleware = express.static(outputPath);
 
 const getResource = createResourceBuffer(prodConfig, fs);
 const indexFilename = 'index.html';
-const runRules = spaServerRules(getResource, indexFilename);
+const runSpaMiddleware = spaHandler(getResource, indexFilename);
 const watcher = chokidar.watch(
   getResourcePath(prodConfig, indexFilename),
   { ignoreInitial: true }
@@ -46,7 +46,7 @@ const spaMiddleware = (req, res, next) => {
   watcher.on('ready', () => {
     watcher.on('add', file => {
       console.log(`File ${file} has been added.`);
-      runRules(req, res, next);
+      runSpaMiddleware(req, res, next);
       watcher.close();
     });
   });
