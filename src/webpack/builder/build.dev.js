@@ -2,7 +2,7 @@ import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 import chalk from 'chalk';
-import devConfig from '../config/webpack.dev';
+import webpackConfig from '../config/webpack.dev';
 import spaHandler from '../../server/spaHandler';
 import { createResourceBuffer } from './build.util';
 
@@ -16,7 +16,7 @@ console.log(chalk.blue(
 
 const devMiddleware = webpackDev(compiler, {
   logLevel: 'trace',
-  publicPath: devConfig.output.publicPath
+  publicPath: webpackConfig.output.publicPath
 });
 
 const hotMiddleware = webpackHot(compiler, {
@@ -25,7 +25,7 @@ const hotMiddleware = webpackHot(compiler, {
   heartbeat: 1000
 });
 
-const getResource = createResourceBuffer(devConfig, devMiddleware.fileSystem);
+const getResource = createResourceBuffer(webpackConfig, devMiddleware.fileSystem);
 const indexFilename = 'index.html';
 const spaMiddleware = spaHandler(getResource, indexFilename);
 
