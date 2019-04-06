@@ -3,7 +3,7 @@ import chokidar from 'chokidar';
 import webpack from 'webpack';
 import express from 'express';
 import chalk from 'chalk';
-import prodConfig from '../config/webpack.prod';
+import webpackConfig from '../config/webpack.prod';
 import spaHandler from '../../server/spaHandler';
 import {
   getResourcePath,
@@ -15,7 +15,7 @@ console.log(chalk.blue(
   'Generating minified bundle for production via Webpack.',
   'This will take a moment...'
 ));
-const outputPath = prodConfig.output.path;
+const outputPath = webpackConfig.output.path;
 const compiler = webpack(prodConfig);
 
 compiler.run((err, stats) => {
@@ -34,7 +34,7 @@ compiler.run((err, stats) => {
 
 const prodMiddleware = express.static(outputPath);
 
-const getResource = createResourceBuffer(prodConfig, fs);
+const getResource = createResourceBuffer(webpackConfig, fs);
 const indexFilename = 'index.html';
 const runSpaMiddleware = spaHandler(getResource, indexFilename);
 const watcher = chokidar.watch(
