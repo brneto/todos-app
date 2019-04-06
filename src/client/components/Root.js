@@ -14,6 +14,7 @@ import App from './App';
 const Root = ({ history, store }) => (
   <ThemeProvider theme={themes.main}>
     <>
+      <GlobalStyle />
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Switch>
@@ -23,7 +24,6 @@ const Root = ({ history, store }) => (
           </Switch>
         </ConnectedRouter>
       </Provider>
-      <GlobalStyle />
     </>
   </ThemeProvider>
 );
