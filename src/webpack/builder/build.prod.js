@@ -41,7 +41,6 @@ const watcher = chokidar.watch(
   { ignoreInitial: true }
 );
 
-
 const spaMiddleware = (req, res, next) => {
   watcher.on('ready', () => {
     watcher.on('add', file => {
