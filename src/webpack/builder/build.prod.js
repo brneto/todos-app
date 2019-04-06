@@ -10,7 +10,6 @@ import {
   spaServerRules
 } from './build.util';
 
-/* eslint-disable no-console */
 console.log(chalk.blue(
   '[prod-build]',
   'Generating minified bundle for production via Webpack.',
@@ -21,21 +20,16 @@ const compiler = webpack(prodConfig);
 
 compiler.run((err, stats) => {
   if (err) {
+    err.details && console.error(chalk.red(err.details));
     console.error(chalk.red(err.stack || err));
-    if(err.details) {
-      console.error(chalk.red(err.details));
-    }
-    return;
+  } else {
+    console.log('--------------------------------------------------------------');
+    console.log(stats.toString({ colors: true }));
+    console.log('--------------------------------------------------------------');
+    console.log(chalk.green(
+      `Your app has been compiled in production mode and written to ${outputPath}.`
+    ));
   }
-
-  console.log('--------------------------------------------------------------');
-  console.log(stats.toString({ colors: true }));
-  console.log('--------------------------------------------------------------');
-
-  console.log(chalk.green(
-    'Your app has been compiled in production mode and written to',
-    ` ${outputPath}.`
-  ));
 });
 
 const prodMiddleware = express.static(outputPath);
