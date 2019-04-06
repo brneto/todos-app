@@ -16,7 +16,7 @@ console.log(chalk.blue(
   'This will take a moment...'
 ));
 const outputPath = webpackConfig.output.path;
-const compiler = webpack(prodConfig);
+const compiler = webpack(webpackConfig);
 
 compiler.run((err, stats) => {
   if (err) {
@@ -38,7 +38,7 @@ const getResource = createResourceBuffer(webpackConfig, fs);
 const indexFilename = 'index.html';
 const runSpaMiddleware = spaHandler(getResource, indexFilename);
 const watcher = chokidar.watch(
-  getResourcePath(prodConfig, indexFilename),
+  getResourcePath(webpackConfig, indexFilename),
   { ignoreInitial: true }
 );
 

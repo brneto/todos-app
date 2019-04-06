@@ -6,7 +6,7 @@ import webpackConfig from '../config/webpack.dev';
 import spaHandler from '../../server/spaHandler';
 import { createResourceBuffer } from './build.util';
 
-const compiler = webpack(devConfig);
+const compiler = webpack(webpackConfig);
 
 console.log(chalk.blue(
   '[dev-build]',
