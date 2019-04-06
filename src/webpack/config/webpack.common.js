@@ -99,7 +99,7 @@ const commonConfig = {
                 // It's required Babel Syntax Dynamic Import Plugin to
                 // Webpack Dynamic Imports work.
                 '@babel/plugin-syntax-dynamic-import',
-                'styled-components',
+                'babel-plugin-styled-components',
               ]
             }
           },
