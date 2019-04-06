@@ -1,3 +1,4 @@
+//https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/server.js
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
