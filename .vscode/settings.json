@@ -48,7 +48,7 @@
 
   // GitHub Compatibility
   "markdown.extension.toc.githubCompatibility": true,
-  
+
   // Enable advanced regex features like lookahead an
   "search.usePCRE2": true,
 }
