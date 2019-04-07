@@ -171,10 +171,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# Lock files
-yarn.lock
-package-lock.json
-
 # environment variables file
 .env
 .env.local
