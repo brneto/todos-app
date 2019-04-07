@@ -103,6 +103,8 @@ const commonConfig = {
               ]
             }
           },
+          // https://github.com/gaearon/react-hot-loader#webpack-plugin
+          { loader: 'react-hot-loader/webpack' },
           { loader: 'stylelint-custom-processor-loader',
             options: { emitWarning: true }
           },
