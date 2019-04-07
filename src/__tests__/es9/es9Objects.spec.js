@@ -101,11 +101,52 @@ describe('Objects', () => {
 
     it('should support', () => {
       const counter = new IncreasingCounter();
-      expect(counter.count).toBe(undefined);
-      expect(counter.value).toEqual(0);
+      expect(counter['#count']).toBe(undefined);
+      expect(counter['value']).toEqual(0);
       counter.increment();
-      expect(counter.count).toBe(undefined);
-      expect(counter.value).toEqual(1);
+      expect(counter['#count']).toBe(undefined);
+      expect(counter['value']).toEqual(1);
+    });
+  });
+
+  describe('Private methods', () => {
+    class IncreasingCounter {
+      #count = 0;
+
+      set #privateInicial(value = this.#count) {
+        this.#count = value;
+      }
+
+      get #privateValue() {
+        return this.#count;
+      }
+
+      #privateIncrement() {
+        this.#count = this.value + 1;
+      }
+
+      set inicial(value = this.#count) {
+        this.#privateInicial = value;
+      }
+
+      get value() {
+        return this.#privateValue;
+      }
+
+      increment() {
+        this.#privateIncrement();
+      }
+
+    }
+
+    it('should support', () => {
+      const counter = new IncreasingCounter();
+      expect(counter['#privateInicial']).toBe(undefined);
+      expect(counter['#privateValue']).toBe(undefined);
+      expect(counter['#privateIncrement']).toBe(undefined);
+      counter.inicial = 2;
+      counter.increment();
+      expect(counter['value']).toEqual(3);
     });
   });
 });
