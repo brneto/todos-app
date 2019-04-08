@@ -1,5 +1,5 @@
-import { hot } from 'react-hot-loader';
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
 import { ThemeProvider } from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
