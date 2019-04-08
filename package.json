@@ -19,7 +19,7 @@
     "watch:lint": "yarn esw src -w",
     "test": "jest",
     "watch:test": "TERM=dumb yarn test --watch",
-    "prebuild": "yarn lint test poststop",
+    "prebuild": "yarn lint && yarn test && yarn poststop",
     "build": "pm2 start ecosystem.config.js --env production",
     "postbuild": "yarn watch:app",
     "watch:app": "tail -n +1 -f logs/app-err.log logs/app-out.log",
