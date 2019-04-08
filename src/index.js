@@ -13,8 +13,8 @@ const app = express();
 
 console.log(chalk.green(`Starting app in ${process.env.NODE_ENV} mode...`));
 
-webpackBuilder().then(middleware => {
-  app.use(morgan('combined'), compression(), ...middleware);
+webpackBuilder().then(async middlewares => {
+  app.use(morgan('combined'), compression(), ...(await middlewares));
 
   // Do "hot-reloading" of express stuff on the server
   // Throw away cached modules and re-require next time

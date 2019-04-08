@@ -6,7 +6,6 @@ import webpack from 'webpack';
 import { HTML_INDEX } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.prod';
 import createSpaMiddleware from '../../server/createSpaMiddleware';
-import { runOnFsChange } from './build.util';
 
 console.log(
   chalk.blue(
@@ -19,36 +18,43 @@ console.log(
 const buildPath = webpackConfig.output.path;
 const compiler = webpack(webpackConfig);
 
-compiler.run((err, stats) => {
-  if (err) {
-    err.details && console.error(chalk.red(err.details));
-    console.error(chalk.red(err.stack || err));
-  } else {
-    console.log(
-      '--------------------------------------------------------------'
-    );
-    console.log(stats.toString({ colors: true }));
-    console.log(
-      '--------------------------------------------------------------'
-    );
-    console.log(
-      chalk.green(
+export default new Promise(resolve => {
+  compiler.run((err, stats) => {
+    if (err) {
+      err.details && console.error(chalk.red(err.details));
+      console.error(chalk.red(err.stack || err));
+    } else {
+      console.log(
+        '--------------------------------------------------------------'
+      );
+      console.log(stats.toString({ colors: true }));
+      console.log(
+        '--------------------------------------------------------------'
+      );
+
+      console.log(chalk.green(
         `Your app has been compiled in production mode and written to ${buildPath}.`
-      )
-    );
-  }
+      ));
+
+      const prodMiddleware = express.static(buildPath);
+      const resourcePath = path.join(buildPath, HTML_INDEX);
+      const resourceBuffer = fs.readFileSync(resourcePath);
+      const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
+      resolve([prodMiddleware, spaMiddleware]);
+    }
+  });
 });
 
-const prodMiddleware = express.static(buildPath);
+// const prodMiddleware = express.static(buildPath);
 
-const resourcePath = path.join(buildPath, HTML_INDEX);
-const resourceBuffer = fs.readFileSync(resourcePath);
-const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
+// const resourcePath = path.join(buildPath, HTML_INDEX);
+// const resourceBuffer = fs.readFileSync(resourcePath);
+// const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
 
-const waitFsMiddleware = (req, res, next) =>
-  runOnFsChange(resourcePath, () => {
-    prodMiddleware(req, res, next);
-    spaMiddleware(req, res, next);
-  });
+// const waitFsMiddleware = (req, res, next) =>
+//   runOnFsChange(resourcePath, () => {
+//     prodMiddleware(req, res, next);
+//     spaMiddleware(req, res, next);
+//   });
 
-export default [waitFsMiddleware];
+//export default [waitFsMiddleware];

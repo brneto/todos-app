@@ -7,7 +7,6 @@ import { HTML_INDEX } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.dev';
 import createSpaMiddleware from '../../server/createSpaMiddleware';
 
-
 console.log(chalk.blue(
   '[dev-build]',
   'Generating in-memory bundle for development via Webpack.',
@@ -27,13 +26,15 @@ const hotMiddleware = webpackHot(compiler, {
   heartbeat: 1000
 });
 
+export default new Promise(resolve => {
+  devMiddleware.waitUntilValid(() => {
+    console.log(chalk.green(
+      `Your app has been compiled in development mode and written into memory.`
+    ));
 
-const resourcePath = path.join(webpackConfig.output.path, HTML_INDEX);
-let spaMiddleware;
-devMiddleware.waitUntilValid(() => {
-  const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
-  spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
+    const resourcePath = path.join(webpackConfig.output.path, HTML_INDEX);
+    const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
+    const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
+    resolve([devMiddleware, hotMiddleware, spaMiddleware]);
+  });
 });
-
-
-export default [devMiddleware, hotMiddleware, spaMiddleware];
