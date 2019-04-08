@@ -33,7 +33,7 @@ webpackBuilder().then(async middlewares => {
   app.listen(port, error =>
     error
       ? console.log(`Server failed to start: [${error}].`)
-      : console.log(`Server listening on port: ${port}.`) ||
+      : console.log(`Server running and listening on port: ${port}.`) ||
         open(`http://localhost:${port}`).then(
           resolve => console.log(
             `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
