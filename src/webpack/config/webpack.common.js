@@ -92,9 +92,9 @@ const commonConfig = {
                 'react-hot-loader/babel',
                 ['@babel/plugin-proposal-decorators', { legacy: true }],
                 ['@babel/plugin-proposal-class-properties', { loose: true }],
+                ['@babel/plugin-proposal-private-methods', { loose: true }],
                 '@babel/plugin-proposal-function-bind',
                 '@babel/plugin-proposal-optional-chaining',
-                '@babel/plugin-proposal-private-methods',
                 '@babel/plugin-proposal-throw-expressions',
                 // It's required Babel Syntax Dynamic Import Plugin to
                 // Webpack Dynamic Imports work.
