@@ -27,7 +27,7 @@ const hotMiddleware = webpackHot(compiler, {
 });
 
 const resourcePath = path.join(buildPath, HTML_INDEX);
-const resourceBuffer = devMiddleware.fileSystem(resourcePath);
+const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
 const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
 
 export default [devMiddleware, hotMiddleware, spaMiddleware];
