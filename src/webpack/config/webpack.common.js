@@ -163,6 +163,11 @@ const commonConfig = {
       //{ test: /\.txt$/, use: ['raw-loader'] }
     ]
   },
+  // https://github.com/gaearon/react-hot-loader#react--dom
+  // https://github.com/gaearon/react-hot-loader/issues/1222
+  resolve: {
+    alias: { 'react-dom': '@hot-loader/react-dom' }
+  },
   plugins: [
     // Generate an external css file
     new MiniCssExtractPlugin({
