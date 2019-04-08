@@ -3,8 +3,10 @@ import chalk from 'chalk';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
-import webpackConfig, { HTML_INDEX } from '../config/webpack.common';
+import { HTML_INDEX } from '../config/webpack.common';
+import webpackConfig from '../config/webpack.dev';
 import createSpaMiddleware from '../../server/createSpaMiddleware';
+
 
 console.log(chalk.blue(
   '[dev-build]',
@@ -12,7 +14,7 @@ console.log(chalk.blue(
   'wait a moment...'
 ));
 
-const buildPath = webpackConfig.output.path;
+const buildPath = webpackConfig.output.publicPath;
 const compiler = webpack(webpackConfig);
 
 const devMiddleware = webpackDev(compiler, {

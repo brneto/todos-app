@@ -3,7 +3,8 @@ import path from 'path';
 import express from 'express';
 import chalk from 'chalk';
 import webpack from 'webpack';
-import webpackConfig, { HTML_INDEX } from '../config/webpack.common';
+import { HTML_INDEX } from '../config/webpack.common';
+import webpackConfig from '../config/webpack.prod';
 import createSpaMiddleware from '../../server/createSpaMiddleware';
 import { runOnFsChange } from './build.util';
 
