@@ -44,17 +44,3 @@ export default new Promise(resolve => {
     }
   });
 });
-
-// const prodMiddleware = express.static(buildPath);
-
-// const resourcePath = path.join(buildPath, HTML_INDEX);
-// const resourceBuffer = fs.readFileSync(resourcePath);
-// const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
-
-// const waitFsMiddleware = (req, res, next) =>
-//   runOnFsChange(resourcePath, () => {
-//     prodMiddleware(req, res, next);
-//     spaMiddleware(req, res, next);
-//   });
-
-//export default [waitFsMiddleware];
