@@ -14,12 +14,11 @@ console.log(chalk.blue(
   'wait a moment...'
 ));
 
-const buildPath = webpackConfig.output.publicPath;
 const compiler = webpack(webpackConfig);
 
 const devMiddleware = webpackDev(compiler, {
   logLevel: 'trace',
-  publicPath: buildPath
+  publicPath: webpackConfig.output.publicPath
 });
 
 const hotMiddleware = webpackHot(compiler, {
@@ -28,7 +27,7 @@ const hotMiddleware = webpackHot(compiler, {
   heartbeat: 1000
 });
 
-const resourcePath = path.join(buildPath, HTML_INDEX);
+const resourcePath = path.join(webpackConfig.output.path, HTML_INDEX);
 const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
 const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
 
