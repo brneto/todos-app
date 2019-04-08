@@ -2,10 +2,10 @@
 module.exports = {
   apps : [{
     name: 'app',
-    script: 'src/server/index.js',
+    script: 'src/index.js',
     interpreter: 'node_modules/.bin/babel-node',
     autorestart: false,
-    watch: ['src/server', 'src/webpack'],
+    watch: ['src/webpack'],
     ignore_watch: '/__tests__/.*|(\\.|/)(test|spec)\\.[jt]sx?$',
     output: 'logs/app-out.log',
     error: 'logs/app-err.log',

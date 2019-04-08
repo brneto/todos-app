@@ -71,7 +71,7 @@
     "react-hooks/rules-of-hooks": "error"
   },
   "overrides": [{
-    "files": ["src/server/**", "src/webpack/builder/**"],
+    "files": ["src/index.js", "src/webpack/builder/**", "src/server/**"],
     "rules": {
       "no-console": "off",
       "no-restricted-syntax": ["error", {

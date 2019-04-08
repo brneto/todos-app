@@ -1,21 +1,21 @@
 import fs from 'fs';
-import chokidar from 'chokidar';
-import webpack from 'webpack';
+import path from 'path';
 import express from 'express';
 import chalk from 'chalk';
-import webpackConfig from '../config/webpack.prod';
-import spaHandler from '../../server/spaHandler';
-import {
-  getResourcePath,
-  createResourceBuffer
-} from './build.util';
+import webpack from 'webpack';
+import webpackConfig, { HTML_INDEX } from '../config/webpack.common';
+import createSpaMiddleware from '../../server/createSpaMiddleware';
+import { runOnFsChange } from './build.util';
 
-console.log(chalk.blue(
-  '[prod-build]',
-  'Generating minified bundle for production via Webpack.',
-  'This will take a moment...'
-));
-const outputPath = webpackConfig.output.path;
+console.log(
+  chalk.blue(
+    '[prod-build]',
+    'Generating minified bundle for production via Webpack.',
+    'This will take a moment...'
+  )
+);
+
+const buildPath = webpackConfig.output.path;
 const compiler = webpack(webpackConfig);
 
 compiler.run((err, stats) => {
@@ -23,33 +23,31 @@ compiler.run((err, stats) => {
     err.details && console.error(chalk.red(err.details));
     console.error(chalk.red(err.stack || err));
   } else {
-    console.log('--------------------------------------------------------------');
+    console.log(
+      '--------------------------------------------------------------'
+    );
     console.log(stats.toString({ colors: true }));
-    console.log('--------------------------------------------------------------');
-    console.log(chalk.green(
-      `Your app has been compiled in production mode and written to ${outputPath}.`
-    ));
+    console.log(
+      '--------------------------------------------------------------'
+    );
+    console.log(
+      chalk.green(
+        `Your app has been compiled in production mode and written to ${buildPath}.`
+      )
+    );
   }
 });
 
-const prodMiddleware = express.static(outputPath);
+const prodMiddleware = express.static(buildPath);
 
-const getResource = createResourceBuffer(webpackConfig, fs);
-const indexFilename = 'index.html';
-const runSpaMiddleware = spaHandler(getResource, indexFilename);
-const watcher = chokidar.watch(
-  getResourcePath(webpackConfig, indexFilename),
-  { ignoreInitial: true }
-);
+const resourcePath = path.join(buildPath, HTML_INDEX);
+const resourceBuffer = fs.readFileSync(resourcePath);
+const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
 
-const spaMiddleware = (req, res, next) => {
-  watcher.on('ready', () => {
-    watcher.on('add', file => {
-      console.log(`File ${file} has been added.`);
-      runSpaMiddleware(req, res, next);
-      watcher.close();
-    });
+const waitFsMiddleware = (req, res, next) =>
+  runOnFsChange(resourcePath, () => {
+    prodMiddleware(req, res, next);
+    spaMiddleware(req, res, next);
   });
-};
 
-export default [prodMiddleware, spaMiddleware];
+export default [waitFsMiddleware];

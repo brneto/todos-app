@@ -1,24 +1,12 @@
-import path from 'path';
+import chokidar from 'chokidar';
 
-export const getResourcePath = (cfg, rsc) => path.join(cfg.output.path, rsc);
+export const runOnFsChange = (resourcePath, callback) => {
+  const watcher = chokidar.watch(resourcePath);
 
-export const createResourceBuffer = (cfg, fs) => rsc =>
-  fs.readFileSync(getResourcePath(cfg, rsc));
-
-export const spaServerRules = (getResource, indexResourceName) => (req, res, next) => {
-  const requestedResource = req.url.split('/').pop();
-  const indexResource = getResource(indexResourceName);
-
-  switch (requestedResource) {
-    case indexResourceName:
-    case requestedResource.replace(/\.html?$/gi, ''):
-      if(requestedResource === 'source') {
-        res.set('Content-Type', 'text/plain');
-      }
-
-      res.end(indexResource);
-      break;
-    default:
-      next();
-  }
+  watcher.on('ready', () => {
+    watcher.on('all', resource => {
+      console.log(`Resource ${resource} has been changed.`);
+      callback();
+    });
+  });
 };
