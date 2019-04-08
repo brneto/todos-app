@@ -110,6 +110,7 @@ const commonConfig = {
         ]
       },
       // https://github.com/gaearon/react-hot-loader#webpack-plugin
+      // https://github.com/gaearon/react-hot-loader/issues/1222
       // {
       //   test: /\.jsx?$/,
       //   include: /node_modules/,
