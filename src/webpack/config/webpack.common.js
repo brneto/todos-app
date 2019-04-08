@@ -61,7 +61,7 @@ const commonConfig = {
       // This loader parallelizes code compilation, it is optional but
       // improves compile time on larger projects
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: /[\\/]src[\\/]client[\\/]/,
         //exclude: /[\\/]node_modules[\\/](?!@material)/,
         use: [
@@ -103,14 +103,18 @@ const commonConfig = {
               ]
             }
           },
-          // https://github.com/gaearon/react-hot-loader#webpack-plugin
-          { loader: 'react-hot-loader/webpack' },
           { loader: 'stylelint-custom-processor-loader',
             options: { emitWarning: true }
           },
           { loader: 'eslint-loader' }
         ]
       },
+      // https://github.com/gaearon/react-hot-loader#webpack-plugin
+      // {
+      //   test: /\.jsx?$/,
+      //   include: /node_modules/,
+      //   use: ['react-hot-loader/webpack'],
+      // },
       // "url" loader works like "file" loader except that it embeds assets
       // smaller than specified limit in bytes as data URLs to avoid requests.
       {
