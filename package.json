@@ -23,7 +23,7 @@
     "build": "pm2 start ecosystem.config.js --env production",
     "postbuild": "yarn watch:app",
     "watch:app": "pm2 logs app",
-    "rmcache": "rm -rf node_modules/.cache/hard-source/*"
+    "rmcache": "rm -rf node_modules/.cache/hard-source/"
   },
   "jest": {
     "setupFilesAfterEnv": [
