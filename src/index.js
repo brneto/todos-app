@@ -19,7 +19,7 @@ webpackBuilder().then(async middlewares => {
   // Do "hot-reloading" of express stuff on the server
   // Throw away cached modules and re-require next time
   // Ensure there's no important state in there!
-  const watcher = chokidar.watch('./server');
+  const watcher = chokidar.watch('./src/server');
 
   watcher.on('ready', () => {
     watcher.on('all', () => {
