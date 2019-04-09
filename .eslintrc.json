@@ -68,7 +68,8 @@
     "react/no-array-index-key": "warn",
     "react/no-unused-prop-types": "warn",
     "react/no-unused-state": "warn",
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "overrides": [{
     "files": ["src/index.js", "src/webpack/builder/**", "src/server/**"],
