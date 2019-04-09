@@ -5,7 +5,7 @@ module.exports = {
     script: 'src/index.js',
     interpreter: 'node_modules/.bin/babel-node',
     autorestart: false,
-    watch: ['src/webpack'],
+    watch: ['src/index.js', 'src/webpack'],
     ignore_watch: '/__tests__/.*|(\\.|/)(test|spec)\\.[jt]sx?$',
     output: 'logs/app-out.log',
     error: 'logs/app-err.log',
