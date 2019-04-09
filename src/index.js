@@ -23,10 +23,10 @@ webpackBuilder().then(async middlewares => {
 
   watcher.on('ready', () => {
     watcher.on('all', () => {
-      console.log(chalk.yellow('Clearing /server/ module cache from server'));
       Object.keys(require.cache).forEach(
         id => /[/\\]server[/\\]/.test(id) && delete require.cache[id]
       );
+      console.log(chalk.yellow('"server" module cache cleared from server'));
     });
   });
 
