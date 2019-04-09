@@ -20,7 +20,6 @@ webpackBuilder().then(async middlewares => {
   // Throw away cached modules and re-require next time
   // Ensure there's no important state in there!
   const watcher = chokidar.watch('./src/server');
-
   watcher.on('ready', () => {
     watcher.on('all', () => {
       Object.keys(require.cache).forEach(

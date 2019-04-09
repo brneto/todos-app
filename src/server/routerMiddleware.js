@@ -1,4 +1,4 @@
-const createSpaMiddleware = (resourceBuffer, resourcePath) => (req, res, next) => {
+const createRouterMiddleware = (resourceBuffer, resourcePath) => (req, res, next) => {
   const resource = resourcePath.split('/').pop();
   const requested = req.url.split('/').pop();
 
@@ -15,4 +15,4 @@ const createSpaMiddleware = (resourceBuffer, resourcePath) => (req, res, next) =
   }
 };
 
-export default createSpaMiddleware;
+export default createRouterMiddleware;

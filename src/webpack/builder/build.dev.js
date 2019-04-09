@@ -5,7 +5,7 @@ import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 import { HTML_INDEX } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.dev';
-import createSpaMiddleware from '../../server/createSpaMiddleware';
+import createRouterMiddleware from '../../server/routerMiddleware';
 
 console.log(chalk.blue(
   '[dev-build]',
@@ -34,7 +34,7 @@ export default new Promise(resolve => {
 
     const resourcePath = path.join(webpackConfig.output.path, HTML_INDEX);
     const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
-    const spaMiddleware = createSpaMiddleware(resourceBuffer, resourcePath);
-    resolve([devMiddleware, hotMiddleware, spaMiddleware]);
+    const routerMiddleware = createRouterMiddleware(resourceBuffer, resourcePath);
+    resolve([devMiddleware, hotMiddleware, routerMiddleware]);
   });
 });
