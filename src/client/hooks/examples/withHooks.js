@@ -2,21 +2,19 @@ import React, { useState, useEffect } from 'react';
 
 function useWindowsWidth() {
   const [width, setWidth] = useState(window.innerWidth);
-  const handleResize = () => setWidth(window.innerWidth);
-  const cleanup = () => window.removeEventListener('resize', handleResize);
 
-  useEffect(() =>
-    window.addEventListener('resize', handleResize) ||
-    cleanup,
-    [width]
-  );
+  useEffect(() => {
+      const handleResize = () => setWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+  });
 
   return width;
 }
 
-function WithHooksComponent() {
+function MyResponsiveComponent() {
   const width = useWindowsWidth(); // My custom Hook
-  return <h1>Window width is {width}.</h1>;
+  return (<p>Window width is {width}.</p>);
 }
 
-export default WithHooksComponent;
+export default MyResponsiveComponent;

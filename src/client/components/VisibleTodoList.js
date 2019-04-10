@@ -30,7 +30,8 @@ function VisibleTodoList(props) {
    filter,
   } = props;
 
-  useEffect(() => {fetchTodos();}, [filter]);
+  // https://github.com/facebook/react/issues/14920
+  useEffect(() => void fetchTodos(), [fetchTodos, filter]);
 
   let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
   if(!todos.length) {

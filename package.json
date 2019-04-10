@@ -14,6 +14,7 @@
     "poststop": "pm2 flush; pm2 delete ecosystem.config.js; yarn rmcache; exit 0",
     "restart": "yarn stop && yarn start",
     "ps": "pm2 l",
+    "logs": "pm2 logs app",
     "lint:js": "eslint src",
     "lint:css": "stylelint 'src/client/**/*.js'",
     "lint": "run-s lint:*",
@@ -23,7 +24,7 @@
     "prebuild": "yarn lint && yarn test && yarn poststop",
     "build": "pm2 start ecosystem.config.js --env production",
     "postbuild": "yarn watch:app",
-    "watch:app": "pm2 logs app",
+    "watch:app": "yarn logs",
     "rmcache": "rm -rf node_modules/.cache/hard-source"
   },
   "jest": {
