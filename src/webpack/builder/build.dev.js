@@ -5,7 +5,7 @@ import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 import { HTML_INDEX } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.dev';
-import createRouterMiddleware from '../../server/routerMiddleware';
+import createRouter from '../../server/router';
 
 console.log(chalk.blue(
   '[dev-build]',
@@ -34,7 +34,7 @@ export default new Promise(resolve => {
 
     const resourcePath = path.join(webpackConfig.output.path, HTML_INDEX);
     const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
-    const routerMiddleware = createRouterMiddleware(resourceBuffer, resourcePath);
+    const routerMiddleware = createRouter(resourceBuffer);
     resolve([devMiddleware, hotMiddleware, routerMiddleware]);
   });
 });
