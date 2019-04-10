@@ -16,6 +16,7 @@ console.log(chalk.green(`Starting app in ${process.env.NODE_ENV} mode...`));
 webpackBuilder().then(async middlewares => {
   app.use(morgan('combined'), compression(), ...(await middlewares));
 
+  // TODO: Test whether the server hot-reloading it's really working.
   // Do "hot-reloading" of express stuff on the server
   // Throw away cached modules and re-require next time
   // Ensure there's no important state in there!
@@ -25,7 +26,7 @@ webpackBuilder().then(async middlewares => {
       Object.keys(require.cache).forEach(
         id => /[/\\]server[/\\]/.test(id) && delete require.cache[id]
       );
-      console.log(chalk.yellow('"server" module cache cleared from server'));
+      console.log(chalk.yellow('"server" module cache cleared'));
     });
   });
 
