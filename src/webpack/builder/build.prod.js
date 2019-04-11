@@ -5,7 +5,7 @@ import chalk from 'chalk';
 import webpack from 'webpack';
 import { HTML_INDEX } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.prod';
-import createRouter from '../../server/router';
+import createRouterMiddleware from '../../server/routerMiddleware';
 
 console.log(
   chalk.blue(
@@ -39,7 +39,7 @@ export default new Promise(resolve => {
       const prodMiddleware = express.static(buildPath);
       const resourcePath = path.join(buildPath, HTML_INDEX);
       const resourceBuffer = fs.readFileSync(resourcePath);
-      const routerMiddleware = createRouter(resourceBuffer);
+      const routerMiddleware = createRouterMiddleware(resourceBuffer);
       resolve([prodMiddleware, routerMiddleware]);
     }
   });
