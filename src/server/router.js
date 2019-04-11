@@ -8,9 +8,7 @@ const createRouterMiddleware = resourceBuffer => {
     res.send(resourceBuffer);
   });
 
-  router.get('*', (req, res) => {
-    res.end(resourceBuffer);
-  });
+  router.get('*', (req, res) => void res.end(resourceBuffer));
 
   return router;
 };
