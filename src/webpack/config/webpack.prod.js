@@ -8,13 +8,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import WorkboxPlugin from 'workbox-webpack-plugin';
 import WebpackPwaManifest from 'webpack-pwa-manifest';
-import commonConfig, {
-  htmlPluginOptions,
-  TITLE,
-  PUBLIC_PATH,
-  HTML_INDEX,
-  FAVICON,
-} from './webpack.common.js';
+import commonConfig, { htmlPluginOptions } from './webpack.common.js';
 
 const webpackConfig = merge(commonConfig, {
   mode: 'production',
@@ -87,7 +81,10 @@ const webpackConfig = merge(commonConfig, {
       clientsClaim: true,
       skipWaiting: true,
       exclude: [/\.map$/, /asset-manifest\.json$/],
-      navigateFallback: path.join(PUBLIC_PATH, HTML_INDEX),
+      navigateFallback: path.join(
+        commonConfig.output.publicPath,
+        htmlPluginOptions.filename
+      ),
       navigateFallbackBlacklist: [
         // Exclude URLs starting with /_, as they're likely an API call
         new RegExp('^/_'),
@@ -103,13 +100,13 @@ const webpackConfig = merge(commonConfig, {
       // manifest.json provides metadata used when your web app is added to the
       // homescreen on Android.
       // See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-      name: TITLE,
+      name: htmlPluginOptions.title,
       short_name: 'TodosApp',
       background_color: '#fff',
       theme_color: '#000',
-      start_url: PUBLIC_PATH,
+      start_url: commonConfig.output.publicPath,
       icons: [{
-        src: FAVICON,
+        src: htmlPluginOptions.favicon,
         sizes: [16, 24, 32, 64],
       }]
     }),
@@ -118,7 +115,9 @@ const webpackConfig = merge(commonConfig, {
     new webpack.DefinePlugin({
       // Omit trailing slash as ${process.env.PUBLIC_URL}/xyz
       // looks better than ${process.env.PUBLIC_URL}xyz.
-      'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_PATH.slice(0, -1))
+      'process.env.PUBLIC_URL': JSON.stringify(
+        commonConfig.output.publicPath.slice(0, -1)
+      )
     }),
 
     // Generate an HTML5 Application Cache for a Webpack build manifest.appcache

@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
+import config from '../../config';
 
 const isDevEnv = process.env.NODE_ENV !== 'production';
 
@@ -11,13 +12,12 @@ const chunkPrefix = isDevEnv ? '[name].chunk' : '[name].[contenthash].chunk';
 const imgFilename = isDevEnv ? '[name].[ext]' : '[name].[hash:8].[ext]';
 
 const TEMPLATE_PATH = './public';
-export const TITLE = 'Todos Application';
-export const PUBLIC_PATH = '/';
-export const HTML_INDEX = 'index.html';
-export const FAVICON = path.join(TEMPLATE_PATH, 'favicon.ico');
+const PUBLIC_PATH = '/';
+const HTML_INDEX = 'index.html';
+const FAVICON = path.join(TEMPLATE_PATH, 'favicon.ico');
 
-export const htmlPluginOptions = {
-  title: TITLE,
+const htmlPluginOptions = {
+  title: config.title,
   filename: HTML_INDEX,
   template: path.join(TEMPLATE_PATH, HTML_INDEX),
   inject: true,
@@ -33,7 +33,7 @@ const commonConfig = {
   output: {
     filename: `${filePrefix}.js`,
     chunkFilename: `${chunkPrefix}.js`,
-    path: path.resolve('dist'),
+    path: path.resolve(path.join('dist', config.path)),
     publicPath: PUBLIC_PATH,
     hashDigestLength: 8
   },
@@ -208,4 +208,4 @@ const commonConfig = {
   }
 };
 
-export default commonConfig;
+export { commonConfig as default, htmlPluginOptions };

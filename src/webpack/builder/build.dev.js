@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import webpack from 'webpack';
 import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
-import { HTML_INDEX } from '../config/webpack.common';
+import { htmlPluginOptions } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.dev';
 import createRouterMiddleware from '../../server/routerMiddleware';
 
@@ -29,10 +29,13 @@ const hotMiddleware = webpackHot(compiler, {
 export default new Promise(resolve => {
   devMiddleware.waitUntilValid(() => {
     console.log(chalk.green(
-      `Your app has been compiled in development mode and written into memory.`
+      'Your app has been compiled in development mode and written into memory.'
     ));
 
-    const resourcePath = path.join(webpackConfig.output.path, HTML_INDEX);
+    const resourcePath = path.join(
+      webpackConfig.output.path,
+      htmlPluginOptions.filename
+    );
     const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
     const routerMiddleware = createRouterMiddleware(resourceBuffer);
     resolve([devMiddleware, hotMiddleware, routerMiddleware]);

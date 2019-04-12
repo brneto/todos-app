@@ -21,11 +21,11 @@
     "watch:lint": "yarn esw src -w",
     "test": "jest",
     "watch:test": "TERM=dumb yarn test --watch",
-    "prebuild": "yarn lint && yarn test && yarn poststop",
-    "build": "pm2 start ecosystem.config.js --env production",
-    "postbuild": "yarn watch:app",
+    "prebuild": "yarn poststop && yarn lint && yarn test",
+    "build": "NODE_ENV=building babel-node src/index.js",
+    "postbuild": "babel src -d dist --only 'src/*.js','src/server/**/*.js' --ignore 'src/**/*.test.*','src/**/*.spec.*",
     "watch:app": "yarn logs",
-    "rmcache": "rm -rf node_modules/.cache/hard-source"
+    "rmcache": "rm -rf node_modules/.cache/hard-source && rm -rf dist"
   },
   "jest": {
     "setupFilesAfterEnv": [
