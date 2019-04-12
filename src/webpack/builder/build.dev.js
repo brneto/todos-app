@@ -34,6 +34,7 @@ export default new Promise(resolve => {
     );
     const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
     const routerMiddleware = createRouterMiddleware(resourceBuffer);
+    // TODO: Test whether switching hot and router middleware would make server hot-reloading work
     resolve([devMiddleware, hotMiddleware, routerMiddleware]);
   });
 });
