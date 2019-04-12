@@ -8,7 +8,10 @@ const createRouterMiddleware = resourceBuffer => {
     res.send(resourceBuffer);
   });
 
-  router.get('*', (req, res) => void res.end(resourceBuffer));
+  router.get('/*', (req, res) => {
+    res.set('Content-Type', 'text/html');
+    res.send(resourceBuffer);
+  });
 
   return router;
 };
