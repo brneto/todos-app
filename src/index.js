@@ -11,16 +11,20 @@ import config from './config';
 const env = process.env.NODE_ENV;
 const port = 3000;
 const app = express();
-const listenerChecker = error => error
-  ? console.log(chalk.red(`Server failed to start: [${error}].`))
-  : console.log(chalk.green(`Server running and listening on port: ${port}.`)) ||
-    env !== 'production' &&
-    open(`http://localhost:${port}`).then(
-      resolve => console.log(
-        `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
-      ),
-      reject => console.log(`Failed to open the browser: [${reject}].`)
-    );
+const listenerChecker = error =>
+  error
+    ? console.log(chalk.red(`Server failed to start: [${error}].`))
+    : console.log(
+        chalk.green(`Server running and listening on port: ${port}.`)
+      ) ||
+      (env !== 'production' &&
+        open(`http://localhost:${port}`).then(
+          resolve => console.log(
+            `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
+          ),
+          reject => console.log(`Failed to open the browser: [${reject}].`)
+        )
+      );
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
 
