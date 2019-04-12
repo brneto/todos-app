@@ -7,19 +7,16 @@ import { htmlPluginOptions } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.dev';
 import createRouterMiddleware from '../../server/routerMiddleware';
 
-console.log(chalk.blue(
-  '[dev-build]',
-  'Generating in-memory bundle for development via Webpack.',
-  'wait a moment...'
-));
-
 const compiler = webpack(webpackConfig);
 
+console.log(chalk.blue(
+  '[dev-build] Generating in-memory bundle for development via Webpack.',
+  'wait a moment...'
+));
 const devMiddleware = webpackDev(compiler, {
   logLevel: 'trace',
   publicPath: webpackConfig.output.publicPath
 });
-
 const hotMiddleware = webpackHot(compiler, {
   log: console.log,
   path: '/__webpack_hmr',
@@ -31,7 +28,6 @@ export default new Promise(resolve => {
     console.log(chalk.green(
       'Your app has been compiled in development mode and written into memory.'
     ));
-
     const resourcePath = path.join(
       webpackConfig.output.path,
       htmlPluginOptions.filename
