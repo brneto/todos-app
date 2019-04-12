@@ -1,4 +1,3 @@
-//https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/server.js
 //import '@babel/polyfill';
 import chokidar from 'chokidar';
 import chalk from 'chalk';
@@ -39,6 +38,7 @@ if (env === 'production') {
     .then(middlewares => {
       app.use(morgan('combined'), compression(), ...middlewares);
 
+      //https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/server.js
       // TODO: Test whether the server hot-reloading it's really working.
       // Do "hot-reloading" of express stuff on the server
       // Throw away cached modules and re-require next time
