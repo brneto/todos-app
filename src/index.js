@@ -28,12 +28,10 @@ if (env === 'production') {
         ))
   );
 } else if (env === 'building') {
-  import('./webpack/builder/build.prod').then(buildProd =>
-    void buildProd.default()
-  );
+  import('./webpack/builder/build.prod').then(buildProd => buildProd.default);
 } else {
   import('./webpack/builder/build.dev').then(buildDev =>
-    void buildDev.default().then(middlewares => {
+    buildDev.default.then(middlewares => {
       app.use(morgan('dev'), compression(), ...middlewares);
 
       // TODO: Test whether the server hot-reloading it's really working.

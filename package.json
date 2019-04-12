@@ -7,7 +7,7 @@
   "scripts": {
     "reach": "git pull && yarn && yarn outdated",
     "upgi": "yarn upgrade-interactive --latest",
-    "prestart": "yarn lint && yarn test",
+    "prestart": "yarn stop && yarn lint && yarn test",
     "start": "pm2 start ecosystem.config.js",
     "poststart": "run-p watch:*",
     "stop": "pm2 stop ecosystem.config.js",
@@ -21,7 +21,7 @@
     "watch:lint": "yarn esw src -w",
     "test": "jest",
     "watch:test": "TERM=dumb yarn test --watch",
-    "prebuild": "yarn poststop && yarn lint && yarn test",
+    "prebuild": "yarn prestart",
     "build": "NODE_ENV=building babel-node src/index.js",
     "postbuild": "babel src -d dist --only 'src/*.js','src/server/**/*.js' --ignore 'src/**/*.test.*','src/**/*.spec.*'",
     "watch:app": "yarn logs",
