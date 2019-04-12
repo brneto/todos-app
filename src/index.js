@@ -11,6 +11,16 @@ import config from './config';
 const env = process.env.NODE_ENV;
 const port = 3000;
 const app = express();
+const errorChecker = error => error
+  ? console.log(chalk.red(`Server failed to start: [${error}].`))
+  : console.log(chalk.green(`Server running and listening on port: ${port}.`)) ||
+    env !== 'production' &&
+    open(`http://localhost:${port}`).then(
+      resolve => console.log(
+        `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
+      ),
+      reject => console.log(`Failed to open the browser: [${reject}].`)
+    );
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
 
@@ -20,18 +30,13 @@ if (env === 'production') {
     compression(),
     express.static(config.path)
   );
-  app.listen(port, error =>
-    error
-      ? console.log(chalk.red(`Server failed to start: [${error}].`))
-      : console.log(chalk.green(
-          `Server running and listening on port: ${port}.`
-        ))
-  );
+  app.listen(port, errorChecker);
 } else if (env === 'building') {
-  import('./webpack/builder/build.prod').then(buildProd => buildProd.default);
+  import('./webpack/builder/build.prod');
 } else {
-  import('./webpack/builder/build.dev').then(buildDev =>
-    buildDev.default.then(middlewares => {
+  import('./webpack/builder/build.dev')
+    .then(module => module.default)
+    .then(buildDev => buildDev.then(middlewares => {
       app.use(morgan('dev'), compression(), ...middlewares);
 
       // TODO: Test whether the server hot-reloading it's really working.
@@ -48,17 +53,6 @@ if (env === 'production') {
         });
       });
 
-      app.listen(port, error =>
-        error
-          ? console.log(chalk.red(`Server failed to start: [${error}].`))
-          : console.log(chalk.green(`Server running and listening on port: ${port}.`)) ||
-            open(`http://localhost:${port}`).then(
-              resolve => console.log(
-                `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
-              ),
-              reject => console.log(`Failed to open the browser: [${reject}].`)
-            )
-      );
-    })
-  );
+      app.listen(port, errorChecker);
+    }));
 }
