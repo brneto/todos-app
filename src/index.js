@@ -32,26 +32,25 @@ if (env === 'production') {
 } else if (env === 'building') {
   import('./webpack/builder/build.prod');
 } else {
-  import('./webpack/builder/build.dev')
-    .then(module => module.default)
-    .then(middlewares => {
-      app.use(morgan('combined'), compression(), ...middlewares);
+  import('./webpack/builder/build.dev').then(async module => {
+    const middlewares = await module.default;
+    app.use(morgan('combined'), compression(), ...middlewares);
 
-      //https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/server.js
-      // TODO: Test whether the server hot-reloading it's really working.
-      // Do "hot-reloading" of express stuff on the server
-      // Throw away cached modules and re-require next time
-      // Ensure there's no important state in there!
-      const watcher = chokidar.watch('./src/server');
-      watcher.on('ready', () => {
-        watcher.on('all', () => {
-          Object.keys(require.cache).forEach(
-            id => /[/\\]server[/\\]/.test(id) && delete require.cache[id]
-          );
-          console.log(chalk.yellow('"server" module cache cleared'));
-        });
+    //https://github.com/glenjamin/ultimate-hot-reloading-example/blob/master/server.js
+    // TODO: Test whether the server hot-reloading it's really working.
+    // Do "hot-reloading" of express stuff on the server
+    // Throw away cached modules and re-require next time
+    // Ensure there's no important state in there!
+    const watcher = chokidar.watch('./src/server');
+    watcher.on('ready', () => {
+      watcher.on('all', () => {
+        Object.keys(require.cache).forEach(
+          id => /[/\\]server[/\\]/.test(id) && delete require.cache[id]
+        );
+        console.log(chalk.yellow('"server" module cache cleared'));
       });
-
-      app.listen(port, listenerChecker);
     });
+
+    app.listen(port, listenerChecker);
+  });
 }
