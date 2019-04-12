@@ -21,8 +21,10 @@
     "test": "jest",
     "watch:test": "TERM=dumb yarn test --watch",
     "prebuild": "yarn prestart",
-    "build": "NODE_ENV=building babel-node src/index.js",
-    "postbuild": "babel src -d dist --only 'src/*.js','src/server/**/*.js' --ignore 'src/**/*.test.*','src/**/*.spec.*'",
+    "build": "run-s build:*",
+    "build:client": "NODE_ENV=building babel-node src/index.js",
+    "build:server": "babel src -d dist --only 'src/*.js','src/server/**/*.js' --ignore 'src/**/*.test.*','src/**/*.spec.*'",
+    "postbuild": "cp src/config.json dist/.",
     "watch:logs": "yarn logs",
     "rmcache": "rm -rf node_modules/.cache/hard-source dist"
   },

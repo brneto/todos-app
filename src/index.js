@@ -5,7 +5,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import open from 'open';
 import express from 'express';
-import config from './config';
+import config from './config.json';
 
 const env = process.env.NODE_ENV;
 const port = 3000;
