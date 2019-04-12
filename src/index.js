@@ -45,7 +45,7 @@ if (env === 'production') {
     watcher.on('ready', () => {
       watcher.on('all', () => {
         Object.keys(require.cache).forEach(
-          id => /[/\\]server[/\\]/.test(id) && delete require.cache[id]
+          id => /[\\/]server[\\/]/.test(id) && delete require.cache[id]
         );
         console.log(chalk.yellow('"server" module cache cleared'));
       });
