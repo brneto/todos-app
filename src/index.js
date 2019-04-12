@@ -26,7 +26,6 @@ const listenerChecker = error =>
       );
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
-
 if (env === 'production') {
   app.use(morgan('tiny'), compression(), express.static(config.path));
   app.listen(port, listenerChecker);
