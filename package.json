@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "Add todos",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "reach": "git pull && yarn && yarn outdated",
     "upgi": "yarn upgrade-interactive --latest",
