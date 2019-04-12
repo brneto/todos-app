@@ -36,8 +36,8 @@ if (env === 'production') {
 } else {
   import('./webpack/builder/build.dev')
     .then(module => module.default)
-    .then(buildDev => buildDev.then(middlewares => {
-      app.use(morgan('dev'), compression(), ...middlewares);
+    .then(middlewares => {
+      app.use(morgan('combined'), compression(), ...middlewares);
 
       // TODO: Test whether the server hot-reloading it's really working.
       // Do "hot-reloading" of express stuff on the server
@@ -54,5 +54,5 @@ if (env === 'production') {
       });
 
       app.listen(port, errorChecker);
-    }));
+    });
 }
