@@ -11,7 +11,7 @@ import config from './config';
 const env = process.env.NODE_ENV;
 const port = 3000;
 const app = express();
-const errorChecker = error => error
+const listenerChecker = error => error
   ? console.log(chalk.red(`Server failed to start: [${error}].`))
   : console.log(chalk.green(`Server running and listening on port: ${port}.`)) ||
     env !== 'production' &&
@@ -25,12 +25,8 @@ const errorChecker = error => error
 console.log(chalk.green('Starting app in', env, 'mode...'));
 
 if (env === 'production') {
-  app.use(
-    morgan('tiny'),
-    compression(),
-    express.static(config.path)
-  );
-  app.listen(port, errorChecker);
+  app.use(morgan('tiny'), compression(), express.static(config.path));
+  app.listen(port, listenerChecker);
 } else if (env === 'building') {
   import('./webpack/builder/build.prod');
 } else {
@@ -53,6 +49,6 @@ if (env === 'production') {
         });
       });
 
-      app.listen(port, errorChecker);
+      app.listen(port, listenerChecker);
     });
 }
