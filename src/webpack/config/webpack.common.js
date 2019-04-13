@@ -5,23 +5,21 @@ import flexbugsfixes from 'postcss-flexbugs-fixes';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
 import config from '../../config';
 
-const isDevEnv = process.env.NODE_ENV !== 'production';
+const isInDev = process.env.NODE_ENV !== 'production';
 
-const filePrefix = isDevEnv ? '[name].bundle' : '[name].[contenthash].bundle';
-const chunkPrefix = isDevEnv ? '[name].chunk' : '[name].[contenthash].chunk';
-const imgFilename = isDevEnv ? '[name].[ext]' : '[name].[hash:8].[ext]';
+const filePrefix = isInDev ? '[name].bundle' : '[name].[contenthash].bundle';
+const chunkPrefix = isInDev ? '[name].chunk' : '[name].[contenthash].chunk';
+const imgFilename = isInDev ? '[name].[ext]' : '[name].[hash:8].[ext]';
 
 const TEMPLATE_PATH = './public';
-const PUBLIC_PATH = '/';
 const HTML_INDEX = 'index.html';
-const FAVICON = path.join(TEMPLATE_PATH, 'favicon.ico');
 
 const htmlPluginOptions = {
   title: config.title,
   filename: HTML_INDEX,
   template: path.join(TEMPLATE_PATH, HTML_INDEX),
   inject: true,
-  favicon: FAVICON,
+  favicon: path.join(TEMPLATE_PATH, 'favicon.ico'),
   xhtml: true
 };
 
@@ -34,7 +32,7 @@ const commonConfig = {
     filename: `${filePrefix}.js`,
     chunkFilename: `${chunkPrefix}.js`,
     path: path.resolve(path.join('dist', config.path)),
-    publicPath: PUBLIC_PATH,
+    publicPath: '/',
     hashDigestLength: 8
   },
   optimization: {
@@ -79,7 +77,7 @@ const commonConfig = {
               sourceMaps: false,
               presets: [
                 ['@babel/preset-env',  {
-                  forceAllTransforms: !isDevEnv,
+                  forceAllTransforms: !isInDev,
                   modules: false,
                   // Important, @babel/polyfill still needs to be installed.
                   useBuiltIns: 'usage',
