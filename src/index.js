@@ -7,7 +7,7 @@ import express from 'express';
 import config from './config.json';
 
 const env = process.env.NODE_ENV;
-const port = 3000;
+const port = config.port;
 const app = express();
 const listenerChecker = error =>
   error

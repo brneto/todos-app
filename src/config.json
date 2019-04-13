@@ -1,4 +1,5 @@
 {
   "title": "Todos Application",
-  "path": "client"
+  "path": "client",
+  "port": 3000
 }
