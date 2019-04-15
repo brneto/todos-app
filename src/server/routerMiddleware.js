@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 
 const createRouterMiddleware = resourceBuffer => {
-  const router = express.Router(); // eslint-disable-line babel/new-cap
+  const router = Router(); // eslint-disable-line babel/new-cap
 
   router.get('/source', (req, res) => {
     res.set('Content-Type', 'text/plain');
