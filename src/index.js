@@ -31,6 +31,7 @@ if (env === 'production') {
 } else if (env === 'building') {
     // TODO: Change to use webpack to also transpile the server code.
     // https://github.com/yusinto/universal-hot-reload/blob/master/src/index.js
+    // https://webpack.js.org/api/node/#watching
     // https://github.com/liady/webpack-node-externals
   import('./webpack/builder/build.prod');
 } else {
