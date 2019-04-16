@@ -1,6 +1,6 @@
 import express from 'express';
 import config from '../config.json';
-import modelMiddleware from './models';
+import models from './models';
 import routers from './routers';
 
 const app = express();
@@ -8,7 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(modelMiddleware);
+app.use(models);
 app.use('/api/todos', routers.todo);
 
 app.listen(config.port, error =>
