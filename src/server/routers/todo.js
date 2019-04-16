@@ -3,9 +3,6 @@ import uuidv4 from 'uuid/v4';
 
 const router = express.Router(); // eslint-disable-line babel/new-cap
 
-router.use(express.urlencoded({ extended: true }));
-router.use(express.json());
-
 router.get('/', (req, res) => void res.json(req.models.todos));
 
 router.get('/:id', (req, res) => void res.json(req.models.todos[req.params.id]));

@@ -5,6 +5,9 @@ import routers from './routers';
 
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(modelMiddleware);
 app.use('/api/todos', routers.todo);
 
