@@ -1,4 +1,4 @@
-let todos = {
+export default {
   1: {
     id: 1,
     text: 'hey',
@@ -15,5 +15,3 @@ let todos = {
     completed: false,
   }
 };
-
-export default todos;
