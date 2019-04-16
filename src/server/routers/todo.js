@@ -5,7 +5,10 @@ const router = express.Router(); // eslint-disable-line babel/new-cap
 
 router.get('/', (req, res) => void res.json(req.models.todos));
 
-router.get('/:id', (req, res) => void res.json(req.models.todos[req.params.id]));
+router.get(
+  '/:id',
+  (req, res) => void res.json(req.models.todos[req.params.id])
+);
 
 router.post('/', (req, res) => {
   const id = uuidv4();
