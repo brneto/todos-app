@@ -6,11 +6,11 @@ const router = express.Router(); // eslint-disable-line babel/new-cap
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
-router.get('/todos', (req, res) => void res.json(req.models.todos));
+router.get('/', (req, res) => void res.json(req.models.todos));
 
-router.get('/todos/:id', (req, res) => void res.json(req.models.todos[req.params.id]));
+router.get('/:id', (req, res) => void res.json(req.models.todos[req.params.id]));
 
-router.post('/todos', (req, res) => {
+router.post('/', (req, res) => {
   const id = uuidv4();
 
   res.json(req.models.todos[id] = {
@@ -19,7 +19,7 @@ router.post('/todos', (req, res) => {
   });
 });
 
-router.put('/todos/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id;
   const todo = {
     ...req.models.todos[id],
@@ -29,7 +29,7 @@ router.put('/todos/:id', (req, res) => {
   res.json(req.models.todos[id] = todo);
 });
 
-router.delete('/todos/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const {
     [req.params.id]: todo,
     ...rest

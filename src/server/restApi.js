@@ -11,7 +11,7 @@ const modelMiddleware = (req, res, next) => {
 };
 
 app.use(modelMiddleware);
-app.use('/api', routers.todo);
+app.use('/api/todos', routers.todo);
 
 app.listen(config.port, error =>
   error
