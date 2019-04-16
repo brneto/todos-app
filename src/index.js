@@ -5,6 +5,7 @@ import compression from 'compression';
 import open from 'open';
 import express from 'express';
 import config from './config.json';
+import routers from './server/sseApi/routers';
 
 const env = process.env.NODE_ENV;
 const port = config.port;
@@ -25,6 +26,7 @@ const listenerChecker = error =>
       );
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
+app.use('/api', routers.sse);
 if (env === 'production') {
   app.use(morgan('tiny'), compression(), express.static(config.path));
   app.listen(port, listenerChecker);
@@ -38,6 +40,7 @@ if (env === 'production') {
   import('./webpack/builder/build.dev').then(async module => {
     const middlewares = await module.default;
     app.use(morgan('combined'), compression(), ...middlewares);
+
     app.listen(port, listenerChecker);
   });
 }
