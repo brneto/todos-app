@@ -1,14 +1,9 @@
 import express from 'express';
 import config from '../config.json';
-import models from './models';
+import modelMiddleware from './models';
 import routers from './routers';
 
 const app = express();
-const modelMiddleware = (req, res, next) => {
-  req.models = models;
-
-  next();
-};
 
 app.use(modelMiddleware);
 app.use('/api/todos', routers.todo);

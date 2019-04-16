@@ -1,3 +1,10 @@
 import todos from './todos';
 
-export default { todos };
+const models = {
+  todos,
+};
+
+export default (req, res, next) => {
+  req.models = models;
+  next();
+};
