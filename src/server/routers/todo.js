@@ -4,7 +4,7 @@ import uuidv4 from 'uuid/v4';
 const router = Router(); // eslint-disable-line babel/new-cap
 
 router.get('/', (req, res) => {
-  res.json(req.models.todos);
+  res.json(Object.values(req.models.todos));
 });
 
 router.get('/:id', (req, res) => {
