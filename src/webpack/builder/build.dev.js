@@ -28,12 +28,13 @@ export default new Promise(resolve => {
     console.log(chalk.green(
       'Your app has been compiled in development mode and written into memory.'
     ));
-    const resourcePath = path.join(
+
+    const resourceBuffer = devMiddleware.fileSystem.readFileSync(path.join(
       webpackConfig.output.path,
       htmlPluginOptions.filename
-    );
-    const resourceBuffer = devMiddleware.fileSystem.readFileSync(resourcePath);
+    ));
     const routerMiddleware = createRouterMiddleware(resourceBuffer);
+
     resolve([devMiddleware, hotMiddleware, routerMiddleware]);
   });
 });
