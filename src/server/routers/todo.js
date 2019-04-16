@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import uuidv4 from 'uuid/v4';
 
-const router = express.Router(); // eslint-disable-line babel/new-cap
+const router = Router(); // eslint-disable-line babel/new-cap
 
 router.get('/', (req, res) => {
   res.json(req.models.todos);
