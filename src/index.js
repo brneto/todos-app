@@ -28,8 +28,8 @@ switch (env) {
 
   default:
     import('./webpack/builder/build.dev').then(async module => {
-      const middlewares = await module.default;
-      app.use(morgan('combined'), compression(), ...middlewares);
+      const webpack = await module.default;
+      app.use(morgan('combined'), compression(), ...webpack);
       app.listen(port, listenerHandler);
     });
 }
