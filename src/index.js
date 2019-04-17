@@ -17,6 +17,7 @@ switch (env) {
     app.use(morgan('tiny'), compression(), express.static(config.client.path));
     app.listen(port, listenerHandler);
     break;
+
   case 'building':
     // TODO: Change to use webpack to also transpile the server code.
     // https://github.com/yusinto/universal-hot-reload/blob/master/src/index.js
@@ -24,6 +25,7 @@ switch (env) {
     // https://github.com/liady/webpack-node-externals
     import('./webpack/builder/build.prod');
     break;
+
   default:
     import('./webpack/builder/build.dev').then(async module => {
       const middlewares = await module.default;
