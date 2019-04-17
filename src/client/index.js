@@ -1,27 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import Root from './components/Root';
 import state from './redux/store';
 import * as serviceWorker from './serviceWorker';
+//import SSEListener from './components/SSEListener';
 
-
-const evtSource = new EventSource('/api/sse');
-
-const Evento = () => {
-  const [state, setState] = useState('inicio');
-
-  evtSource.addEventListener('messages', evt => {
-    setState(evt.data);
-  });
-
-  return (
-    <div>{state}</div>
-  );
-};
+// render(
+//   <SSEListener />,
+//   document.getElementById('root')
+// );
 
 render(
-  //<Root {...state} />,
-  <Evento />,
+  <Root {...state} />,
   document.getElementById('root')
 );
 
