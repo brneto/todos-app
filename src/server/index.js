@@ -3,7 +3,7 @@ import open from 'open';
 import config from '../config.json';
 import routers from './routers';
 
-const env = process.env.NODE_ENV;
+const isInDev = process.env.NODE_ENV !== 'production';
 const port = config.server.port;
 
 const listenerHandler = error =>
@@ -12,8 +12,8 @@ const listenerHandler = error =>
     : console.log(
         chalk.green(`Server running and listening on port: ${port}.`)
       ) ||
-      (env !== 'production' &&
-        open(`http://localhost:${port}`).then(
+      (isInDev
+        && open(`http://localhost:${port}`).then(
           resolve => console.log(
             `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
           ),
