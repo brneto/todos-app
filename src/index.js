@@ -12,20 +12,22 @@ const port = config.server.port;
 const listenerHandler = utils.listenerHandler;
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
-if (env === 'production') {
-  app.use(morgan('tiny'), compression(), express.static(config.client.path));
-  app.listen(port, listenerHandler);
-} else if (env === 'building') {
+switch (env) {
+  case 'production':
+    app.use(morgan('tiny'), compression(), express.static(config.client.path));
+    app.listen(port, listenerHandler);
+    break;
+  case 'building':
     // TODO: Change to use webpack to also transpile the server code.
     // https://github.com/yusinto/universal-hot-reload/blob/master/src/index.js
     // https://webpack.js.org/api/node/#watching
     // https://github.com/liady/webpack-node-externals
-  import('./webpack/builder/build.prod');
-} else {
-  import('./webpack/builder/build.dev').then(async module => {
-    const middlewares = await module.default;
-
-    app.use(morgan('combined'), compression(), ...middlewares);
-    app.listen(port, listenerHandler);
-  });
+    import('./webpack/builder/build.prod');
+    break;
+  default:
+    import('./webpack/builder/build.dev').then(async module => {
+      const middlewares = await module.default;
+      app.use(morgan('combined'), compression(), ...middlewares);
+      app.listen(port, listenerHandler);
+    });
 }
