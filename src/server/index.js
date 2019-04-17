@@ -12,11 +12,12 @@ const listenerHandler = error =>
     : console.log(
         chalk.green(`Server running and listening on port: ${port}.`)
       ) ||
-      (isInDev
-        && open(`http://localhost:${port}`).then(
-          resolve => console.log(
-            `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
-          ),
+      (isInDev &&
+        open(`http://localhost:${port}`).then(
+          resolve =>
+            console.log(
+              `Browser opened with command: '${resolve.spawnargs.join(' ')}'.`
+            ),
           reject => console.log(`Failed to open the browser: [${reject}].`)
         )
       );
