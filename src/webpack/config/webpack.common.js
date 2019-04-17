@@ -11,15 +11,15 @@ const filePrefix = isInDev ? '[name].bundle' : '[name].[contenthash].bundle';
 const chunkPrefix = isInDev ? '[name].chunk' : '[name].[contenthash].chunk';
 const imgFilename = isInDev ? '[name].[ext]' : '[name].[hash:8].[ext]';
 
-const TEMPLATE_PATH = './public';
-const HTML_INDEX = 'index.html';
+const templatePath = './public';
+const htmlIndex = 'index.html';
 
 const htmlPluginOptions = {
   title: config.client.title,
-  filename: HTML_INDEX,
-  template: path.join(TEMPLATE_PATH, HTML_INDEX),
+  filename: htmlIndex,
+  template: path.join(templatePath, htmlIndex),
   inject: true,
-  favicon: path.join(TEMPLATE_PATH, 'favicon.ico'),
+  favicon: path.join(templatePath, 'favicon.ico'),
   xhtml: true
 };
 
@@ -92,6 +92,7 @@ const commonConfig = {
                 ['@babel/plugin-proposal-class-properties', { loose: true }],
                 ['@babel/plugin-proposal-private-methods', { loose: true }],
                 '@babel/plugin-proposal-function-bind',
+                '@babel/plugin-proposal-optional-catch-binding',
                 '@babel/plugin-proposal-optional-chaining',
                 '@babel/plugin-proposal-throw-expressions',
                 // It's required Babel Syntax Dynamic Import Plugin to
