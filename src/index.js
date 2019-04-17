@@ -10,7 +10,7 @@ import routers from './server/sseApi/routers';
 const env = process.env.NODE_ENV;
 const app = express();
 const port = config.server.port;
-const listenerChecker = error =>
+const listenerHandler = error =>
   error
     ? console.log(chalk.red(`Server failed to start: [${error}].`))
     : console.log(
@@ -40,6 +40,6 @@ if (env === 'production') {
     const middlewares = await module.default;
     app.use(morgan('combined'), compression(), ...middlewares);
 
-    app.listen(port, listenerChecker);
+    app.listen(port, listenerHandler);
   });
 }
