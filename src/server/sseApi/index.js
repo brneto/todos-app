@@ -1,6 +1,5 @@
 import express from 'express';
 import config from '../../config.json';
-import models from './models';
 import routers from './routers';
 
 const app = express();
@@ -9,8 +8,7 @@ const port = config.server.port;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(models);
-app.use('/api/todos', routers.todo);
+app.use('/api/sse', routers.sse);
 
 app.listen(port, error =>
   error

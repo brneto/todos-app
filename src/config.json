@@ -1,5 +1,9 @@
 {
-  "title": "Todos Application",
-  "path": "client",
-  "port": 3000
+  "server": {
+    "port": 3000
+  },
+  "client": {
+    "title": "Todos App",
+    "path": "client"
+  }
 }

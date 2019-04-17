@@ -8,8 +8,8 @@ import config from './config.json';
 import routers from './server/sseApi/routers';
 
 const env = process.env.NODE_ENV;
-const port = config.port;
 const app = express();
+const port = config.server.port;
 const listenerChecker = error =>
   error
     ? console.log(chalk.red(`Server failed to start: [${error}].`))
@@ -26,9 +26,8 @@ const listenerChecker = error =>
       );
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
-app.use('/api', routers.sse);
 if (env === 'production') {
-  app.use(morgan('tiny'), compression(), express.static(config.path));
+  app.use(morgan('tiny'), compression(), express.static(config.client.path));
   app.listen(port, listenerChecker);
 } else if (env === 'building') {
     // TODO: Change to use webpack to also transpile the server code.

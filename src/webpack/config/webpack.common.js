@@ -3,7 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
-import config from '../../config';
+import config from '../../config.json';
 
 const isInDev = process.env.NODE_ENV !== 'production';
 
@@ -15,7 +15,7 @@ const TEMPLATE_PATH = './public';
 const HTML_INDEX = 'index.html';
 
 const htmlPluginOptions = {
-  title: config.title,
+  title: config.client.title,
   filename: HTML_INDEX,
   template: path.join(TEMPLATE_PATH, HTML_INDEX),
   inject: true,
@@ -31,7 +31,7 @@ const commonConfig = {
   output: {
     filename: `${filePrefix}.js`,
     chunkFilename: `${chunkPrefix}.js`,
-    path: path.resolve(path.join('dist', config.path)),
+    path: path.resolve(path.join('dist', config.client.path)),
     publicPath: '/',
     hashDigestLength: 8
   },

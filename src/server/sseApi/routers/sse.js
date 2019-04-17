@@ -12,7 +12,7 @@ const createEventSender = res => msg => {
   res.write(`data: ${msg} -- timestamp: ${Date.now()}\n\n`);
 };
 
-router.get('/sse', (req, res) => {
+router.get('/', (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
     'charset': 'utf-8',
@@ -24,8 +24,8 @@ router.get('/sse', (req, res) => {
   sendEvent = createEventSender(res);
 });
 
-router.post('/sse/:msg', (req, res) => {
-  sendEvent(req.params.msg);
+router.post('/', (req, res) => {
+  sendEvent(req.body.text);
   res.send('Server-sent event sended successful.\n');
 });
 
