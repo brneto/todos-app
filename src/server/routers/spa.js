@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-const createRouterMiddleware = resourceBuffer => {
+const createRouter = resourceBuffer => {
   const router = Router(); // eslint-disable-line babel/new-cap
 
   router.get('/source', (req, res) => {
@@ -16,4 +16,4 @@ const createRouterMiddleware = resourceBuffer => {
   return router;
 };
 
-export default createRouterMiddleware;
+export default createRouter;

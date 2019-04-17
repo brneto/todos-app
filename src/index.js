@@ -3,19 +3,17 @@ import chalk from 'chalk';
 import morgan from 'morgan';
 import compression from 'compression';
 import express from 'express';
-import utils from './server/utils';
+import server from './server';
 import config from './config.json';
 
 const env = process.env.NODE_ENV;
 const app = express();
-const port = config.server.port;
-const listenerHandler = utils.listenerHandler;
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
 switch (env) {
   case 'production':
     app.use(morgan('tiny'), compression(), express.static(config.client.path));
-    app.listen(port, listenerHandler);
+    server.listen(app);
     break;
 
   case 'building':
@@ -30,6 +28,6 @@ switch (env) {
     import('./webpack/builder/build.dev').then(async module => {
       const webpack = await module.default;
       app.use(morgan('combined'), compression(), ...webpack);
-      app.listen(port, listenerHandler);
+      server.listen(app);
     });
 }

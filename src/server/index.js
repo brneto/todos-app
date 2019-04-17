@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import open from 'open';
 import config from '../config.json';
+import routers from './routers';
 
 const env = process.env.NODE_ENV;
 const port = config.server.port;
@@ -20,6 +21,11 @@ const listenerHandler = error =>
         )
       );
 
+const listen = app => {
+  app.listen(port, listenerHandler);
+};
+
 export default {
-  listenerHandler,
+  listen,
+  routers,
 };
