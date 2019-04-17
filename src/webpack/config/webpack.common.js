@@ -13,7 +13,6 @@ const imgFilename = isInDev ? '[name].[ext]' : '[name].[hash:8].[ext]';
 
 const templatePath = './public';
 const htmlIndex = 'index.html';
-
 const htmlPluginOptions = {
   title: config.client.title,
   filename: htmlIndex,
