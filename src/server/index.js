@@ -1,6 +1,8 @@
 import chalk from 'chalk';
+import express from 'express';
 import open from 'open';
 import config from '../config.json';
+import models from './models';
 import routers from './routers';
 
 const isInDev = process.env.NODE_ENV !== 'production';
@@ -23,10 +25,17 @@ const listenerHandler = error =>
       );
 
 const listen = app => {
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
+  app.use(models);
+
+  app.use('/api/todos', routers.restful);
+  app.use('/api/sse', routers.sse);
+
   app.listen(port, listenerHandler);
 };
 
 export default {
   listen,
-  routers,
+  createSpa: routers.createSpa,
 };

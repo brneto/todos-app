@@ -6,7 +6,6 @@ const router = Router(); // eslint-disable-line babel/new-cap
 let sendEvent;
 const createEventSender = res => msg => {
   let id = 0;
-
   res.write(`id: ${++id}\n`);
   res.write('event: messages\n');
   res.write(`data: ${msg} -- timestamp: ${Date.now()}\n\n`);
@@ -14,8 +13,7 @@ const createEventSender = res => msg => {
 
 router.get('/', (req, res) => {
   res.writeHead(200, {
-    'Content-Type': 'text/event-stream',
-    'charset': 'utf-8',
+    'Content-Type': 'text/event-stream; charset=utf-8',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
   });
@@ -26,7 +24,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   sendEvent(req.body.text);
-  res.send('Server-sent event sended successful.\n');
+  res.send('Server-sent event sended successfully!\n');
 });
 
 export default router;

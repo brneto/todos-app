@@ -5,6 +5,6 @@ const models = {
 };
 
 export default (req, res, next) => {
-  req.models = models;
-  next();
-};
+    req.models = models;
+    next();
+  };

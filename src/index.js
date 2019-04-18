@@ -27,7 +27,9 @@ switch (env) {
   default:
     import('./webpack/builder/build.dev').then(async module => {
       const webpack = await module.default;
-      app.use(morgan('combined'), compression(), ...webpack);
+      app.use(morgan('combined'), compression(), webpack.router);
+      app.use(server.createSpa(webpack.resourceBuffer));
+
       server.listen(app);
     });
 }

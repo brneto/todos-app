@@ -5,7 +5,6 @@ import webpackDev from 'webpack-dev-middleware';
 import webpackHot from 'webpack-hot-middleware';
 import { htmlPluginOptions } from '../config/webpack.common';
 import webpackConfig from '../config/webpack.dev';
-import server from '../../server';
 
 const compiler = webpack(webpackConfig);
 
@@ -33,8 +32,10 @@ export default new Promise(resolve => {
       webpackConfig.output.path,
       htmlPluginOptions.filename
     ));
-    const spaMiddleware = server.routers.createSpa(resourceBuffer);
 
-    resolve([devMiddleware, hotMiddleware, spaMiddleware]);
+    resolve({
+      router: [devMiddleware, hotMiddleware],
+      resourceBuffer
+    });
   });
 });
