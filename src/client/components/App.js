@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import AddTodo from './AddTodo';
 import VisibleTodoList from './VisibleTodoList';
 import Footer from './Footer';
+import SSEListener from './SSEListener';
 
 const TodoApp = styled.div`
   position: relative;
@@ -18,6 +19,7 @@ const App = () => (
     <AddTodo />
     <VisibleTodoList />
     <Footer />
+    <SSEListener />
   </TodoApp>
 );
 

@@ -8,7 +8,7 @@ const createEventSender = res => msg => {
   let id = 0;
   res.write(`id: ${++id}\n`);
   res.write('event: messages\n');
-  res.write(`data: ${msg} -- timestamp: ${Date.now()}\n\n`);
+  res.write(`data: [ts: ${Date.now()}] ${msg}\n\n`);
   // https://github.com/expressjs/compression#server-sent-events
   res.flush();
 };

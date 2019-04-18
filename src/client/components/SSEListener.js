@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function useSSE() {
-  const [state, setState] = useState(['inicio']);
+  const [state, setState] = useState([]);
 
   useEffect(() => {
     const evtSource = new EventSource('/api/sse');
@@ -21,7 +21,7 @@ function useSSE() {
 // Server-sent Events component
 function SSEListener() {
   const messages = useSSE();
-  return (<div>{messages.join(', ')}</div>);
+  return (<div>SSE messages: {messages.join(', ')}</div>);
 }
 
 export default SSEListener;
