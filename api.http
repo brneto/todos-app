@@ -1,16 +1,30 @@
 GET http://localhost:3000
 
 ###
+
 GET http://localhost:3000/active
 
 ###
+
 GET http://localhost:3000/completed
 
 ###
+
 GET http://localhost:3000/source
 
 ###
+
 GET http://localhost:3000/api/todos
 
 ###
+
 GET http://localhost:3000/api/sse
+
+###
+
+POST http://localhost:3000/api/sse
+content-type: application/json
+
+{
+	"text": "Hello world!"
+}
