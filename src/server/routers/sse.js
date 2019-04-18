@@ -9,6 +9,8 @@ const createEventSender = res => msg => {
   res.write(`id: ${++id}\n`);
   res.write('event: messages\n');
   res.write(`data: ${msg} -- timestamp: ${Date.now()}\n\n`);
+  // https://github.com/expressjs/compression#server-sent-events
+  res.flush();
 };
 
 router.get('/', (req, res) => {
@@ -24,7 +26,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   sendEvent(req.body.text);
-  res.send('Server-sent event sended successfully!\n');
+  res.send('Sended Server-sent event successfully!\n');
 });
 
 export default router;

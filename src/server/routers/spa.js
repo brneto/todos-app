@@ -9,9 +9,9 @@ const createRouter = resourceBuffer => {
   });
 
   router.get('/**', (req, res, next) => {
-    const isApiUrl = /^\/api\//.test(req.path);
+    const isApiCall = /^\/api\/.+/.test(req.path);
 
-    if (isApiUrl) {
+    if (isApiCall) {
       next();
     } else {
       res.type('html');
