@@ -14,7 +14,7 @@ max_line_length=80
 
 # Matches multiple files with brace expansion notation
 # 2 space indentation
-[*.{js,json,py,html,xml,scss,yml,babelrc}]
+[*.{js,json,py,html,xml,scss,yml,babelrc,http}]
 indent_style = space
 indent_size = 2
 
