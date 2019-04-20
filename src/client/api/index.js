@@ -56,3 +56,5 @@ export const toggleTodo = (id) =>
     todo.completed = !todo.completed;
     return todo;
   });
+
+  export { default as sse } from './sse';

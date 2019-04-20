@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import effects from '../effects';
 
 function useSSE() {
   const [state, setState] = useState([]);
-
-  useEffect(() => {
-    const evtSource = new EventSource('/api/sse');
-    const handleServerEvent = evt =>
-      setState(prevState => [...prevState, evt.data]);
-
-    evtSource.addEventListener('messages', handleServerEvent);
-    return () => {
-      evtSource.removeEventListener('messages', handleServerEvent);
-      evtSource.close();
-    };
-  }, []);
+  useEffect(effects.sse.createMessagesEffect(setState), []);
 
   return state;
 }
@@ -21,7 +11,8 @@ function useSSE() {
 // Server-sent Events component
 function SSEListener() {
   const messages = useSSE();
-  return (<div>SSE messages: {messages.join(', ')}</div>);
+
+  return <div>SSE messages: {messages.join(', ')}</div>;
 }
 
 export default SSEListener;
