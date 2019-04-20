@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import hooks from '../hooks';
+import * as hooks from '../hooks';
 
 const Title = styled.h1`
   position: absolute;

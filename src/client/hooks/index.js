@@ -1,5 +1,1 @@
-import * as todos from './todos';
-
-export default {
-  todos,
-};
+export * as todos from './todos';
