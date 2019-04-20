@@ -1,7 +1,2 @@
-import * as sse from './sse';
-import * as todos from './todos';
-
-  export default {
-    sse,
-    todos,
-  };
+export * as sse from './sse';
+export * as todos from './todos';

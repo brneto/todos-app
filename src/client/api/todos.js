@@ -53,8 +53,8 @@ const toggleTodo = id => delay(3).then(() => {
   return todo;
 });
 
-  export {
-    fetchTodos,
-    addTodo,
-    toggleTodo,
-  };
+export {
+  fetchTodos,
+  addTodo,
+  toggleTodo,
+};

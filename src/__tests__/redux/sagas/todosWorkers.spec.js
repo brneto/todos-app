@@ -4,7 +4,7 @@ import * as actions from '../../../client/redux/actions';
 import * as selectors from '../../../client/redux/reducers';
 import * as schema from '../../../client/libs/schema';
 import * as sagas from '../../../client/redux/sagas/todosWorkers';
-import api from '../../../client/api';
+import * as api from '../../../client/api';
 
 describe('sagas/TodosWorkers', () => {
   it('should call fetchTodos api', () => {

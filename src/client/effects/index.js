@@ -1,5 +1,1 @@
-import * as sse from './sse';
-
-export default {
-  sse,
-};
+export * as sse from './sse';
