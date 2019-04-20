@@ -1,13 +1,16 @@
+# https://github.com/styled-components/stylelint-processor-styled-components/issues/228
+# https://github.com/styled-components/stylelint-processor-styled-components/issues/231
+# https://babeljs.io/docs/en/babel-parser#ecmascript-proposals-https-githubcom-babel-proposals
 processors:
   -
     - stylelint-processor-styled-components
     - parserPlugins:
         - jsx
         - objectRestSpread
-        -
-          - decorators
-          - decoratorsBeforeExport: true
+        - decorators-legacy
         - classProperties
+        - classPrivateProperties
+        - classPrivateMethods
         - exportExtensions
         - asyncGenerators
         - functionBind
@@ -17,6 +20,7 @@ processors:
         - optionalChaining
         - exportDefaultFrom
         - exportNamespaceFrom
+        - throwExpressions
 extends:
   - stylelint-config-recommended
   - stylelint-config-standard
