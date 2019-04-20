@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import * as effects from '../effects';
 
 const StyledDiv = styled.div`
-  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-weight: bold;
 `;
 
 // Server-sent Events component
