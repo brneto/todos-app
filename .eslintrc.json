@@ -72,7 +72,7 @@
     "react-hooks/exhaustive-deps": "warn"
   },
   "overrides": [{
-    "files": ["src/index.js", "src/webpack/builder/**", "src/server/**"],
+    "files": ["src/index.js", "src/webpack/builders/**", "src/server/**"],
     "rules": {
       "no-console": "off",
       "no-restricted-syntax": ["error", {

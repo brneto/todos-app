@@ -1,9 +1,3 @@
-import createSpa from './spa';
-import restful from './rest';
-import sse from './sse';
-
-export default {
-  createSpa,
-  restful,
-  sse,
-};
+export { default as createSpa } from './spa';
+export { default as restful } from './rest';
+export { default as sse } from './sse';

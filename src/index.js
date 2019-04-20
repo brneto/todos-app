@@ -21,15 +21,19 @@ switch (env) {
     // https://github.com/yusinto/universal-hot-reload/blob/master/src/index.js
     // https://webpack.js.org/api/node/#watching
     // https://github.com/liady/webpack-node-externals
-    import('./webpack/builder/build.prod');
+    import('./webpack/builders/build.prod').then(async module => {
+      const build = await module.default;
+      return build;
+    });
     break;
 
   default:
-    import('./webpack/builder/build.dev').then(async module => {
-      const webpack = await module.default;
-      app.use(morgan('combined'), compression(), webpack.router);
-      app.use(server.createSpa(webpack.resourceBuffer));
+    import('./webpack/builders/build.dev').then(async module => {
+      const build = await module.default;
+      app.use(morgan('combined'), compression(), build.router);
+      app.use(server.createSpa(build.resourceBuffer));
 
       server.listen(app);
+      return build;
     });
 }

@@ -3,7 +3,7 @@ import express from 'express';
 import open from 'open';
 import config from '../config.json';
 import models from './models';
-import routers from './routers';
+import * as routers from './routers';
 
 const isInDev = process.env.NODE_ENV !== 'production';
 const port = config.server.port;
