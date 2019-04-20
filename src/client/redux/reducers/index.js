@@ -12,17 +12,15 @@ const listByFilter = combineReducers({
   completed: createList('completed'),
 });
 
+// Recommendation: The reducer function is always default export.
 const createRootReducer = history => combineReducers({
   router: connectRouter(history),
   byId,
   listByFilter,
 });
 
-// Recommendation: The reducer function is always default export.
-export default createRootReducer;
-
 // Recommendation: Always put the selectors together with its related reducer.
-export const getFilter = createSelector(
+const getFilter = createSelector(
   // createMatchSelector:
   // The argument are the props to match against,
   // they are identical to the matching props Route accepts:
@@ -40,7 +38,7 @@ const getListByFilter = createSelector(
   identity
 );
 
-export const getVisibleTodos = createSelector(
+const getVisibleTodos = createSelector(
   [
     o(fromById.createGetTodo, prop('byId')),
     o(fromList.getIds, getListByFilter),
@@ -48,12 +46,20 @@ export const getVisibleTodos = createSelector(
   map
 );
 
-export const getIsFetching = createSelector(
+const getIsFetching = createSelector(
   [o(fromList.getIsFetching, getListByFilter)],
   identity
 );
 
-export const getErrorMessage = createSelector(
+const getErrorMessage = createSelector(
   [o(fromList.getErrorMessage, getListByFilter)],
   identity
 );
+
+export {
+  createRootReducer as default,
+  getFilter,
+  getVisibleTodos,
+  getIsFetching,
+  getErrorMessage,
+};

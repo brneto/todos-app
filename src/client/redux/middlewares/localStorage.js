@@ -1,4 +1,4 @@
-export const loadState = () => {
+const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
     return JSON.parse(serializedState) || undefined;
@@ -7,11 +7,16 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state) => {
+const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (err) { // Ignore write errors.
     console.log(err); // eslint-disable-line no-console
   }
+};
+
+export {
+  loadState,
+  saveState,
 };

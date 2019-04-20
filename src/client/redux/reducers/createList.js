@@ -111,10 +111,15 @@ const createList = filter => {
   });
 };
 
-export default createList;
-
 // SELECTORS
 // prop :: s -> {s: a} -> a | Undefined
-export const getIds = createSelector([prop('ids')], identity);
-export const getIsFetching = createSelector([prop('isFetching')], identity);
-export const getErrorMessage = createSelector([prop('errorMessage')], identity);
+const getIds = createSelector([prop('ids')], identity);
+const getIsFetching = createSelector([prop('isFetching')], identity);
+const getErrorMessage = createSelector([prop('errorMessage')], identity);
+
+export {
+  createList as default,
+  getIds,
+  getIsFetching,
+  getErrorMessage,
+};

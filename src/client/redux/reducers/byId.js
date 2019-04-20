@@ -16,8 +16,11 @@ const byId = handleActions(
   initialState
 );
 
-export default byId;
-
 // SELECTORS
 // flip(prop) :: {s: a} -> s -> a | Undefined
-export const createGetTodo = createSelector([flip(prop)], identity);
+const createGetTodo = createSelector([flip(prop)], identity);
+
+export {
+  byId as default,
+  createGetTodo,
+};

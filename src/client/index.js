@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Root from './components/Root';
-import state from './redux/store';
+import * as state from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
 render(
