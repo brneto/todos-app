@@ -4,7 +4,7 @@ import * as actions from '../../../client/redux/actions';
 import * as selectors from '../../../client/redux/reducers';
 import * as schema from '../../../client/libs/schema';
 import * as sagas from '../../../client/redux/sagas/todosWorkers';
-import * as api from '../../../client/api';
+import api from '../../../client/api';
 
 describe('sagas/TodosWorkers', () => {
   it('should call fetchTodos api', () => {
@@ -32,7 +32,7 @@ describe('sagas/TodosWorkers', () => {
     .next(filter)
     .put(actions.setToggleFetching(filter))
     .next()
-    .call(api.fetchTodos, filter)
+    .call(api.todos.fetchTodos, filter)
     .next(response)
     .put(actions.setFetchedTodos(data, filter))
     .next()
@@ -60,7 +60,7 @@ describe('sagas/TodosWorkers', () => {
 
     testSaga(sagas.addTodo, actions.addTodo(text))
     .next()
-    .call(api.addTodo, text)
+    .call(api.todos.addTodo, text)
     .next(response)
     .put(actions.setAddedTodo(data))
     .next()
@@ -78,7 +78,7 @@ describe('sagas/TodosWorkers', () => {
 
     testSaga(sagas.toggleTodo, actions.toggleTodo(id))
     .next()
-    .call(api.toggleTodo, id)
+    .call(api.todos.toggleTodo, id)
     .next(response)
     .put(actions.setToggledTodoAdd(id, 'active'))
     .next()

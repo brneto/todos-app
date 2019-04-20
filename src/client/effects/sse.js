@@ -1,11 +1,11 @@
-import { sse } from '../api';
+import api from '../api';
 
 const createMessagesEffect = setState => () => {
-  const messagesUnsubscribe = sse.messagesSubscribe(event =>
+  const messagesUnsubscribe = api.sse.messagesSubscribe(event =>
     setState(prevState => [...prevState, event.data])
   );
 
   return messagesUnsubscribe;
 };
 
-export default { createMessagesEffect };
+export { createMessagesEffect };

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { useAddTodo } from '../hooks/todo';
+import hooks from '../hooks';
 
 const Title = styled.h1`
   position: absolute;
@@ -38,7 +38,7 @@ const Input = styled.input`
 `;
 
 export function AddTodoPresentation({ dispatch }) {
-  const input = useAddTodo(dispatch);
+  const input = hooks.todos.useAddTodo(dispatch);
   return (
     <header>
       <Title>todos</Title>

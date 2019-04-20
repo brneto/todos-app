@@ -3,7 +3,7 @@ import { curry, prop, compose } from 'ramda';
 import { call, put, select, cancel } from 'redux-saga/effects';
 import * as actions from '../actions';
 import * as selectors from '../reducers';
-import * as api from '../../api';
+import api from '../../api';
 import * as schema from '../../libs/schema';
 
 export function* fetchTodos() {
@@ -16,7 +16,7 @@ export function* fetchTodos() {
     var filter = yield select(selectors.getFilter);
     yield put(actions.setToggleFetching(filter));
 
-    const response = yield call(api.fetchTodos, filter);
+    const response = yield call(api.todos.fetchTodos, filter);
     const data = normalize(response, schema.todoList);
 
     yield put(actions.setFetchedTodos(data, filter));
@@ -29,7 +29,7 @@ export function* fetchTodos() {
 
 export function* addTodo({ payload: text }) {
   try {
-    const response = yield call(api.addTodo, text);
+    const response = yield call(api.todos.addTodo, text);
     const data = normalize(response, schema.todo);
 
     yield put(actions.setAddedTodo(data));
@@ -40,7 +40,7 @@ export function* addTodo({ payload: text }) {
 
 export function* toggleTodo({ payload: id }) {
   try {
-    const response = yield call(api.toggleTodo, id);
+    const response = yield call(api.todos.toggleTodo, id);
     const data = normalize(response, schema.todo);
     const toggledId = data.result;
 

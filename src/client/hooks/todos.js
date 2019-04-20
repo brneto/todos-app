@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { addTodo } from '../redux/actions';
 
-export function useAddTodo(dispatch) {
+function useAddTodo(dispatch) {
   const [todo, setTodo] = useState('');
   const handleChange = ({ target }) => setTodo(target.value);
   const handleKeyDown = ({ keyCode }) => {
@@ -17,3 +17,5 @@ export function useAddTodo(dispatch) {
     onKeyDown: handleKeyDown
   };
 }
+
+export { useAddTodo };

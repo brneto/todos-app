@@ -1,3 +1,5 @@
-import sse from './sse';
+import * as sse from './sse';
 
-export default { sse };
+export default {
+  sse,
+};

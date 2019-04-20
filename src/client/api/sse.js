@@ -9,6 +9,6 @@ function messagesSubscribe(eventHandler) {
   };
 }
 
-export default {
+export {
   messagesSubscribe,
 };
