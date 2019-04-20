@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import effects from '../effects';
 
-function useSSE() {
-  const [state, setState] = useState([]);
-  useEffect(effects.sse.createMessagesEffect(setState), []);
-
-  return state;
-}
+const StyledDiv = styled.div`
+  text-align: center;
+`;
 
 // Server-sent Events component
 function SSEListener() {
-  const messages = useSSE();
+  const [messages, setMessage] = useState([]);
 
-  return <div>SSE messages: {messages.join(', ')}</div>;
+  useEffect(effects.sse.createMessagesEffect(setMessage), []);
+
+  return <StyledDiv>SSE messages: {messages.join(', ')}</StyledDiv>;
 }
 
 export default SSEListener;
