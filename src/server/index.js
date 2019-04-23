@@ -22,13 +22,13 @@ const listenerHandler = error =>
           reject => console.log(`Failed to open the browser: [${reject}].`)
         )
       );
-const { createSpa, ...rest } = routers;
+const { createSpa, ...api } = routers;
 const listen = app => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(models);
 
-  app.use('/api', ...rest);
+  app.use('/api', ...api);
 
   app.listen(port, listenerHandler);
 };
