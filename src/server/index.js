@@ -29,8 +29,7 @@ const listen = app => {
   app.use(express.json());
   app.use(models);
 
-  app.use('/api/todos', routers.restful);
-  app.use('/api/sse', routers.sse);
+  app.use('/api', ...routers);
 
   app.listen(port, listenerHandler);
 };
