@@ -7,7 +7,6 @@ import * as routers from './routers';
 
 const isInDev = process.env.NODE_ENV !== 'production';
 const port = config.server.port;
-
 const listenerHandler = error =>
   error
     ? console.log(chalk.red(`Server failed to start: [${error}].`))
@@ -23,13 +22,12 @@ const listenerHandler = error =>
           reject => console.log(`Failed to open the browser: [${reject}].`)
         )
       );
-
+const { createSpa, ...rest } = routers;
 const listen = app => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(models);
 
-  const { spa, ...rest } = routers;
   app.use('/api', ...rest);
 
   app.listen(port, listenerHandler);
@@ -37,5 +35,5 @@ const listen = app => {
 
 export default {
   listen,
-  createSpa: routers.createSpa,
+  createSpa,
 };
