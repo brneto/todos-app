@@ -29,7 +29,8 @@ const listen = app => {
   app.use(express.json());
   app.use(models);
 
-  app.use('/api', ...routers);
+  const { spa, ...rest } = routers;
+  app.use('/api', ...rest);
 
   app.listen(port, listenerHandler);
 };
