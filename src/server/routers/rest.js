@@ -1,17 +1,18 @@
 import { Router } from 'express';
 import uuidv4 from 'uuid/v4';
 
+const url = '/todos';
 const router = Router(); // eslint-disable-line babel/new-cap
 
-router.get('/', (req, res) => {
+router.get(url, (req, res) => {
   res.json(Object.values(req.models.todos));
 });
 
-router.get('/:id', (req, res) => {
+router.get(`${url}/:id`, (req, res) => {
   res.json(req.models.todos[req.params.id]);
 });
 
-router.post('/', (req, res) => {
+router.post(url, (req, res) => {
   const id = uuidv4();
 
   res.json(req.models.todos[id] = {
@@ -21,7 +22,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.put('/:id', (req, res) => {
+router.put(`${url}/:id`, (req, res) => {
   const id = req.params.id;
   const todo = {
     ...req.models.todos[id],
@@ -33,7 +34,7 @@ router.put('/:id', (req, res) => {
   res.json(req.models.todos[id] = todo);
 });
 
-router.delete('/:id', (req, res) => {
+router.delete(`${url}/:id`, (req, res) => {
   const {
     [req.params.id]: todo,
     ...rest
