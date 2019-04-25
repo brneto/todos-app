@@ -21,3 +21,4 @@ indent_size = 2
 # Set trailing whitespace override for all Markdown files
 [*.md]
 trim_trailing_whitespace = false
+
