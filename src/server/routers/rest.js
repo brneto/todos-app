@@ -4,8 +4,8 @@ import uuidv4 from 'uuid/v4';
 const url = '/todos';
 const router = express.Router(); // eslint-disable-line babel/new-cap
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
 router.get(url, (req, res) => {
   res.json(Object.values(req.models.todos));

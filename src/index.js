@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import morgan from 'morgan';
 import compression from 'compression';
 import express from 'express';
-import server from './server';
+import * as server from './server';
 import config from './config.json';
 
 const env = process.env.NODE_ENV;
