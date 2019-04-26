@@ -1,9 +1,12 @@
 // https://jasonbutz.info/2018/08/server-sent-events-with-node/
 // https://github.com/expressjs/compression#server-sent-events
-import { Router } from 'express';
+import express from 'express';
 
 const url = '/sse';
-const router = Router(); // eslint-disable-line babel/new-cap
+const router = express.Router(); // eslint-disable-line babel/new-cap
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 let sendEvent;
 const createEventSender = res => msg => {
