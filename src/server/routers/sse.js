@@ -1,4 +1,5 @@
 // https://jasonbutz.info/2018/08/server-sent-events-with-node/
+// https://www.voorhoede.nl/en/blog/real-time-communication-with-server-sent-events/
 // https://github.com/expressjs/compression#server-sent-events
 import express from 'express';
 
