@@ -21,6 +21,7 @@ router.get(url, (req, res) => {
   eventSender = msg => {
     res.write(`id: ${++id}\n`);
     res.write('event: messages\n');
+    res.write('retry: 10000\n');
     res.write(`data: [ts: ${Date.now()}] ${msg}\n\n`);
     res.flush();
   };
