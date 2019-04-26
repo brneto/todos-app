@@ -9,14 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 let id = 0;
-const createEventSender = res => msg => {
-  res.write(`id: ${++id}\n`);
-  res.write('event: messages\n');
-  res.write(`data: [ts: ${Date.now()}] ${msg}\n\n`);
-  res.flush();
-};
-
-let sendEvent;
+let eventSender;
 router.get(url, (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream; charset=utf-8',
@@ -25,11 +18,16 @@ router.get(url, (req, res) => {
   });
   res.write('\n');
 
-  sendEvent = createEventSender(res);
+  eventSender = msg => {
+    res.write(`id: ${++id}\n`);
+    res.write('event: messages\n');
+    res.write(`data: [ts: ${Date.now()}] ${msg}\n\n`);
+    res.flush();
+  };
 });
 
 router.post(url, (req, res) => {
-  sendEvent(req.body.text);
+  eventSender(req.body.text);
   res.send('Sended Server-sent event successfully!\n');
 });
 
