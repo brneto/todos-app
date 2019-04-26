@@ -21,10 +21,10 @@ const listenerHandler = error =>
           reject => console.log(`Failed to open the browser: [${reject}].`)
         )
       );
-const { createSpa, restful, sse } = routers;
+const { createSpa, ...rest } = routers;
 const listen = app => {
   app.use(models);
-  app.use('/api', restful, sse);
+  app.use('/api', ...Object.values(rest));
 
   app.listen(port, listenerHandler);
 };

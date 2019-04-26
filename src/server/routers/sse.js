@@ -18,11 +18,11 @@ router.get(url, (req, res) => {
   res.write('\n');
 
   req.app.on('sse', data => {
-    const lastIndex = data.length - 1;
-    res.write(`id: ${lastIndex}\n`);
+    const nextIndex = data.length;
+    res.write(`id: ${nextIndex}\n`);
     res.write('event: messages\n');
     res.write('retry: 10000\n');
-    res.write(`data: [ts: ${Date.now()}] ${data[lastIndex]}\n\n`);
+    res.write(`data: [TS-${Date.now()}] ${data[nextIndex - 1]}\n\n`);
     res.flush();
   });
 });
