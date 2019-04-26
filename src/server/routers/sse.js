@@ -32,7 +32,7 @@ router.post(url, (req, res) => {
   
   req.app.emit('sse', messageList);
   
-  res.send('Sended Server-sent event successfully!\n');
+  res.send(req.body);
 });
   
 router.get(`${url}/list`, (req, res) => {
