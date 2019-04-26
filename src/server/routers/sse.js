@@ -12,7 +12,7 @@ let id = 0, eventSender = () => {};
 
 router.get(url, (req, res) => {
   res.writeHead(200, {
-    'Content-Type': 'text/event-stream; charset=utf-8',
+    'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
   });
