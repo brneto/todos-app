@@ -26,3 +26,11 @@ POST http://localhost:3000/api/sse
 Content-Type: application/json
 
 { "text": "Hello world!" }
+
+###
+
+GET http://localhost:3000/api/sse/list
+
+###
+
+DELETE http://localhost:3000/api/sse/0
