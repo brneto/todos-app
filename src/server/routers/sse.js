@@ -8,15 +8,15 @@ const router = express.Router(); // eslint-disable-line babel/new-cap
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-let sendEvent;
+let id = 0;
 const createEventSender = res => msg => {
-  let id = 0;
   res.write(`id: ${++id}\n`);
   res.write('event: messages\n');
   res.write(`data: [ts: ${Date.now()}] ${msg}\n\n`);
   res.flush();
 };
 
+let sendEvent;
 router.get(url, (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream; charset=utf-8',
