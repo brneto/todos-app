@@ -1,6 +1,7 @@
 // https://www.voorhoede.nl/en/blog/real-time-communication-with-server-sent-events/
 // https://github.com/expressjs/compression#server-sent-events
 import express from 'express';
+import moment from 'moment';
 
 const url = '/sse';
 const router = express.Router(); // eslint-disable-line babel/new-cap
@@ -22,7 +23,7 @@ router.get(url, (req, res) => {
     res.write(`id: ${nextIndex}\n`);
     res.write('event: messages\n');
     res.write('retry: 10000\n');
-    res.write(`data: [TS-${Date.now()}] ${data[nextIndex - 1]}\n\n`);
+    res.write(`data: [${moment().format('HH:mm:ss.SS')}] ${data[nextIndex - 1]}\n\n`);
     res.flush();
   });
 });
