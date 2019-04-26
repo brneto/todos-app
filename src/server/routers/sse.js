@@ -28,6 +28,7 @@ router.get(url, (req, res) => {
 
 router.post(url, (req, res) => {
   req.app.emit('sse', req.body.text);
+  
   res.send('Sended Server-sent event successfully!\n');
 });
 
