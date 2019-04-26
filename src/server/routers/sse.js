@@ -8,7 +8,7 @@ const router = express.Router(); // eslint-disable-line babel/new-cap
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-let id = 0, eventSender;
+let id = 0, eventSender = () => {};
 
 router.get(url, (req, res) => {
   res.writeHead(200, {
