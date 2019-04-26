@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import express from 'express';
 import open from 'open';
 import config from '../config.json';
 import models from './models';
@@ -24,8 +23,6 @@ const listenerHandler = error =>
       );
 const { createSpa, ...api } = routers;
 const listen = app => {
-  app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
   app.use(models);
 
   app.use('/api', ...api);
