@@ -1,8 +1,11 @@
-import { Router } from 'express';
+import express from 'express';
 import uuidv4 from 'uuid/v4';
 
 const url = '/todos';
-const router = Router(); // eslint-disable-line babel/new-cap
+const router = express.Router(); // eslint-disable-line babel/new-cap
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 router.get(url, (req, res) => {
   res.json(Object.values(req.models.todos));
