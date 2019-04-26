@@ -9,8 +9,6 @@ const router = express.Router(); // eslint-disable-line babel/new-cap
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-let id = 0, eventSender = () => {};
-
 router.get(url, (req, res) => {
   res.writeHead(200, {
     'Content-Type': 'text/event-stream',
@@ -19,7 +17,8 @@ router.get(url, (req, res) => {
   });
   res.write('\n');
 
-  eventSender = msg => {
+  let id = 0
+  req.app.on('sse', msg => {
     res.write(`id: ${++id}\n`);
     res.write('event: messages\n');
     res.write('retry: 10000\n');
@@ -29,7 +28,7 @@ router.get(url, (req, res) => {
 });
 
 router.post(url, (req, res) => {
-  eventSender(req.body.text);
+  req.app.emit('sse', req.body.text);
   res.send('Sended Server-sent event successfully!\n');
 });
 
