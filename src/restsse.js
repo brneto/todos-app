@@ -41,6 +41,7 @@ router.get(baseUrl, (req, res) => {
     'Connection': 'keep-alive',
     'Content-Type': 'text/event-stream',
     'Transfer-Encoding': 'chunked',
+    'X-Accel-Buffering': 'no',
   });
   res.write('\n');
   res.write(`retry: ${retry}\n`);
