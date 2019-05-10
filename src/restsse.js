@@ -8,8 +8,8 @@ const emitter = new EventEmitter();
 const baseUrl = '/sse';
 const restUrl = `${baseUrl}/notices`;
 const getMSecs = s => s * 1000;
-const timeout = getMSecs(120);
-const retry = getMSecs(10);
+const timeout = getMSecs(30`0);
+const retry = getMSecs(15);
 const nodeEvent = 'notice';
 const eventTypes = {
   addNotice: 'addnotice',
@@ -23,7 +23,8 @@ const pushEvent = (res, event, id) => {
   res.write(`event: ${event.type}\n`);
   res.write(`data: ${JSON.stringify(event.data)}\n`);
   res.write(`id: ${id}\n`);
-  res.write(`retry: ${event.retry || retry}\n\n`);
+  if(event.retry) res.write(`retry: ${event.retry}\n`);
+  res.write('\n');
 };
 
 router.use(express.urlencoded({ extended: true }));
@@ -42,6 +43,7 @@ router.get(baseUrl, (req, res) => {
     'Transfer-Encoding': 'chunked',
   });
   res.write('\n');
+  res.write(`retry: ${retry}\n`);
 
   nextEvents.forEach((event, index) => pushEvent(res, event, index));
   res.flush();
