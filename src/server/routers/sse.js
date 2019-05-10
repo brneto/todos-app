@@ -1,47 +1,85 @@
 // https://www.voorhoede.nl/en/blog/real-time-communication-with-server-sent-events/
 // https://github.com/expressjs/compression#server-sent-events
+import EventEmitter from 'events';
 import express from 'express';
+import uuid from 'uuid/v4';
 import moment from 'moment';
 
-const url = '/sse';
+const emitter = new EventEmitter();
 const router = express.Router(); // eslint-disable-line babel/new-cap
-const messageList = [];
+const url = '/sse';
+const getMSecs = s => s * 1000;
+const retry = getMSecs(10);
+const timeout = getMSecs(120);
+const eventList = [];
+const noticeList = [];
+const nodeEvent = 'notice';
+const eventTypes = {
+  addNotice: 'addnotice',
+  uptNotice: 'updnotice',
+  delNotice: 'delnotice',
+  claNotice: 'claNotice',
+};
+const writeSSE = (res, event, id) => {
+  res.write(`event: ${event.type}\n`);
+  res.write(`data: ${event.data}\n`);
+  res.write(`id: ${id}\n`);
+  res.write(`retry: ${event.retry || retry}\n\n`);
+};
 
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
+emitter.on(nodeEvent, event => eventList.push(event));
+
 router.get(url, (req, res) => {
+  const eventNextId = +req.header('Event-Last-ID') + 1;
+  const events = eventNextId ? eventList.slice(eventNextId) : eventList;
+
   res.writeHead(200, {
-    'Content-Type': 'text/event-stream; charset=utf-8',
+    'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive',
+    'Transfer-Encoding': 'chunked',
   });
   res.write('\n');
 
-  req.app.on('sse', data => {
-    const nextIndex = data.length;
-    res.write(`id: ${nextIndex}\n`);
-    res.write('event: messages\n');
-    res.write('retry: 10000\n');
-    res.write(`data: [${moment().format('HH:mm:ss.SS')}] ${data[nextIndex - 1]}\n\n`);
+  events.forEach((event, index) => writeSSE(res, event, index));
+  res.flush();
+
+  emitter.on(nodeEvent, () => {
+    const eventLastIndex = eventList.length - 1;
+
+    writeSSE(res, eventList[eventLastIndex], eventLastIndex);
     res.flush();
   });
+
+  res.setTimeout(timeout, socket => socket.end('0\r\n'));
 });
 
-router.post(url, (req, res) => {
-  messageList.push(req.body.text);
+router.post(`${url}/notices`, (req, res) => {
+  const data = {
+    id: uuid(),
+    time: moment().format(),
+    text: req.body.text,
+  };
 
-  req.app.emit('sse', messageList);
+  noticeList.push(data);
+  emitter.emit(nodeEvent, {
+    type: eventTypes.addNotice,
+    data,
+    retry: req.body.retry,
+  });
 
   res.send(req.body);
 });
 
-router.get(`${url}/list`, (req, res) => {
-  res.send(messageList);
+router.get(`${url}/notices`, (req, res) => {
+  res.send(eventList);
 });
 
-router.delete(`${url}/:idx`, (req, res) => {
-  res.send(messageList.splice(req.params.idx, 1));
+router.delete(`${url}/notices/:id`, (req, res) => {
+  res.send(eventList.splice(req.params.id, 1));
 });
 
 export default router;
