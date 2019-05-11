@@ -31,10 +31,10 @@ const Tape = styled.div`
   }
 `;
 
-function TickerTape() {
+function TickerTape({eventSourceUrl}) {
   const [notices, setNotice] = useState([]);
   useEffect(() => {
-    const eventSource = new EventSource('api/sse');
+    const eventSource = new EventSource(eventSourceUrl);
     const eventHandler = {
       add: [
         'addnotice',
