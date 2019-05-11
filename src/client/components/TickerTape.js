@@ -11,23 +11,22 @@ const rollNotice = css`
 `;
 const Tape = styled.div`
   position: fixed;
-  left: 0;
   bottom: 0;
-  background: var(--color-unknown);
-  margin: auto;
+  left: 0;
   width: 100%;
   height: ${({ open }) => (open ? '3em' : '0')};
+  margin: auto;
   transition: height 2s ease-out 1s;
+  background: var(--color-unknown);
 
   & > p {
     ${({ open }) => open && rollNotice};
     position: absolute;
     left: 100%;
-    line-height: 2em;
-    font-size: 14pt;
-    font-weight: bold;
-    white-space: nowrap;
     color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 2em;
     white-space: nowrap;
   }
 `;

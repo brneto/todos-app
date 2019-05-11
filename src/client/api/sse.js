@@ -1,5 +1,5 @@
 function messagesSubscribe(eventHandler) {
-  const eventType = 'messages';
+  const eventType = 'addnotice';
   const eventSource = new EventSource('/api/sse');
 
   eventSource.addEventListener(eventType, eventHandler);
