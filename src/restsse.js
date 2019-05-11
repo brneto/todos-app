@@ -8,7 +8,7 @@ const emitter = new EventEmitter();
 const baseUrl = '/sse';
 const restUrl = `${baseUrl}/notices`;
 const getMSecs = s => s * 1000;
-const timeout = getMSecs(30`0);
+const timeout = getMSecs(300);
 const retry = getMSecs(15);
 const nodeEvent = 'notice';
 const eventTypes = {
