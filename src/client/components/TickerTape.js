@@ -25,7 +25,7 @@ const Tape = styled.div`
     ${({ open }) => open && rollNotice};
     position: absolute;
     left: 100%;
-    color: white;
+    color: black;
     font-size: 1rem;
     font-weight: bold;
     line-height: 2em;
@@ -34,8 +34,8 @@ const Tape = styled.div`
 `;
 
 // Server-sent Events component
-function TickerTape({ eventSourceUrl }) {
-  const notices = hooks.useNotices(eventSourceUrl), // My custom Hook
+function TickerTape({ url }) {
+  const notices = hooks.useNotices(url), // My custom Hook
     hasNotice = Boolean(notices.length);
 
   return (
@@ -51,7 +51,7 @@ function TickerTape({ eventSourceUrl }) {
   );
 }
 TickerTape.propTypes = {
-  eventSourceUrl: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default TickerTape;

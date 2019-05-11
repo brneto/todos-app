@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-function useNotices(eventSourceUrl) {
+function useNotices(url) {
   const [notices, setNotice] = useState([]);
 
   useEffect(() => {
     const
-      eventSource = new EventSource(eventSourceUrl),
+      eventSource = new EventSource(url),
       eventHandler = {
         add: [
           'addnotice',
@@ -47,7 +47,7 @@ function useNotices(eventSourceUrl) {
 
       eventSource.close();
     };
-  }, [eventSourceUrl]);
+  }, [url]);
 
   return notices;
 }
