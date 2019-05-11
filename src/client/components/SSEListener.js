@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import * as effects from '../effects';
+import * as hooks from '../hooks';
 
 const StyledDiv = styled.div`
   position: fixed;
@@ -10,12 +11,13 @@ const StyledDiv = styled.div`
 `;
 
 // Server-sent Events component
-function SSEListener() {
-  const [messages, setMessage] = useState([]);
+function SSEListener({ eventSourceUrl }) {
+  const notices = hooks.useNotices(eventSourceUrl);// My custom Hook
 
-  useEffect(effects.sse.createMessagesEffect(setMessage), []);
-
-  return <StyledDiv>SSE messages: {messages.join(', ')}</StyledDiv>;
+  return <StyledDiv>SSE messages: {notices.join(', ')}</StyledDiv>;
 }
+SSEListener.propTypes = {
+  eventSourceUrl: PropTypes.string.isRequired,
+};
 
 export default SSEListener;

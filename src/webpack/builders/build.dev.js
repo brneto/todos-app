@@ -30,7 +30,7 @@ export default new Promise(resolve => {
 
     const resourceBuffer = devMiddleware.fileSystem.readFileSync(path.join(
       configs.dev.output.path,
-      configs.htmlPluginOptions.filename
+      configs.htmlIndex.filename
     ));
 
     resolve({

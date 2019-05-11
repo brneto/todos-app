@@ -38,7 +38,7 @@ const Input = styled.input`
 `;
 
 export function AddTodoPresentation({ dispatch }) {
-  const input = hooks.todos.useAddTodo(dispatch);
+  const input = hooks.useAddTodo(dispatch);
   return (
     <header>
       <Title>todos</Title>

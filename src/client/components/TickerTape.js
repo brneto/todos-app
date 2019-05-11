@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'styled-components';
 import moment from 'moment';
+import * as hooks from '../hooks';
 
 const rollLeft = keyframes`
   0% { left: 100%; }
@@ -31,63 +33,25 @@ const Tape = styled.div`
   }
 `;
 
-function TickerTape({eventSourceUrl}) {
-  const [notices, setNotice] = useState([]);
-  useEffect(() => {
-    const eventSource = new EventSource(eventSourceUrl);
-    const eventHandler = {
-      add: [
-        'addnotice',
-        event => setNotice(
-          prevState => [...prevState, JSON.parse(event.data)]
-        ),
-        false,
-      ],
-      update: [
-        'updnotice',
-        event => setNotice(prevState => prevState.map(
-          notice => {
-            const eventData = JSON.parse(event.data);
-            return notice.id === eventData.id ? eventData : notice;
-          }
-        )),
-        false,
-      ],
-      delete: [
-        'delnotice',
-        event => setNotice(prevState => prevState.filter(
-          notice => notice.id !== JSON.parse(event.data).id
-        )),
-        false,
-      ],
-      clear: ['clanotice', () => setNotice([]), false],
-    };
-
-    eventSource.addEventListener(...eventHandler.add);
-    eventSource.addEventListener(...eventHandler.update);
-    eventSource.addEventListener(...eventHandler.delete);
-    eventSource.addEventListener(...eventHandler.clear);
-
-    return () => {
-      eventSource.removeEventListener(...eventHandler.add);
-      eventSource.removeEventListener(...eventHandler.update);
-      eventSource.removeEventListener(...eventHandler.delete);
-      eventSource.removeEventListener(...eventHandler.clear);
-
-      eventSource.close();
-    };
-  }, []);
-  const hasNotice = Boolean(notices.length);
+// Server-sent Events component
+function TickerTape({ eventSourceUrl }) {
+  const notices = hooks.useNotices(eventSourceUrl), // My custom Hook
+    hasNotice = Boolean(notices.length);
 
   return (
     <Tape open={hasNotice}>
-      <p>{
-        notices.map(notice =>
-          `${moment(notice.time).format('D/MM/YY H:mm:ss')} ${notice.text}`
-        ).join(' | ')
-      }</p>
+      <p>
+        {notices
+          .map(notice =>
+            `${moment(notice.time).format('D/MM/YY H:mm:ss')} ${notice.text}`
+          )
+          .join(' | ')}
+      </p>
     </Tape>
   );
 }
+TickerTape.propTypes = {
+  eventSourceUrl: PropTypes.string.isRequired,
+};
 
 export default TickerTape;
