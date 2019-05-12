@@ -4,17 +4,18 @@ import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import { setFetchedTodos, setAddedTodo, setToggledTodo } from '../actions';
 
-const initialState = {};
-const byId = handleActions(
-  {
-    [combineActions(setFetchedTodos, setAddedTodo, setToggledTodo)]: {
-      next: produce((draft, { payload: { entities } }) => {
-        Object.assign(draft, entities.todos); //modify the current draft state
-      }),
-    }
-  },
-  initialState
-);
+const
+  initialState = {},
+  byId = handleActions(
+    {
+      [combineActions(setFetchedTodos, setAddedTodo, setToggledTodo)]: {
+        next: produce((draft, { payload: { entities } }) => {
+          Object.assign(draft, entities.todos); //modify the current draft state
+        }),
+      }
+    },
+    initialState
+  );
 
 // SELECTORS
 // flip(prop) :: {s: a} -> s -> a | Undefined
