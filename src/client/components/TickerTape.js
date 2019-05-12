@@ -21,29 +21,27 @@ const
     transition: height 2s ease-out 1s;
     background: white;
 
-    & > p {
-      ${({ open }) => open && rollNotice};
+    & > p:first-child {
+      display: block;
       position: absolute;
       top: 50%;
       left: 100%;
       margin: 0;
+      ${({ open }) => open && rollNotice};
       transform: translateY(-50%);
       color: black;
       font-size: 1rem;
       font-weight: bold;
       white-space: nowrap;
-      vertical-align: middle;
     }
   `;
 
 // Server-sent Events component
 function TickerTape({ url }) {
-  const
-    notices = hooks.useNotices(url), // My custom Hook
-    hasNotice = Boolean(notices.length);
+  const notices = hooks.useNotices(url); // My custom Hook
 
   return (
-    <Tape open={hasNotice}>
+    <Tape open={notices.length}>
       <p>
         {notices
           .map(notice =>
