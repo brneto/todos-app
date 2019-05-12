@@ -4,34 +4,37 @@ import styled, { keyframes, css } from 'styled-components';
 import moment from 'moment';
 import * as hooks from '../hooks';
 
-const rollLeft = keyframes`
-  0% { left: 100%; }
-  100% { left: -100%; }
-`;
-const rollNotice = css`
-  animation: ${rollLeft} 40s linear 4s infinite;
-`;
-const Tape = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: ${({ open }) => (open ? '3em' : '0')};
-  margin: auto;
-  transition: height 2s ease-out 1s;
-  background: var(--color-unknown);
+const
+  rollLeft = keyframes`
+    0% { left: 100%; }
+    100% { left: -100%; }
+  `,
+  rollNotice = css`
+    animation: ${rollLeft} 40s linear 4s infinite;
+  `,
+  Tape = styled.div`
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: ${({ open }) => (open ? '3em' : '0')};
+    transition: height 2s ease-out 1s;
+    background: white;
 
-  & > p {
-    ${({ open }) => open && rollNotice};
-    position: absolute;
-    left: 100%;
-    color: black;
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 2em;
-    white-space: nowrap;
-  }
-`;
+    & > p {
+      ${({ open }) => open && rollNotice};
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      margin: 0;
+      transform: translateY(-50%);
+      color: black;
+      font-size: 1rem;
+      font-weight: bold;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  `;
 
 // Server-sent Events component
 function TickerTape({ url }) {

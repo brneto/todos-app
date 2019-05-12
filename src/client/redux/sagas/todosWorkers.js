@@ -7,17 +7,19 @@ import * as api from '../../api';
 import * as schema from '../../libs/schema';
 
 function* fetchTodos() {
+  let filter;
   try {
     const isFetching = yield select(selectors.getIsFetching);
     if (isFetching) {
       yield cancel();
     }
 
-    var filter = yield select(selectors.getFilter);
+    filter = yield select(selectors.getFilter);
     yield put(actions.setToggleFetching(filter));
 
-    const response = yield call(api.todos.fetchTodos, filter);
-    const data = normalize(response, schema.todoList);
+    const
+      response = yield call(api.todos.fetchTodos, filter),
+      data = normalize(response, schema.todoList);
 
     yield put(actions.setFetchedTodos(data, filter));
   } catch (error) {
@@ -29,8 +31,9 @@ function* fetchTodos() {
 
 function* addTodo({ payload: text }) {
   try {
-    const response = yield call(api.todos.addTodo, text);
-    const data = normalize(response, schema.todo);
+    const
+      response = yield call(api.todos.addTodo, text),
+      data = normalize(response, schema.todo);
 
     yield put(actions.setAddedTodo(data));
   } catch (error) {
@@ -40,30 +43,33 @@ function* addTodo({ payload: text }) {
 
 function* toggleTodo({ payload: id }) {
   try {
-    const response = yield call(api.todos.toggleTodo, id);
-    const data = normalize(response, schema.todo);
-    const toggledId = data.result;
+    const
+      response = yield call(api.todos.toggleTodo, id),
+      data = normalize(response, schema.todo),
+      toggledId = data.result;
 
-    const getCompleted = compose(
-      prop('completed'),
-      prop(toggledId),
-      prop('todos'),
-      prop('entities')
-    );
-    const createAddToggledTodo = curry((f, i) =>
+    const
+      getCompleted = compose(
+        prop('completed'),
+        prop(toggledId),
+        prop('todos'),
+        prop('entities')
+      ),
+      createAddToggledTodo = curry((f, i) =>
       actions.setToggledTodoAdd(i, f)
-    );
-    const createRemoveToggledTodo = curry((f, i) =>
+    ),
+    createRemoveToggledTodo = curry((f, i) =>
       actions.setToggledTodoRemove(i, f)
     );
 
-    const completed = getCompleted(data);
-    const addToggledTodo = completed
-      ? createAddToggledTodo('completed')
-      : createAddToggledTodo('active');
-    const removeToggledTodo = completed
-      ? createRemoveToggledTodo('active')
-      : createRemoveToggledTodo('completed');
+    const
+      completed = getCompleted(data),
+      addToggledTodo = completed
+        ? createAddToggledTodo('completed')
+        : createAddToggledTodo('active'),
+      removeToggledTodo = completed
+        ? createRemoveToggledTodo('active')
+        : createRemoveToggledTodo('completed');
 
     yield put(addToggledTodo(id));
     yield put(removeToggledTodo(id));

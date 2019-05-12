@@ -30,18 +30,13 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.4em;
   }
 `;
-
 GlobalStyle.defaultProps = {
-  fontSize: 'unset',
-  theme: {
-    background: '#f5f5f5',
-    color: '#4d4d4d',
-  }
+  fontSize: 'unset'
 };
 
-export const main = {
+const main = {
   background: '#f5f5f5',
   color: '#4d4d4d',
 };
 
-export default GlobalStyle;
+export { GlobalStyle as default, main };

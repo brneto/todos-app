@@ -1,7 +1,8 @@
 import { createBrowserHistory } from 'history';
 import configStore from './configStore';
 
-const history = createBrowserHistory();
-const store = configStore(history);
+const
+  history = createBrowserHistory(),
+  store = configStore(history);
 
 export { history, store };

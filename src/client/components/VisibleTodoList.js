@@ -10,15 +10,15 @@ import { fetchTodos, toggleTodo } from '../redux/actions';
 import TodoList from './TodoList';
 import FetchError from './FetchError';
 
-const Section = styled.section`
-  position: relative;
-  border-top: 1px solid #e6e6e6;
-  z-index: 2;
-`;
-
-const OnFetch = styled.p`
-  margin-left: 1em;
-`;
+const
+  Section = styled.section`
+    position: relative;
+    border-top: 1px solid #e6e6e6;
+    z-index: 2;
+  `,
+  OnFetch = styled.p`
+    margin-left: 1em;
+  `;
 
 function VisibleTodoList(props) {
  const {
@@ -44,7 +44,6 @@ function VisibleTodoList(props) {
 
   return <Section>{render}</Section>;
 }
-
 VisibleTodoList.propTypes = {
   fetchTodos: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired,
@@ -54,17 +53,17 @@ VisibleTodoList.propTypes = {
   todos: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = state => ({
-  filter: getFilter(state),
-  isFetching: getIsFetching(state),
-  errorMessage: getErrorMessage(state),
-  todos: getVisibleTodos(state),
-});
-
-const mapDispatchToProps = {
-  fetchTodos,
-  toggleTodo,
-};
+const
+  mapStateToProps = state => ({
+    filter: getFilter(state),
+    isFetching: getIsFetching(state),
+    errorMessage: getErrorMessage(state),
+    todos: getVisibleTodos(state),
+  }),
+  mapDispatchToProps = {
+    fetchTodos,
+    toggleTodo,
+  };
 
 export default connect(
   mapStateToProps,

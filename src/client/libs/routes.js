@@ -4,22 +4,17 @@
 //   strict, // optional, defaults to false
 //   exact // optional, defaults to false
 // }
-const main = {
-  path: '/:filter?',
-  strict: false,
-  exact: false,
-};
+const
+  main = {
+    path: '/:filter?',
+    strict: false,
+    exact: false,
+  },
+  hook = {
+    path: '/hook',
+  },
+  noHook = {
+    path: '/nohook',
+  };
 
-const hook = {
-  path: '/hook'
-};
-
-const noHook = {
-  path: '/nohook'
-};
-
-export {
-  main,
-  hook,
-  noHook,
-};
+export { main, hook, noHook };
