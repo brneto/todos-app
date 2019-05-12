@@ -32,7 +32,7 @@ Libraries
 
 :running: [Express](http://expressjs.com/)
 
-:satellite: [Server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
+:satellite: [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
 Development Aid Tools
 ------
