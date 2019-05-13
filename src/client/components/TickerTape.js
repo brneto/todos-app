@@ -22,7 +22,6 @@ const
     background: white;
 
     & > p:first-child {
-      display: block;
       position: absolute;
       top: 50%;
       left: 100%;
