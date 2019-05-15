@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 
-function useFrame(delay) {
-  const [frame, setFrame] = useState(1);
+function useCounterUp(delay, start = 1) {
+  const [count, setCount] = useState(start);
 
   useEffect(() => {
     const intervalId = setInterval(
-      () => setFrame(prevState => ++prevState),
+      () => setCount(prevCount => ++prevCount),
       delay
     );
 
     return () => clearInterval(intervalId);
   }, [delay]);
 
-  return frame;
+  return count;
 }
 
-export { useFrame };
+export { useCounterUp };
