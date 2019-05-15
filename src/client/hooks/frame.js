@@ -6,10 +6,9 @@ function useFrame(delay) {
   useEffect(() => {
     const
       updateFrame = () => setFrame(prevState => ++prevState),
-      intervalId = setInterval(updateFrame, delay),
-      removeInterval = () => clearInterval(intervalId);
+      intervalId = setInterval(updateFrame, delay);
 
-    return removeInterval;
+    return () => clearInterval(intervalId);
   }, [delay]);
 
   return frame;
