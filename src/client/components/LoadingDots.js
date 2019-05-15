@@ -4,7 +4,7 @@ import * as hooks from '../hooks';
 
 function LoadingDots({ delay, length, children }) {
   const
-    count = hooks.useFrame(delay) % (length + 1),
+    count = hooks.useCounterUp(delay) % (length + 1),
     dot = '.';
 
   //while (dotFrame > 0) {
