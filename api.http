@@ -1,36 +1,28 @@
 GET http://localhost:3000
 
 ###
-
-GET http://localhost:3000/active
-
-###
-
-GET http://localhost:3000/completed
-
-###
-
 GET http://localhost:3000/source
 
 ###
-
-GET http://localhost:3000/api/todos
-
-###
-
 GET http://localhost:3000/api/sse
 
 ###
+GET http://localhost:3000/api/sse/notices
 
+###
 POST http://localhost:3000/api/sse
 Content-Type: application/json
 
 { "text": "Hello world!" }
 
 ###
+PUT http://localhost:3000/api/sse/:id
+Content-Type: application/json
 
-GET http://localhost:3000/api/sse/list
+{ "text": "Hi world!" }
 
 ###
+DELETE http://localhost:3000/api/sse/notices/:id
 
-DELETE http://localhost:3000/api/sse/0
+###
+DELETE http://localhost:3000/api/sse/notices
