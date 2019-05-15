@@ -1,3 +1,3 @@
 export * from './todos';
 export * from './sse';
-export * from './timer.js';
+export * from './timer';
