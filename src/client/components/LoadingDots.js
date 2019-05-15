@@ -2,18 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as hooks from '../hooks';
 
-function LoadingDots(props) {
-  const frame = hooks.useFrame(props.interval);
+function LoadingDots({ interval, dots, children }) {
   let
-    loadingDots = frame % (props.dots + 1),
-    text = '';
+    dotFrame = hooks.useFrame(interval) % (dots + 1),
+    dotText = '';
 
-  while (loadingDots > 0) {
-    text += '.';
-    loadingDots--;
+  while (dotFrame > 0) {
+    dotText += '.';
+    dotFrame--;
   }
 
-  return <span {...props}>{text}&nbsp;</span>;
+  return <span>{children + dotText}&nbsp;</span>;
 }
 LoadingDots.defaultProps = {
   interval: 300,
@@ -22,6 +21,7 @@ LoadingDots.defaultProps = {
 LoadingDots.propTypes = {
   interval: PropTypes.number,
   dots: PropTypes.number,
+  children: PropTypes.string.isRequired,
 };
 
 export default LoadingDots;

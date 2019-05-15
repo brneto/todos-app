@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'styled-components';
 import moment from 'moment';
 import * as hooks from '../hooks';
+import LoadingDots from './LoadingDots';
 
 const
   rollLeft = keyframes`
@@ -48,6 +49,7 @@ function TickerTape({ url }) {
           )
           .join(' | ')}
       </p>
+      <LoadingDots>Testing</LoadingDots>
     </Tape>
   );
 }
