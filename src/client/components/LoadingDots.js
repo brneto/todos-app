@@ -5,14 +5,14 @@ import * as hooks from '../hooks';
 function LoadingDots({ delay, dots, children }) {
   let
     dotFrame = hooks.useFrame(delay) % (dots + 1),
-    dotString = '';
+    dotString = '.';
 
-  while (dotFrame > 0) {
-    dotString += '.';
-    dotFrame--;
-  }
+  //while (dotFrame > 0) {
+    //dotString += '.';
+    //dotFrame--;
+  //}
 
-  return <span>{children + dotString}&nbsp;</span>;
+  return <span>{children + dotString.repeat(dotFrame)}&nbsp;</span>;
 }
 LoadingDots.defaultProps = {
   delay: 300,
