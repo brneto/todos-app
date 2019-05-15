@@ -4,12 +4,12 @@ function useFrame(interval) {
   const [frame, setFrame] = useState(1);
 
   useEffect(() => {
-    const intervalId = setInterval(
-      () => setFrame(prevState => ++prevState),
-      interval
-    );
+    const
+      updateFrame = () => setFrame(prevState => ++prevState),
+      intervalId = setInterval(updateFrame, interval),
+      removeInterval = intervalId => () => clearInterval(intervalId);
 
-    return () => clearInterval(intervalId);
+    return removeInterval(intervalId);
   }, [interval]);
 
   return frame;
