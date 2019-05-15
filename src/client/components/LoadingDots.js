@@ -3,16 +3,9 @@ import PropTypes from 'prop-types';
 import * as hooks from '../hooks';
 
 function LoadingDots({ delay, length, children }) {
-  const
-    count = hooks.useCounterUp(delay) % (length + 1),
-    dot = '.';
+  const count = hooks.useCounterUp(delay) % (length + 1);
 
-  //while (dotFrame > 0) {
-    //dotString += '.';
-    //dotFrame--;
-  //}
-
-  return <span>{children + dot.repeat(count)}&nbsp;</span>;
+  return <span>{children + '.'.repeat(count)}&nbsp;</span>;
 }
 LoadingDots.defaultProps = {
   delay: 300,
