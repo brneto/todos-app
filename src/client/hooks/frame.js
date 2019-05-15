@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 
-function useFrame(interval) {
+function useFrame(timer) {
   const [frame, setFrame] = useState(1);
 
   useEffect(() => {
     const
       updateFrame = () => setFrame(prevState => ++prevState),
-      intervalId = setInterval(updateFrame, interval),
+      intervalId = setInterval(updateFrame, timer),
       removeInterval = intervalId => () => clearInterval(intervalId);
 
     return removeInterval(intervalId);
-  }, [interval]);
+  }, [timer]);
 
   return frame;
 }
