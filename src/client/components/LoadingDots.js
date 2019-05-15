@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as hooks from '../hooks';
 
 function LoadingDots({ delay, length, children }) {
-  const count = hooks.useCounterUp(delay) % (length + 1);
+  const count = hooks.timer.useCounterUp(delay) % (length + 1); // Custom Hook
 
   return <span>{children + '.'.repeat(count)}&nbsp;</span>;
 }

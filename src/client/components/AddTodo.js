@@ -38,7 +38,7 @@ const
   `;
 
 export function AddTodoPresentation({ dispatch }) {
-  const input = hooks.useAddTodo(dispatch);
+  const input = hooks.todos.useAddTodo(dispatch); // Custom Hook
   return (
     <header>
       <Title>todos</Title>

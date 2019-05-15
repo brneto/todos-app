@@ -38,7 +38,7 @@ const
 
 // Server-sent Events component
 function TickerTape({ url }) {
-  const notices = hooks.useNotices(url); // My custom Hook
+  const notices = hooks.sse.useNotices(url); // Custom Hook
 
   return (
     <Tape open={notices.length}>
