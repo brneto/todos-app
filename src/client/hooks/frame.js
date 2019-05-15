@@ -7,9 +7,9 @@ function useFrame(delay) {
     const
       updateFrame = () => setFrame(prevState => ++prevState),
       intervalId = setInterval(updateFrame, delay),
-      removeInterval = intervalId => () => clearInterval(intervalId);
+      removeInterval = () => clearInterval(intervalId);
 
-    return removeInterval(intervalId);
+    return removeInterval;
   }, [delay]);
 
   return frame;
