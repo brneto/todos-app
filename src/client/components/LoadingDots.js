@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as hooks from '../hooks';
 
 function LoadingDots({ delay, length, children }) {
-  let
+  const
     dots = hooks.useFrame(delay) % (length + 1),
     dot = '.';
 
