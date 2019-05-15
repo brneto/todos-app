@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-function useCounterUp(delay, start = 1) {
-  const [count, setCount] = useState(start);
+function useCounterUp(delay, initial = 1) {
+  const [count, setCount] = useState(initial);
 
   useEffect(() => {
     const intervalId = setInterval(
