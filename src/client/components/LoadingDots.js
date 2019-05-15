@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as hooks from '../hooks';
 
-function LoadingDots({ interval, dots, children }) {
+function LoadingDots({ delay, dots, children }) {
   let
-    dotFrame = hooks.useFrame(interval) % (dots + 1),
+    dotFrame = hooks.useFrame(delay) % (dots + 1),
     dotString = '';
 
   while (dotFrame > 0) {
@@ -15,11 +15,11 @@ function LoadingDots({ interval, dots, children }) {
   return <span>{children + dotString}&nbsp;</span>;
 }
 LoadingDots.defaultProps = {
-  interval: 300,
+  delay: 300,
   dots: 3,
 };
 LoadingDots.propTypes = {
-  interval: PropTypes.number,
+  delay: PropTypes.number,
   dots: PropTypes.number,
   children: PropTypes.string.isRequired,
 };
