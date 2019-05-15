@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import * as hooks from '../hooks';
 
 function LoadingDots(props) {
-  const [frame, setFrame] = useState(1);
+  const frame = hooks.useFrame(props.interval);
+  let
+    loadingDots = frame % (props.dots + 1),
+    text = '';
 
-  useEffect(() => {
-    const intervalId = setInterval(
-      () => setFrame(prevState => ++prevState),
-      props.interval
-    );
-
-    return () => clearInterval(intervalId);
-  }, [props.interval]);
-
-  let loadingDots = frame % (props.dots + 1);
-  let text = '';
   while (loadingDots > 0) {
     text += '.';
     loadingDots--;
