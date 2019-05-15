@@ -4,7 +4,7 @@ import * as hooks from '../hooks';
 
 function LoadingDots({ delay, length, children }) {
   const
-    dots = hooks.useFrame(delay) % (length + 1),
+    count = hooks.useFrame(delay) % (length + 1),
     dot = '.';
 
   //while (dotFrame > 0) {
@@ -12,7 +12,7 @@ function LoadingDots({ delay, length, children }) {
     //dotFrame--;
   //}
 
-  return <span>{children + dot.repeat(dots)}&nbsp;</span>;
+  return <span>{children + dot.repeat(count)}&nbsp;</span>;
 }
 LoadingDots.defaultProps = {
   delay: 300,
