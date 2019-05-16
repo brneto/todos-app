@@ -18,20 +18,16 @@ const
     updNotice: 'updnotice',
     delNotice: 'delnotice',
     claNotice: 'clanotice',
-  },
-  pushEvent = (res, event, id) => {
-    res.write(`event: ${event.type}\n`);
-    res.write(`data: ${JSON.stringify(event.data)}\n`);
-    res.write(`id: ${id}\n`);
-    if(event.retry)
-      res.write(`retry: ${event.retry}\n`);
-    res.write('\n');
   };
 
-router.use(express.urlencoded({ extended: true }));
-router.use(express.json());
-
-emitter.on(nodeEvent, event => eventList.push(event));
+function pushEvent(res, event, id) {
+  res.write(`event: ${event.type}\n`);
+  res.write(`data: ${JSON.stringify(event.data)}\n`);
+  res.write(`id: ${id}\n`);
+  if(event.retry)
+    res.write(`retry: ${event.retry}\n`);
+  res.write('\n');
+}
 
 function sseNoticeHandler(req, res) {
   const
@@ -136,6 +132,11 @@ function deleteAllNoticeHandler(req, res) {
 function getAllNoticeHandler(req, res) {
   res.status(200).json(noticeList);
 }
+
+router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
+
+emitter.on(nodeEvent, event => eventList.push(event));
 
 router.get(baseUrl, sseNoticeHandler);
 router.post(restUrl, postNoticeHandler);
