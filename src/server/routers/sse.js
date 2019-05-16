@@ -33,7 +33,7 @@ router.use(express.json());
 
 emitter.on(nodeEvent, event => eventList.push(event));
 
-router.get(baseUrl, (req, res) => {
+function sseHandler(req, res) {
   const
     nextEventId = +req.header('Last-Event-ID') + 1,
     nextEvents = nextEventId ? eventList.slice(nextEventId) : eventList;
@@ -60,9 +60,9 @@ router.get(baseUrl, (req, res) => {
   //https://tools.ietf.org/html/rfc7230#section-3.4
   //https://nodejs.org/api/http.html#http_request_end_data_encoding_callback
   res.setTimeout(timeout, socket => socket.end('0\r\n\r\n'));
-});
+}
 
-router.post(restUrl, (req, res) => {
+function postNoticeHandler(req, res) {
   const data = {
     id: uuid(),
     time: moment().format(),
@@ -78,9 +78,9 @@ router.post(restUrl, (req, res) => {
   noticeList.push(data);
   res.set('Location', `${req.originalUrl}/${data.id}`);
   res.status(201).json(data);
-});
+}
 
-router.put(`${restUrl}/:id`, (req, res) => {
+function putNoticeHandler(req, res) {
   const data = {
     id: req.params.id,
     time: moment().format(),
@@ -101,9 +101,9 @@ router.put(`${restUrl}/:id`, (req, res) => {
     noticeList.push(data);
     res.status(201).json(data);
   }
-});
+}
 
-router.delete(`${restUrl}/:id`, (req, res) => {
+function deleteNoticeHandler(req, res) {
   const data = {
     id: req.params.id,
     time: moment().format(),
@@ -121,9 +121,9 @@ router.delete(`${restUrl}/:id`, (req, res) => {
   } else {
     res.sendStatus(404);
   }
-});
+}
 
-router.delete(restUrl, (req, res) => {
+function deleteAllNoticeHandler(req, res) {
   emitter.emit(nodeEvent, {
     type: eventTypes.claNotice,
     retry: req.body.retry,
@@ -131,10 +131,17 @@ router.delete(restUrl, (req, res) => {
 
   noticeList.splice(0);
   res.sendStatus(200);
-});
+}
 
-router.get(restUrl, (req, res) => {
+function getAllNoticeHandler(req, res) {
   res.status(200).json(noticeList);
-});
+}
+
+router.get(baseUrl, sseHandler);
+router.post(restUrl, postNoticeHandler);
+router.put(`${restUrl}/:id`, putNoticeHandler);
+router.delete(`${restUrl}/:id`,deleteNoticeHandler);
+router.delete(restUrl, deleteAllNoticeHandler);
+router.get(restUrl, getAllNoticeHandler);
 
 export default router;
