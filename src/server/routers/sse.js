@@ -33,7 +33,7 @@ router.use(express.json());
 
 emitter.on(nodeEvent, event => eventList.push(event));
 
-function sseHandler(req, res) {
+function sseNoticeHandler(req, res) {
   const
     nextEventId = +req.header('Last-Event-ID') + 1,
     nextEvents = nextEventId ? eventList.slice(nextEventId) : eventList;
@@ -137,7 +137,7 @@ function getAllNoticeHandler(req, res) {
   res.status(200).json(noticeList);
 }
 
-router.get(baseUrl, sseHandler);
+router.get(baseUrl, sseNoticeHandler);
 router.post(restUrl, postNoticeHandler);
 router.put(`${restUrl}/:id`, putNoticeHandler);
 router.delete(`${restUrl}/:id`,deleteNoticeHandler);
