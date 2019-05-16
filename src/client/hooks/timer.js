@@ -5,8 +5,8 @@ function useCounterUp(delay, initial = 1) {
 
   useEffect(() => {
     const interval = setInterval(
-      () => setCount(prevCount =>
-        prevCount < Number.MAX_SAFE_INTEGER ? ++prevCount : initial
+      () => setCount(
+        prevCount => prevCount < Number.MAX_SAFE_INTEGER ? ++prevCount : initial
       ),
       delay
     );
