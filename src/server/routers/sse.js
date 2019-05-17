@@ -141,14 +141,14 @@ router.use(express.json());
 router.get(baseUrl, sseNoticeHandler);
 
 router
-  .route(`${restUrl}/:id`)
-  .put(putNoticeHandler)
-  .delete(deleteNoticeHandler);
-
-router
   .route(restUrl)
   .get(getAllNoticeHandler)
   .post(postNoticeHandler)
   .delete(deleteAllNoticeHandler);
+
+router
+  .route(`${restUrl}/:id`)
+  .put(putNoticeHandler)
+  .delete(deleteNoticeHandler);
 
 export default router;
