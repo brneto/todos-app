@@ -147,8 +147,8 @@ router
 
 router
   .route(restUrl)
+  .get(getAllNoticeHandler)
   .post(postNoticeHandler)
-  .delete(deleteAllNoticeHandler)
-  .get(getAllNoticeHandler);
+  .delete(deleteAllNoticeHandler);
 
 export default router;
