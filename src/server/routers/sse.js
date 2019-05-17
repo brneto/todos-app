@@ -141,7 +141,7 @@ router.use(express.json());
 router.get(baseUrl, sseNoticeHandler);
 router.post(restUrl, postNoticeHandler);
 router.put(`${restUrl}/:id`, putNoticeHandler);
-router.delete(`${restUrl}/:id`,deleteNoticeHandler);
+router.delete(`${restUrl}/:id`, deleteNoticeHandler);
 router.delete(restUrl, deleteAllNoticeHandler);
 router.get(restUrl, getAllNoticeHandler);
 
