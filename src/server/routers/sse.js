@@ -20,6 +20,8 @@ const
     claNotice: 'clanotice',
   };
 
+emitter.on(nodeEvent, event => eventList.push(event));
+
 function pushEvent(res, event, id) {
   res.write(`event: ${event.type}\n`);
   res.write(`data: ${JSON.stringify(event.data)}\n`);
@@ -135,8 +137,6 @@ function getAllNoticeHandler(req, res) {
 
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
-
-emitter.on(nodeEvent, event => eventList.push(event));
 
 router.get(baseUrl, sseNoticeHandler);
 router.post(restUrl, postNoticeHandler);
