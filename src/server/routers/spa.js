@@ -3,12 +3,12 @@ import { Router } from 'express';
 const createRouter = resourceBuffer => {
   const router = Router(); // eslint-disable-line babel/new-cap
 
-  router.get('/source', (req, res) => {
+  function showSourceHandler(req, res) {
     res.type('txt');
     res.send(resourceBuffer);
-  });
+  }
 
-  router.get('/**', (req, res, next) => {
+  function spaHandler(req, res, next) {
     const isApiCall = /^\/api\/.+/.test(req.path);
 
     if (isApiCall) {
@@ -17,7 +17,10 @@ const createRouter = resourceBuffer => {
       res.type('html');
       res.send(resourceBuffer);
     }
-  });
+  }
+
+  router.get('/source', showSourceHandler);
+  router.get('/**', spaHandler);
 
   return router;
 };
