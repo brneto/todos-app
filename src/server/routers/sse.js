@@ -139,10 +139,16 @@ router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
 router.get(baseUrl, sseNoticeHandler);
-router.post(restUrl, postNoticeHandler);
-router.put(`${restUrl}/:id`, putNoticeHandler);
-router.delete(`${restUrl}/:id`, deleteNoticeHandler);
-router.delete(restUrl, deleteAllNoticeHandler);
-router.get(restUrl, getAllNoticeHandler);
+
+router
+  .route(`${restUrl}/:id`)
+  .put(putNoticeHandler)
+  .delete(deleteNoticeHandler);
+
+router
+  .route(restUrl)
+  .post(postNoticeHandler)
+  .delete(deleteAllNoticeHandler)
+  .get(getAllNoticeHandler);
 
 export default router;
