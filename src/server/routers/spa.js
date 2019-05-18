@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-const createRouter = resourceBuffer => {
+function createRouter(resourceBuffer) {
   const router = Router(); // eslint-disable-line babel/new-cap
 
   function showSourceHandler(req, res) {
@@ -23,6 +23,6 @@ const createRouter = resourceBuffer => {
   router.get('/**', spaHandler);
 
   return router;
-};
+}
 
 export default createRouter;
