@@ -21,6 +21,7 @@
 
   // Enable/disable JavaScript validation.
   "javascript.validate.enable": false,
+  "html.validate.scripts": false,
 
   // Use 'prettier-eslint' instead of 'prettier'. Other
   // settings will only be fallbacks in case they could not be
