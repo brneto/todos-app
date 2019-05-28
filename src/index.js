@@ -4,7 +4,6 @@ import morgan from 'morgan';
 import compression from 'compression';
 import express from 'express';
 import * as server from './server';
-import config from './config.json';
 
 const
   env = process.env.NODE_ENV,
@@ -13,11 +12,7 @@ const
 console.log(chalk.green('Starting app in', env, 'mode...'));
 switch (env) {
   case 'production':
-    app.use(
-      morgan('common'),
-      compression(),
-      express.static(config.client.path)
-    );
+    app.use(morgan('common'), compression(), express.static(server.clientDir));
     server.listen(app);
     break;
 
@@ -26,9 +21,7 @@ switch (env) {
     // https://github.com/yusinto/universal-hot-reload/blob/master/src/index.js
     // https://webpack.js.org/api/node/#watching
     // https://github.com/liady/webpack-node-externals
-    import('./webpack/builders/build.prod').then(
-      async module => await module.default
-    );
+    import('./webpack/builders/build.prod');
     break;
 
   default:
@@ -38,7 +31,5 @@ switch (env) {
       app.use(morgan('combined'), compression(), build.router);
       app.use(server.createSpa(build.resourceBuffer));
       server.listen(app);
-
-      return build;
     });
 }

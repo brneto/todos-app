@@ -18,5 +18,9 @@
       To begin the development, run `yarn start`.
       To create a production bundle, use `yarn build`.
     -->
+    <script type="module">
+      import * as client from '/config.js';
+      if(client.title) document.title = client.title;
+    </script>
   </body>
 </html>

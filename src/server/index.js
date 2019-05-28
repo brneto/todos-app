@@ -1,12 +1,13 @@
 import chalk from 'chalk';
 import open from 'open';
-import config from '../config.json';
-import models from './models';
+import * as server from './config';
 import * as routers from './routers';
+import models from './models';
 
 const
   isInDev = process.env.NODE_ENV !== 'production',
-  port = config.server.port,
+  port = server.port,
+  clientDir = server.path,
   listenerHandler = error =>
     error
       ? console.log(chalk.red(`Server failed to start: [${error}].`))
@@ -34,4 +35,5 @@ function listen(app) {
 export {
   listen,
   createSpa,
+  clientDir,
 };

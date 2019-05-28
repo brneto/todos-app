@@ -1,9 +1,0 @@
-{
-  "server": {
-    "port": 3000
-  },
-  "client": {
-    "title": "Todos App",
-    "path": "client"
-  }
-}

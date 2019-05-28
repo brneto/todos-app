@@ -3,7 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
-import config from '../../config.json';
+import * as server from '../../server';
 
 const isInDev = process.env.NODE_ENV !== 'production';
 
@@ -14,7 +14,7 @@ const imgFilename = isInDev ? '[name].[ext]' : '[name].[hash:8].[ext]';
 const templatePath = './public';
 const htmlIndex = 'index.html';
 const htmlPluginOptions = {
-  title: config.client.title,
+  title: 'SPA SSE Rest App',
   filename: htmlIndex,
   template: path.join(templatePath, htmlIndex),
   inject: true,
@@ -30,7 +30,7 @@ const commonConfig = {
   output: {
     filename: `${filePrefix}.js`,
     chunkFilename: `${chunkPrefix}.js`,
-    path: path.resolve(path.join('dist', config.client.path)),
+    path: path.resolve(path.join('dist', server.clientDir)),
     publicPath: '/',
     hashDigestLength: 8
   },
@@ -59,7 +59,7 @@ const commonConfig = {
       // improves compile time on larger projects
       {
         test: /\.jsx?$/,
-        include: /[\\/]src[\\/]client[\\/]/,
+        include: /[\\/]src[\\/]client[\\/](?!config\.js)/,
         //exclude: /[\\/]node_modules[\\/](?!@material)/,
         use: [
           { loader: 'thread-loader' },

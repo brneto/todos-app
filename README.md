@@ -34,6 +34,8 @@ Libraries
 
 :satellite: [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
+:package: [ES Module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
+
 Development Aid Tools
 ------
 [ESLint](https://eslint.org/)
