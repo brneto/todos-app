@@ -60,7 +60,6 @@ const commonConfig = {
       {
         test: /\.jsx?$/,
         include: /[\\/]src[\\/]client[\\/](?!config\.js)/,
-        //exclude: /[\\/]node_modules[\\/](?!@material)/,
         use: [
           { loader: 'thread-loader' },
           { loader: 'babel-loader',
