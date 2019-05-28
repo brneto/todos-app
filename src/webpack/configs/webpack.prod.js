@@ -59,6 +59,7 @@ const webpackConfig = merge(commonConfig, {
           removeRedundantAttributes: true,
           useShortDoctype: true,
           removeEmptyAttributes: true,
+          removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true,
           keepClosingSlash: true,
           minifyJS: true,
