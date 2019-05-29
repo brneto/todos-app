@@ -18,7 +18,7 @@ const
     bottom: 0;
     left: 0;
     width: 100%;
-    height: ${({ open }) => (open ? '3em' : '0')};
+    height: ${({ open }) => open && '3em'};
     transition: height 2s ease-out 1s;
     background: white;
 
