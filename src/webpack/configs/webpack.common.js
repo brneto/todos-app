@@ -75,7 +75,6 @@ const commonConfig = {
                 ['@babel/preset-env',  {
                   forceAllTransforms: !isInDev,
                   modules: false,
-                  // Important, @babel/polyfill still needs to be installed.
                   useBuiltIns: 'usage',
                   corejs: 3,
                   debug: false

@@ -109,6 +109,7 @@ describe('Objects', () => {
     });
   });
 
+// https://stackoverflow.com/questions/53675785/how-do-i-enable-eslint-classprivatemethods-parser-plugin
   // describe('Private methods', () => {
   //   class IncreasingCounter {
   //     #count = 0;

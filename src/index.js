@@ -1,4 +1,3 @@
-//import '@babel/polyfill';
 import chalk from 'chalk';
 import morgan from 'morgan';
 import compression from 'compression';

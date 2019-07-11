@@ -4,7 +4,7 @@
 import 'core-js/modules/esnext.string.match-all';
 
 // add some helpful assertions
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 // this is basically: afterEach(cleanup)
 import '@testing-library/react/cleanup-after-each';
