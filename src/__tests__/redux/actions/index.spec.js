@@ -15,34 +15,34 @@ describe('actions', () => {
   const error = new Error('Boom!');
   const response = 'responseData';
 
-  it('fetchTodos', () => {
+  test('fetchTodos', () => {
     expect(fetchTodos()).toMatchSnapshot();
   });
 
-  it('addTodo', () => {
+  test('addTodo', () => {
     expect(addTodo('hello!')).toMatchSnapshot();
   });
 
-  it('toggleTodo', () => {
+  test('toggleTodo', () => {
     expect(toggleTodo('123')).toMatchSnapshot();
   });
 
-  it('setToggleFetching', () => {
+  test('setToggleFetching', () => {
     expect(setToggleFetching(filter)).toMatchSnapshot();
     expect(setToggleFetching(error)).toMatchSnapshot();
   });
 
-  it('setFetchedTodos', () => {
+  test('setFetchedTodos', () => {
     expect(setFetchedTodos(response, filter)).toMatchSnapshot();
     expect(setFetchedTodos(error, filter)).toMatchSnapshot();
   });
 
-  it('setAddedTodo', () => {
+  test('setAddedTodo', () => {
     expect(setAddedTodo(response)).toMatchSnapshot();
     expect(setAddedTodo(error)).toMatchSnapshot();
   });
 
-  it('setToggledTodo', () => {
+  test('setToggledTodo', () => {
     expect(setToggledTodo(response)).toMatchSnapshot();
     expect(setToggledTodo(error)).toMatchSnapshot();
   });
