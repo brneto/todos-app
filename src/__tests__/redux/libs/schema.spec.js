@@ -2,7 +2,7 @@ import { normalize } from 'normalizr';
 import { todo, todoList } from '../../../client/libs/schema';
 
 describe('schema', () => {
-  it('should work for list of todos', () => {
+  test('list of todos', () => {
     const data = [{
         id: 1,
         text: 'hey',
@@ -43,7 +43,7 @@ describe('schema', () => {
     expect(normalize(data, todoList)).toEqual(expectedData);
   });
 
-  it('should work for one todo', () => {
+  test('single todo', () => {
     const data = {
       id: 1,
       text: 'hey',
