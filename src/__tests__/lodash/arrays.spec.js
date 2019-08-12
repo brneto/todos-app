@@ -1,7 +1,6 @@
 import _remove from 'lodash/remove';
 
 describe('Array', () => {
-  describe('Remove elements', () => {
     const files = [
       new File(['arquivoBits'], 'arquivo1.pdf'),
       new File(['arquivoBits'], 'arquivo2.pdf'),
@@ -65,11 +64,14 @@ describe('Array', () => {
       ]
     };
 
-    it('should remove an element and return without that element', () => {
-      const fileList = _remove(sourceArray.arquivos, a => a instanceof File);
+  // When
+  const fileList = _remove(sourceArray.arquivos, a => a instanceof File);
 
-      expect(sourceArray.arquivos).toEqual(expectArray.arquivos);
-      expect(fileList).toEqual(files);
-    });
+  it('should remove an element', () => {
+    expect(sourceArray.arquivos).toEqual(expectArray.arquivos);
+  });
+
+  it('should return without removed element', () => {
+    expect(fileList).toEqual(files);
   });
 });
