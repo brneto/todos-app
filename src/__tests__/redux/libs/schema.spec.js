@@ -50,19 +50,19 @@ describe('schema', () => {
       completed: true,
     };
 
-  const expectedData = {
-    entities: {
-      todos: {
-        1: {
-          id: 1,
-          text: 'hey',
-          completed: true,
+    const expectedData = {
+      entities: {
+        todos: {
+          1: {
+            id: 1,
+            text: 'hey',
+            completed: true,
+          }
         }
-      }
-    },
-    result: 1
-  };
+      },
+      result: 1
+    };
 
-  expect(normalize(data, todo)).toEqual(expectedData);
+    expect(normalize(data, todo)).toEqual(expectedData);
   });
 });

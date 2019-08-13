@@ -6,10 +6,5 @@ import 'core-js/modules/esnext.string.match-all';
 // add some helpful assertions
 import '@testing-library/jest-dom/extend-expect';
 
-// this is basically: afterEach(cleanup)
-import '@testing-library/react/cleanup-after-each';
-
-//https://github.com/axios/axios/issues/1754
 //https://stackoverflow.com/questions/42677387/jest-returns-network-error-when-doing-an-authenticated-request-with-axios/43020260#43020260
-//https://github.com/facebook/jest/issues/1700
-global.XMLHttpRequest = undefined;
+//global.XMLHttpRequest = undefined;
