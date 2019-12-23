@@ -12,7 +12,13 @@
     "*.js": "javascriptreact"
   },
 
+
+  "editor.tabSize": 2,
+
+  "editor.detectIndentation": false,
+
   "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     // Render vertical rulers after a certain number of
     // monospace characters. Use multiple values for multiple
     // rulers. No rulers are drawn if array is empty.
@@ -21,11 +27,6 @@
 
   // Enable/disable JavaScript validation.
   "javascript.validate.enable": false,
-
-  // Use 'prettier-eslint' instead of 'prettier'. Other
-  // settings will only be fallbacks in case they could not be
-  // inferred from eslint rules.
-  "prettier.eslintIntegration": true,
 
   // Controls the printing of trailing commas wherever possible.
   //     'es5' - Trailing commas where valid in ES5 (objects, arrays, etc)
@@ -49,6 +50,6 @@
   // GitHub Compatibility
   "markdown.extension.toc.githubCompatibility": true,
 
-  // Enable advanced regex features like lookahead an
-  "search.usePCRE2": true,
+  // Set default shell in Windows
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
 }

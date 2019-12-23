@@ -3,32 +3,48 @@ import { useState, useEffect } from 'react';
 function useNotices(url) {
   const [notices, setNotice] = useState([]);
 
+  const applyEventDataToState = stateMutator => event => {
+    const data = JSON.parse(event.data);
+    setNotice(stateMutator(data));
+  };
+
   useEffect(() => {
     const
       eventSource = new EventSource(url),
       eventHandler = {
         add: [
           'addnotice',
-          event => setNotice(
-            prevState => [...prevState, JSON.parse(event.data)]
-          ),
+          applyEventDataToState(data => prevState => [...prevState, data]),
+          // event => {
+          //   const data = JSON.parse(event.data);
+          //   setNotice(prevState => [...prevState, data]);
+          // },
           false,
         ],
         update: [
           'updnotice',
-          event => setNotice(prevState => prevState.map(
-            notice => {
-              const eventData = JSON.parse(event.data);
-              return notice.id === eventData.id ? eventData : notice;
-            }
+          applyEventDataToState(data => prevState => prevState.map(
+            notice => notice.id === data.id ? data : notice
           )),
+          // event => {
+          //   const data = JSON.parse(event.data);
+          //   setNotice(prevState => prevState.map(
+          //     notice => notice.id === data.id ? data : notice
+          //   ));
+          // },
           false,
         ],
         delete: [
           'delnotice',
-          event => setNotice(prevState => prevState.filter(
-            notice => notice.id !== JSON.parse(event.data).id
+          applyEventDataToState(data => prevState => prevState.filter(
+            notice => notice.id !== data.id
           )),
+          // event => {
+          //   const data = JSON.parse(event.data);
+          //   setNotice(prevState => prevState.filter(
+          //     notice => notice.id !== data.id
+          //   ));
+          // },
           false,
         ],
         clear: ['clanotice', () => setNotice([]), false],
