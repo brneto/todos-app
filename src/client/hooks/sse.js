@@ -23,9 +23,9 @@ function useNotices(url) {
         ],
         update: [
           'updnotice',
-          applyEventDataToState(data => prevState => prevState.map(
-            notice => notice.id === data.id ? data : notice
-          )),
+          applyEventDataToState(data => prevState =>
+            prevState.map(notice => notice.id === data.id ? data : notice)
+          ),
           // event => {
           //   const data = JSON.parse(event.data);
           //   setNotice(prevState => prevState.map(
@@ -36,9 +36,9 @@ function useNotices(url) {
         ],
         delete: [
           'delnotice',
-          applyEventDataToState(data => prevState => prevState.filter(
-            notice => notice.id !== data.id
-          )),
+          applyEventDataToState(data => prevState =>
+            prevState.filter(notice => notice.id !== data.id)
+          ),
           // event => {
           //   const data = JSON.parse(event.data);
           //   setNotice(prevState => prevState.filter(
