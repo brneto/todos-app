@@ -15,10 +15,6 @@ function useNotices(url) {
         add: [
           'addnotice',
           applyEventDataToState(data => prevState => [...prevState, data]),
-          // event => {
-          //   const data = JSON.parse(event.data);
-          //   setNotice(prevState => [...prevState, data]);
-          // },
           false,
         ],
         update: [
@@ -26,12 +22,6 @@ function useNotices(url) {
           applyEventDataToState(data => prevState =>
             prevState.map(notice => notice.id === data.id ? data : notice)
           ),
-          // event => {
-          //   const data = JSON.parse(event.data);
-          //   setNotice(prevState => prevState.map(
-          //     notice => notice.id === data.id ? data : notice
-          //   ));
-          // },
           false,
         ],
         delete: [
@@ -39,12 +29,6 @@ function useNotices(url) {
           applyEventDataToState(data => prevState =>
             prevState.filter(notice => notice.id !== data.id)
           ),
-          // event => {
-          //   const data = JSON.parse(event.data);
-          //   setNotice(prevState => prevState.filter(
-          //     notice => notice.id !== data.id
-          //   ));
-          // },
           false,
         ],
         clear: ['clanotice', () => setNotice([]), false],
