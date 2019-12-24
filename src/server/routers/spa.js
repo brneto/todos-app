@@ -8,11 +8,6 @@ function createRouter(resourceBuffer) {
     res.send(resourceBuffer);
   }
 
-  function codeHandler(req, res) {
-    res.type('javascript');
-    res.send(resourceBuffer);
-  }
-
   function spaHandler(req, res, next) {
     const isApiCall = /^\/api\/.+/.test(req.path);
 
@@ -25,7 +20,6 @@ function createRouter(resourceBuffer) {
   }
 
   router.get('/source', showSourceHandler);
-  router.get('/code', codeHandler);
   router.get('/**', spaHandler);
 
   return router;
