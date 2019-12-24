@@ -5,7 +5,7 @@ import express from 'express';
 import * as server from './server';
 
 const
-  env = process.env.NODE_ENV,
+  env = process.env.NODE_ENV || 'development',
   app = express();
 
 console.log(chalk.green('Starting app in', env, 'mode...'));
