@@ -26,12 +26,10 @@ class Width extends Component {
   }
 }
 
-const MyResponsiveComponent = () => (
+const WithoutHooks = () => (
   <Width>
-    {width => (
-      <p>Window width is {width}</p>
-    )}
+    {width => <p>Window width is {width}</p>}
   </Width>
 );
 
-export default MyResponsiveComponent;
+export default WithoutHooks;

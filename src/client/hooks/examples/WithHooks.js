@@ -14,10 +14,9 @@ function useWindowsWidth() {
   return width;
 }
 
-function MyResponsiveComponent() {
+function WithHooks() {
   const width = useWindowsWidth(); // My custom Hook
-
   return (<p>Window width is {width}.</p>);
 }
 
-export default MyResponsiveComponent;
+export default WithHooks;
