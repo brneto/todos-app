@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Width extends Component {
-  static propTypes = {
-    children: PropTypes.func.isRequired,
-  };
+  static propTypes = { children: PropTypes.func.isRequired };
 
-  state = {
-    width: window.innerWidth,
-  };
+  state = { width: window.innerWidth };
 
   handleResize = () => this.setState({ width: window.innerWidth });
 
