@@ -1,10 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import Root from './components/Root';
 import * as state from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
-render(
+ReactDOM.render(
   <Root {...state} />,
   document.getElementById('root')
 );
