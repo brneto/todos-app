@@ -1,7 +1,8 @@
 import path from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import flexbugsfixes from 'postcss-flexbugs-fixes';
+import CopyPlugin from 'copy-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StylelintBarePlugin from 'stylelint-bare-webpack-plugin';
 import * as server from '../../server';
 
@@ -163,6 +164,9 @@ const commonConfig = {
     alias: { 'react-dom': '@hot-loader/react-dom' }
   },
   plugins: [
+    // Copies individual files, which already exist, to the build directory
+    new CopyPlugin(['public/config.js']),
+
     // Generate an external css file
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output

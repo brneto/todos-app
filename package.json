@@ -23,8 +23,7 @@
     "prebuild": "yarn prestart",
     "build": "run-s build:*",
     "build:client": "NODE_ENV=building babel-node src/index.js",
-    "build:server": "babel src -d dist --minified --only 'src/*.js','src/server/**/*.js' --ignore 'src/**/*.test.*','src/**/*.spec.*'",
-    "postbuild": "cp src/client/config.js dist/client/"
+    "build:server": "babel src -d dist --minified --only 'src/*.js','src/server/**/*.js' --ignore 'src/**/*.test.*','src/**/*.spec.*'"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -87,7 +86,8 @@
     "circular-dependency-plugin": "^5.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "connected-react-router": "^6.6.1",
-    "core-js": "^3.6.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "core-js": "^3.6.1",
     "css-hot-loader": "^1.4.4",
     "css-loader": "^3.4.0",
     "deep-freeze": "^0.0.1",
@@ -136,9 +136,9 @@
     "redux-saga-test-plan": "^4.0.0-rc.3",
     "regenerator-runtime": "^0.13.3",
     "reselect": "^4.0.0",
-    "style-loader": "^1.1.1",
+    "style-loader": "^1.1.2",
     "styled-components": "^4.4.1",
-    "stylelint": "^12.0.0",
+    "stylelint": "^12.0.1",
     "stylelint-bare-webpack-plugin": "^2.0.0",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^19.0.0",

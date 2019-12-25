@@ -6,7 +6,7 @@ import webpackHot from 'webpack-hot-middleware';
 import * as configs from '../configs';
 
 export default new Promise(resolve => {
-  console.log(chalk.blue(
+  console.info(chalk.blue(
     '[dev-build] Generating in-memory bundle for development via Webpack.',
     'wait a moment...'
   ));
@@ -24,14 +24,16 @@ export default new Promise(resolve => {
   });
 
   devMiddleware.waitUntilValid(() => {
-    console.log(chalk.green(
+    console.info(chalk.green(
       'Your app has been compiled in development mode and written into memory.'
     ));
+    devMiddleware.fileSystem
+      .readdirSync(configs.dev.output.path)
+      .forEach(f => console.info(chalk.green('build.dev:', 'devMiddlewareFileSystem =', f)));
 
-    const resourceBuffer = devMiddleware.fileSystem.readFileSync(path.join(
-      configs.dev.output.path,
-      configs.htmlIndex.filename
-    ));
+    const resourceBuffer =
+      devMiddleware.fileSystem
+        .readFileSync(path.join(configs.dev.output.path, configs.htmlIndex.filename));
 
     resolve({
       router: [devMiddleware, hotMiddleware],

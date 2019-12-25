@@ -9,9 +9,9 @@ function createRouter(resourceBuffer) {
   }
 
   function spaHandler(req, res, next) {
-    const isApiCall = /^\/api\/.+/.test(req.path);
+    const isApiRequest = /^\/api\/.+/.test(req.path);
 
-    if (isApiCall) {
+    if (isApiRequest) {
       next();
     } else {
       res.type('html');
