@@ -22,8 +22,8 @@ const createRootReducer = history => combineReducers({
 // Recommendation: Always put the selectors together with its related reducer.
 const getFilter = createSelector(
   // createMatchSelector:
-  // The argument are the props to match against,
-  // they are identical to the matching props Route accepts:
+  // The argument are the props to match against.
+  // They are identical to the matching props Route accepts:
   // {
   //   path, // like /:filter?
   //   strict, // optional, defaults to false
