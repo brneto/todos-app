@@ -81,7 +81,8 @@ const createList = filter => {
 
   const
     getErrorMessage = (test, { message }) => {
-      if (test) return (message || 'Something went wrong.');
+      if (test)
+        return (message || 'Something went wrong.');
     },
     errorMessageInitialState = null,
     errorMessage = handleActions(
