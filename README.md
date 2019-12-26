@@ -1,6 +1,6 @@
 Todo App Demo
 ======
-A small PWA React/Redux application using known best practices, design pattern ([CQS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)) and libraries to achieve a sofware highly scalable.
+A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React/Redux application using known best practices, design pattern ([CQS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)) and libraries to achieve a sofware highly scalable.
 
 Libraries
 ------
