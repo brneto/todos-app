@@ -22,18 +22,15 @@ const
 
 function VisibleTodoList(props) {
  const {
-   isFetching,
-   errorMessage,
-   fetchTodos,
-   toggleTodo,
-   todos,
-   filter,
+   isFetching, errorMessage, fetchTodos,
+   toggleTodo, todos, filter,
   } = props;
 
   // https://github.com/facebook/react/issues/14920
   useEffect(() => void fetchTodos(), [fetchTodos, filter]);
 
   let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
+
   if(!todos.length) {
     if(isFetching)
       render = <OnFetch>Loading...</OnFetch>;

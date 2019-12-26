@@ -1,8 +1,13 @@
 import { createActions } from 'redux-actions';
 import { identity } from 'ramda';
 
-const filterHandler = [identity, (_, filter) => ({ filter })];
+// setFetchedTodos :: (a, b) -> {
+//   type: 'SET_FETCHED_TODOS',
+//   payload: a,
+//   meta: { filter: b }
+// }
 
+const filterHandler = [identity, (_, filter) => ({ filter })];
 export const {
   fetchTodos,
   addTodo,
