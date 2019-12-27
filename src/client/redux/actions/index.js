@@ -18,9 +18,9 @@ export const {
   setToggleFetching,
 
   // Document messages
-  setFetchedTodos, // fetchedTodos
-  setAddedTodo, // addedTodo
-  setToggledTodo, // toggledTodo
+  setFetchedTodos,
+  setAddedTodo,
+  setToggledTodo,
 
   // Command(Modifier/Mutator) messages
   setToggledTodoAdd, // addTodoToList(['completed'|'active'])
