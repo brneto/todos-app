@@ -16,7 +16,8 @@ export const {
   toggleTodo,
 
   // Event messages
-  setToggleFetching, // fetching
+  // Naming Convention: ?
+  setToggleFetching, // toggleFetching
 
   // Document messages
   // Naming Convention: set<past-tense verb><subject>
