@@ -46,7 +46,8 @@ function* toggleTodo({ payload: id }) {
     const
       response = yield call(api.todos.toggleTodo, id),
       data = normalize(response, schema.todo),
-      toggledId = data.result;
+      // TODO: Remove comment below
+      // toggledId = data.result;
 
     const
       getCompleted = compose(
