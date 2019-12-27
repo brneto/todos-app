@@ -10,6 +10,7 @@ const filterHandler = [identity, (_, filter) => ({ filter })];
 // }
 export const {
   // Side Effect Command(Modifier/Mutator) messages
+  // Naming Convention: <imperative verb><subject>
   fetchTodos,
   addTodo,
   toggleTodo,
@@ -18,11 +19,13 @@ export const {
   setToggleFetching, // fetching
 
   // Document messages
+  // Naming Convention: set<past-tense verb><subject>
   setFetchedTodos,
   setAddedTodo,
   setToggledTodo,
 
   // Command(Modifier/Mutator) messages
+  // Naming Convention: <imperative verb><subject>
   setToggledTodoAdd, // addTodoToList(['completed'|'active'])
   setToggledTodoRemove, // removeTodoFromList(['completed'|'active'])
 } = createActions(
