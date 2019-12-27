@@ -22,7 +22,7 @@ export const {
   setAddedTodo,
   setToggledTodo,
 
-  // ?
+  // Command(Modifier/Mutator) messages
   setToggledTodoAdd,
   setToggledTodoRemove,
 } = createActions(
