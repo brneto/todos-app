@@ -56,11 +56,11 @@ function* toggleTodo({ payload: id }) {
         prop('entities')
       ),
       createAddToggledTodo = curry((f, i) =>
-      actions.setToggledTodoAdd(i, f)
-    ),
-    createRemoveToggledTodo = curry((f, i) =>
-      actions.setToggledTodoRemove(i, f)
-    );
+        actions.setToggledTodoAdd(i, f)
+      ),
+      createRemoveToggledTodo = curry((f, i) =>
+        actions.setToggledTodoRemove(i, f)
+      );
 
     const
       completed = getCompleted(data),
