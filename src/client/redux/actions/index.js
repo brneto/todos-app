@@ -18,13 +18,13 @@ export const {
   setToggleFetching,
 
   // Document messages
-  setFetchedTodos,
-  setAddedTodo,
-  setToggledTodo,
+  setFetchedTodos, // fetchedTodos
+  setAddedTodo, // addedTodo
+  setToggledTodo, // toggledTodo
 
   // Command(Modifier/Mutator) messages
-  setToggledTodoAdd, // add to todos list completed or active
-  setToggledTodoRemove, // remove from todos list completed or active
+  setToggledTodoAdd, // addTodoToList(['completed'|'active'])
+  setToggledTodoRemove, // removeTodoFromList(['completed'|'active'])
 } = createActions(
   {
     SET_FETCHED_TODOS: filterHandler,
