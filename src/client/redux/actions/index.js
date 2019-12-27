@@ -15,7 +15,7 @@ export const {
   toggleTodo,
 
   // Event messages
-  setToggleFetching,
+  setToggleFetching, // fetching
 
   // Document messages
   setFetchedTodos,
