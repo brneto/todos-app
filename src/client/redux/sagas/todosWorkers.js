@@ -10,9 +10,7 @@ function* fetchTodos() {
   let filter;
   try {
     const isFetching = yield select(selectors.getIsFetching);
-    if (isFetching) {
-      yield cancel();
-    }
+    if (isFetching) yield cancel();
 
     filter = yield select(selectors.getFilter);
     yield put(actions.setToggleFetching(filter));

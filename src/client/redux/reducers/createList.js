@@ -17,74 +17,46 @@ import {
 const createList = filter => {
   const isFilter = equals(filter);
 
-  const
-    idsInitialState = [],
-    ids = handleActions(
+  const ids = handleActions(
       {
         [setFetchedTodos]: {
           next: produce((draft, { payload, meta }) => {
-            if(isFilter(meta.filter))
-              return payload.result; //return an entirely new state
+            if (isFilter(meta.filter)) return payload.result; //return an entirely new state
           }),
         },
         [setAddedTodo]: {
           next: produce((draft, { payload }) => {
-            if(!isFilter('completed'))
-              draft.push(payload.result); //modify the current draft state
+            if (!isFilter('completed')) draft.push(payload.result); //modify the current draft state
           }),
         },
         [setToggledTodoAdd]: {
           next: produce((draft, { payload, meta }) => {
-            if(isFilter(meta.filter))
-              draft.push(payload); //modify the current draft state
+            if (isFilter(meta.filter)) draft.push(payload); //modify the current draft state
           }),
         },
         [setToggledTodoRemove]: {
           next: produce((draft, { payload, meta }) => {
             const notEquals = a => b => a !== b;
-            if(isFilter(meta.filter))
-              return draft.filter(notEquals(payload)); //return an entirely new state
+            if(isFilter(meta.filter)) return draft.filter(notEquals(payload)); //return an entirely new state
           }),
         },
       },
-      idsInitialState
+      [] // Initial state
     );
 
-  // const isFetching = (state = false, { type, meta }) => {
-  //   if (filter !== meta?.filter) {
-  //     return state;
-  //   }
-  //   switch (type) {
-  //     case 'FETCH_TODOS_REQUEST':
-  //       return true;
-  //     case 'FETCH_TODOS_SUCCESS':
-  //     case 'FETCH_TODOS_FAILURE':
-  //       return false;
-  //     default:
-  //       return state;
-  //   }
-  // };
-  // To reproduce the same above behavior one solution would use
-  // the filter test to set diferents handleActions to isFetching state.
-  const
-    isFetchingInitialState = false,
-    isFetching = handleActions(
+  const isFetching = handleActions(
       {
         [setToggleFetching]: produce((draft, { payload }) => {
-          if(isFilter(payload))
-            return !draft; //return an entirely new state
+          if (isFilter(payload)) return !draft; //return an entirely new state
         }),
       },
-      isFetchingInitialState
+      false // Initial state
     );
-
 
   const
     getErrorMessage = (test, { message }) => {
-      if (test)
-        return (message || 'Something went wrong.');
+      if (test) return (message || 'Something went wrong.');
     },
-    errorMessageInitialState = null,
     errorMessage = handleActions(
       {
         [setFetchedTodos]: {
@@ -106,7 +78,7 @@ const createList = filter => {
           )
         },
       },
-      errorMessageInitialState
+      null // Initial state
     );
 
   return combineReducers({

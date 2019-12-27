@@ -4,9 +4,7 @@ import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import { setFetchedTodos, setAddedTodo, setToggledTodo } from '../actions';
 
-const
-  initialState = {},
-  byId = handleActions(
+const byId = handleActions(
     {
       [combineActions(setFetchedTodos, setAddedTodo, setToggledTodo)]: {
         next: produce((draft, { payload: { entities } }) => {
@@ -14,7 +12,7 @@ const
         }),
       }
     },
-    initialState
+    {} // Initial state
   );
 
 // SELECTORS
