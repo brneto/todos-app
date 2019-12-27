@@ -23,8 +23,8 @@ export const {
   setToggledTodo,
 
   // Command(Modifier/Mutator) messages
-  setToggledTodoAdd,
-  setToggledTodoRemove,
+  setToggledTodoAdd, // add to todos list completed or active
+  setToggledTodoRemove, // remove from todos list completed or active
 } = createActions(
   {
     SET_FETCHED_TODOS: filterHandler,
