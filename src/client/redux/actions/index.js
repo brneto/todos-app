@@ -1,22 +1,27 @@
 import { createActions } from 'redux-actions';
 import { identity } from 'ramda';
 
+// TODO: Breaks this file into event types messages
+const filterHandler = [identity, (_, filter) => ({ filter })];
 // setFetchedTodos :: (a, b) -> {
 //   type: 'SET_FETCHED_TODOS',
 //   payload: a,
 //   meta: { filter: b }
 // }
-
-const filterHandler = [identity, (_, filter) => ({ filter })];
 export const {
+  // Side Effect Command(Modifier/Mutator) messages
   fetchTodos,
   addTodo,
   toggleTodo,
 
+  // Event messages
   setToggleFetching,
+
+  // Document messages
   setFetchedTodos,
   setAddedTodo,
   setToggledTodo,
+
   setToggledTodoAdd,
   setToggledTodoRemove,
 } = createActions(
