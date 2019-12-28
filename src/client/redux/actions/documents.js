@@ -10,7 +10,7 @@ import { identity } from 'ramda';
 // Document actions
 // Naming Convention: <subject><past-tense verb>
 export const {
-  todosfetched,
+  todosFetched,
   todoAdded,
   todoToggled,
 } = createActions(

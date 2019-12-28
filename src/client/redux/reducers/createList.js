@@ -4,27 +4,26 @@ import { prop, identity, equals, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import {
-  setFetchedTodos,
-  setAddedTodo,
-
   setToggledTodo,
   setToggledTodoAdd,
   setToggledTodoRemove,
 
   setToggleFetching,
 } from '../actions';
+import { documents } from '../actions/nextIndex';
 
+const { todosFetched, todoAdded } = documents;
 const createList = filter => {
   const isFilter = equals(filter);
 
   const ids = handleActions(
       {
-        [setFetchedTodos]: {
+        [todosFetched]: {
           next: produce((draft, { payload, meta }) => {
             if (isFilter(meta.filter)) return payload.result; //return an entirely new state
           }),
         },
-        [setAddedTodo]: {
+        [todoAdded]: {
           next: produce((draft, { payload }) => {
             if (!isFilter('completed')) draft.push(payload.result); //modify the current draft state
           }),
@@ -59,13 +58,13 @@ const createList = filter => {
     },
     errorMessage = handleActions(
       {
-        [setFetchedTodos]: {
+        [todosFetched]: {
           next: always(null),
           throw: produce((draft, { payload, meta }) =>
             getErrorMessage(isFilter(meta.filter), payload) //return an entirely new state
           )
         },
-        [setAddedTodo]: {
+        [todoAdded]: {
           next: always(null),
           throw: produce((draft, { payload }) =>
             getErrorMessage(!isFilter('completed'), payload) //return an entirely new state

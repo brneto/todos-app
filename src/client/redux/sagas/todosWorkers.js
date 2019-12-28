@@ -2,6 +2,7 @@ import { normalize } from 'normalizr';
 import { curry, prop, compose } from 'ramda';
 import { call, put, select, cancel } from 'redux-saga/effects';
 import * as actions from '../actions';
+import { documents } from '../actions/nextIndex';
 import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
@@ -19,9 +20,9 @@ function* fetchTodos() {
       response = yield call(api.todos.fetchTodos, filter),
       data = normalize(response, schema.todoList);
 
-    yield put(actions.setFetchedTodos(data, filter));
+    yield put(documents.todosFetched(data, filter));
   } catch (error) {
-    yield put(actions.setFetchedTodos(error, filter));
+    yield put(documents.todosFetched(error, filter));
   } finally {
     yield put(actions.setToggleFetching(filter));
   }
@@ -33,9 +34,9 @@ function* addTodo({ payload: text }) {
       response = yield call(api.todos.addTodo, text),
       data = normalize(response, schema.todo);
 
-    yield put(actions.setAddedTodo(data));
+    yield put(documents.todoAdded(data));
   } catch (error) {
-    yield put(actions.setAddedTodo(error));
+    yield put(documents.todoAdded(error));
   }
 }
 
@@ -72,9 +73,9 @@ function* toggleTodo({ payload: id }) {
 
     yield put(addToggledTodo(id));
     yield put(removeToggledTodo(id));
-    yield put(actions.setToggledTodo(data));
+    yield put(documents.todoToggled(data));
   } catch (error) {
-    yield put(actions.setToggledTodo(error));
+    yield put(documents.todoToggled(error));
   }
 }
 
