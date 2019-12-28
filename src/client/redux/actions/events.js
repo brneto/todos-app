@@ -6,9 +6,9 @@ import { createActions } from 'redux-actions';
 // - Progressive event start: <present-continuous verb>[<subject>]
 // - Progressive event end: <past-tense verb>[<subject>]
 export const {
-  fetchingTodoList,
-  fetchedTodoList,
+  fetchingTodos,
+  fetchedTodos,
 } = createActions(
-  'FETCHING_TODO_LIST',
-  'FETCHED_TODO_LIST'
+  'FETCHING_TODOS',
+  'FETCHED_TODOS'
 );

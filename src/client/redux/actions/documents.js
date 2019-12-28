@@ -1,20 +1,20 @@
 import { createActions } from 'redux-actions';
 import { identity } from 'ramda';
 
-// fetchedTodos :: (a, b) -> {
+// todosFetched :: (a, b) -> {
 //   type: 'FETCHED_TODOS',
 //   payload: a,
 //   meta: { filter: b }
 // }
 
 // Document actions
-// Naming Convention: <past-tense verb><subject>
+// Naming Convention: <subject><past-tense verb>
 export const {
-  fetchedTodos,
-  addedTodo,
-  toggledTodo,
+  todosfetched,
+  todoAdded,
+  todoToggled,
 } = createActions(
-  { FETCHED_TODOS: [identity, (payload, filter) => ({ filter })] },
-  'ADDED_TODO',
-  'TOGGLED_TODO',
+  { TODOS_FETCHED: [identity, (payload, filter) => ({ filter })] },
+  'TODO_ADDED',
+  'TODO_TOGGLED',
 );
