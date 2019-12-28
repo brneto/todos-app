@@ -2,7 +2,7 @@ import { combineActions, handleActions } from 'redux-actions';
 import { flip, prop, identity } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
-import { documents } from '../actions/nextIndex';
+import { documents } from '../actions';
 
 const { todosFetched, todoAdded, todoToggled } = documents;
 const byId = handleActions(

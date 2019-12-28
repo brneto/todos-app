@@ -4,7 +4,7 @@ import {
   setFetchedTodos,
   setAddedTodo,
   setToggledTodo
-} from '../../../client/redux/actions';
+} from '../../../client/redux/actions/oldIndex';
 
 describe('reducers/byId', () => {
   const filter = 'all';

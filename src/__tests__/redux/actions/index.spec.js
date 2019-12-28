@@ -8,7 +8,7 @@ import {
   setFetchedTodos,
   setAddedTodo,
   setToggledTodo,
-} from '../../../client/redux/actions';
+} from '../../../client/redux/actions/oldIndex';
 
 describe('actions', () => {
   const filter = 'filterName';

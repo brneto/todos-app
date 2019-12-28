@@ -1,6 +1,6 @@
 import { testSaga } from 'redux-saga-test-plan';
 import { normalize } from 'normalizr';
-import * as actions from '../../../client/redux/actions';
+import * as actions from '../../../client/redux/actions/oldIndex';
 import * as selectors from '../../../client/redux/reducers';
 import * as schema from '../../../client/libs/schema';
 import * as sagas from '../../../client/redux/sagas/todosWorkers';

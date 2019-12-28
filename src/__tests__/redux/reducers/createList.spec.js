@@ -7,7 +7,7 @@ import {
   setToggledTodoAdd,
   setToggledTodoRemove,
   setToggleFetching
-} from '../../../client/redux/actions';
+} from '../../../client/redux/actions/oldIndex';
 
 describe('reducers/createList', () => {
   const filter = 'active';

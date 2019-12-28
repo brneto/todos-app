@@ -1,12 +1,12 @@
 import { takeEvery, all } from 'redux-saga/effects';
-import { fetchTodos, addTodo, toggleTodo } from '../actions';
+import { effects } from '../actions';
 import * as workers from './todosWorkers';
 
 function* rootSaga() {
   yield all({ // eslint-disable-line redux-saga/no-unhandled-errors
-    fetchTodosWatcher: takeEvery(fetchTodos, workers.fetchTodos),
-    addTodoWatcher: takeEvery(addTodo, workers.addTodo),
-    toggleTodoWatcher: takeEvery(toggleTodo, workers.toggleTodo),
+    fetchTodosWatcher: takeEvery(effects.fetchTodos, workers.fetchTodos),
+    addTodoWatcher: takeEvery(effects.addTodo, workers.addTodo),
+    toggleTodoWatcher: takeEvery(effects.toggleTodo, workers.toggleTodo),
   });
 }
 

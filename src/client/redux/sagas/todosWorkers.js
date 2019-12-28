@@ -1,8 +1,8 @@
 import { normalize } from 'normalizr';
 import { curry, prop, compose } from 'ramda';
 import { call, put, select, cancel } from 'redux-saga/effects';
-import * as actions from '../actions';
-import { documents } from '../actions/nextIndex';
+import * as actions from '../actions/oldIndex';
+import { documents } from '../actions';
 import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';

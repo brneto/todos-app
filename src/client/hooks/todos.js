@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { addTodo } from '../redux/actions';
+import { effects } from '../redux/actions';
 
 function useAddTodo(dispatch) {
   const
@@ -7,7 +7,7 @@ function useAddTodo(dispatch) {
     handleChange = ({ target }) => setTodo(target.value),
     handleKeyDown = ({ keyCode }) => {
       if(keyCode === 13) { // ENTER_KEY
-        dispatch(addTodo(todo.trim()));
+        dispatch(effects.addTodo(todo.trim()));
         setTodo('');
       }
     };

@@ -6,7 +6,7 @@ import {
   getFilter, getIsFetching,
   getErrorMessage, getVisibleTodos
 } from '../redux/reducers';
-import { fetchTodos, toggleTodo } from '../redux/actions';
+import { effects } from '../redux/actions';
 import TodoList from './TodoList';
 import FetchError from './FetchError';
 
@@ -58,8 +58,8 @@ const
     todos: getVisibleTodos(state),
   }),
   mapDispatchToProps = {
-    fetchTodos,
-    toggleTodo,
+    fetchTodos: effects.fetchTodos,
+    toggleTodo: effects.toggleTodo,
   };
 
 export default connect(
