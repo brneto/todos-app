@@ -1,8 +1,7 @@
 import { normalize } from 'normalizr';
-import { curry, prop, compose } from 'ramda';
-import { call, put, select, cancel } from 'redux-saga/effects';
+import { all, call, put, select, cancel } from 'redux-saga/effects';
 import * as actions from '../actions/oldIndex';
-import { documents } from '../actions';
+import { commands, documents } from '../actions';
 import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
@@ -44,38 +43,33 @@ function* toggleTodo({ payload: id }) {
   try {
     const
       response = yield call(api.todos.toggleTodo, id),
-      data = normalize(response, schema.todo),
-      // toggledId = data.result;
-      { result: toggledId = null } = data;
+      data = normalize(response, schema.todo);
 
-    const
-      getCompleted = compose(
-        prop('completed'),
-        prop(toggledId),
-        prop('todos'),
-        prop('entities')
-      ),
-      createAddToggledTodo = curry((f, i) =>
-        actions.setToggledTodoAdd(i, f)
-      ),
-      createRemoveToggledTodo = curry((f, i) =>
-        actions.setToggledTodoRemove(i, f)
-      );
-
-    const
-      completed = getCompleted(data),
-      addToggledTodo = completed
-        ? createAddToggledTodo('completed')
-        : createAddToggledTodo('active'),
-      removeToggledTodo = completed
-        ? createRemoveToggledTodo('active')
-        : createRemoveToggledTodo('completed');
-
-    yield put(addToggledTodo(id));
-    yield put(removeToggledTodo(id));
+    yield switchTodoBetweenLists(data, 'active', 'completed');
     yield put(documents.todoToggled(data));
   } catch (error) {
     yield put(documents.todoToggled(error));
+  }
+}
+
+function* switchTodoBetweenLists(data, filterA, filterB) {
+  const
+    id = data.result,
+    { entities: { todos: { [id]: { completed: isTodoCompleted } } } } = data;
+
+  try {
+    yield all (isTodoCompleted
+      ? [
+        put(commands.removeTodoFromList(data, filterA)),
+        put(commands.addTodoToList(data, filterB))
+      ]
+      : [
+        put(commands.removeTodoFromList(data, filterB)),
+        put(commands.addTodoToList(data, filterA))
+      ]
+    );
+  } catch(e) {
+    throw new Error('An Effects on switcher method was rejected before complete: ' + e);
   }
 }
 

@@ -1,11 +1,5 @@
 import { createActions } from 'redux-actions';
-import { identity } from 'ramda';
-
-// todosFetched :: (a, b) -> {
-//   type: 'FETCHED_TODOS',
-//   payload: a,
-//   meta: { filter: b }
-// }
+import { metaFilterListCreator } from './utils';
 
 // Document actions
 // Naming Convention: <subject><past-tense verb>
@@ -14,7 +8,7 @@ export const {
   todoAdded,
   todoToggled,
 } = createActions(
-  { TODOS_FETCHED: [identity, (payload, filter) => ({ filter })] },
+  { TODOS_FETCHED: metaFilterListCreator },
   'TODO_ADDED',
   'TODO_TOGGLED',
 );

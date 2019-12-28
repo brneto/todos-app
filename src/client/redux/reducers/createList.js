@@ -3,13 +3,8 @@ import { handleActions } from 'redux-actions';
 import { prop, identity, equals, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
-import {
-  setToggledTodoAdd,
-  setToggledTodoRemove,
-
-  setToggleFetching,
-} from '../actions/oldIndex';
-import { documents } from '../actions';
+import { setToggleFetching } from '../actions/oldIndex';
+import { commands, documents } from '../actions';
 
 const createList = filter => {
   const isFilter = equals(filter);
@@ -26,15 +21,15 @@ const createList = filter => {
             if (!isFilter('completed')) draft.push(payload.result); //modify the current draft state
           }),
         },
-        [setToggledTodoAdd]: { // Command action
+        [commands.addTodoToList]: {
           next: produce((draft, { payload, meta }) => {
-            if (isFilter(meta.filter)) draft.push(payload); //modify the current draft state
+            if (isFilter(meta.filter)) draft.push(payload.result); //modify the current draft state
           }),
         },
-        [setToggledTodoRemove]: { // Command action
+        [commands.removeTodoFromList]: {
           next: produce((draft, { payload, meta }) => {
             const notEquals = a => b => a !== b;
-            if(isFilter(meta.filter)) return draft.filter(notEquals(payload)); //return an entirely new state
+            if(isFilter(meta.filter)) return draft.filter(notEquals(payload.result)); //return an entirely new state
           }),
         },
       },
