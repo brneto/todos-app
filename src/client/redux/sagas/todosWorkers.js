@@ -1,7 +1,6 @@
 import { normalize } from 'normalizr';
 import { all, call, put, select, cancel } from 'redux-saga/effects';
-import * as actions from '../actions/oldIndex';
-import { commands, documents } from '../actions';
+import { commands, events, documents } from '../actions';
 import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
@@ -13,7 +12,7 @@ function* fetchTodos() {
     if (isFetching) yield cancel();
 
     filter = yield select(selectors.getFilter);
-    yield put(actions.setToggleFetching(filter));
+    yield put(events.fetchingTodos(filter));
 
     const
       response = yield call(api.todos.fetchTodos, filter),
@@ -23,7 +22,7 @@ function* fetchTodos() {
   } catch (error) {
     yield put(documents.todosFetched(error, filter));
   } finally {
-    yield put(actions.setToggleFetching(filter));
+    yield put(events.fetchedTodos(filter));
   }
 }
 

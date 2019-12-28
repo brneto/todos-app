@@ -3,8 +3,7 @@ import { handleActions } from 'redux-actions';
 import { prop, identity, equals, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
-import { setToggleFetching } from '../actions/oldIndex';
-import { commands, documents } from '../actions';
+import { commands, events, documents } from '../actions';
 
 const createList = filter => {
   const isFilter = equals(filter);
@@ -38,8 +37,11 @@ const createList = filter => {
 
   const isFetching = handleActions(
       {
-        [setToggleFetching]: produce((draft, { payload }) => { // Event action
-          if (isFilter(payload)) return !draft; //return an entirely new state
+        [events.fetchingTodos]: produce((draft, { payload }) => {
+          if (isFilter(payload)) return true; //return an entirely new state
+        }),
+        [events.fetchedTodos]: produce((draft, { payload }) => {
+          if (isFilter(payload)) return false;
         }),
       },
       false // Initial state
