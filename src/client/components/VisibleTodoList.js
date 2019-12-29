@@ -21,16 +21,16 @@ const
   `;
 
 function VisibleTodoList(props) {
- const {
-   isFetching, errorMessage, fetchTodos,
-   toggleTodo, todos, filter,
-  } = props;
+  const { isFetching, errorMessage, fetchTodos, toggleTodo, todos, filter } = props;
 
-  // https://github.com/facebook/react/issues/14920
-  useEffect(() => void fetchTodos(), [fetchTodos, filter]);
+  useEffect(
+    // eslint-disable-next-line no-console
+    () => console.info('VisibleTodoList:', 'rendering...') ?? void fetchTodos(),
+    // https://github.com/facebook/react/issues/14920
+    [fetchTodos, filter]
+  );
 
   let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
-
   if(!todos.length) {
     if(isFetching)
       render = <OnFetch>Loading...</OnFetch>;
