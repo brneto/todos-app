@@ -21,6 +21,11 @@ const
     margin-left: 1em;
   `;
 
+// TODO: After press the retry button of the FetchError component this component isn't been
+// TODO: re-rendered and therefore not  rendering the OnFetch component as well.
+// TODO: Find a solution to this issue and after replace the current approach to use the
+// TODO: react Suspense component.
+// https://reactjs.org/docs/concurrent-mode-suspense.html
 function VisibleTodoList(props) {
   const { isFetching, errorMessage, fetchTodos, toggleTodo, todos, filter } = props;
 

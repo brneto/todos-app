@@ -9,12 +9,17 @@ const
     & > button {
       margin: 1em .5em;
     }
-  `,
-  FetchError = ({ message, onRetry }) => (
+  `;
+
+// TODO: Replace this approach by the React ErrorBoundary component
+// https://reactjs.org/docs/error-boundaries.html
+function FetchError({ message, onRetry }) {
+  return (
     <OnError>Could not fetch todos. {message}
       <button onClick={() => onRetry()}>Retry</button>
     </OnError>
   );
+}
 
 FetchError.propTypes = {
   message: PropTypes.string.isRequired,
