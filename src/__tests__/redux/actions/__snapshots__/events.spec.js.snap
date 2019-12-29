@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Event action messages fetchedTodos event 1`] = `
+Object {
+  "payload": "filterName",
+  "type": "FETCHED_TODOS",
+}
+`;
+
+exports[`Event action messages fetchingTodos event 1`] = `
+Object {
+  "payload": "filterName",
+  "type": "FETCHING_TODOS",
+}
+`;

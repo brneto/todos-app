@@ -87,9 +87,11 @@ const commonConfig = {
                 ['@babel/plugin-proposal-decorators', { legacy: true }],
                 ['@babel/plugin-proposal-class-properties', { loose: true }],
                 ['@babel/plugin-proposal-private-methods', { loose: true }],
+                ['@babel/plugin-proposal-pipeline-operator', { proposal: 'fsharp' }],
                 '@babel/plugin-proposal-export-namespace-from',
                 '@babel/plugin-proposal-function-bind',
                 '@babel/plugin-proposal-optional-chaining',
+                '@babel/plugin-proposal-nullish-coalescing-operator',
                 '@babel/plugin-proposal-throw-expressions',
                 // It's required Babel Syntax Dynamic Import Plugin to
                 // Webpack Dynamic Imports work.

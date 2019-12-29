@@ -109,45 +109,44 @@ describe('Objects', () => {
     });
   });
 
-// https://stackoverflow.com/questions/53675785/how-do-i-enable-eslint-classprivatemethods-parser-plugin
-  // describe('Private methods', () => {
-  //   class IncreasingCounter {
-  //     #count = 0;
+  describe('Private methods', () => {
+    class IncreasingCounter {
+      #count = 0;
 
-  //     set #privateInicial(value = this.#count) {
-  //       this.#count = value;
-  //     }
+      set #privateInicial(value = this.#count) {
+        this.#count = value;
+      }
 
-  //     get #privateValue() {
-  //       return this.#count;
-  //     }
+      get #privateValue() {
+        return this.#count;
+      }
 
-  //     #privateIncrement() {
-  //       this.#count = this.value + 1;
-  //     }
+      #privateIncrement() {
+        this.#count = this.value + 1;
+      }
 
-  //     set inicial(value = this.#count) {
-  //       this.#privateInicial = value;
-  //     }
+      set inicial(value = this.#count) {
+        this.#privateInicial = value;
+      }
 
-  //     get value() {
-  //       return this.#privateValue;
-  //     }
+      get value() {
+        return this.#privateValue;
+      }
 
-  //     increment() {
-  //       this.#privateIncrement();
-  //     }
+      increment() {
+        this.#privateIncrement();
+      }
 
-  //   }
+    }
 
-  //   it('should support', () => {
-  //     const counter = new IncreasingCounter();
-  //     expect(counter['#privateInicial']).toBe(undefined);
-  //     expect(counter['#privateValue']).toBe(undefined);
-  //     expect(counter['#privateIncrement']).toBe(undefined);
-  //     counter.inicial = 2;
-  //     counter.increment();
-  //     expect(counter['value']).toEqual(3);
-  //   });
-  // });
+    it('should support', () => {
+      const counter = new IncreasingCounter();
+      expect(counter['#privateInicial']).toBe(undefined);
+      expect(counter['#privateValue']).toBe(undefined);
+      expect(counter['#privateIncrement']).toBe(undefined);
+      counter.inicial = 2;
+      counter.increment();
+      expect(counter['value']).toEqual(3);
+    });
+  });
 });

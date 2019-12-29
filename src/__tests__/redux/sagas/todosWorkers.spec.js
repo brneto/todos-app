@@ -1,28 +1,22 @@
+import { put } from 'redux-saga/effects';
 import { testSaga } from 'redux-saga-test-plan';
 import { normalize } from 'normalizr';
-import * as actions from '../../../client/redux/actions/oldIndex';
+import { effects, commands, events, documents } from '../../../client/redux/actions';
 import * as selectors from '../../../client/redux/reducers';
 import * as schema from '../../../client/libs/schema';
 import * as sagas from '../../../client/redux/sagas/todosWorkers';
 import * as api from '../../../client/api';
 
-describe('sagas/TodosWorkers', () => {
+describe('sagas/todosWorkers', () => {
   it('should call fetchTodos api', () => {
-    const filter = 'all';
-    const response = [{
-      id: 1,
-      text: 'hey',
-      completed: true,
-    }, {
-      id: 2,
-      text: 'ho',
-      completed: true,
-    }, {
-      id: 3,
-      text: 'let\'s go',
-      completed: false,
-    }];
-    const data = normalize(response, schema.todoList);
+    const
+      filter = 'all',
+      response = [
+        { id: 1, text: 'hey', completed: true },
+        { id: 2, text: 'ho', completed: true },
+        { id: 3, text: 'let\'s go', completed: false },
+      ],
+      data = normalize(response, schema.todoList);
 
     testSaga(sagas.fetchTodos)
     .next()
@@ -30,13 +24,13 @@ describe('sagas/TodosWorkers', () => {
     .next(false)
     .select(selectors.getFilter)
     .next(filter)
-    .put(actions.setToggleFetching(filter))
+    .put(events.fetchingTodos(filter))
     .next()
     .call(api.todos.fetchTodos, filter)
     .next(response)
-    .put(actions.setFetchedTodos(data, filter))
+    .put(documents.todosFetched(data, filter))
     .next()
-    .put(actions.setToggleFetching(filter))
+    .put(events.fetchedTodos(filter))
     .next()
     .isDone();
   });
@@ -50,41 +44,36 @@ describe('sagas/TodosWorkers', () => {
   });
 
   it('should call addTodo api', () => {
-    const text = 'Test';
-    const response = {
-      id: 1,
-      text,
-      completed: false,
-    };
-    const data = normalize(response, schema.todo);
+    const
+      text = 'Test',
+      response = { id: 1, text, completed: false },
+      data = normalize(response, schema.todo);
 
-    testSaga(sagas.addTodo, actions.addTodo(text))
+    testSaga(sagas.addTodo, effects.addTodo(text))
     .next()
     .call(api.todos.addTodo, text)
     .next(response)
-    .put(actions.setAddedTodo(data))
+    .put(documents.todoAdded(data))
     .next()
     .isDone();
   });
 
   it('should call toggleTodo api', () => {
-    const id = 1;
-    const response = {
-      id: 1,
-      text: 'Test',
-      completed: false,
-    };
-    const data = normalize(response, schema.todo);
+    const
+      id = 1,
+      response = { id: 1, text: 'Test', completed: false },
+      data = normalize(response, schema.todo);
 
-    testSaga(sagas.toggleTodo, actions.toggleTodo(id))
+    testSaga(sagas.toggleTodo, effects.toggleTodo(id))
     .next()
     .call(api.todos.toggleTodo, id)
     .next(response)
-    .put(actions.setToggledTodoAdd(id, 'active'))
+    .all([
+      (commands.removeTodoFromList(data, 'completed') |> put),
+      (commands.addTodoToList(data, 'active') |> put)
+    ])
     .next()
-    .put(actions.setToggledTodoRemove(id, 'completed'))
-    .next()
-    .put(actions.setToggledTodo(data))
+    .put(documents.todoToggled(data))
     .next()
     .isDone();
   });

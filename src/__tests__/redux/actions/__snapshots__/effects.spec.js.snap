@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Side Effect Command action messages addTodo effect 1`] = `
+Object {
+  "payload": "hello!",
+  "type": "ADD_TODO",
+}
+`;
+
+exports[`Side Effect Command action messages fetchTodos effect 1`] = `
+Object {
+  "type": "FETCH_TODOS",
+}
+`;
+
+exports[`Side Effect Command action messages toggleTodo effect 1`] = `
+Object {
+  "payload": "123",
+  "type": "TOGGLE_TODO",
+}
+`;

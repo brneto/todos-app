@@ -21,6 +21,10 @@ processors:
         - exportDefaultFrom
         - exportNamespaceFrom
         - throwExpressions
+        - nullishCoalescingOperator
+        -
+          - pipelineOperator
+          - proposal: fsharp
 extends:
   - stylelint-config-recommended
   - stylelint-config-standard

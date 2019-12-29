@@ -31,6 +31,7 @@ const getFilter = createSelector(
   // }
   [createMatchSelector({ ...routes.main })],
   compose(defaultTo('all'), prop('filter'), prop('params'))
+  //
 );
 
 const getListByFilter = createSelector(

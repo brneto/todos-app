@@ -51,13 +51,13 @@ function* toggleTodo({ payload: id }) {
   }
 }
 
-function* switchTodoBetweenLists(data, filterA, filterB) {
+function switchTodoBetweenLists(data, filterA, filterB) {
   const
     id = data.result,
     { entities: { todos: { [id]: { completed: isTodoCompleted } } } } = data;
 
   try {
-    yield all (isTodoCompleted
+    return all (isTodoCompleted
       ? [
         put(commands.removeTodoFromList(data, filterA)),
         put(commands.addTodoToList(data, filterB))

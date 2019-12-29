@@ -22,11 +22,10 @@ const localStorageMiddleware = () => next => action => {
   const initialState = loadState();
   const store = next(action, initialState);
 
-  store.subscribe(throttle(() =>
-    saveState({
-      todos: store.getState().todos
-    })
-  ), 1000);
+  store.subscribe(
+    throttle(() => saveState({ todos: store.getState().todos })),
+    1000
+  );
 
   return store;
 };

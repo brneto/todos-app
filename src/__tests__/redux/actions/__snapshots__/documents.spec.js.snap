@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Document action messages todoAdded document 1`] = `
+Object {
+  "payload": "responseData",
+  "type": "TODO_ADDED",
+}
+`;
+
+exports[`Document action messages todoAdded document 2`] = `
+Object {
+  "error": true,
+  "payload": [Error: Boom!],
+  "type": "TODO_ADDED",
+}
+`;
+
+exports[`Document action messages todoToggled document 1`] = `
+Object {
+  "payload": "responseData",
+  "type": "TODO_TOGGLED",
+}
+`;
+
+exports[`Document action messages todoToggled document 2`] = `
+Object {
+  "error": true,
+  "payload": [Error: Boom!],
+  "type": "TODO_TOGGLED",
+}
+`;
+
+exports[`Document action messages todosFetched document 1`] = `
+Object {
+  "meta": Object {
+    "filter": "filterName",
+  },
+  "payload": "responseData",
+  "type": "TODOS_FETCHED",
+}
+`;
+
+exports[`Document action messages todosFetched document 2`] = `
+Object {
+  "error": true,
+  "meta": Object {
+    "filter": "filterName",
+  },
+  "payload": [Error: Boom!],
+  "type": "TODOS_FETCHED",
+}
+`;

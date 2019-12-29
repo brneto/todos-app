@@ -1,100 +1,147 @@
 import deepFreeze from 'deep-freeze';
 import createList from '../../../client/redux/reducers/createList';
-import {
-  setFetchedTodos,
-  setAddedTodo,
-  setToggledTodo,
-  setToggledTodoAdd,
-  setToggledTodoRemove,
-  setToggleFetching
-} from '../../../client/redux/actions/oldIndex';
+import { commands, events, documents } from '../../../client/redux/actions';
 
 describe('reducers/createList', () => {
-  const filter = 'active';
-  const listByFilter = createList(filter);
-  const initialState = deepFreeze(listByFilter(undefined, { type: 'INIT' }));
-  const baseData = { result: [1, 2, 3] };
-  const baseState = deepFreeze(
-    listByFilter(initialState, setFetchedTodos(baseData, filter))
-  );
-  const error = new Error('Boom!');
+  const
+    filter = 'active',
+    listByFilter = createList(filter),
+    initialState = listByFilter(undefined, { type: 'INIT' }) |> deepFreeze,
+    error = new Error('Boom!'),
+    baseData = { result: [1, 2, 3] },
+    baseState = documents.todosFetched(baseData, filter)
+      |> a => listByFilter(initialState, a)
+      |> deepFreeze;
 
   it('should handle unknown actions', () => {
-    expect(listByFilter(initialState, { type: 'FAKE' })).toBe(initialState);
+    // when
+    const newState = listByFilter(initialState, { type: 'FAKE' });
+
+    // then
+    expect(newState).toBe(initialState);
   });
 
   it('should add fetched todos to empty list', () => {
-    expect(
-      listByFilter(initialState, setFetchedTodos(baseData, filter))
-    ).toMatchSnapshot();
+    // when
+    const newState = documents.todosFetched(baseData, filter)
+      |> a => listByFilter(initialState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add fetched todos to non-empty list', () => {
+    // given
     const testData = { result: [4, 5, 6] };
 
-    expect(
-      listByFilter(baseState, setFetchedTodos(testData, filter))
-    ).toMatchSnapshot();
+    // when
+    const newState = documents.todosFetched(testData, filter)
+      |> a => listByFilter(baseState,a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add fetched todos saves error message', () => {
-    expect(listByFilter(baseState, setFetchedTodos(error, filter)))
-    .toMatchSnapshot();
+    // when
+    const newState = documents.todosFetched(error, filter)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add todo to empty list', () => {
+    // given
     const testData = { result: 4 };
 
-    expect(
-      listByFilter(initialState, setAddedTodo(testData, filter))
-    ).toMatchSnapshot();
+    // when
+    const newState = documents.todoAdded(testData, filter)
+      |> a => listByFilter(initialState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add todo to non-empty list', () => {
+    // given
     const testData = { result: 4 };
 
-    expect(
-      listByFilter(baseState, setAddedTodo(testData, filter))
-    ).toMatchSnapshot();
+    // when
+    const newState = documents.todoAdded(testData, filter)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add todo save error message', () => {
-    expect(listByFilter(baseState, setAddedTodo(error)))
-    .toMatchSnapshot();
+    // when
+    const newState = documents.todoAdded(error)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
-  it('should toggle todo add one id from list', () => {
-    const testId = 5;
+  it('should add a todo to the list', () => {
+    // given
+    const data = { result: 5 };
 
-    expect(listByFilter(baseState, setToggledTodoAdd(testId, filter)))
-    .toMatchSnapshot();
+    // when
+    const newState = commands.addTodoToList(data, filter)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
-  it('should toggle todo remove one id from list', () => {
-    const testId = 1;
+  it('should remove a todo from the list', () => {
+    // given
+    const data = { result: 1 };
 
-    expect(listByFilter(baseState, setToggledTodoRemove(testId, filter)))
-    .toMatchSnapshot();
+    // when
+    const newState = commands.removeTodoFromList(data, filter)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should toggle todo saves error message', () => {
-    const filter = 'all';
-    const listByFilter = createList(filter);
-    const initialState = deepFreeze(listByFilter(undefined, { type: 'INIT' }));
-    const baseData = { result: [1, 2, 3] };
-    const baseState = deepFreeze(
-      listByFilter(initialState, setFetchedTodos(baseData, filter))
-    );
+    // given
+    const
+      filter = 'all',
+      listByFilter = createList(filter),
+      initialState = listByFilter(undefined, { type: 'INIT' }) |> deepFreeze,
+      baseData = { result: [1, 2, 3] },
+      baseState = documents.todosFetched(baseData, filter)
+        |> a => listByFilter(initialState, a)
+        |> deepFreeze;
 
-    expect(listByFilter(baseState, setToggledTodo(error)))
-    .toMatchSnapshot();
+    // when
+    const newState = documents.todoToggled(error)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
-  it('should toggle fetching parameter', () => {
-    const firstState = listByFilter(baseState, setToggleFetching(filter));
-    expect(firstState.isFetching).toBe(true);
+  it('should set fetching state to true', () => {
+    // when
+    const newState = events.fetchingTodos(filter)
+      |> a => listByFilter(baseState, a);
 
-    const secondState = listByFilter(firstState, setToggleFetching(filter));
-    expect(secondState.isFetching).toBe(false);
+    // then
+    expect(newState.isFetching).toBe(true);
+  });
+
+  it('should set fetching state to false', () => {
+    // when
+    const newState = events.fetchedTodos(filter)
+      |> a => listByFilter(baseState, a);
+
+    // then
+    expect(newState.isFetching).toBe(false);
   });
 });

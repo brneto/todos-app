@@ -1,7 +1,9 @@
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
-    return JSON.parse(serializedState) || undefined;
+    const json = JSON.parse(serializedState);
+
+    if (json) return json;
   } catch (err) { // Ignore read errors.
     console.log(err); // eslint-disable-line no-console
   }

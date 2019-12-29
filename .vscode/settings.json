@@ -12,7 +12,6 @@
     "*.js": "javascriptreact"
   },
 
-
   "editor.tabSize": 2,
 
   "editor.detectIndentation": false,
@@ -22,8 +21,10 @@
     // Render vertical rulers after a certain number of
     // monospace characters. Use multiple values for multiple
     // rulers. No rulers are drawn if array is empty.
-    "editor.rulers": [80]
+    "editor.rulers": [100]
   },
+
+  "files.autoSave": "afterDelay",
 
   // Enable/disable JavaScript validation.
   "javascript.validate.enable": false,

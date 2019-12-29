@@ -1,115 +1,96 @@
 import deepFreeze from 'deep-freeze';
 import byId from '../../../client/redux/reducers/byId';
-import {
-  setFetchedTodos,
-  setAddedTodo,
-  setToggledTodo
-} from '../../../client/redux/actions/oldIndex';
+import { documents } from '../../../client/redux/actions';
 
 describe('reducers/byId', () => {
-  const filter = 'all';
-  const initialState = deepFreeze(byId(undefined, { type: 'INIT' }));
-  const baseData = {
-    entities: {
-      todos: {
-        1: {
-          id: 1,
-          text: 'hey',
-          completed: true
-        },
-        2: {
-          id: 2,
-          text: 'ho',
-          completed: true
-        },
-        3: {
-          id: 3,
-          text: 'let\'s go',
-          completed: false
+  // given
+  const
+    filter = 'all',
+    initialState = byId(undefined, { type: 'INIT' }) |> deepFreeze,
+    baseData = { entities: {
+        todos: {
+          1: { id: 1, text: 'hey', completed: true },
+          2: { id: 2, text: 'ho', completed: true },
+          3: { id: 3, text: 'let\'s go', completed: false },
         }
-      }
-    }
-  };
-  const baseState = deepFreeze(
-    byId(initialState, setFetchedTodos(baseData, filter))
-  );
+    } },
+    baseState = documents.todosFetched(baseData, filter)
+      |> a => byId(initialState, a)
+      |> deepFreeze;
 
   it('should handle unknown actions', () => {
-    expect(byId(initialState, { type: 'FAKE' })).toBe(initialState);
+    // when
+    const newState = byId(initialState, { type: 'FAKE' });
+
+    // then
+    expect(newState).toBe(initialState);
   });
 
   it('should add fetched todos to empty map', () => {
-    expect(
-      byId(initialState, setFetchedTodos(baseData, filter))
-    ).toMatchSnapshot();
+    // when
+    const newState = documents.todosFetched(baseData, filter)
+      |> a => byId(initialState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add fetched todos to non-empty map', () => {
-    const testData = {
-      entities: {
+    // given
+    const testData = { entities: {
         todos: {
-          4: {
-            id: 4,
-            text: 'wow',
-            completed: false
-          },
-          5: {
-            id: 5,
-            text: 'cool',
-            completed: true
-          }
+          4: { id: 4, text: 'wow', completed: false },
+          5: { id: 5, text: 'cool', completed: true },
         }
-      }
-    };
+    } };
 
-    expect(byId(baseState, setFetchedTodos(testData, filter))).toMatchSnapshot();
+    // when
+    const newState = documents.todosFetched(testData, filter)
+      |> a => byId(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add todo to empty map', () => {
-    const testData = {
-      entities: {
-        todos: {
-          4: {
-            id: 4,
-            text: 'wow',
-            completed: false
-          }
-        }
-      }
-    };
+    // given
+    const testData = { entities: {
+      todos: { 4: { id: 4, text: 'wow', completed: false } }
+    } };
 
-    expect(byId(initialState, setAddedTodo(testData))).toMatchSnapshot();
+    // when
+    const newState = documents.todoAdded(testData)
+      |> a => byId(initialState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should add todo to non-empty map', () => {
-    const testData = {
-      entities: {
-        todos: {
-          4: {
-            id: 4,
-            text: 'wow',
-            completed: false
-          }
-        }
-      }
-    };
+    // given
+    const testData = { entities: {
+      todos: { 4: { id: 4, text: 'wow', completed: false } }
+    } };
 
-    expect(byId(baseState, setAddedTodo(testData))).toMatchSnapshot();
+    // when
+    const newState = documents.todoAdded(testData)
+      |> a => byId(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 
   it('should toggle todo to non-empty map', () => {
-    const testData = {
-      entities: {
-        todos: {
-          1: {
-            id: 1,
-            text: 'hey',
-            completed: false
-          }
-        }
-      }
-    };
+    // given
+    const testData = { entities: {
+      todos: { 1: { id: 1, text: 'hey', completed: false } }
+    } };
 
-    expect(byId(baseState, setToggledTodo(testData))).toMatchSnapshot();
+    // when
+    const newState = documents.todoToggled(testData)
+      |> a => byId(baseState, a);
+
+    // then
+    expect(newState).toMatchSnapshot();
   });
 });
