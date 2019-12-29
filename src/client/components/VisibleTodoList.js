@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {
-  getFilter, getIsFetching,
-  getErrorMessage, getVisibleTodos
-} from '../redux/reducers';
+  getFilter,
+  getIsFetching,
+  getErrorMessage,
+  getVisibleTodos } from '../redux/reducers';
 import { effects } from '../redux/actions';
 import TodoList from './TodoList';
 import FetchError from './FetchError';
