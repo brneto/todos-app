@@ -58,7 +58,7 @@ describe('sagas/todosWorkers', () => {
     .isDone();
   });
 
-  it('should call toggleTodo api', () => {
+  it('should call toggleTodo api with not completed todo', () => {
     const
       id = 1,
       response = { id: 1, text: 'Test', completed: false },
@@ -71,6 +71,26 @@ describe('sagas/todosWorkers', () => {
     .all([
       (commands.removeTodoFromList(data, 'completed') |> put),
       (commands.addTodoToList(data, 'active') |> put)
+    ])
+    .next()
+    .put(documents.todoToggled(data))
+    .next()
+    .isDone();
+  });
+
+  it('should call toggleTodo api with completed todo', () => {
+    const
+      id = 1,
+      response = { id: 1, text: 'Test', completed: true },
+      data = normalize(response, schema.todo);
+
+    testSaga(sagas.toggleTodo, effects.toggleTodo(id))
+    .next()
+    .call(api.todos.toggleTodo, id)
+    .next(response)
+    .all([
+      (commands.removeTodoFromList(data, 'active') |> put),
+      (commands.addTodoToList(data, 'completed') |> put)
     ])
     .next()
     .put(documents.todoToggled(data))
