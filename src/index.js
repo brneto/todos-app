@@ -4,7 +4,6 @@ import compression from 'compression';
 import express from 'express';
 import * as server from './server';
 
-console.log(process.env.NODE_ENV, null)
 const
   env = process.env.NODE_ENV ?? 'development',
   app = express();

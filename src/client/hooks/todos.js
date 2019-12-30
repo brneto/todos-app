@@ -7,7 +7,7 @@ function useAddTodo(dispatch) {
     handleChange = ({ target }) => setTodo(target.value),
     handleKeyDown = ({ keyCode }) => {
       if(keyCode === 13) { // ENTER_KEY
-        dispatch(effects.addTodo(todo.trim()));
+        todo.trim() |> effects.addTodo |> dispatch;
         setTodo('');
       }
     };

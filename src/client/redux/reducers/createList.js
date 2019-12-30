@@ -48,28 +48,25 @@ const createList = filter => {
     );
 
   const
-    getErrorMessage = (test, { message }) => {
-      if (test) return (message ?? 'Something went wrong.');
+    returnIf = test => payload => {
+      if (test) return payload;
     },
-    errorMessage = handleActions(
+    error = handleActions(
       {
         [documents.todosFetched]: {
+          //return an entirely new state
           next: always(null),
-          throw: produce((draft, { payload, meta }) =>
-            getErrorMessage(isFilter(meta.filter), payload) //return an entirely new state
-          )
+          throw: produce((draft, { payload, meta }) => payload |> returnIf(isFilter(meta.filter)))
         },
         [documents.todoAdded]: {
+          //return an entirely new state
           next: always(null),
-          throw: produce((draft, { payload }) =>
-            getErrorMessage(!isFilter('completed'), payload) //return an entirely new state
-          )
+          throw: produce((draft, { payload }) => payload |> returnIf(!isFilter('completed')))
         },
         [documents.todoToggled]: {
+          //return an entirely new state
           next: always(null),
-          throw: produce((state, { payload }) =>
-            getErrorMessage(isFilter('all'), payload) //return an entirely new state
-          )
+          throw: produce((state, { payload }) => payload |> returnIf(isFilter('all')))
         },
       },
       null // Initial state
@@ -78,7 +75,7 @@ const createList = filter => {
   return combineReducers({
     ids,
     isFetching,
-    errorMessage,
+    error,
   });
 };
 
@@ -87,11 +84,11 @@ const createList = filter => {
 const
   getIds = createSelector([prop('ids')], identity),
   getIsFetching = createSelector([prop('isFetching')], identity),
-  getErrorMessage = createSelector([prop('errorMessage')], identity);
+  getError = createSelector([prop('error')], identity);
 
 export {
   createList as default,
   getIds,
   getIsFetching,
-  getErrorMessage,
+  getError,
 };
