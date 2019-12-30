@@ -18,7 +18,6 @@ function FetchError({ message, onRetry }) {
     </OnError>
   );
 }
-
 FetchError.propTypes = {
   message: PropTypes.string.isRequired,
   onRetry: PropTypes.func.isRequired,
