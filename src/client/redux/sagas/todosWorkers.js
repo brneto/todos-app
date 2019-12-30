@@ -44,14 +44,14 @@ function* toggleTodo({ payload: id }) {
       response = yield call(api.todos.toggleTodo, id),
       data = normalize(response, schema.todo);
 
-    yield switchTodoBetweenLists(data, 'active', 'completed');
+    yield updateFilterLists(data, 'active', 'completed');
     yield put(documents.todoToggled(data));
   } catch (error) {
     yield put(documents.todoToggled(error));
   }
 }
 
-function switchTodoBetweenLists(data, filterA, filterB) {
+function updateFilterLists(data, filterA, filterB) {
   const
     id = data.result,
     { entities: { todos: { [id]: { completed: isTodoCompleted } } } } = data;
