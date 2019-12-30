@@ -31,25 +31,24 @@ function VisibleTodoList(props) {
     [fetchTodos, filter]
   );
 
-  // TODO: After select a different filter before the component start to show the Loading...
-  // TODO: message there a quick glitch before. Find a solution to this issue
-  let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
+  // TODO: Selecting a different filter, before the component shows "Loading...",
+  // TODO: it can be seen a quick glitch. Find a solution to this issue.
+  let
+    render = <TodoList todos={todos} onTodoClick={toggleTodo} />,
+    element = 'todos';
 
-  // TODO: Replace this approach by the React ErrorBoundary component
+  // TODO: Replace this approach by the React ErrorBoundary component.
   // https://reactjs.org/docs/error-boundaries.html
   if(errorMessage)
-    render = <FetchError message={errorMessage} onRetry={fetchTodos} />;
+    render = (element = 'error') && <FetchError message={errorMessage} onRetry={fetchTodos} />;
 
-  // TODO: After press the retry button of the FetchError component this component isn't been
-  // TODO: re-rendered and therefore not rendering the OnFetch component as well.
-  // TODO: Find a solution to this issue and then replace the current approach by using the
-  // TODO: react Suspense component.
+  // TODO: Replace the current approach by using the react Suspense component.
   // https://reactjs.org/docs/concurrent-mode-suspense.html
   if(isFetching)
-    render = <OnFetch>Loading...</OnFetch>;
+    render = (element = 'loading') && <OnFetch>Loading...</OnFetch>;
 
   // eslint-disable-next-line no-console
-  console.info('[INFO:', 'VisibleTodoList Rendered]');
+  console.info('[INFO: VisibleTodoList Render', element, 'props:', props, ']');
   return <Section>{render}</Section>;
 }
 VisibleTodoList.propTypes = {
