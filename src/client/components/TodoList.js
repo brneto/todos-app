@@ -9,7 +9,7 @@ const
     padding: 0;
     list-style: none;
   `,
-  TodoList = ({ todos, onTodoClick, error }) => {
+  TodoList = ({ error, todos, onTodoClick }) => {
     if (error) throw error;
 
     return todos.length ? (
@@ -22,9 +22,9 @@ const
   };
 
 TodoList.propTypes = {
+  error: PropTypes.objectOf(Error),
   todos: PropTypes.array.isRequired,
   onTodoClick: PropTypes.func.isRequired,
-  error: PropTypes.objectOf(Error),
 };
 
 export default TodoList;

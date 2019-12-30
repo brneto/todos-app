@@ -7,7 +7,7 @@ import {
   getError, getVisibleTodos } from '../redux/reducers';
 import { effects } from '../redux/actions';
 import TodoList from './TodoList';
-// import FetchError from './FetchError';
+import FetchError from './FetchError';
 import ErrorBoundary from './ErrorBoundary';
 
 const
@@ -32,8 +32,8 @@ function VisibleTodoList(props) {
   // TODO: Selecting a different filter, before the component shows "Loading...",
   // TODO: it can be seen a quick glitch. Find a solution to this issue.
   let render = (
-    <ErrorBoundary onRetry={fetchTodos}>
-      <TodoList todos={todos} onTodoClick={toggleTodo} error={error} />
+    <ErrorBoundary onRetry={fetchTodos} fallback={FetchError}>
+      <TodoList error={error} todos={todos} onTodoClick={toggleTodo} />
     </ErrorBoundary>
   );
 
