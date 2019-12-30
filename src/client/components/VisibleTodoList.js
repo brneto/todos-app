@@ -26,7 +26,7 @@ function VisibleTodoList(props) {
 
   useEffect(
     // eslint-disable-next-line no-console
-    () => console.info('[INFO:', 'VisibleTodoList Rendered]') ?? void fetchTodos(),
+    () => console.info('[INFO:', 'VisibleTodoList dispatched]') ?? void fetchTodos(),
     // https://github.com/facebook/react/issues/14920
     [fetchTodos, filter]
   );
@@ -48,6 +48,8 @@ function VisibleTodoList(props) {
   if(errorMessage)
     render = <FetchError message={errorMessage} onRetry={fetchTodos} />;
 
+  // eslint-disable-next-line no-console
+  console.info('[INFO:', 'VisibleTodoList Rendered]');
   return <Section>{render}</Section>;
 }
 VisibleTodoList.propTypes = {
