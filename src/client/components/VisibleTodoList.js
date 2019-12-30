@@ -33,7 +33,7 @@ function VisibleTodoList(props) {
   // TODO: it can be seen a quick glitch. Find a solution to this issue.
   let render = (
     <ErrorBoundary onRetry={fetchTodos}>
-      <TodoList todos={todos} onTodoClick={toggleTodo} error={error}  />
+      <TodoList todos={todos} onTodoClick={toggleTodo} error={error} />
     </ErrorBoundary>
   );
 
