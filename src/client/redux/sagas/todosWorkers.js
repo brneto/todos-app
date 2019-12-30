@@ -44,27 +44,29 @@ function* toggleTodo({ payload: id }) {
       response = yield call(api.todos.toggleTodo, id),
       data = normalize(response, schema.todo);
 
-    yield updateFilterLists(data, 'active', 'completed');
+    yield updateFilterLists(data);
     yield put(documents.todoToggled(data));
   } catch (error) {
     yield put(documents.todoToggled(error));
   }
 }
 
-function updateFilterLists(data, filterA, filterB) {
+function updateFilterLists(data) {
   const
     id = data.result,
-    { entities: { todos: { [id]: { completed: isTodoCompleted } } } } = data;
+    { entities: { todos: { [id]: { completed: isTodoCompleted } } } } = data,
+    activeList = 'active',
+    completedList = 'completed';
 
   try {
     return all (isTodoCompleted
       ? [
-        put(commands.removeTodoFromList(data, filterA)),
-        put(commands.addTodoToList(data, filterB))
+        put(commands.removeTodoFromList(data, activeList)),
+        put(commands.addTodoToList(data, completedList))
       ]
       : [
-        put(commands.removeTodoFromList(data, filterB)),
-        put(commands.addTodoToList(data, filterA))
+        put(commands.removeTodoFromList(data, completedList)),
+        put(commands.addTodoToList(data, activeList))
       ]
     );
   } catch(e) {
