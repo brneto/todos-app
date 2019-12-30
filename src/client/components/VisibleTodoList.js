@@ -26,7 +26,7 @@ function VisibleTodoList(props) {
 
   useEffect(
     // eslint-disable-next-line no-console
-    () => console.info('[INFO:', 'VisibleTodoList effect dispatched]') ?? void fetchTodos(),
+    () => console.info('[INFO:', 'VisibleTodoList on effect]') ?? void fetchTodos(),
     // https://github.com/facebook/react/issues/14920
     [fetchTodos, filter]
   );
