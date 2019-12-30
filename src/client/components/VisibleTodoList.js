@@ -23,6 +23,7 @@ const
 
 function VisibleTodoList(props) {
   const { isFetching, errorMessage, fetchTodos, toggleTodo, todos, filter } = props;
+  let render = null;
 
   useEffect(
     // eslint-disable-next-line no-console
@@ -31,21 +32,23 @@ function VisibleTodoList(props) {
     [fetchTodos, filter]
   );
 
-  let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
-  if(!todos.length) {
-    // TODO: After press the retry button of the FetchError component this component isn't been
-    // TODO: re-rendered and therefore not  rendering the OnFetch component as well.
-    // TODO: Find a solution to this issue and after replace the current approach to use the
-    // TODO: react Suspense component.
-    // https://reactjs.org/docs/concurrent-mode-suspense.html
-    if(isFetching)
-      render = <OnFetch>Loading...</OnFetch>;
+  // TODO: After select a different filter before the component start to show the Loading...
+  // TODO: message there a quick glitch before. Find a solution to this issue
+  if (todos.length)
+    render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
 
-    // TODO: Replace this approach by the React ErrorBoundary component
-    // https://reactjs.org/docs/error-boundaries.html
-    if(errorMessage)
-      render = <FetchError message={errorMessage} onRetry={fetchTodos} />;
-  }
+  // TODO: After press the retry button of the FetchError component this component isn't been
+  // TODO: re-rendered and therefore not rendering the OnFetch component as well.
+  // TODO: Find a solution to this issue and then replace the current approach by using the
+  // TODO: react Suspense component.
+  // https://reactjs.org/docs/concurrent-mode-suspense.html
+  if(isFetching)
+    render = <OnFetch>Loading...</OnFetch>;
+
+  // TODO: Replace this approach by the React ErrorBoundary component
+  // https://reactjs.org/docs/error-boundaries.html
+  if(errorMessage)
+    render = <FetchError message={errorMessage} onRetry={fetchTodos} />;
 
   return <Section>{render}</Section>;
 }
