@@ -11,8 +11,6 @@ const
     }
   `;
 
-// TODO: Replace this approach by the React ErrorBoundary component
-// https://reactjs.org/docs/error-boundaries.html
 function FetchError({ message, onRetry }) {
   return (
     <OnError>Could not fetch todos. {message}
