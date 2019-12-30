@@ -23,7 +23,6 @@ const
 
 function VisibleTodoList(props) {
   const { isFetching, errorMessage, fetchTodos, toggleTodo, todos, filter } = props;
-  let render = null;
 
   useEffect(
     // eslint-disable-next-line no-console
@@ -34,8 +33,7 @@ function VisibleTodoList(props) {
 
   // TODO: After select a different filter before the component start to show the Loading...
   // TODO: message there a quick glitch before. Find a solution to this issue
-  if (todos.length)
-    render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
+  let render = <TodoList todos={todos} onTodoClick={toggleTodo} />;
 
   // TODO: After press the retry button of the FetchError component this component isn't been
   // TODO: re-rendered and therefore not rendering the OnFetch component as well.
