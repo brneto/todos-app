@@ -11,13 +11,11 @@ const
     }
   `;
 
-function FetchError({ error, onRetry }) {
-  return (
-    <OnError>Could not fetch todos. {error.message}
-      <button onClick={onRetry}>Retry</button>
-    </OnError>
-  );
-}
+const FetchError = ({ error, onRetry }) => (
+  <OnError>Could not fetch todos. {error.message}
+    <button onClick={onRetry}>Retry</button>
+  </OnError>
+);
 FetchError.propTypes = {
   error: PropTypes.objectOf(Error).isRequired,
   onRetry: PropTypes.func.isRequired,
