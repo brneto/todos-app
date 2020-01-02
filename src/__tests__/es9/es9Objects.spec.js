@@ -1,3 +1,4 @@
+// https://github.com/babel/babel-eslint/issues/749
 describe('Objects', () => {
 
   describe('In Array', () => {
