@@ -17,10 +17,14 @@ const
 function VisibleTodoList({ fetchTodos, filter }) {
   // https://github.com/facebook/react/issues/14920
   useEffect(
-    () => void fetchTodos(),
+    () => console.info('[Effect]') ?? void fetchTodos(),
     [fetchTodos, filter]
   );
 
+  // TODO: Verify whether useEffect is really needed
+  // TODO: since this component render will always be
+  // TODO: called whenever the filter props changes.
+  console.info('[Render]');
   return (
     <Section>
       <ErrorBoundary onRetry={fetchTodos}>
