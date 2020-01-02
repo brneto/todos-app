@@ -14,6 +14,12 @@ const
     z-index: 2;
   `;
 
+const
+  subscribe = connect(
+    state => ({ filter: getFilter(state) }),
+    { fetchTodos: effects.fetchTodos }
+  );
+
 function VisibleTodoList({ fetchTodos }) {
   // Since this component render will always be called whenever the filter props changes,
   // the useEffect function is no necessary anymore.
@@ -37,7 +43,4 @@ VisibleTodoList.propTypes = {
   fetchTodos: PropTypes.func.isRequired,
 };
 
-export default connect(
-  state => ({ filter: getFilter(state) }),
-  { fetchTodos: effects.fetchTodos }
-)(VisibleTodoList);
+export default subscribe(VisibleTodoList);

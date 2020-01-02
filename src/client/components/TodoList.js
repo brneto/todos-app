@@ -19,6 +19,20 @@ const
     list-style: none;
   `;
 
+const
+  mapStateToProps = state => ({
+    isFetching: getIsFetching(state),
+    error: getError(state),
+    todos: getVisibleTodos(state),
+  }),
+  mapDispatchToProps = {
+    toggleTodo: effects.toggleTodo,
+  },
+  subscribe = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  );
+
 function TodoList({ isFetching, error, todos, toggleTodo }) {
 
   // TODO: Replace the current "Loading..." approach by using the react Suspense component.
@@ -45,17 +59,4 @@ TodoList.propTypes = {
   toggleTodo: PropTypes.func.isRequired,
 };
 
-const
-  mapStateToProps = state => ({
-    isFetching: getIsFetching(state),
-    error: getError(state),
-    todos: getVisibleTodos(state),
-  }),
-  mapDispatchToProps = {
-    toggleTodo: effects.toggleTodo,
-  };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList);
+export default subscribe(TodoList);

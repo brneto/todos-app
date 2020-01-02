@@ -37,6 +37,9 @@ const
     }
   `;
 
+  const
+    subscribe = connect();
+
 export function AddTodoPresentation({ dispatch }) {
   const // Custom hook:
     input = hooks.todos.useAddTodo(dispatch);
@@ -53,4 +56,4 @@ AddTodoPresentation.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(AddTodoPresentation);
+export default subscribe(AddTodoPresentation);
