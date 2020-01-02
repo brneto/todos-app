@@ -1,10 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FetchError from './FetchError';
+import { connect } from 'react-redux';
+import { effects } from '../redux/actions';
+import { getFilter } from '../redux/reducers';
 
+const
+  subscribe = connect(
+    state => ({ filter: getFilter(state) }),
+    { fetchTodos: effects.fetchTodos }
+  );
+
+@subscribe
 class ErrorBoundary extends React.Component {
   static propTypes = {
-    onRetry: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired,
+    fetchTodos: PropTypes.func.isRequired,
+    fallbackComponent: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
   };
 
@@ -13,19 +24,22 @@ class ErrorBoundary extends React.Component {
   // Update state so the next render will show the fallback UI.
   static getDerivedStateFromError = error => ({ error });
 
-  retryHandler = () => {
-    this.setState({ error: null });
-    this.props.onRetry();
-  };
+  componentDidMount = () => this.props.fetchTodos();
+
+  componentDidUpdate = prevProps =>
+    (this.props.filter !== prevProps.filter) && this.retryHandler();
+
+  retryHandler = () =>
+    this.setState({ error: null }) || this.props.fetchTodos();
 
   render() {
     const {
-      props: { children },
+      props: { fallbackComponent, children },
       state: { error },
       retryHandler: onRetry
     } = this;
 
-    return error ? <FetchError {...{ error, onRetry }} /> : children;
+    return error ? fallbackComponent({ error, onRetry }) : children;
   }
 }
 

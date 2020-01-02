@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { effects } from '../redux/actions';
-import { getFilter } from '../redux/reducers';
 import TodoList from './TodoList';
 import ErrorBoundary from './ErrorBoundary';
+import FetchError from './FetchError';
 
 const
   Section = styled.section`
@@ -14,13 +11,7 @@ const
     z-index: 2;
   `;
 
-const
-  subscribe = connect(
-    state => ({ filter: getFilter(state) }),
-    { fetchTodos: effects.fetchTodos }
-  );
-
-function VisibleTodoList({ fetchTodos }) {
+// function VisibleTodoList() {
   // Since this component render will always be called whenever the filter props changes,
   // the useEffect function is no necessary anymore.
   // https://github.com/facebook/react/issues/14920
@@ -29,18 +20,12 @@ function VisibleTodoList({ fetchTodos }) {
   //   [fetchTodos, filter]
   // );
 
-  fetchTodos();
-
-  return (
+  const VisibleTodoList = () => (
     <Section>
-      <ErrorBoundary onRetry={fetchTodos}>
+      <ErrorBoundary fallbackComponent={FetchError}>
         <TodoList />
       </ErrorBoundary>
     </Section>
   );
-}
-VisibleTodoList.propTypes = {
-  fetchTodos: PropTypes.func.isRequired,
-};
 
-export default subscribe(VisibleTodoList);
+export default VisibleTodoList;
