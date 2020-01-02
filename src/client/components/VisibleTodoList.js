@@ -16,10 +16,12 @@ const
 
 function VisibleTodoList({ fetchTodos, filter }) {
   // https://github.com/facebook/react/issues/14920
-  useEffect(
-    () => console.info('[Effect]') ?? void fetchTodos(),
-    [fetchTodos, filter]
-  );
+  // useEffect(
+  //   () => console.info('[Effect]') ?? void fetchTodos(),
+  //   [fetchTodos, filter]
+  // );
+
+  fetchTodos();
 
   // TODO: Verify whether useEffect is really needed
   // TODO: since this component render will always be
