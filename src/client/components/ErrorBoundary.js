@@ -30,7 +30,7 @@ class ErrorBoundary extends React.Component {
     (this.props.filter !== prevProps.filter) && this.retryHandler();
 
   retryHandler = () =>
-    this.setState({ error: null }) || this.props.fetchTodos();
+    this.setState({ error: null }) || void this.props.fetchTodos();
 
   render() {
     const {
