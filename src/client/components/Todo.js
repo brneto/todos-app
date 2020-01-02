@@ -25,7 +25,7 @@ const
   Todo = ({
     onClick,
     completed,
-    text
+    text,
   }) => (
     <Item onClick={onClick} completed={completed}>
       <Text>{text}</Text>

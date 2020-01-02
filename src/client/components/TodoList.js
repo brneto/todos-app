@@ -29,8 +29,11 @@ function TodoList({ isFetching, error, todos, toggleTodo }) {
 
   return todos.length ? (
     <List>
-      {todos.map(todo => (
-        <Todo key={todo.id} {...todo} onClick={() => toggleTodo(todo.id)} />
+      {todos.map(({
+        id,
+        ...rest
+      }) => (
+        <Todo key={id} onClick={() => toggleTodo(id)} {...rest} />
       ))}
     </List>
   ) : null;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -14,7 +14,9 @@ const
     z-index: 2;
   `;
 
-function VisibleTodoList({ fetchTodos, filter }) {
+function VisibleTodoList({ fetchTodos }) {
+  // Since this component render will always be called whenever the filter props changes,
+  // the useEffect function is no necessary anymore.
   // https://github.com/facebook/react/issues/14920
   // useEffect(
   //   () => console.info('[Effect]') ?? void fetchTodos(),
@@ -23,10 +25,6 @@ function VisibleTodoList({ fetchTodos, filter }) {
 
   fetchTodos();
 
-  // TODO: Verify whether useEffect is really needed
-  // TODO: since this component render will always be
-  // TODO: called whenever the filter props changes.
-  console.info('[Render]');
   return (
     <Section>
       <ErrorBoundary onRetry={fetchTodos}>
@@ -36,7 +34,6 @@ function VisibleTodoList({ fetchTodos, filter }) {
   );
 }
 VisibleTodoList.propTypes = {
-  filter: PropTypes.string.isRequired,
   fetchTodos: PropTypes.func.isRequired,
 };
 
