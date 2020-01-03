@@ -22,16 +22,19 @@ const
       color: inherit;
       pointer-events: none;
     }
-  `,
+  `;
+
+const
+  propTypes = {
+    filter: PropTypes.string.isRequired,
+    children: PropTypes.string.isRequired,
+  },
   FilterLink = ({ filter, children }) => (
     <StyledLink exact to={`/${filter === 'all' ? '' : filter}`}>
       {children}
     </StyledLink>
   );
 
-FilterLink.propTypes = {
-  filter: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
-};
+FilterLink.propTypes = propTypes;
 
 export default FilterLink;

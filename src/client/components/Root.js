@@ -11,25 +11,28 @@ import WithHooks from '../hooks/examples/WithHooks';
 import WithoutHooks from '../hooks/examples/WithoutHooks';
 import App from './App';
 
-const Root = ({ history, store }) => (
-  <ThemeProvider theme={themes.main}>
-    <StrictMode>
-      <GlobalStyle />
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Switch>
-            <Route {...routes.noHook} component={WithoutHooks} />
-            <Route {...routes.hook} component={WithHooks} />
-            <Route {...routes.main} component={App} />
-          </Switch>
-        </ConnectedRouter>
-      </Provider>
-    </StrictMode>
-  </ThemeProvider>
-);
-Root.propTypes = {
-  store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-};
+const
+  propTypes = {
+    store: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  },
+  Root = ({ history, store }) => (
+    <ThemeProvider theme={themes.main}>
+      <StrictMode>
+        <GlobalStyle />
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <Switch>
+              <Route {...routes.noHook} component={WithoutHooks} />
+              <Route {...routes.hook} component={WithHooks} />
+              <Route {...routes.main} component={App} />
+            </Switch>
+          </ConnectedRouter>
+        </Provider>
+      </StrictMode>
+    </ThemeProvider>
+  );
+
+Root.propTypes = propTypes;
 
 export default hot(Root);

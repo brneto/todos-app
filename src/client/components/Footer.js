@@ -9,7 +9,9 @@ const
     border-top: 1px solid #e6e6e6;
     color: #777;
     text-align: center;
-  `,
+  `;
+
+const
   Footer = () => (
     <Foot>
       <FilterLink filter="all">

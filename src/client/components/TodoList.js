@@ -31,10 +31,18 @@ const
   subscribe = connect(
     mapStateToProps,
     mapDispatchToProps
-  );
+  ),
+  propTypes = {
+    isFetching: PropTypes.bool.isRequired,
+    error: PropTypes.objectOf(Error),
+    todos: PropTypes.array.isRequired,
+    toggleTodo: PropTypes.func.isRequired,
+  };
 
-function TodoList({ isFetching, error, todos, toggleTodo }) {
-
+function TodoList({
+  isFetching, error,
+  todos, toggleTodo
+}) {
   // TODO: Replace the current "Loading..." approach by using the react Suspense component.
   // https://reactjs.org/docs/concurrent-mode-suspense.html
   if (isFetching) return <OnFetch>Loading...</OnFetch>;
@@ -52,11 +60,7 @@ function TodoList({ isFetching, error, todos, toggleTodo }) {
     </List>
   ) : null;
 }
-TodoList.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.objectOf(Error),
-  todos: PropTypes.array.isRequired,
-  toggleTodo: PropTypes.func.isRequired,
-};
+
+TodoList.propTypes = propTypes;
 
 export default subscribe(TodoList);

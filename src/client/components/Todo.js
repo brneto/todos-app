@@ -22,20 +22,21 @@ const
     transition: color .4s;
     line-height: 1.2;
   `,
+  propTypes = {
+    text: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired
+  },
   Todo = ({
-    onClick,
-    completed,
     text,
+    completed,
+    onClick,
   }) => (
     <Item onClick={onClick} completed={completed}>
       <Text>{text}</Text>
     </Item>
   );
 
-Todo.propTypes = {
-  completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
-};
+Todo.propTypes = propTypes;
 
 export default Todo;

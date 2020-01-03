@@ -36,6 +36,11 @@ const
     }
   `;
 
+  const
+    propTypes = {
+      url: PropTypes.string.isRequired,
+    };
+
 // Server-sent Events component
 function TickerTape({ url }) {
   const notices = hooks.sse.useNotices(url); // Custom Hook
@@ -53,8 +58,7 @@ function TickerTape({ url }) {
     </Tape>
   );
 }
-TickerTape.propTypes = {
-  url: PropTypes.string.isRequired,
-};
+
+TickerTape.propTypes = propTypes;
 
 export default TickerTape;

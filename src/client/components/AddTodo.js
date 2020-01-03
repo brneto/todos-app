@@ -38,7 +38,8 @@ const
   `;
 
   const
-    subscribe = connect();
+    subscribe = connect(),
+    propTypes = { dispatch: PropTypes.func.isRequired };
 
 export function AddTodoPresentation({ dispatch }) {
   const // Custom hook:
@@ -52,8 +53,6 @@ export function AddTodoPresentation({ dispatch }) {
   );
 }
 
-AddTodoPresentation.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
+AddTodoPresentation.propTypes = propTypes;
 
 export default subscribe(AddTodoPresentation);
