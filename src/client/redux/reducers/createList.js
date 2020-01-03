@@ -66,7 +66,7 @@ const createList = filter => {
         [documents.todoToggled]: {
           //return an entirely new state
           next: always(null),
-          throw: produce((state, { payload }) => payload |> returnIf(isFilter('all')))
+          throw: produce((draft, { payload }) => payload |> returnIf(isFilter('all')))
         },
       },
       null // Initial state
