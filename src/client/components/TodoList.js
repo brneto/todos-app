@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { effects } from '../redux/actions';
-import {
-  getIsFetching,
-  getError,
-  getVisibleTodos } from '../redux/reducers';
 import Todo from './Todo';
 
 const
-  OnFetch = styled.p`
-    margin-left: 1em;
-  `,
   List = styled.ul`
     margin: 0;
     padding: 0;
@@ -20,47 +11,18 @@ const
   `;
 
 const
-  mapStateToProps = state => ({
-    isFetching: getIsFetching(state),
-    error: getError(state),
-    todos: getVisibleTodos(state),
-  }),
-  mapDispatchToProps = {
-    toggleTodo: effects.toggleTodo,
-  },
-  subscribe = connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
   propTypes = {
-    isFetching: PropTypes.bool.isRequired,
-    error: PropTypes.objectOf(Error),
     todos: PropTypes.array.isRequired,
-    toggleTodo: PropTypes.func.isRequired,
-  };
-
-function TodoList({
-  isFetching, error,
-  todos, toggleTodo
-}) {
-  // TODO: Replace the current "Loading..." approach by using the react Suspense component.
-  // https://reactjs.org/docs/concurrent-mode-suspense.html
-  if (isFetching) return <OnFetch>Loading...</OnFetch>;
-
-  if (error) throw error;
-
-  return todos.length ? (
+    onClick: PropTypes.func.isRequired,
+  },
+  TodoList = ({ todos, onClick }) => (
     <List>
-      {todos.map(({
-        id,
-        ...rest
-      }) => (
-        <Todo key={id} onClick={() => toggleTodo(id)} {...rest} />
+      {todos.map(({ id, ...rest }) => (
+        <Todo key={id} onClick={() => onClick(id)} {...rest} />
       ))}
     </List>
-  ) : null;
-}
+  );
 
 TodoList.propTypes = propTypes;
 
-export default subscribe(TodoList);
+export default TodoList;
