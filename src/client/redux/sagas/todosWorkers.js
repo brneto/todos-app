@@ -5,13 +5,12 @@ import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
 
-function* fetchTodos() {
-  let filter;
+function* fetchTodos({ payload: filter }) {
   try {
     const isFetching = yield select(selectors.getIsFetching);
     if (isFetching) yield cancel();
 
-    filter = yield select(selectors.getFilter);
+    if (!filter) filter = yield select(selectors.getFilter);
     yield put(events.fetchingTodos(filter));
 
     const

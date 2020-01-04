@@ -18,12 +18,10 @@ describe('sagas/todosWorkers', () => {
       ],
       data = normalize(response, schema.todoList);
 
-    testSaga(sagas.fetchTodos)
+    testSaga(sagas.fetchTodos, effects.fetchTodos(filter))
     .next()
     .select(selectors.getIsFetching)
     .next(false)
-    .select(selectors.getFilter)
-    .next(filter)
     .put(events.fetchingTodos(filter))
     .next()
     .call(api.todos.fetchTodos, filter)
@@ -36,7 +34,7 @@ describe('sagas/todosWorkers', () => {
   });
 
   it('should not call fetchTodos api', () => {
-    testSaga(sagas.fetchTodos)
+    testSaga(sagas.fetchTodos, effects.fetchTodos())
     .next()
     .select(selectors.getIsFetching)
     .next(true)

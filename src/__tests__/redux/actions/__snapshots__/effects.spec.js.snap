@@ -2,6 +2,9 @@
 
 exports[`Side Effect Command action messages addTodo effect 1`] = `
 Object {
+  "meta": Object {
+    "type": "SIDE_EFFECT",
+  },
   "payload": "hello!",
   "type": "ADD_TODO",
 }
@@ -9,12 +12,18 @@ Object {
 
 exports[`Side Effect Command action messages fetchTodos effect 1`] = `
 Object {
+  "meta": Object {
+    "type": "SIDE_EFFECT",
+  },
   "type": "FETCH_TODOS",
 }
 `;
 
 exports[`Side Effect Command action messages toggleTodo effect 1`] = `
 Object {
+  "meta": Object {
+    "type": "SIDE_EFFECT",
+  },
   "payload": "123",
   "type": "TOGGLE_TODO",
 }

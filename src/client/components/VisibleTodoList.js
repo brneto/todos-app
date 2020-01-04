@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { effects } from '../redux/actions';
 import {
-  getIsFetching, getError,
-  getVisibleTodos, getFilter } from '../redux/reducers';
+  getIsFetching,
+  getError,
+  getVisibleTodos } from '../redux/reducers';
 import TodoList from './TodoList';
 import FetchError from './FetchError';
 
@@ -21,7 +22,6 @@ const
 
 const
   mapStateToProps = state => ({
-    filter: getFilter(state),
     todos: getVisibleTodos(state),
     isFetching: getIsFetching(state),
     error: getError(state),
@@ -35,7 +35,6 @@ const
     mapDispatchToProps
   ),
   propTypes = {
-    filter: PropTypes.string.isRequired,
     todos: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.objectOf(Error),
@@ -44,24 +43,19 @@ const
   };
 
 function VisibleTodoList({
-  filter, todos, isFetching,
-  error, fetchTodos, toggleTodo
+  todos, isFetching, error,
+  fetchTodos, toggleTodo
 }) {
-  // TODO: Replace the current "Loading..." approach by React Suspense.
-  // https://reactjs.org/docs/concurrent-mode-suspense.html
-
-  useEffect(
-    () => void fetchTodos(),
-    [fetchTodos, filter] // https://github.com/facebook/react/issues/14920
-  );
 
   let render = todos.length
-  ? <TodoList todos={todos} onClick={toggleTodo} />
-  : <OnProgress>Nothing to be done yet?!</OnProgress>;
+    ? <TodoList todos={todos} onClick={toggleTodo} />
+    : <OnProgress>Nothing to be done yet?!</OnProgress>;
 
   if (error)
     render = <FetchError error={error} onRetry={fetchTodos} />;
 
+  // TODO: Replace the current "Loading..." approach by React Suspense.
+  // https://reactjs.org/docs/concurrent-mode-suspense.html
   if (isFetching)
     render = <OnProgress>Loading...</OnProgress>;
 

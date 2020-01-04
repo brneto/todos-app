@@ -2,6 +2,9 @@
 
 exports[`Event action messages fetchedTodos event 1`] = `
 Object {
+  "meta": Object {
+    "type": "EVENT",
+  },
   "payload": "filterName",
   "type": "FETCHED_TODOS",
 }
@@ -9,6 +12,9 @@ Object {
 
 exports[`Event action messages fetchingTodos event 1`] = `
 Object {
+  "meta": Object {
+    "type": "EVENT",
+  },
   "payload": "filterName",
   "type": "FETCHING_TODOS",
 }

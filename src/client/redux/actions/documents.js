@@ -1,12 +1,14 @@
 import { createActions } from 'redux-actions';
-import { metaFilterCreator } from './utils';
+import { createActionFunction } from './functions';
+
+const messageType = 'DOCUMENT';
 
 // Document actions
 // Naming Convention: <subject><past-tense verb>
 export const {
   todosFetched, todoAdded, todoToggled
 } = createActions({
-  TODOS_FETCHED: metaFilterCreator,
-  TODO_ADDED: metaFilterCreator,
-  TODO_TOGGLED: metaFilterCreator,
+  TODOS_FETCHED: createActionFunction(messageType),
+  TODO_ADDED: createActionFunction(messageType),
+  TODO_TOGGLED: createActionFunction(messageType),
 });

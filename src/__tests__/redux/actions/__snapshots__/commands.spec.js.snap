@@ -4,6 +4,7 @@ exports[`Pure Command action messages addTodoToList command 1`] = `
 Object {
   "meta": Object {
     "filter": "filterName",
+    "type": "COMMAND",
   },
   "payload": "responseData",
   "type": "ADD_TODO_TO_LIST",
@@ -14,6 +15,7 @@ exports[`Pure Command action messages removeTodoFromList command 1`] = `
 Object {
   "meta": Object {
     "filter": "filterName",
+    "type": "COMMAND",
   },
   "payload": "responseData",
   "type": "REMOVE_TODO_FROM_LIST",

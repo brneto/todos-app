@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { effects } from '../redux/actions';
 import FilterLink from './FilterLink';
 
 const
@@ -12,18 +15,29 @@ const
   `;
 
 const
-  Footer = () => (
+  subscribe = connect(null, { fetchTodos: effects.fetchTodos }),
+  propTypes = { fetchTodos: PropTypes.func.isRequired };
+
+function Footer({ fetchTodos }) {
+
+  // https://github.com/facebook/react/issues/14920
+  useEffect(() => void fetchTodos(), [fetchTodos]);
+
+  return (
     <Foot>
-      <FilterLink filter="all">
+      <FilterLink filter="all" onClick={fetchTodos}>
         All
       </FilterLink>
-      <FilterLink filter="active">
+      <FilterLink filter="active" onClick={fetchTodos}>
         Active
       </FilterLink>
-      <FilterLink filter="completed">
+      <FilterLink filter="completed" onClick={fetchTodos}>
         Completed
       </FilterLink>
     </Foot>
   );
+}
 
-export default Footer;
+Footer.propTypes = propTypes;
+
+export default subscribe(Footer);
