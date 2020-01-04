@@ -1,6 +1,7 @@
+import { put } from 'redux-saga/effects';
 import { testSaga } from 'redux-saga-test-plan';
 import { normalize } from 'normalizr';
-import { effects, events, documents } from '../../../client/redux/actions';
+import { effects, commands, events, documents } from '../../../client/redux/actions';
 import * as selectors from '../../../client/redux/reducers';
 import * as schema from '../../../client/libs/schema';
 import * as sagas from '../../../client/redux/sagas/todosWorkers';
@@ -44,18 +45,15 @@ describe('sagas/todosWorkers', () => {
 
   it('should call addTodo api', () => {
     const
-      filter = 'all',
       text = 'Test',
       response = { id: 1, text, completed: false },
       data = normalize(response, schema.todo);
 
     testSaga(sagas.addTodo, effects.addTodo(text))
     .next()
-    .select(selectors.getFilter)
-    .next(filter)
     .call(api.todos.addTodo, text)
     .next(response)
-    .put(documents.todoAdded(data, filter))
+    .put(documents.todoAdded(data))
     .next()
     .isDone();
   });
@@ -63,17 +61,19 @@ describe('sagas/todosWorkers', () => {
   it('should call toggleTodo api with not completed todo', () => {
     const
       id = 1,
-      filter = 'all',
       response = { id: 1, text: 'Test', completed: false },
       data = normalize(response, schema.todo);
 
     testSaga(sagas.toggleTodo, effects.toggleTodo(id))
     .next()
-    .select(selectors.getFilter)
-    .next(filter)
     .call(api.todos.toggleTodo, id)
     .next(response)
-    .put(documents.todoToggled(data, filter))
+    .all([
+      (commands.removeTodoFromList(data, 'completed') |> put),
+      (commands.addTodoToList(data, 'active') |> put)
+    ])
+    .next()
+    .put(documents.todoToggled(data))
     .next()
     .isDone();
   });
@@ -81,17 +81,19 @@ describe('sagas/todosWorkers', () => {
   it('should call toggleTodo api with completed todo', () => {
     const
       id = 1,
-      filter = 'all',
       response = { id: 1, text: 'Test', completed: true },
       data = normalize(response, schema.todo);
 
     testSaga(sagas.toggleTodo, effects.toggleTodo(id))
     .next()
-    .select(selectors.getFilter)
-    .next(filter)
     .call(api.todos.toggleTodo, id)
     .next(response)
-    .put(documents.todoToggled(data, filter))
+    .all([
+      (commands.removeTodoFromList(data, 'active') |> put),
+      (commands.addTodoToList(data, 'completed') |> put)
+    ])
+    .next()
+    .put(documents.todoToggled(data))
     .next()
     .isDone();
   });

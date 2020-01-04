@@ -1,13 +1,12 @@
 import { normalize } from 'normalizr';
-import { call, put, select, cancel } from 'redux-saga/effects';
-import { events, documents } from '../actions';
+import { all, call, put, select, cancel } from 'redux-saga/effects';
+import { commands, events, documents } from '../actions';
 import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
 
 function* fetchTodos() {
   let filter;
-
   try {
     const isFetching = yield select(selectors.getIsFetching);
     if (isFetching) yield cancel();
@@ -28,35 +27,55 @@ function* fetchTodos() {
 }
 
 function* addTodo({ payload: text }) {
-  let filter;
-
   try {
-    filter = yield select(selectors.getFilter);
-
     const
       response = yield call(api.todos.addTodo, text),
       data = normalize(response, schema.todo);
 
-    yield put(documents.todoAdded(data, filter));
+    yield put(documents.todoAdded(data));
   } catch (error) {
-    yield put(documents.todoAdded(error, filter));
+    yield put(documents.todoAdded(error));
   }
 }
 
 function* toggleTodo({ payload: id }) {
-  let filter;
-
   try {
-    filter = yield select(selectors.getFilter);
-
     const
       response = yield call(api.todos.toggleTodo, id),
       data = normalize(response, schema.todo);
 
-    yield put(documents.todoToggled(data, filter));
+    yield updateFilterLists(data);
+    yield put(documents.todoToggled(data));
   } catch (error) {
-    yield put(documents.todoToggled(error, filter));
+    yield put(documents.todoToggled(error));
   }
 }
 
-export { fetchTodos, addTodo, toggleTodo };
+function updateFilterLists(data) {
+  const
+    id = data.result,
+    { entities: { todos: { [id]: { completed: isTodoCompleted } } } } = data,
+    activeList = 'active',
+    completedList = 'completed';
+
+  try {
+    return all (isTodoCompleted
+      ? [
+        put(commands.removeTodoFromList(data, activeList)),
+        put(commands.addTodoToList(data, completedList))
+      ]
+      : [
+        put(commands.removeTodoFromList(data, completedList)),
+        put(commands.addTodoToList(data, activeList))
+      ]
+    );
+  } catch(e) {
+    throw new Error('An Effects on switcher method was rejected before complete: ' + e);
+  }
+}
+
+export {
+  fetchTodos,
+  addTodo,
+  toggleTodo,
+};

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { combineActions, handleActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 import { prop, identity, equals, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
-import { events, documents } from '../actions';
+import { commands, events, documents } from '../actions';
 
 const createList = filter => {
   const isFilter = equals(filter);
@@ -11,15 +11,24 @@ const createList = filter => {
   const ids = handleActions(
       {
         [documents.todosFetched]: {
-          next: produce((draft, { payload, meta }) =>
-            isFilter(meta.filter) ? payload.result : [] //return an entirely new state
-          ),
-          throw: always([])
+          next: produce((draft, { payload, meta }) => {
+            if (isFilter(meta.filter)) return payload.result; //return an entirely new state
+          }),
         },
         [documents.todoAdded]: {
+          next: produce((draft, { payload }) => {
+            if (!isFilter('completed')) draft.push(payload.result); //modify the current draft state
+          }),
+        },
+        [commands.addTodoToList]: {
           next: produce((draft, { payload, meta }) => {
-            if (!isFilter('completed') && isFilter(meta.filter))
-              draft.push(payload.result); //modify the current draft state
+            if (isFilter(meta.filter)) draft.push(payload.result); //modify the current draft state
+          }),
+        },
+        [commands.removeTodoFromList]: {
+          next: produce((draft, { payload, meta }) => {
+            const notEquals = a => b => a !== b;
+            if(isFilter(meta.filter)) return draft.filter(notEquals(payload.result)); //return an entirely new state
           }),
         },
       },
@@ -32,21 +41,32 @@ const createList = filter => {
           if (isFilter(payload)) return true; //return an entirely new state
         }),
         [events.fetchedTodos]: produce((draft, { payload }) => {
-          if (isFilter(payload)) return false; //return an entirely new state
+          if (isFilter(payload)) return false;
         }),
       },
       false // Initial state
     );
 
   const
-    { todosFetched, todoAdded, todoToggled } = documents,
+    returnIf = test => payload => {
+      if (test) return payload;
+    },
     error = handleActions(
       {
-        [combineActions(todosFetched, todoAdded, todoToggled)]: {
+        [documents.todosFetched]: {
+          //return an entirely new state
           next: always(null),
-          throw: produce((draft, { payload, meta }) =>
-            isFilter(meta.filter) ? payload : null //return an entirely new state
-          )
+          throw: produce((draft, { payload, meta }) => payload |> returnIf(isFilter(meta.filter)))
+        },
+        [documents.todoAdded]: {
+          //return an entirely new state
+          next: always(null),
+          throw: produce((draft, { payload }) => payload |> returnIf(!isFilter('completed')))
+        },
+        [documents.todoToggled]: {
+          //return an entirely new state
+          next: always(null),
+          throw: produce((draft, { payload }) => payload)
         },
       },
       null // Initial state
