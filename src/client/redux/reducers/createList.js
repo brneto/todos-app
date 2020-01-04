@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
+import { combineActions, handleActions } from 'redux-actions';
 import { prop, identity, equals, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
@@ -14,10 +14,12 @@ const createList = filter => {
           next: produce((draft, { payload, meta }) => {
             if (isFilter(meta.filter)) return payload.result; //return an entirely new state
           }),
+          throw: always([])
         },
         [documents.todoAdded]: {
-          next: produce((draft, { payload }) => {
-            if (!isFilter('completed')) draft.push(payload.result); //modify the current draft state
+          next: produce((draft, { payload, meta }) => {
+            if (!isFilter('completed') && isFilter(meta.filter))
+              draft.push(payload.result); //modify the current draft state
           }),
         },
         [commands.addTodoToList]: {
@@ -48,25 +50,13 @@ const createList = filter => {
     );
 
   const
-    returnIf = test => payload => {
-      if (test) return payload;
-    },
+    { todosFetched, todoAdded, todoToggled } = documents,
     error = handleActions(
       {
-        [documents.todosFetched]: {
+        [combineActions(todosFetched, todoAdded, todoToggled)]: {
           //return an entirely new state
           next: always(null),
-          throw: produce((draft, { payload, meta }) => payload |> returnIf(isFilter(meta.filter)))
-        },
-        [documents.todoAdded]: {
-          //return an entirely new state
-          next: always(null),
-          throw: produce((draft, { payload }) => payload |> returnIf(!isFilter('completed')))
-        },
-        [documents.todoToggled]: {
-          //return an entirely new state
-          next: always(null),
-          throw: produce((draft, { payload }) => payload)
+          throw: produce((draft, { payload, meta }) => isFilter(meta.filter) ? payload : null)
         },
       },
       null // Initial state

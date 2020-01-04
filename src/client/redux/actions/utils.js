@@ -5,4 +5,4 @@ import { identity } from 'ramda';
 //   payload: data,
 //   meta: { filter: filter }
 // }
-export const metaFilterListCreator = [identity, (payload, filter) => ({ filter })];
+export const metaFilterCreator = [identity, (payload, filter) => ({ filter })];

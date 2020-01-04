@@ -16,11 +16,7 @@ Object {
 exports[`reducers/createList should add fetched todos saves error message 1`] = `
 Object {
   "error": [Error: Boom!],
-  "ids": Array [
-    1,
-    2,
-    3,
-  ],
+  "ids": Array [],
   "isFetching": false,
 }
 `;

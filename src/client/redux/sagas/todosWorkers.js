@@ -27,27 +27,35 @@ function* fetchTodos() {
 }
 
 function* addTodo({ payload: text }) {
+  let filter;
+
   try {
+    filter = yield select(selectors.getFilter);
+
     const
       response = yield call(api.todos.addTodo, text),
       data = normalize(response, schema.todo);
 
-    yield put(documents.todoAdded(data));
+    yield put(documents.todoAdded(data, filter));
   } catch (error) {
-    yield put(documents.todoAdded(error));
+    yield put(documents.todoAdded(error, filter));
   }
 }
 
 function* toggleTodo({ payload: id }) {
+  let filter;
+
   try {
+    filter = yield select(selectors.getFilter);
+
     const
       response = yield call(api.todos.toggleTodo, id),
       data = normalize(response, schema.todo);
 
     yield updateFilterLists(data);
-    yield put(documents.todoToggled(data));
+    yield put(documents.todoToggled(data, filter));
   } catch (error) {
-    yield put(documents.todoToggled(error));
+    yield put(documents.todoToggled(error, filter));
   }
 }
 

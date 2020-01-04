@@ -1,11 +1,12 @@
 import { createActions } from 'redux-actions';
-import { metaFilterListCreator } from './utils';
+import { metaFilterCreator } from './utils';
 
 // Document actions
 // Naming Convention: <subject><past-tense verb>
-export const { todosFetched, todoAdded, todoToggled } =
-  createActions(
-    { TODOS_FETCHED: metaFilterListCreator },
-    'TODO_ADDED',
-    'TODO_TOGGLED',
-  );
+export const {
+  todosFetched, todoAdded, todoToggled
+} = createActions({
+  TODOS_FETCHED: metaFilterCreator,
+  TODO_ADDED: metaFilterCreator,
+  TODO_TOGGLED: metaFilterCreator,
+});

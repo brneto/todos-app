@@ -4,8 +4,9 @@ import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import { documents } from '../actions';
 
-const { todosFetched, todoAdded, todoToggled } = documents;
-const byId = handleActions(
+const
+  { todosFetched, todoAdded, todoToggled } = documents,
+  byId = handleActions(
     {
       [combineActions(todosFetched, todoAdded, todoToggled)]: {
         next: produce((draft, { payload: { entities } }) => {

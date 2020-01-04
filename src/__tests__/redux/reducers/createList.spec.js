@@ -77,7 +77,7 @@ describe('reducers/createList', () => {
 
   it('should add todo save error message', () => {
     // when
-    const newState = documents.todoAdded(error)
+    const newState = documents.todoAdded(error, filter)
       |> a => listByFilter(baseState, a);
 
     // then
@@ -120,7 +120,7 @@ describe('reducers/createList', () => {
         |> deepFreeze;
 
     // when
-    const newState = documents.todoToggled(error)
+    const newState = documents.todoToggled(error, filter)
       |> a => listByFilter(baseState, a);
 
     // then

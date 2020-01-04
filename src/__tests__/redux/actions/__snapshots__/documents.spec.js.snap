@@ -2,6 +2,9 @@
 
 exports[`Document action messages todoAdded document 1`] = `
 Object {
+  "meta": Object {
+    "filter": "filterName",
+  },
   "payload": "responseData",
   "type": "TODO_ADDED",
 }
@@ -10,6 +13,9 @@ Object {
 exports[`Document action messages todoAdded document 2`] = `
 Object {
   "error": true,
+  "meta": Object {
+    "filter": "filterName",
+  },
   "payload": [Error: Boom!],
   "type": "TODO_ADDED",
 }
@@ -17,6 +23,9 @@ Object {
 
 exports[`Document action messages todoToggled document 1`] = `
 Object {
+  "meta": Object {
+    "filter": "filterName",
+  },
   "payload": "responseData",
   "type": "TODO_TOGGLED",
 }
@@ -25,6 +34,9 @@ Object {
 exports[`Document action messages todoToggled document 2`] = `
 Object {
   "error": true,
+  "meta": Object {
+    "filter": "filterName",
+  },
   "payload": [Error: Boom!],
   "type": "TODO_TOGGLED",
 }
