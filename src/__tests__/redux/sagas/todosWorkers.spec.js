@@ -33,6 +33,35 @@ describe('sagas/todosWorkers', () => {
     .isDone();
   });
 
+  it('should call filter selector', () => {
+    //given
+    const
+      filter = 'all',
+      response = [
+        { id: 1, text: 'hey', completed: true },
+        { id: 2, text: 'ho', completed: true },
+        { id: 3, text: 'let\'s go', completed: false },
+      ],
+      data = normalize(response, schema.todoList);
+
+    // when-then
+    testSaga(sagas.fetchTodos, effects.fetchTodos())
+    .next()
+    .select(selectors.getIsFetching)
+    .next(false)
+    .select(selectors.getFilter)
+    .next(filter)
+    .put(events.fetchingTodos(filter))
+    .next()
+    .call(api.todos.fetchTodos, filter)
+    .next(response)
+    .put(documents.todosFetched(data, filter))
+    .next()
+    .put(events.fetchedTodos(filter))
+    .next()
+    .isDone();
+  });
+
   it('should not call fetchTodos api', () => {
     testSaga(sagas.fetchTodos, effects.fetchTodos())
     .next()
