@@ -12,12 +12,12 @@ describe('Document action messages', () => {
   });
 
   test('todoAdded document', () => {
-    expect(documents.todoAdded(response)).toMatchSnapshot();
-    expect(documents.todoAdded(error)).toMatchSnapshot();
+    expect(documents.todoAdded(response, filter)).toMatchSnapshot();
+    expect(documents.todoAdded(error, filter)).toMatchSnapshot();
   });
 
   test('todoToggled document', () => {
-    expect(documents.todoToggled(response)).toMatchSnapshot();
-    expect(documents.todoToggled(error)).toMatchSnapshot();
+    expect(documents.todoToggled(response, filter)).toMatchSnapshot();
+    expect(documents.todoToggled(error, filter)).toMatchSnapshot();
   });
 });

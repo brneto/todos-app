@@ -10,7 +10,7 @@ import TodoList from './TodoList';
 import FetchError from './FetchError';
 
 const
-  OnFetch = styled.p`
+  OnProgress = styled.p`
     margin-left: 1em;
   `,
   Section = styled.section`
@@ -55,14 +55,15 @@ function VisibleTodoList({
     [fetchTodos, filter] // https://github.com/facebook/react/issues/14920
   );
 
-  let
-    render = todos.length && <TodoList todos={todos} onClick={toggleTodo} />;
+  let render = todos.length
+      ? <TodoList todos={todos} onClick={toggleTodo} />
+      : <OnProgress>Nothing to be done yet?!</OnProgress>;
 
   if (error)
     render = <FetchError error={error} onRetry={fetchTodos} />;
 
   if (isFetching)
-    render = <OnFetch>Loading...</OnFetch>;
+    render = <OnProgress>Loading...</OnProgress>;
 
   return <Section>{render}</Section>;
 }

@@ -1,26 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`reducers/createList should add a todo to the list 1`] = `
-Object {
-  "error": null,
-  "ids": Array [
-    1,
-    2,
-    3,
-    5,
-  ],
-  "isFetching": false,
-}
-`;
-
 exports[`reducers/createList should add fetched todos saves error message 1`] = `
 Object {
   "error": [Error: Boom!],
-  "ids": Array [
-    1,
-    2,
-    3,
-  ],
+  "ids": Array [],
   "isFetching": false,
 }
 `;
@@ -79,17 +62,6 @@ Object {
     2,
     3,
     4,
-  ],
-  "isFetching": false,
-}
-`;
-
-exports[`reducers/createList should remove a todo from the list 1`] = `
-Object {
-  "error": null,
-  "ids": Array [
-    2,
-    3,
   ],
   "isFetching": false,
 }

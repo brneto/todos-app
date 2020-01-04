@@ -1,6 +1,6 @@
 import deepFreeze from 'deep-freeze';
 import createList from '../../../client/redux/reducers/createList';
-import { commands, events, documents } from '../../../client/redux/actions';
+import { events, documents } from '../../../client/redux/actions';
 
 describe('reducers/createList', () => {
   const
@@ -77,31 +77,7 @@ describe('reducers/createList', () => {
 
   it('should add todo save error message', () => {
     // when
-    const newState = documents.todoAdded(error)
-      |> a => listByFilter(baseState, a);
-
-    // then
-    expect(newState).toMatchSnapshot();
-  });
-
-  it('should add a todo to the list', () => {
-    // given
-    const data = { result: 5 };
-
-    // when
-    const newState = commands.addTodoToList(data, filter)
-      |> a => listByFilter(baseState, a);
-
-    // then
-    expect(newState).toMatchSnapshot();
-  });
-
-  it('should remove a todo from the list', () => {
-    // given
-    const data = { result: 1 };
-
-    // when
-    const newState = commands.removeTodoFromList(data, filter)
+    const newState = documents.todoAdded(error, filter)
       |> a => listByFilter(baseState, a);
 
     // then
@@ -120,7 +96,7 @@ describe('reducers/createList', () => {
         |> deepFreeze;
 
     // when
-    const newState = documents.todoToggled(error)
+    const newState = documents.todoToggled(error, filter)
       |> a => listByFilter(baseState, a);
 
     // then
