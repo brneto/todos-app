@@ -38,7 +38,7 @@ Generated files will be in the `dist` folder.
 ## Documentation
 
 ### Introduction
-Despite the fact that this is a small app, this is just to demostrate the use of some interesting technologies on developing a frontend software. To fully comprehend the code and the design choices to this small app, by only digging in the source code can turn into a pretty tough job if you don't know the concepts behind it; that's led me to take the current approaches in code.
+Despite the fact that this is a small app, this is just to demostrate the use of some interesting technologies on developing a frontend software. To comprehend the code and the design choices applied in this small app fully, by only digging in the source code can turn into a pretty tough job if you don't know the concepts behind it.
 
 On the following topics I'll try to explain all the theory bases that have been used to implement this demo app.
 
