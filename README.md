@@ -45,7 +45,7 @@ For many years, the [MVC (Model-View-Controller)](https://en.wikipedia.org/wiki/
 
 Aiming to solve the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) drawbacks regarding to the instability and complexity the Facebook engineers come out with an alternative called [Flux](https://facebook.github.io/flux/).
 
-Keeping that in mind, [Redux](https://redux.js.org/) is just an implementantion of the [Flux](https://facebook.github.io/flux/) architecture (as many others), but with an additional constraint. Redux **doesn't allow to have more than one [Store](https://redux.js.org/basics/store)** while for [Flux](https://facebook.github.io/flux/) it's possible to have as many [Store](https://facebook.github.io/flux/docs/in-depth-overview/#stores) as you decide. Store on those architecture is where it's keeped the application state.
+Keeping that in mind, [Redux](https://redux.js.org/) is just an implementantion of the [Flux](https://facebook.github.io/flux/) architecture (as many others), but with an additional constraint. Redux **doesn't allow to have more than one [Store](https://redux.js.org/basics/store)** while for [Flux](https://facebook.github.io/flux/) it's possible to have as many [Store](https://facebook.github.io/flux/docs/in-depth-overview/#stores) as you decide. Store on those architecture is where it is keeped the application state.
 
 Besides, [Redux](https://redux.js.org/) has added the concept of **[Reducers](https://redux.js.org/basics/reducers#reducers) (a special function that must be always called in order to change the state beared in the application Store)**.
 
