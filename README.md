@@ -38,9 +38,9 @@ Generated files will be in the `dist` folder.
 ## Documentation
 
 ### Introduction
-Despite the fact this is a small app just to demostrate the use of some interesting technologies on developing a frontend software, to fully comprehend the code and the design choices to this small app by only digging in the source code can turn into a pretty tough job if you don't know the concepts behind that's led me to take the current approaches in code.
+Despite the fact that this is a small app, this is just to demostrate the use of some interesting technologies on developing a frontend software. To fully comprehend the code and the design choices to this small app, by only digging in the source code can turn into a pretty tough job if you don't know the concepts behind it, that's led me to take the current approaches in code.
 
-On the following topics I'll try to explain all the theory bases been used to implement this demo app.
+On the following topics I'll try to explain all the theory bases that have been used to implement this demo app.
 
 ### Reducer + Flux = Redux
 For many years, the [MVC (Model-View-Controller)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern has been the _de facto_ standart regards to frontend apps design for long time, but with the advance of complex web app with countless number of user interactions and interfaces started to make the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture started to be inefficient.
