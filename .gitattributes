@@ -11,6 +11,7 @@
 *.txt text
 *.ini text
 *.inc text
+*.md text
 *.DBK text eol=crlf
 *.DEC text eol=crlf
 *.REC text eol=crlf
