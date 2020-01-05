@@ -8,6 +8,7 @@ A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React
 - [Documentation](#documentation)
   - [Introduction](#introduction)
   - [Reducer + Flux = Redux](#reducer-flux-redux)
+  - [Model-View-Controller](#model-view-controller)
 - [Libraries](#libraries)
 - [Development Aid Tools](#development-aid-tools)
 - [Testing Tools](#testing-tools)
