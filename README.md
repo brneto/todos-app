@@ -140,4 +140,4 @@ Bugs, feature requests and more, in [GitHub Issues](https://github.com/brneto/to
 [MIT License](https://github.com/brneto/todos-app/blob/master/LICENSE.md).
 
 <!--images reference-->
-[mvc-diagram]: ./modeling/mvcDiagram.png "MVC Architecture Diagram"
+[mvc-diagram]: ./modeling/imgs/mvcDiagram.png "MVC Architecture Diagram"
