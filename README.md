@@ -59,7 +59,7 @@ Before start talking about Redux itself in more details, I believe it would be a
 
 ![MVC Architecture Diagram][mvc-diagram]
 
-The **Controller** receives the User requests, manipulate the **Model** and **View** to render back a new View to the User in response.
+The **Controller** receives the User requests, manipulate the **Model** and **View** to render back a **new View** to the User in response.
 ## Libraries
 :atom_symbol: [React](https://reactjs.org/)
 
