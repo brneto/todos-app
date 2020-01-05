@@ -1,9 +1,37 @@
-Todo App Demo
-======
+# Todo App Demo
 A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React/Redux application using known best practices, design pattern ([CQS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)) and libraries to achieve a sofware highly scalable.
 
-Libraries
-------
+## Table of Contents
+- [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [Build](#build)
+- [Libraries](#libraries)
+- [Development Aid Tools](#development-aid-tools)
+- [Testing Tools](#testing-tools)
+
+- [Contributing](#contributing)
+- [License](#license)
+
+## Getting Started
+### Usage
+Download modules:
+
+	$ yarn
+
+Run app server in development:
+
+	$ yarn start
+
+Stop app server:
+
+	$ yarn stop
+
+### Build
+	$ yarn build
+
+Generated files will be in the `dist` folder.
+
+## Libraries
 :atom_symbol: [React](https://reactjs.org/)
 
 :hammer_and_wrench: [Lodash](https://lodash.com/)
@@ -36,8 +64,7 @@ Libraries
 
 :package: [ES Module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
-Development Aid Tools
-------
+## Development Aid Tools
 [ESLint](https://eslint.org/)
 
 [Stylelint](https://stylelint.io/)
@@ -62,8 +89,7 @@ Development Aid Tools
 
 [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
-Testing tools
-------
+## Testing Tools
 :black_joker: [Jest](https://jestjs.io/)
 
 :goat: [React Testing Library](https://github.com/kentcdodds/react-testing-library)
@@ -78,30 +104,8 @@ Testing tools
 
 [Watchman](https://facebook.github.io/watchman/)
 
-Usage
-------
-Download modules:
-
-	$ yarn
-
-Run app server in development:
-
-	$ yarn start
-
-Stop app server:
-
-	$ yarn stop
-
-Build
-------
-	$ yarn build
-
-Generated files will be in the `dist` folder.
-
-Contributing
-------
+## Contributing
 Bugs, feature requests and more, in [GitHub Issues](https://github.com/brneto/todos-app/issues).
 
-License
--------
+## License
 [MIT License](https://github.com/brneto/todos-app/blob/master/LICENSE.md).
