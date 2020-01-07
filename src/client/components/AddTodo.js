@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as hooks from '../hooks';
 
+// TODO: First replace by object notation
+// TODO: https://www.styled-components.com/docs/advanced#style-objects
+// TODO: Then experiment replace styled-components by Emotion
+// TODO: https://emotion.sh/docs/introduction
 const
   Title = styled.h1`
     position: absolute;

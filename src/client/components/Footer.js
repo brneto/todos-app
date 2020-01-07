@@ -5,6 +5,10 @@ import styled from 'styled-components';
 import { effects } from '../redux/actions';
 import FilterLink from './FilterLink';
 
+// TODO: First replace by object notation
+// TODO: https://www.styled-components.com/docs/advanced#style-objects
+// TODO: Then experiment replace styled-components by Emotion
+// TODO: https://emotion.sh/docs/introduction
 const
   Foot = styled.footer`
     height: 20px;

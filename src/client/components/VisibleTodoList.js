@@ -10,6 +10,10 @@ import {
 import TodoList from './TodoList';
 import FetchError from './FetchError';
 
+// TODO: First replace by object notation
+// TODO: https://www.styled-components.com/docs/advanced#style-objects
+// TODO: Then experiment replace styled-components by Emotion
+// TODO: https://emotion.sh/docs/introduction
 const
   OnProgress = styled.p`
     margin-left: 1em;
