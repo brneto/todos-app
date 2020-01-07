@@ -9,6 +9,8 @@ import LoadingDots from './LoadingDots';
 // TODO: https://www.styled-components.com/docs/advanced#style-objects
 // TODO: Then experiment replace styled-components by Emotion
 // TODO: https://emotion.sh/docs/introduction
+// TODO: styled-components vs emotion
+// TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
   rollLeft = keyframes`
     0% { left: 100%; }
