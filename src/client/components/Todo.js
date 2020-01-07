@@ -21,13 +21,13 @@ const
       border-bottom: none;
     }
   `,
-  Text = styled.span`
-    display: block;
-    padding: 15px 15px 15px 30px;
-    word-break: always;
-    transition: color .4s;
-    line-height: 1.2;
-  `,
+  Text = styled.span({
+    display: 'block',
+    padding: '15px 15px 15px 30px',
+    wordBreak: 'always',
+    transition: 'color .4s',
+    lineHeight: '1.2',
+  }),
   propTypes = {
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,

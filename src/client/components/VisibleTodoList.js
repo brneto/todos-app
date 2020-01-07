@@ -10,21 +10,19 @@ import {
 import TodoList from './TodoList';
 import FetchError from './FetchError';
 
-// TODO: First replace by object notation
-// TODO: https://www.styled-components.com/docs/advanced#style-objects
-// TODO: Then experiment replace styled-components by Emotion
+// TODO: Replace styled-components by Emotion
 // TODO: https://emotion.sh/docs/introduction
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
-  OnProgress = styled.p`
-    margin-left: 1em;
-  `,
-  Section = styled.section`
-    position: relative;
-    border-top: 1px solid #e6e6e6;
-    z-index: 2;
-  `;
+  OnProgress = styled.p({
+    marginLeft: '1em',
+  }),
+  Section = styled.section({
+    position: 'relative',
+    borderTop: '1px solid #e6e6e6',
+    zIndex: '2',
+  });
 
 const
   mapStateToProps = state => ({

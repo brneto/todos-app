@@ -2,20 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// TODO: First replace by object notation
-// TODO: https://www.styled-components.com/docs/advanced#style-objects
-// TODO: Then experiment replace styled-components by Emotion
+// TODO: Replace styled-components by Emotion
 // TODO: https://emotion.sh/docs/introduction
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
-  OnError = styled.label`
-    margin-left: 1em;
+  OnError = styled.label({
+    marginLeft: '1em',
 
-    & > button {
-      margin: 1em .5em;
+    '& > button': {
+      margin: '1em .5em',
     }
-  `;
+  });
 
 const
   propTypes = {
