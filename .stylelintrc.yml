@@ -29,6 +29,7 @@ extends:
   - stylelint-config-recommended
   - stylelint-config-standard
   - stylelint-config-styled-components
+  - stylelint-prettier/recommended
 syntax: styled
 ignoreFiles:
   - node_modules/**/*
