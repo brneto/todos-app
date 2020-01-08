@@ -8,11 +8,11 @@ import Todo from './Todo';
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
-  List = styled.ul({
-    margin: '0',
-    padding: '0',
-    listStyle: 'none',
-  });
+  List = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  `;
 
 const
   propTypes = {

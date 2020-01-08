@@ -5,9 +5,7 @@ import moment from 'moment';
 import * as hooks from '../hooks';
 import LoadingDots from './LoadingDots';
 
-// TODO: First replace by object notation
-// TODO: https://www.styled-components.com/docs/advanced#style-objects
-// TODO: Then experiment replace styled-components by Emotion
+// TODO: Replace styled-components by Emotion
 // TODO: https://emotion.sh/docs/introduction
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md

@@ -7,13 +7,13 @@ import styled from 'styled-components';
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
-  OnError = styled.label({
-    marginLeft: '1em',
+  OnError = styled.label`
+    margin-left: 1em;
 
-    '& > button': {
-      margin: '1em .5em',
+    & > button {
+      margin: 1em .5em;
     }
-  });
+  `;
 
 const
   propTypes = {

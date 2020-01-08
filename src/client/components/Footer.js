@@ -10,13 +10,13 @@ import FilterLink from './FilterLink';
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
-  Foot = styled.footer({
-    height: '20px',
-    padding: '10px 15px',
-    borderTop: '1px solid #e6e6e6',
-    color: '#777',
-    textAlign: 'center',
-  });
+  Foot = styled.footer`
+    height: 20px;
+    padding: 10px 15px;
+    border-top: 1px solid #e6e6e6;
+    color: #777;
+    text-align: center;
+  `;
 
 const
   subscribe = connect(null, { fetchTodos: effects.fetchTodos }),

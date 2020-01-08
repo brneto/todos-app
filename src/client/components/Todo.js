@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// TODO: First replace by object notation
-// TODO: https://www.styled-components.com/docs/advanced#style-objects
-// TODO: Then experiment replace styled-components by Emotion
+// TODO: Replace styled-components by Emotion
 // TODO: https://emotion.sh/docs/introduction
 // TODO: styled-components vs emotion
 // TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
@@ -21,13 +19,15 @@ const
       border-bottom: none;
     }
   `,
-  Text = styled.span({
-    display: 'block',
-    padding: '15px 15px 15px 30px',
-    wordBreak: 'always',
-    transition: 'color .4s',
-    lineHeight: '1.2',
-  }),
+  Text = styled.span`
+    display: block;
+    padding: 15px 15px 15px 30px;
+    word-break: always;
+    transition: color .4s;
+    line-height: 1.2;
+  `;
+
+const
   propTypes = {
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,

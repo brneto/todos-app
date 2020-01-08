@@ -6,38 +6,40 @@ import * as hooks from '../hooks';
 
 // TODO: Replace styled-components by Emotion
 // TODO: https://emotion.sh/docs/introduction
+// TODO: styled-components vs emotion
+// TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
-  Title = styled.h1({
-    position: 'absolute',
-    top: '-155px',
-    width: '100%',
-    color: 'rgba(175, 47, 47, .15)',
-    fontSize: '100px',
-    fontWeight: '100',
-    textAlign: 'center',
-    textRendering: 'optimizeLegibility',
-  }),
-  Input = styled.input({
-    position: 'relative',
-    boxSizing: 'border-box',
-    width: '100%',
-    margin: '0',
-    padding: '16px',
-    border: 'none',
-    background: 'rgba(0, 0, 0, .003)',
-    color: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: '24px',
-    fontWeight: 'inherit',
-    lineHeight: '1.4em',
-    boxShadow: 'inset 0 -2px 1px rgba(0, 0, 0, .03)',
+  Title = styled.h1`
+    position: absolute;
+    top: -155px;
+    width: 100%;
+    color: rgba(175, 47, 47, .15);
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+  `,
+  Input = styled.input`
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+    border: none;
+    background: rgba(0, 0, 0, .003);
+    color: inherit;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: inherit;
+    line-height: 1.4em;
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, .03);
 
-    '::placeholder': {
-      color: '#e6e6e6',
-      fontStyle: 'italic',
-      fontWeight: '300',
-    },
-  });
+    ::placeholder {
+      color: #e6e6e6;
+      font-style: italic;
+      font-weight: 300;
+    }
+  `;
 
   const
     subscribe = connect(),
