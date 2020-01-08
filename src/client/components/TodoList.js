@@ -1,12 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Todo from './Todo';
 
-// TODO: Replace styled-components by Emotion
-// TODO: https://emotion.sh/docs/introduction
-// TODO: styled-components vs emotion
-// TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
   List = styled.ul`
     margin: 0;

@@ -1,14 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import AddTodo from './AddTodo';
 import VisibleTodoList from './VisibleTodoList';
 import Footer from './Footer';
 import TickerTape from './TickerTape';
 
-// TODO: Replace styled-components by Emotion
-// TODO: https://emotion.sh/docs/introduction
-// TODO: styled-components vs emotion
-// TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
   TodoApp = styled.div`
     position: relative;

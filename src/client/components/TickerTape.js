@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes, css } from 'styled-components';
+import { css, keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
 import moment from 'moment';
 import * as hooks from '../hooks';
 import LoadingDots from './LoadingDots';
 
-// TODO: Replace styled-components by Emotion
-// TODO: https://emotion.sh/docs/introduction
-// TODO: styled-components vs emotion
-// TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
   rollLeft = keyframes`
     0% { left: 100%; }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { effects } from '../redux/actions';
 import {
   getIsFetching,
@@ -10,10 +10,6 @@ import {
 import TodoList from './TodoList';
 import FetchError from './FetchError';
 
-// TODO: Replace styled-components by Emotion
-// TODO: https://emotion.sh/docs/introduction
-// TODO: styled-components vs emotion
-// TODO: https://github.com/jsjoeio/styled-components-vs-emotion/blob/master/README.md
 const
   OnProgress = styled.p`
     margin-left: 1em;
