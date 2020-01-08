@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/core';
+import { css } from '@emotion/core';
 
 const global = css`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
