@@ -68,7 +68,7 @@ The **Controller** receives the User requests, manipulate the **Model** and **Vi
 
 :ram: [Ramda](https://ramdajs.com/)
 
-:woman_singer: [Emotion](https://emotion.sh/)
+:nail_care: [Styled Components](https://www.styled-components.com/)
 
 :gift: [React Router v4](https://github.com/ReactTraining/react-router)
 

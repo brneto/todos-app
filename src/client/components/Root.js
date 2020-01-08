@@ -1,12 +1,11 @@
 import React, { StrictMode } from 'react';
 import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root';
-import { ThemeProvider } from 'emotion-theming';
-import { Global } from '@emotion/core';
+import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
-import global, * as themes from '../libs/style';
+import GlobalStyle, * as themes from '../libs/style';
 import * as routes from '../libs/routes';
 import WithHooks from '../hooks/examples/WithHooks';
 import WithoutHooks from '../hooks/examples/WithoutHooks';
@@ -20,7 +19,7 @@ const
   Root = ({ history, store }) => (
     <ThemeProvider theme={themes.main}>
       <StrictMode>
-        <Global styles={global} />
+        <GlobalStyle />
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <Switch>
