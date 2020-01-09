@@ -9,7 +9,7 @@ parserOptions:
     jsx: true
 settings:
   react:
-    version: "16.8"
+    version: "detect"
 env:
   es6: true
   commonjs: true
