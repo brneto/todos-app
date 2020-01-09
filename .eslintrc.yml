@@ -35,9 +35,6 @@ rules:
   no-alert: warn
   no-debugger: warn
   no-unused-vars: warn
-  no-undef:
-    - error
-    - typeof: true
   new-cap: "off"
   no-invalid-this: "off"
   object-curly-spacing: "off"
