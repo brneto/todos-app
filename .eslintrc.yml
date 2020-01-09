@@ -40,7 +40,7 @@ rules:
   object-curly-spacing: "off"
   quotes: "off"
   semi: "off"
-  rest-spread-spacing: error
+  rest-spread-spacing: warn
   babel/new-cap: warn
   babel/no-invalid-this: warn
   babel/object-curly-spacing:
