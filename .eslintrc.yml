@@ -34,7 +34,6 @@ rules:
   no-console: warn
   no-alert: warn
   no-debugger: warn
-  no-unused-vars: warn
   new-cap: "off"
   no-invalid-this: "off"
   object-curly-spacing: "off"
