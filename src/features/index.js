@@ -1,6 +1,9 @@
-import featureConfig from './config';
+import { featureConfig } from './config';
+import { createFeatureRouter } from './router';
 
-export const featureRouter = ({
-  setFeature: (featureName, isEnabled) => void (featureConfig[featureName] = isEnabled),
-  featureIsEnabled: featureName => featureConfig[featureName],
-});
+const {
+  setFeature,
+  featureIsEnabled
+} = createFeatureRouter(featureConfig);
+
+export { setFeature, featureIsEnabled };
