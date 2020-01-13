@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -68,4 +68,5 @@ function VisibleTodoList({
 
 VisibleTodoList.propTypes = propTypes;
 
-export default subscribe(VisibleTodoList);
+const skipRender = (prevProps, nextProps) => prevProps.isFetching !== nextProps.isFetching;
+export default subscribe(memo(VisibleTodoList, skipRender));
