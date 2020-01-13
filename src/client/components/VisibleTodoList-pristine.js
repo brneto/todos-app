@@ -37,7 +37,7 @@ const
   propTypes = {
     todos: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    error: PropTypes.objectOf(Error),
+    error: PropTypes.instanceOf(Error),
     fetchTodos: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
   };
