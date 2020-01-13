@@ -59,6 +59,9 @@ function VisibleTodoList({
   if (isFetching)
     render = <OnProgress>Loading...</OnProgress>;
 
+  // TODO: Remove the re-render on the todos list.
+  // TODO: Only do the re-render when isFetching prop changes.
+  console.info('VisibleTodoList:Render:', { todos, isFetching, error });
   return <Section>{render}</Section>;
 }
 
