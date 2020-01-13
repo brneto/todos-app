@@ -1,4 +1,4 @@
-import { commands } from '../../../client/redux/actions';
+import { commands } from '../../../../client/redux/actions';
 
 // addTodoToList, removeTodoFromList
 describe('Pure Command action messages', () => {

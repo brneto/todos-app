@@ -1,15 +1,17 @@
 import _remove from 'lodash/remove';
 
 describe('Array', () => {
-    const files = [
+  // given
+  const
+    files = [
       new File(['arquivoBits'], 'arquivo1.pdf'),
       new File(['arquivoBits'], 'arquivo2.pdf'),
       new File(['arquivoBits'], 'arquivo3.pdf'),
       new File(['arquivoBits'], 'arquivo4.pdf'),
       new File(['arquivoBits'], 'arquivo5.pdf'),
       new File(['arquivoBits'], 'arquivo6.pdf'),
-    ];
-    const sourceArray = {
+    ],
+    sourceArray = {
       arquivos: [
         {
           link: 'localhost:8080/arquivo/6481',
@@ -38,8 +40,8 @@ describe('Array', () => {
         },
         files[5],
       ]
-    };
-    const expectArray = {
+    },
+    expectArray = {
       arquivos: [
         {
           link: 'localhost:8080/arquivo/6481',
@@ -64,9 +66,10 @@ describe('Array', () => {
       ]
     };
 
-  // When
+  // when
   const fileList = _remove(sourceArray.arquivos, a => a instanceof File);
 
+  // then
   it('should remove an element', () => {
     expect(sourceArray.arquivos).toEqual(expectArray.arquivos);
   });

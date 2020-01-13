@@ -1,4 +1,4 @@
-import { events } from '../../../client/redux/actions';
+import { events } from '../../../../client/redux/actions';
 
 describe('Event action messages', () => {
   const filter = 'filterName';

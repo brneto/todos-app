@@ -1,4 +1,4 @@
-import { sampleMiddleware } from '../../../client/redux/middlewares';
+import { sampleMiddleware } from '../../../../client/redux/middlewares';
 
 describe('middlewares/sampleMiddleware', () => {
   let next, dispatch, getState, middleware, dispatchCalls, nextCalls;

@@ -1,4 +1,4 @@
-import { effects } from '../../../client/redux/actions';
+import { effects } from '../../../../client/redux/actions';
 
 describe('Side Effect Command action messages', () => {
   test('fetchTodos effect', () => {

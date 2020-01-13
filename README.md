@@ -25,7 +25,11 @@ Download modules:
 
 Run app server in development:
 
+  On Linux:
 	$ yarn start
+  
+  On Windows:
+  $ npx babel-node src/index.js
 
 Stop app server:
 

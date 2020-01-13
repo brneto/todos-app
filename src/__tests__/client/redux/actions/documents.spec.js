@@ -1,4 +1,4 @@
-import { documents } from '../../../client/redux/actions';
+import { documents } from '../../../../client/redux/actions';
 
 describe('Document action messages', () => {
   const
