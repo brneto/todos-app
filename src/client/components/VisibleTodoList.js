@@ -1,4 +1,4 @@
-import { featureIsEnabled } from '../../feature-router';
+import { featureIsEnabled } from '../../feature-control';
 import VisibleTodoListPristine from './VisibleTodoList-pristine';
 import VisibleTodoListFeatured from './VisibleTodoList-featured';
 

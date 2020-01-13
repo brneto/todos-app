@@ -1,4 +1,4 @@
-import { featureIsEnabled } from '../../feature-router';
+import { featureIsEnabled } from '../../feature-control';
 import TodoListPristine from './TodoList-pristine';
 import TodoListFeatured from './TodoList-featured';
 
