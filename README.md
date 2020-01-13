@@ -20,25 +20,30 @@ A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React
 
 ### Usage
 Download modules:
-
-	$ yarn
+```
+$ yarn
+```
 
 Run app server in development:
 
-  On Linux:
-
-	  $ yarn start
-  
-  On Windows:
-
-    $ npx babel-node src/index.js
+On Linux:
+```
+$ yarn start
+```  
+On Windows:
+```
+$ npx babel-node src/index.js
+```
 
 Stop app server:
-
-	$ yarn stop
+```
+$ yarn stop
+```
 
 ### Build
-	$ yarn build
+```
+$ yarn build
+```
 
 Generated files will be in the `dist` folder.
 
