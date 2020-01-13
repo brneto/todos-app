@@ -27,11 +27,11 @@ Run app server in development:
 
   On Linux:
 
-	$ yarn start
+	  $ yarn start
   
   On Windows:
 
-  $ npx babel-node src/index.js
+    $ npx babel-node src/index.js
 
 Stop app server:
 
