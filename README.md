@@ -26,9 +26,11 @@ Download modules:
 Run app server in development:
 
   On Linux:
+
 	$ yarn start
   
   On Windows:
+
   $ npx babel-node src/index.js
 
 Stop app server:
@@ -65,6 +67,8 @@ Before start talking about Redux itself in more details, I believe it would be a
 ![MVC Architecture Diagram][mvc-diagram]
 
 The **Controller** receives the User requests, manipulate the **Model** and **View** to render back a **new View** to the User in response.
+
+This pattern is great for most cases but it have drawbacks when you dealing with a complex UI with huge numbers of Views. For more information about some of those drawbacks [take a look on this Facebook presentation](https://www.youtube.com/watch?v=nYkdrAPrdcw&list=PL0quQQvRxrDy-OFYe-ZNmD9f1onAHSUNH).
 ## Libraries
 :atom_symbol: [React](https://reactjs.org/)
 
