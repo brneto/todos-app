@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import TodoList from './TodoList';
 import ErrorBoundary from './ErrorBoundary';
-import FetchError from './FetchError';
 
 const
   Section = styled.section`
@@ -21,7 +20,7 @@ const
     //   [fetchTodos, filter]
     // );
     <Section>
-      <ErrorBoundary fallbackComponent={FetchError}>
+      <ErrorBoundary>
         <TodoList />
       </ErrorBoundary>
     </Section>

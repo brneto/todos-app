@@ -1,6 +1,6 @@
 import { takeEvery, all } from 'redux-saga/effects';
 import { effects } from '../actions';
-import * as workers from './todos-workers';
+import * as workers from './todo-workers';
 
 function* rootSaga() {
   try {

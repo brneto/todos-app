@@ -1,8 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { effects } from '../redux/actions';
 import { getFilter } from '../redux/reducers';
+
+const
+  OnError = styled.label`
+    margin-left: 1em;
+
+    & > button {
+      margin: 1em .5em;
+    }
+  `;
 
 const
   subscribe = connect(
@@ -15,7 +25,6 @@ class ErrorBoundary extends React.Component {
   static propTypes = {
     filter: PropTypes.string.isRequired,
     fetchTodos: PropTypes.func.isRequired,
-    fallbackComponent: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
   };
 
@@ -34,12 +43,16 @@ class ErrorBoundary extends React.Component {
 
   render() {
     const {
-      props: { fallbackComponent, children },
+      props: { children },
       state: { error },
-      retryHandler: onRetry
+      retryHandler,
     } = this;
 
-    return error ? fallbackComponent({ error, onRetry }) : children;
+    return error ? (
+      <OnError>Could not fetch todos. {error.message}
+        <button onClick={retryHandler}>Retry</button>
+      </OnError>
+    ) : children;
   }
 }
 

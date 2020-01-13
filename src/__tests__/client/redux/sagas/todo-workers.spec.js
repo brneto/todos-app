@@ -4,7 +4,7 @@ import { normalize } from 'normalizr';
 import { effects, commands, events, documents } from '../../../../client/redux/actions';
 import * as selectors from '../../../../client/redux/reducers';
 import * as schema from '../../../../client/libs/schema';
-import * as sagas from '../../../../client/redux/sagas/todos-workers';
+import * as sagas from '../../../../client/redux/sagas/todo-workers';
 import * as api from '../../../../client/api';
 
 describe('sagas/todosWorkers', () => {
