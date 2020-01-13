@@ -12,13 +12,6 @@ const
 
 const
   VisibleTodoList = () => (
-    // Since this component render will always be called whenever the filter props changes,
-    // the useEffect function is no necessary anymore.
-    // https://github.com/facebook/react/issues/14920
-    // useEffect(
-    //   () => void fetchTodos(),
-    //   [fetchTodos, filter]
-    // );
     <Section>
       <ErrorBoundary>
         <TodoList />
