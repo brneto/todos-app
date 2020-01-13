@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import byId from '../../../../client/redux/reducers/byId';
+import byId from '../../../../client/redux/reducers/by-id';
 import { documents } from '../../../../client/redux/actions';
 
 describe('reducers/byId', () => {

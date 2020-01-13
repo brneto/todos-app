@@ -1,5 +1,5 @@
 import { createBrowserHistory } from 'history';
-import configStore from './configStore';
+import configStore from './config-store';
 
 const
   history = createBrowserHistory(),

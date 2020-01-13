@@ -1,4 +1,4 @@
-import { setFeature, featureIsEnabled } from '../../feature-control';
+import { setFeature, featureIsEnabled } from '../../feature-router';
 
 describe('features', () => {
   it('should change toogle feature isEnable', () => {

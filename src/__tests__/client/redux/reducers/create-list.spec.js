@@ -1,5 +1,5 @@
 import deepFreeze from 'deep-freeze';
-import createList from '../../../../client/redux/reducers/createList';
+import createList from '../../../../client/redux/reducers/create-list';
 import { commands, events, documents } from '../../../../client/redux/actions';
 
 describe('reducers/createList', () => {

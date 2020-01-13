@@ -1,5 +1,5 @@
 import throttle from 'lodash/throttle';
-import { loadState, saveState } from './localStorage';
+import { loadState, saveState } from './local-storage';
 
 const sampleMiddleware = () => next => action => {
   // TODO: Implement the middleware
