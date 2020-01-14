@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const
-  StyledLink = styled(NavLink).attrs({
+  StyledLink = styled(NavLink).attrs(() => ({
     activeStyle: {
       borderColor: 'rgba(175, 47, 47, .2)',
       cursor: 'not-allowed',
     }
-  })`
+  }))`
     position: relative;
     margin: 3px;
     padding: 3px 7px;
