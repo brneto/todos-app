@@ -1,8 +1,28 @@
-import { featureIsEnabled } from '../../feature-router';
-import TodoListPristine from './TodoList.pristine';
-import TodoListFeatured from './TodoList.featured';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Todo from './Todo';
 
-export default
-  featureIsEnabled('use-new-React-Suspense')
-    ? TodoListFeatured
-    : TodoListPristine;
+const
+  List = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  `;
+
+const
+  propTypes = {
+    todos: PropTypes.array.isRequired,
+    onClick: PropTypes.func.isRequired,
+  },
+  TodoList = ({ todos, onClick }) => (
+    <List>
+      {todos.map(({ id, ...rest }) => (
+        <Todo key={id} onClick={() => onClick(id)} {...rest} />
+      ))}
+    </List>
+  );
+
+TodoList.propTypes = propTypes;
+
+export default TodoList;
