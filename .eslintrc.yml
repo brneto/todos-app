@@ -3,7 +3,6 @@ parser: babel-eslint
 parserOptions:
   sourceType: module
   requireConfigFile: false
-  ecmaVersion: 9
   ecmaFeatures:
     impliedStrict: true
     jsx: true
@@ -11,7 +10,7 @@ settings:
   react:
     version: "detect"
 env:
-  es6: true
+  es2020: true
   commonjs: true
   browser: true
   node: true
@@ -34,11 +33,6 @@ rules:
   no-console: warn
   no-alert: warn
   no-debugger: warn
-  new-cap: "off"
-  no-invalid-this: "off"
-  object-curly-spacing: "off"
-  quotes: "off"
-  semi: "off"
   rest-spread-spacing: warn
   babel/new-cap: warn
   babel/no-invalid-this: warn
