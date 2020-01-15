@@ -1,4 +1,4 @@
 export default featureConfig => ({
-  setFeature: (featureName, isEnabled) => void (featureConfig[featureName] = isEnabled),
+  setFeature: (featureName, isEnabled) => { featureConfig[featureName] = isEnabled; },
   featureIsEnabled: featureName => featureConfig[featureName],
 });
