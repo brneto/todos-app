@@ -1,4 +1,4 @@
 export default featureConfig => ({
   setFeature: (featureName, isEnabled) => { featureConfig[featureName] = isEnabled; },
-  featureIsEnabled: featureName => featureConfig[featureName],
+  featureIsEnabled: featureName => featureConfig[featureName] === true,
 });
