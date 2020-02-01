@@ -40,7 +40,7 @@ const commonConfig = {
       chunks: 'initial',
       automaticNameDelimiter: '~',
       cacheGroups: {
-        vendors: {
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
           reuseExistingChunk: true
