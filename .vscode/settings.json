@@ -51,8 +51,5 @@
   // GitHub Compatibility
   "markdown.extension.toc.githubCompatibility": true,
 
-  "markdown.extension.toc.updateOnSave": false,
-
-  // Set default shell in Windows
-  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
+  "markdown.extension.toc.updateOnSave": false
 }
