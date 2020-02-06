@@ -1,11 +1,10 @@
-/// <reference types="react/experimental" />
-/// <reference types="react-dom/experimental" />
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
 import * as state from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
+console.info('berchris', ReactDOM.createRoot);
 // ReactDOM.render(
 //   <Root {...state} />,
 //   document.getElementById('root')

@@ -57,7 +57,7 @@ const commonConfig = {
       // This loader parallelizes code compilation, it is optional but
       // improves compile time on larger projects
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         include: /[\\/]src[\\/]client[\\/](?!config\.js)/,
         use: [
           { loader: 'thread-loader' },
@@ -73,6 +73,8 @@ const commonConfig = {
               cacheCompression: false,
               sourceMaps: false,
               presets: [
+                '@babel/preset-react',
+                '@babel/preset-typescript',
                 ['@babel/preset-env',  {
                   forceAllTransforms: !isInDev,
                   modules: false,
@@ -80,7 +82,6 @@ const commonConfig = {
                   corejs: 3,
                   debug: false
                 }],
-                '@babel/preset-react',
               ],
               plugins: [
                 'react-hot-loader/babel',
@@ -103,8 +104,13 @@ const commonConfig = {
           { loader: 'stylelint-custom-processor-loader',
             options: { emitWarning: true }
           },
-          { loader: 'eslint-loader' }
+          { loader: 'eslint-loader' },
         ]
+      },
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        enforce: 'pre',
       },
       // https://github.com/gaearon/react-hot-loader#webpack-plugin
       // https://github.com/gaearon/react-hot-loader/issues/1222
@@ -163,7 +169,8 @@ const commonConfig = {
   // https://github.com/gaearon/react-hot-loader#react--dom
   // https://github.com/gaearon/react-hot-loader/issues/1222
   resolve: {
-    alias: { 'react-dom': '@hot-loader/react-dom' }
+    alias: { 'react-dom': '@hot-loader/react-dom' },
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   plugins: [
     // Copies individual files, which already exist, to the build directory
@@ -204,8 +211,8 @@ const commonConfig = {
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    child_process: 'empty'
-  }
+    child_process: 'empty',
+  },
 };
 
 export { commonConfig as default, htmlPluginOptions };

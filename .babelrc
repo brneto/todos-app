@@ -1,11 +1,12 @@
 {
   "presets": [
+    "@babel/preset-react",
+    "@babel/preset-typescript",
     ["@babel/preset-env", {
       "targets": { "node": "current" },
       "useBuiltIns": "usage",
       "corejs": 3
-    }],
-    "@babel/preset-react"
+    }]
   ],
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
