@@ -12,21 +12,20 @@ const
 
 const
   propTypes = {
-    resource: PropTypes.array.isRequired,
+    resource: PropTypes.instanceOf(Promise).isRequired,
     onClick: PropTypes.func.isRequired,
   };
 
-  function TodoList({ resource, onClick }) {
-    const todos = resource.read();
-    return (
-      <List>
-        {todos.map(({ id, ...rest }) => (
-          <Todo key={id} onClick={() => onClick(id)} {...rest} />
-        ))}
-      </List>
-    );
-  }
-
+function TodoList({ resource, onClick }) {
+  const todos = resource.read();
+  return (
+    <List>
+      {todos.map(({ id, ...rest }) => (
+        <Todo key={id} onClick={() => onClick(id)} {...rest} />
+      ))}
+    </List>
+  );
+}
 TodoList.propTypes = propTypes;
 
 export default TodoList;

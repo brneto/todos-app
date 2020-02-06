@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { getFilter } from '../redux/reducers';
+import * as api from '../api';
+import createResource from '../resource';
 import TodoList from './TodoList';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -9,27 +13,32 @@ const
     position: relative;
     border-top: 1px solid #e6e6e6;
     z-index: 2;
+  `,
+  OnProgress = styled.p`
+    margin-left: 1em;
   `;
 
 const
+  mapStateToProps = state => ({ filter: getFilter(state) }),
+  subscribe = connect(mapStateToProps),
   propTypes = {
-    todosResource: PropTypes.instanceOf(Promise).isRequired,
-    getTodosResource: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired,
+    retryResource: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
   };
 
-function VisibleTodoList({
-  todosResource, getTodosResource, toggleTodo
-}) {
+function VisibleTodoList({ filter, retryResource, toggleTodo }) {
+  const todosResource = createResource(api.todos.fetchTodos(filter));
   return (
     <Section>
-      <ErrorBoundary onRetry={getTodosResource}>
-        <TodoList resource={todosResource} onClick={toggleTodo} />
-      </ErrorBoundary>
+      <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
+        <ErrorBoundary onRetry={retryResource}>
+          <TodoList resource={todosResource} onClick={toggleTodo} />
+        </ErrorBoundary>
+      </Suspense>
     </Section>
   );
 }
-
 VisibleTodoList.propTypes = propTypes;
 
-export default VisibleTodoList;
+export default subscribe(VisibleTodoList);

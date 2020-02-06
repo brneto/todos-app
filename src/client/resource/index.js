@@ -25,4 +25,4 @@ function createResource(promise) {
   };
 }
 
-export { createResource };
+export default createResource;
