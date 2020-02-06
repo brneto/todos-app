@@ -14,13 +14,9 @@ function createResource(promise) {
 
   return {
     read() {
-      if (status === 'pending') {
-        throw suspender;
-      } else if (status === 'error') {
-        throw result;
-      } else if (status === 'success') {
-        return result;
-      }
+      if (status === 'pending') throw suspender;
+      if (status === 'error') throw result;
+      if (status === 'success') return result;
     }
   };
 }

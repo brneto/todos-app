@@ -1,3 +1,5 @@
+/// <reference types="react/experimental" />
+/// <reference types="react-dom/experimental" />
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
