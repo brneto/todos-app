@@ -62,7 +62,6 @@ function VisibleTodoList({
   // TODO: Remove the re-render on the todos list.
   // TODO: Only do the re-render when isFetching prop changes.
   // https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate
-  console.info('VisibleTodoList:Render:', { todos, isFetching, error });
   return <Section>{render}</Section>;
 }
 
