@@ -27,7 +27,7 @@ const commonConfig = {
   target: 'web',
   bail: true,
   context: path.resolve(__dirname, '../../../'),
-  entry: ['./src/client/index.js'],
+  entry: ['react-hot-loader/patch', './src/client/index.js'],
   output: {
     filename: `${filePrefix}.js`,
     chunkFilename: `${chunkPrefix}.js`,
@@ -48,6 +48,11 @@ const commonConfig = {
       }
     },
     runtimeChunk: 'single',
+  },
+  // https://github.com/gaearon/react-hot-loader#react--dom
+  // https://github.com/gaearon/react-hot-loader/issues/1222
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {
     strictExportPresence: true,
@@ -165,12 +170,6 @@ const commonConfig = {
       //{ test: /\.html$/, use: ['html-loader'] },
       //{ test: /\.txt$/, use: ['raw-loader'] }
     ]
-  },
-  // https://github.com/gaearon/react-hot-loader#react--dom
-  // https://github.com/gaearon/react-hot-loader/issues/1222
-  resolve: {
-    alias: { 'react-dom': '@hot-loader/react-dom' },
-    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   plugins: [
     // Copies individual files, which already exist, to the build directory

@@ -4,13 +4,12 @@ import Root from './components/Root';
 import * as state from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
-console.info('berchris', ReactDOM.createRoot);
 // ReactDOM.render(
 //   <Root {...state} />,
 //   document.getElementById('root')
 // );
 
-ReactDOM.createRoot(
+ReactDOM.unstable_createRoot(
   document.getElementById('root')
 ).render(<Root {...state} />);
 

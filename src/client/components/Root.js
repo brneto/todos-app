@@ -1,6 +1,6 @@
+import { hot } from 'react-hot-loader/root';
 import React, { StrictMode } from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader/root';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
@@ -32,7 +32,6 @@ const
       </StrictMode>
     </ThemeProvider>
   );
-
 Root.propTypes = propTypes;
 
 export default hot(Root);
