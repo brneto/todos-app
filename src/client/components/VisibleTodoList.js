@@ -20,22 +20,23 @@ const
 const
   mapStateToProps = state => ({ filter: getFilter(state) }),
   subscribe = connect(mapStateToProps),
-  initialResource = api.createResource(api.todos.fetchTodos()),
+  createTodosResource = filter => api.createResource(api.todos.fetchTodos(filter)),
   propTypes = {
     filter: PropTypes.string.isRequired,
     toggleTodo: PropTypes.func,
   };
 
+const initialTodosResource = createTodosResource();
 function VisibleTodoList({ filter, toggleTodo }) {
   const
-    [resource, setResource] = useState(initialResource),
-    handleRetry = () => setResource(api.createResource(api.todos.fetchTodos(filter)));
+    [todosResource, setTodosResource] = useState(initialTodosResource),
+    handleRetry = () => setTodosResource(createTodosResource(filter));
 
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
         <ErrorBoundary onRetry={handleRetry}>
-          <TodoList resource={resource} onClick={toggleTodo} />
+          <TodoList resource={todosResource} onClick={toggleTodo} />
         </ErrorBoundary>
       </Suspense>
     </Section>
