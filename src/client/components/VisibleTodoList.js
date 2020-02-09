@@ -30,12 +30,12 @@ const initialTodosResource = createTodosResource();
 function VisibleTodoList({ filter, toggleTodo }) {
   const
     [todosResource, setTodosResource] = useState(initialTodosResource),
-    handleRetry = () => setTodosResource(createTodosResource(filter));
+    handleRetryResource = () => setTodosResource(createTodosResource(filter));
 
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
-        <ErrorBoundary onRetry={handleRetry}>
+        <ErrorBoundary onRetry={handleRetryResource}>
           <TodoList resource={todosResource} onClick={toggleTodo} />
         </ErrorBoundary>
       </Suspense>
