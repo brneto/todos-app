@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { getFilter } from '../redux/reducers';
 import * as api from '../api';
-import createResource from '../resource';
 import TodoList from './TodoList';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -23,12 +22,12 @@ const
   subscribe = connect(mapStateToProps),
   propTypes = {
     filter: PropTypes.string.isRequired,
-    retryResource: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired,
+    retryResource: PropTypes.func,
+    toggleTodo: PropTypes.func,
   };
 
 function VisibleTodoList({ filter, retryResource, toggleTodo }) {
-  const todosResource = createResource(api.todos.fetchTodos(filter));
+  const todosResource = api.createResource(api.todos.fetchTodos(filter));
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>

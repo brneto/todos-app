@@ -12,7 +12,7 @@ const
 
 const
   propTypes = {
-    resource: PropTypes.instanceOf(Promise).isRequired,
+    resource: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
   };
 

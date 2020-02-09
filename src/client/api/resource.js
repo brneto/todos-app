@@ -1,4 +1,4 @@
-function createResource(promise) {
+export function createResource(promise) {
   let status = 'pending';
   let result;
   let suspender = promise.then(
@@ -20,5 +20,3 @@ function createResource(promise) {
     }
   };
 }
-
-export default createResource;

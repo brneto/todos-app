@@ -2,13 +2,12 @@ import { put, select } from 'redux-saga/effects';
 import { resources } from '../actions';
 import * as selectors from '../reducers';
 import * as api from '../../api';
-import * as createResource from '../../resource';
 
 function* fetchTodosResource({ payload: filter }) {
   try {
     if (!filter) filter = yield select(selectors.getFilter);
 
-    let resource = createResource(api.todos.fetchTodos(filter));
+    let resource = api.createResource(api.todos.fetchTodos(filter));
 
     yield put(resources.fetchTodosResource(resource));
   } catch (e) {
@@ -18,7 +17,7 @@ function* fetchTodosResource({ payload: filter }) {
 
 function* addTodoResource({ payload: text }) {
   try {
-    let resource = createResource(api.todos.addTodo(text));
+    let resource = api.createResource(api.todos.addTodo(text));
 
     yield put(resources.addTodoResource(resource));
   } catch (e) {
