@@ -20,12 +20,11 @@ const
 const
   mapStateToProps = state => ({ filter: getFilter(state) }),
   subscribe = connect(mapStateToProps),
+  initialResource = api.createResource(api.todos.fetchTodos()),
   propTypes = {
     filter: PropTypes.string.isRequired,
     toggleTodo: PropTypes.func,
   };
-
-const initialResource = api.createResource(api.todos.fetchTodos());
 
 function VisibleTodoList({ filter, toggleTodo }) {
   const
