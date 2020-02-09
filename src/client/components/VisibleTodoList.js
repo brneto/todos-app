@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -22,17 +22,21 @@ const
   subscribe = connect(mapStateToProps),
   propTypes = {
     filter: PropTypes.string.isRequired,
-    retryResource: PropTypes.func,
     toggleTodo: PropTypes.func,
   };
 
-function VisibleTodoList({ filter, retryResource, toggleTodo }) {
-  const todosResource = api.createResource(api.todos.fetchTodos(filter));
+const initialResource = api.createResource(api.todos.fetchTodos());
+
+function VisibleTodoList({ filter, toggleTodo }) {
+  const
+    [resource, setResource] = useState(initialResource),
+    handleRetry = () => setResource(api.createResource(api.todos.fetchTodos(filter)));
+
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
-        <ErrorBoundary onRetry={retryResource}>
-          <TodoList resource={todosResource} onClick={toggleTodo} />
+        <ErrorBoundary onRetry={handleRetry}>
+          <TodoList resource={resource} onClick={toggleTodo} />
         </ErrorBoundary>
       </Suspense>
     </Section>
