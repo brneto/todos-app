@@ -48,7 +48,7 @@ export function AddTodoPresentation({ dispatch }) {
   return (
     <header>
       <Title>todos</Title>
-      <Input name="todo" placeholder="What needs to be done?" {...input} />
+      <Input name="todo" placeholder="What's need to be done?" {...input} />
     </header>
   );
 }
