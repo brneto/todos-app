@@ -26,7 +26,10 @@ const
     toggleTodo: PropTypes.func,
   };
 
-const initialTodosResource = createTodosResource();
+const
+  initialFilter = location.pathname.substr(1),
+  initialTodosResource = createTodosResource(initialFilter);
+
 function VisibleTodoList({ filter, toggleTodo }) {
   const
     [todosResource, setTodosResource] = useState(initialTodosResource),
