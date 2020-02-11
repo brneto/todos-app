@@ -13,7 +13,7 @@ describe('components/AddTodo', () => {
     );
 
     // get the todo input
-    const todoInput = getByPlaceholderText('What needs to be done?');
+    const todoInput = getByPlaceholderText('What\'s need to be done?');
     // Fires onChange event
     fireEvent.change(todoInput, { target: { value: 'change' } });
     // Fires enter onKeyDown event

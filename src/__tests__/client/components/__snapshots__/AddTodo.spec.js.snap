@@ -61,7 +61,7 @@ exports[`components/AddTodo should call handle methods 1`] = `
   <input
     class="c1"
     name="todo"
-    placeholder="What needs to be done?"
+    placeholder="What's need to be done?"
     value=""
   />
 </header>
