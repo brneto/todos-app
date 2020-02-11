@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -20,26 +20,24 @@ const
 const
   mapStateToProps = state => ({ filter: getFilter(state) }),
   subscribe = connect(mapStateToProps),
-  createTodosResource = filter => api.createResource(api.todos.fetchTodos(filter)),
-  propTypes = {
-    filter: PropTypes.string.isRequired,
-    toggleTodo: PropTypes.func,
-  };
+  createTodosResource = filter => api.todos.fetchTodos(filter) |> api.createResource,
+  propTypes = { filter: PropTypes.string.isRequired };
 
 const
   initialFilter = location.pathname.substr(1) || 'all',
   initialTodosResource = createTodosResource(initialFilter);
 
-function VisibleTodoList({ filter, toggleTodo }) {
+function VisibleTodoList({ filter }) {
   const
     [todosResource, setTodosResource] = useState(initialTodosResource),
-    handleRetryResource = () => setTodosResource(createTodosResource(filter));
+    handleTodosResource = () => createTodosResource(filter) |> setTodosResource;
 
+  useEffect(handleTodosResource, [filter]);
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
-        <ErrorBoundary onRetry={handleRetryResource}>
-          <TodoList resource={todosResource} onClick={toggleTodo} />
+        <ErrorBoundary onRetry={handleTodosResource}>
+          <TodoList resource={todosResource} onClick={handleTodosResource} />
         </ErrorBoundary>
       </Suspense>
     </Section>
