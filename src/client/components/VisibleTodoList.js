@@ -27,7 +27,7 @@ const
   };
 
 const
-  initialFilter = location.pathname.substr(1),
+  initialFilter = location.pathname.substr(1) || 'all',
   initialTodosResource = createTodosResource(initialFilter);
 
 function VisibleTodoList({ filter, toggleTodo }) {
