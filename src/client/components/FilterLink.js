@@ -28,10 +28,11 @@ const
   propTypes = {
     filter: PropTypes.string.isRequired,
     children: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    // onClick: PropTypes.func.isRequired,
   },
-  FilterLink = ({ filter, children, onClick }) => (
-    <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={() => onClick(filter)}>
+  FilterLink = ({ filter, children }) => (
+    // <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={() => onClick(filter)}>
+    <StyledLink exact to={`/${filter === 'all' ? '' : filter}`}>
       {children}
     </StyledLink>
   );

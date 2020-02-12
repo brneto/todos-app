@@ -1,8 +1,8 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useState, Suspense } from 'react';
+// import PropTypes from 'prop-types';
+// import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { getFilter } from '../redux/reducers';
+// import { getFilter } from '../redux/reducers';
 import * as api from '../api';
 import TodoList from './TodoList';
 import ErrorBoundary from './ErrorBoundary';
@@ -18,21 +18,23 @@ const
   `;
 
 const
-  mapStateToProps = state => ({ filter: getFilter(state) }),
-  subscribe = connect(mapStateToProps),
+  getFilter = () => location.pathname.substr(1) || 'all',
   createTodosResource = filter => api.todos.fetchTodos(filter) |> api.createResource,
-  propTypes = { filter: PropTypes.string.isRequired };
+  initialFilter = getFilter(),
+  initialResource = createTodosResource(initialFilter);
 
-const
-  initialFilter = location.pathname.substr(1) || 'all',
-  initialTodosResource = createTodosResource(initialFilter);
 
-function VisibleTodoList({ filter }) {
+function VisibleTodoList() {
   const
-    [todosResource, setTodosResource] = useState(initialTodosResource),
-    handleTodosResource = () => createTodosResource(filter) |> setTodosResource;
+    [prevFilter, setPrevFilter] = useState(initialFilter),
+    [todosResource, setTodosResource] = useState(initialResource),
+    handleTodosResource = () => getFilter() |> createTodosResource |> setTodosResource;
 
-  useEffect(handleTodosResource, [filter]);
+    if (getFilter() !== prevFilter) {
+      setPrevFilter(getFilter());
+      handleTodosResource();
+    }
+
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
@@ -43,6 +45,5 @@ function VisibleTodoList({ filter }) {
     </Section>
   );
 }
-VisibleTodoList.propTypes = propTypes;
 
-export default subscribe(VisibleTodoList);
+export default VisibleTodoList;

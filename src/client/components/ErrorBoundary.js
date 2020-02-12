@@ -22,8 +22,7 @@ class ErrorBoundary extends React.Component {
   // Update state so the next render will show the fallback UI.
   static getDerivedStateFromError = error => ({ error });
 
-  retryHandler = () =>
-    this.setState({ error: null }) || void this.props.onRetry();
+  retryHandler = () => this.setState({ error: null }) || void this.props.onRetry();
 
   render() {
     const {
