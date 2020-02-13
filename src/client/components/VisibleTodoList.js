@@ -1,6 +1,6 @@
-import React, { useState, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import * as api from '../api';
+import * as hooks from '../hooks';
 import TodoList from './TodoList';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -14,29 +14,15 @@ const
     margin-left: 1em;
   `;
 
-const
-  createTodosResource = filter => api.todos.fetchTodos(filter) |> api.createResource,
-  initialFilter = api.getFilterPath(),
-  initialResource = createTodosResource(initialFilter);
-
-
 function VisibleTodoList() {
-  const
-    filter = api.getFilterPath(),
-    [prevFilter, setPrevFilter] = useState(initialFilter),
-    [todosResource, setTodosResource] = useState(initialResource),
-    handleTodosResource = () => createTodosResource(filter) |> setTodosResource;
-
-    if (filter !== prevFilter) {
-      setPrevFilter(filter);
-      handleTodosResource();
-    }
+  // Custom hook
+  const todoList = hooks.todos.useVisibleTodos();
 
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>
-        <ErrorBoundary onRetry={handleTodosResource}>
-          <TodoList resource={todosResource} onClick={handleTodosResource} />
+        <ErrorBoundary onRetry={todoList.onClick}>
+          <TodoList {...todoList} />
         </ErrorBoundary>
       </Suspense>
     </Section>
