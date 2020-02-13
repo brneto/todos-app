@@ -1,2 +1,2 @@
 export * as todos from './todos';
-export { createResource } from './resource';
+export { createResource, getFilterPath } from './resource';

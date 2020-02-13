@@ -20,21 +20,19 @@ const createRootReducer = history => combineReducers({
 });
 
 // Recommendation: Always put the selectors together with its related reducer.
-const
-  getFilterPath = () => location.pathname.substr(1) || 'all',
-  getFilter = createSelector(
-    // createMatchSelector:
-    // The argument are the props to match against.
-    // They are identical to the matching props Route accepts:
-    // {
-    //   path, // like /:filter?
-    //   strict, // optional, defaults to false
-    //   exact // optional, defaults to false
-    // }
-    [createMatchSelector({ ...routes.main })],
-    compose(defaultTo('all'), prop('filter'), prop('params'))
-    //
-  );
+const getFilter = createSelector(
+  // createMatchSelector:
+  // The argument are the props to match against.
+  // They are identical to the matching props Route accepts:
+  // {
+  //   path, // like /:filter?
+  //   strict, // optional, defaults to false
+  //   exact // optional, defaults to false
+  // }
+  [createMatchSelector({ ...routes.main })],
+  compose(defaultTo('all'), prop('filter'), prop('params'))
+  //
+);
 
 const getListByFilter = createSelector(
   [o(apply(prop), juxt([getFilter, prop('listByFilter')]))],
@@ -61,7 +59,6 @@ const getError = createSelector(
 
 export {
   createRootReducer as default,
-  getFilterPath,
   getFilter,
   getVisibleTodos,
   getIsFetching,

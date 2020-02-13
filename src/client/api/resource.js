@@ -1,4 +1,4 @@
-export function createResource(promise) {
+function createResource(promise) {
   let status = 'pending';
   let result;
   let suspender = promise.then(
@@ -20,3 +20,7 @@ export function createResource(promise) {
     }
   };
 }
+
+const getFilterPath = () => location.pathname.substr(1) || 'all';
+
+export { createResource, getFilterPath };

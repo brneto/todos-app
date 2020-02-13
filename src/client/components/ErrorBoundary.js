@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getFilterPath } from '../redux/reducers';
+import { getFilterPath } from '../api';
 
 const
   OnError = styled.label`
