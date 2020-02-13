@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { getFilterPath } from '../redux/reducers';
 
 const
   OnError = styled.label`
@@ -13,14 +14,23 @@ const
 
 class ErrorBoundary extends React.Component {
   static propTypes = {
-    onRetry: PropTypes.func.isRequired,
     children: PropTypes.element.isRequired,
+    onRetry: PropTypes.func.isRequired,
   };
 
-  state = { error: null };
+  state = { error: null, prevFilter: getFilterPath() };
 
   // Update state so the next render will show the fallback UI.
   static getDerivedStateFromError = error => ({ error });
+
+  componentDidUpdate() {
+    const
+      { prevFilter } = this.state,
+      filter = getFilterPath();
+
+    if (filter !== prevFilter)
+      this.setState({ error: null, prevFilter: filter });
+  }
 
   retryHandler = () => this.setState({ error: null }) || void this.props.onRetry();
 
