@@ -27,7 +27,9 @@ function TodoList({ resource, onClick }) {
   return (
     <List>
       {todos.map(({ id, ...rest }) => (
+// <suspense key={id}>
         <Todo key={id} onClick={() => handleToggle(id) || onClick()} {...rest} />
+// </suspense>
       ))}
     </List>
   );
