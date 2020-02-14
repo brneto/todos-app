@@ -30,11 +30,11 @@ const
     onClick: PropTypes.func.isRequired
   },
   Todo = ({
+    id,
     text,
     completed,
-    onClick,
   }) => (
-    <Item onClick={onClick} completed={completed}>
+    <Item completed={completed}>
       <Text>{text}</Text>
     </Item>
   );
