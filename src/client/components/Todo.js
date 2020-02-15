@@ -27,18 +27,13 @@ const
   propTypes = {
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired
-  },
-  Todo = ({ id, text, completed }) => {
-    // const [completed, setCompleted] = useState;
-
-    return (
-      <Item completed={completed}>
-        <Text>{text}</Text>
-      </Item>
-    )
   };
 
+const Todo = ({ text, completed }) => (
+  <Item completed={completed}>
+    <Text>{text}</Text>
+  </Item>
+);
 Todo.propTypes = propTypes;
 
 export default Todo;

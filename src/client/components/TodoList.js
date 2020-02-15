@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import * as api from '../api';
 import Todo from './Todo';
 
 const
@@ -12,25 +11,21 @@ const
   `;
 
 const
-  createToggleTodoResource = id => api.todos.toggleTodo(id) |> api.createResource,
   propTypes = {
     resource: PropTypes.object.isRequired,
-    onClick: PropTypes.func.isRequired,
+    //onClick: PropTypes.func.isRequired,
   };
 
-function TodoList({ resource, onClick }) {
+function TodoList({ resource }) {
   const todos = resource.read();
-  const [toggleResource, setToggleResource] = useState(null);
-  toggleResource?.read();
-  const handleToggle = id => createToggleTodoResource(id) |> setToggleResource;
+
+  // if (!todos.length) {
+    // setTodos(getTodosResource.read())
+  // }
 
   return (
     <List>
-      {todos.map(todo => (
-// <suspense key={todo.id} fallback={<div>applying...</div>}>
-        <Todo {...todo} />
-// </suspense>
-      ))}
+      {todos.map(({ id, ...rest }) => <Todo key={id} {...rest} />)}
     </List>
   );
 }
