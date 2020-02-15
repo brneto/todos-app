@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import * as api from '../api';
 import Todo from './Todo';
 
 const
@@ -18,14 +19,19 @@ const
 
 function TodoList({ resource }) {
   const todos = resource.read();
+  const [todoList, setTodoList] = useState(todos);
 
-  // if (!todos.length) {
-    // setTodos(getTodosResource.read())
-  // }
+  const handleClick = id => {
+    if (api.getFilterPath() === 'completed')
+      setTodoList(todoList.filter(todo => todo.id !== id));
+  };
+
 
   return (
     <List>
-      {todos.map(({ id, ...rest }) => <Todo key={id} {...rest} />)}
+      {todoList.map(({ id, ...rest }) => (
+        <Todo key={id} onClick={() => handleClick(id)} {...rest} />
+      ))}
     </List>
   );
 }

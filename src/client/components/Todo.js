@@ -27,10 +27,11 @@ const
   propTypes = {
     text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired,
   };
 
-const Todo = ({ text, completed }) => (
-  <Item completed={completed}>
+const Todo = ({ text, completed, onClick }) => (
+  <Item onClick={onClick} completed={completed}>
     <Text>{text}</Text>
   </Item>
 );
