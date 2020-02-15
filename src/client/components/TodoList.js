@@ -18,6 +18,9 @@ const
   };
 
 function TodoList({ resource }) {
+  /*
+if (!todos) setTodos(resource.read())
+  */
   const todos = resource.read();
   const [todoList, setTodoList] = useState(todos);
 
