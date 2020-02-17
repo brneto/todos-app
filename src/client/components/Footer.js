@@ -22,12 +22,13 @@ function Footer({ fetchTodos }) {
 
   // https://github.com/facebook/react/issues/14920
   // useEffect(() => void fetchTodos(), [fetchTodos]);
+  const handleClick = f => () => fetchTodos(f);
 
   return (
     <Foot>
-      <FilterLink filter="all" onClick={fetchTodos}>All</FilterLink>
-      <FilterLink filter="active" onClick={fetchTodos}>Active</FilterLink>
-      <FilterLink filter="completed" onClick={fetchTodos}>Completed</FilterLink>
+      <FilterLink filter="all" onClick={handleClick('all')}>All</FilterLink>
+      <FilterLink filter="active" onClick={handleClick('active')}>Active</FilterLink>
+      <FilterLink filter="completed" onClick={handleClick('completed')}>Completed</FilterLink>
     </Foot>
   );
 }
