@@ -31,7 +31,7 @@ const
     // onClick: PropTypes.func.isRequired,
   },
   FilterLink = ({ filter, children }) => (
-    // <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={() => onClick(filter)}>
+    // <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={onClick}>
     <StyledLink exact to={`/${filter === 'all' ? '' : filter}`}>
       {children}
     </StyledLink>
