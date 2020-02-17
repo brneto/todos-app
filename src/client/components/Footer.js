@@ -19,18 +19,19 @@ const
   propTypes = { fetchTodos: PropTypes.func.isRequired };
 
 function Footer({ fetchTodos }) {
+  const handleClick = f => () => fetchTodos(f);
   // https://github.com/facebook/react/issues/14920
   useEffect(() => void fetchTodos(), [fetchTodos]);
 
   return (
     <Foot>
-      <FilterLink filter="all" onClick={fetchTodos}>
+      <FilterLink filter="all" onClick={handleClick('all')}>
         All
       </FilterLink>
-      <FilterLink filter="active" onClick={fetchTodos}>
+      <FilterLink filter="active" onClick={handleClick('active')}>
         Active
       </FilterLink>
-      <FilterLink filter="completed" onClick={fetchTodos}>
+      <FilterLink filter="completed" onClick={handleClick('completed')}>
         Completed
       </FilterLink>
     </Foot>
