@@ -1,5 +1,5 @@
 import { createActions } from 'redux-actions';
-import { createActionFunction } from './helper';
+import { createActionFunction } from './helpers';
 
 const messageType = 'COMMAND';
 
