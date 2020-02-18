@@ -27,7 +27,7 @@ const
       top: 50%;
       left: 100%;
       margin: 0;
-      ${({ open }) => open && rollNotice};
+      ${({ open }) => open && rollNotice}; /* stylelint-disable-line value-keyword-case */
       transform: translateY(-50%);
       color: black;
       font-size: 1rem;
