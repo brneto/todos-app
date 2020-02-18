@@ -1,4 +1,4 @@
-import { createActionFunction } from '../../../../client/redux/actions/functions';
+import { createActionFunction } from '../../../../client/redux/actions/helpers';
 
 describe('Action creator utils', () => {
   const

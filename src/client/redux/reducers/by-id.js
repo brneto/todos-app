@@ -13,8 +13,7 @@ const
           Object.assign(draft, entities.todos); //modify the current draft state
         }),
       }
-    },
-    {} // Initial state
+    }, {} // Initial state
   );
 
 // SELECTORS

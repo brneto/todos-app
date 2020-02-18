@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { effects } from '../redux/actions';
+import { commands } from '../redux/actions';
 import FilterLink from './FilterLink';
 
 const
@@ -15,14 +15,13 @@ const
   `;
 
 const
-  subscribe = connect(null, { fetchTodos: effects.fetchTodos }),
-  propTypes = { fetchTodos: PropTypes.func.isRequired };
+  subscribe = connect(null, { createTodosResource: commands.createTodosResource }),
+  propTypes = { createTodosResource: PropTypes.func.isRequired };
 
-function Footer({ fetchTodos }) {
-
+function Footer({ createTodosResource }) {
   // https://github.com/facebook/react/issues/14920
   // useEffect(() => void fetchTodos(), [fetchTodos]);
-  const handleClick = f => () => fetchTodos(f);
+  const handleClick = f => () => createTodosResource(f);
 
   return (
     <Foot>
@@ -32,7 +31,6 @@ function Footer({ fetchTodos }) {
     </Foot>
   );
 }
-
 Footer.propTypes = propTypes;
 
 export default subscribe(Footer);

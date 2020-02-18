@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 import * as routes from '../../libs/routes';
 import byId, * as fromById from './by-id';
 import createList, * as fromList from './create-list';
+import resource, * as fromResource from './resource';
 
 const listByFilter = combineReducers({
   all: createList('all'),
@@ -17,6 +18,7 @@ const createRootReducer = history => combineReducers({
   router: connectRouter(history),
   byId,
   listByFilter,
+  resource,
 });
 
 // Recommendation: Always put the selectors together with its related reducer.
@@ -56,6 +58,9 @@ const getError = createSelector(
   [o(fromList.getError, getListByFilter)],
   identity
 );
+const getFilterPath = () => location.pathname.substr(1) || 'all';
+
+const getResource = fromResource.getResource;
 
 export {
   createRootReducer as default,
@@ -63,4 +68,6 @@ export {
   getVisibleTodos,
   getIsFetching,
   getError,
+  getFilterPath,
+  getResource,
 };

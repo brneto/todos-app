@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { effects } from '../redux/actions';
+import { getFilterPath } from '../redux/reducers';
 import * as api from '../api';
 
 const
   createTodosResource = filter => api.todos.fetchTodos(filter) |> api.createResource,
-  initialFilter = api.getFilterPath(),
+  initialFilter = getFilterPath(),
   initialResource = createTodosResource(initialFilter);
 
 function useVisibleTodos() {
@@ -13,7 +14,7 @@ function useVisibleTodos() {
     [todosResource, setTodosResource] = useState(initialResource);
 
   const
-    filter = api.getFilterPath(),
+    filter = getFilterPath(),
     handleTodosResource = () => createTodosResource(filter) |> setTodosResource;
 
   if (filter !== prevFilter) {
