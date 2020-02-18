@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { getFilterPath } from '../redux/reducers';
@@ -9,31 +9,29 @@ const
     margin: 0;
     padding: 0;
     list-style: none;
+  `,
+  Status = styled.p`
+    margin-left: 1em;
   `;
 
 const
   propTypes = {
     resource: PropTypes.object.isRequired,
-    //onClick: PropTypes.func.isRequired,
+    todos: PropTypes.array,
+    onClick: PropTypes.func.isRequired,
+    onFetch: PropTypes.func.isRequired,
   };
 
-function TodoList({ resource }) {
-  /*
-if (!todos) setTodos(resource.read())
-  */
-  const todos = resource.read();
-  const [todoList, setTodoList] = useState(todos);
-
-  const handleClick = id => {
-    if (getFilterPath() === 'completed')
-      setTodoList(todoList.filter(todo => todo.id !== id));
-  };
-
+function TodoList({ resource, todos, onFetch, onClick }) {
+  if (!todos) {
+    onFetch(resource.read(), getFilterPath());
+    return <Status>You have nothing to do yet!</Status>;
+  }
 
   return (
     <List>
-      {todoList.map(({ id, ...rest }) => (
-        <Todo key={id} onClick={() => handleClick(id)} {...rest} />
+      {todos.map(({ id, ...rest }) => (
+        <Todo key={id} onClick={() => onClick(id)} {...rest} />
       ))}
     </List>
   );

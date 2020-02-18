@@ -7,8 +7,8 @@ import { commands } from '../actions';
 
 const resource = handleActions(
   {
-    [commands.createTodosResource]: {
-      next: produce((draft, { payload: filter }) => console.info(location.pathname) ||
+    [commands.createResource]: {
+      next: produce((draft, { payload: filter }) =>
         api.todos.fetchTodos(filter) |> api.createResource), //return an entirely new state
     }
   }, null // Initial state

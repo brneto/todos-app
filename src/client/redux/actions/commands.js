@@ -6,9 +6,9 @@ const messageType = 'COMMAND';
 // Pure Command actions message
 // Naming Convention: <imperative verb><subject>
 export const {
-  createTodosResource, addTodoToList, removeTodoFromList
+  createResource, addTodoToList, removeTodoFromList
 } = createActions({
-  CREATE_TODOS_RESOURCE: createActionFunction(messageType),
+  CREATE_RESOURCE: createActionFunction(messageType),
   ADD_TODO_TO_LIST: createActionFunction(messageType),
   REMOVE_TODO_FROM_LIST: createActionFunction(messageType),
 });

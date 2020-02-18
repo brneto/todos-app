@@ -15,13 +15,13 @@ const
   `;
 
 const
-  subscribe = connect(null, { createTodosResource: commands.createTodosResource }),
-  propTypes = { createTodosResource: PropTypes.func.isRequired };
+  subscribe = connect(null, { createResource: commands.createResource }),
+  propTypes = { createResource: PropTypes.func.isRequired };
 
-function Footer({ createTodosResource }) {
+function Footer({ createResource }) {
   // https://github.com/facebook/react/issues/14920
   // useEffect(() => void fetchTodos(), [fetchTodos]);
-  const handleClick = f => () => createTodosResource(f);
+  const handleClick = f => () => createResource(f);
 
   return (
     <Foot>

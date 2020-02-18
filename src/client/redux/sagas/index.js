@@ -1,11 +1,12 @@
-import { takeEvery, all } from 'redux-saga/effects';
-import { effects } from '../actions';
+import { put, takeEvery, all } from 'redux-saga/effects';
+import { effects, commands } from '../actions';
+import { getFilterPath } from '../reducers';
 import * as workers from './todo-workers';
 
 function* rootSaga() {
   try {
+    yield getFilterPath() |> commands.createResource |> put;
     yield all({
-      fetchTodosWatcher: takeEvery(effects.fetchTodos, workers.fetchTodos),
       addTodoWatcher: takeEvery(effects.addTodo, workers.addTodo),
       toggleTodoWatcher: takeEvery(effects.toggleTodo, workers.toggleTodo),
     });
