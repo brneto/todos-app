@@ -46,6 +46,8 @@ function VisibleTodoList({
   todos, isFetching, error,
   fetchTodos, toggleTodo
 }) {
+  // https://github.com/facebook/react/issues/14920
+  // useEffect(() => void fetchTodos(), [fetchTodos]);
 
   let render = todos.length
     ? <TodoList todos={todos} onClick={toggleTodo} />
@@ -59,7 +61,6 @@ function VisibleTodoList({
 
   return <Section>{render}</Section>;
 }
-
 VisibleTodoList.propTypes = propTypes;
 
 export default subscribe(VisibleTodoList);
