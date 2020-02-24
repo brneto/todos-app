@@ -23,6 +23,7 @@ const
   };
 
 function TodoList({ resource, todos, onFetch, onClick }) {
+  // https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning
   if (!todos) {
     onFetch(resource.read(), getFilterPath());
     return <Status>You have nothing to do yet!</Status>;
