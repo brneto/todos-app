@@ -16,6 +16,7 @@ const
     store: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
   },
+  // https://medium.com/better-programming/react-router-v6-in-two-minutes-a7a2963e2340
   Root = ({ history, store }) => (
     <ThemeProvider theme={themes.main}>
       <StrictMode>
