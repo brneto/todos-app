@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -47,7 +47,7 @@ function VisibleTodoList({
   fetchTodos, toggleTodo
 }) {
   // https://github.com/facebook/react/issues/14920
-  // useEffect(() => void fetchTodos(), [fetchTodos]);
+  useEffect(() => void fetchTodos(), [fetchTodos]);
 
   let render = todos.length
     ? <TodoList todos={todos} onClick={toggleTodo} />

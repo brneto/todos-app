@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
-import { effects } from '../redux/actions';
 import FilterLink from './FilterLink';
 
 const
@@ -14,30 +11,12 @@ const
     text-align: center;
   `;
 
-const
-  subscribe = connect(null, { fetchTodos: effects.fetchTodos }),
-  propTypes = { fetchTodos: PropTypes.func.isRequired };
+const Footer = () => (
+  <Foot>
+    <FilterLink filter="all">All</FilterLink>
+    <FilterLink filter="active">Active</FilterLink>
+    <FilterLink filter="completed">Completed</FilterLink>
+  </Foot>
+);
 
-function Footer({ fetchTodos }) {
-  const handleClick = f => () => fetchTodos(f);
-  // https://github.com/facebook/react/issues/14920
-  useEffect(() => void fetchTodos(), [fetchTodos]);
-
-  return (
-    <Foot>
-      <FilterLink filter="all" onClick={handleClick('all')}>
-        All
-      </FilterLink>
-      <FilterLink filter="active" onClick={handleClick('active')}>
-        Active
-      </FilterLink>
-      <FilterLink filter="completed" onClick={handleClick('completed')}>
-        Completed
-      </FilterLink>
-    </Foot>
-  );
-}
-
-Footer.propTypes = propTypes;
-
-export default subscribe(Footer);
+export default Footer;

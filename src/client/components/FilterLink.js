@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { effects } from '../redux/actions';
 
 const
   StyledLink = styled(NavLink).attrs({
@@ -25,17 +27,18 @@ const
   `;
 
 const
+  subscribe = connect(null, { fetchTodos: effects.fetchTodos }),
   propTypes = {
     filter: PropTypes.string.isRequired,
     children: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-  },
-  FilterLink = ({ filter, children, onClick }) => (
-    <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={onClick}>
-      {children}
-    </StyledLink>
-  );
+    fetchTodos: PropTypes.func.isRequired,
+  };
 
+const FilterLink = ({ filter, children, fetchTodos }) => (
+  <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={() => fetchTodos(filter)}>
+    {children}
+  </StyledLink>
+);
 FilterLink.propTypes = propTypes;
 
-export default FilterLink;
+export default subscribe(FilterLink);
