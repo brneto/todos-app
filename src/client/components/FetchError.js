@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { css } from '@emotion/core';
 
 const
-  OnError = styled.label`
+  errorStyle = css`
     margin-left: 1em;
 
     & > button {
@@ -17,9 +17,9 @@ const
     onRetry: PropTypes.func.isRequired,
   },
   FetchError = ({ error, onRetry }) => (
-    <OnError>Could not fetch todos. {error.message}
+    <label css={errorStyle}>Could not fetch todos. {error.message}
       <button onClick={onRetry}>Retry</button>
-    </OnError>
+    </label>
   );
 
 FetchError.propTypes = propTypes;

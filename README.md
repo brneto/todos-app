@@ -81,7 +81,7 @@ This pattern is great for most cases but it have drawbacks when you dealing with
 
 :ram: [Ramda](https://ramdajs.com/)
 
-:nail_care: [Styled Components](https://www.styled-components.com/)
+:woman_singer: [Emotion](https://emotion.sh/)
 
 :gift: [React Router v4](https://github.com/ReactTraining/react-router)
 

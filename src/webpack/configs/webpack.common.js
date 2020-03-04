@@ -81,6 +81,7 @@ const commonConfig = {
                   debug: false
                 }],
                 '@babel/preset-react',
+                '@emotion/babel-preset-css-prop',
               ],
               plugins: [
                 'react-hot-loader/babel',
@@ -96,7 +97,6 @@ const commonConfig = {
                 // It's required Babel Syntax Dynamic Import Plugin to
                 // Webpack Dynamic Imports work.
                 '@babel/plugin-syntax-dynamic-import',
-                'babel-plugin-styled-components',
               ]
             }
           },

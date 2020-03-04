@@ -22,6 +22,7 @@ plugins:
   - ramda
   - redux-saga
   - react-hooks
+  - emotion
 extends:
   - "eslint:recommended"
   - "plugin:import/errors"
@@ -66,6 +67,12 @@ rules:
   react/no-unused-state: warn
   react-hooks/rules-of-hooks: error
   react-hooks/exhaustive-deps: warn
+  emotion/no-vanilla: error
+  emotion/import-from-emotion: error
+  emotion/styled-import: error
+  emotion/syntax-preference:
+    - warn
+    - string
 overrides:
   - files:
     - src/index.js

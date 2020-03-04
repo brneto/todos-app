@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import AddTodo from './AddTodo';
 import VisibleTodoList from './VisibleTodoList';
 import Footer from './Footer';
