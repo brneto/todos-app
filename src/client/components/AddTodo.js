@@ -42,8 +42,8 @@ const
     propTypes = { dispatch: PropTypes.func.isRequired };
 
 export function AddTodoPresentation({ dispatch }) {
-  const // Custom hook:
-    input = hooks.todos.useAddTodo(dispatch);
+  // Custom hook:
+  const input = hooks.todos.useAddTodo(dispatch);
 
   return (
     <header>
