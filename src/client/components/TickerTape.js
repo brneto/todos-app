@@ -23,7 +23,7 @@ const
     transition: height 2s ease-out 1s;
     background: white;
 
-    & > p:first-child {
+    & > p:first-of-type {
       position: absolute;
       top: 50%;
       left: 100%;
