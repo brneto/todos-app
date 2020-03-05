@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 
-const global = theme => css`
+const globalStyle = theme => css`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
   @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
@@ -36,4 +36,4 @@ const main = {
   color: '#4d4d4d',
 };
 
-export { global as default, main };
+export { globalStyle as default, main };
