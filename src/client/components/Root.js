@@ -6,7 +6,7 @@ import { Global } from '@emotion/core';
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
-import global, * as themes from '../libs/style';
+import globalStyle, * as themes from '../libs/style';
 import * as routes from '../libs/routes';
 import WithHooks from '../hooks/examples/WithHooks';
 import WithoutHooks from '../hooks/examples/WithoutHooks';
@@ -21,7 +21,7 @@ const
   Root = ({ history, store }) => (
     <ThemeProvider theme={themes.main}>
       <StrictMode>
-      <Global styles={global} />
+      <Global styles={globalStyle} />
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <Switch>
