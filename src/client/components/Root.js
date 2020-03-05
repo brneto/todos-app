@@ -21,7 +21,7 @@ const
   Root = ({ history, store }) => (
     <ThemeProvider theme={themes.main}>
       <StrictMode>
-      <Global styles={globalStyle} />
+        <Global styles={globalStyle} />
         <Provider store={store}>
           <ConnectedRouter history={history}>
             <Switch>
