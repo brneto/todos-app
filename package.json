@@ -19,7 +19,7 @@
     "logs": "pm2 logs",
     "stop": "pm2 stop ecosystem.config.js",
     "poststop": "pm2 flush && pm2 del ecosystem.config.js && yarn rmcache",
-    "rmcache": "rm -rf node_modules/.cache/hard-source dist",
+    "rmcache": "rm -rf node_modules/.cache dist",
     "prebuild": "yarn prestart",
     "build": "run-s build:*",
     "build:client": "NODE_ENV=building babel-node src/index.js",

@@ -63,6 +63,7 @@ const commonConfig = {
           { loader: 'thread-loader' },
           { loader: 'babel-loader',
             options: {
+              extends: path.resolve('babel.config.json'),
               babelrc: false,
               configFile: false,
               compact: false,
@@ -80,19 +81,10 @@ const commonConfig = {
                   corejs: 3,
                   debug: false
                 }],
-                '@babel/preset-react',
-                '@emotion/babel-preset-css-prop',
               ],
               plugins: [
                 'react-hot-loader/babel',
-                ['@babel/plugin-proposal-decorators', { legacy: true }],
-                ['@babel/plugin-proposal-class-properties', { loose: true }],
-                ['@babel/plugin-proposal-private-methods', { loose: true }],
-                ['@babel/plugin-proposal-pipeline-operator', { proposal: 'fsharp' }],
-                '@babel/plugin-proposal-export-namespace-from',
-                '@babel/plugin-proposal-function-bind',
-                '@babel/plugin-proposal-throw-expressions',
-              ]
+              ],
             }
           },
           { loader: 'stylelint-custom-processor-loader',
