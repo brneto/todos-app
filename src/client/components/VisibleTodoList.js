@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { connect } from 'react-redux';
 import { commands, effects } from '../redux/actions';
 import { getResource, getVisibleTodos, getFilterPath } from '../redux/reducers';
@@ -38,6 +38,7 @@ const
 function VisibleTodoList({ resource, todos, createResource, todosFetched, toggleTodo }) {
   const handleRetry = () => getFilterPath() |> createResource;
 
+  // http://blog.logrocket.com/react-suspense-for-data-fetching
   return (
     <Section>
       <Suspense fallback={<OnProgress>Loading...</OnProgress>}>

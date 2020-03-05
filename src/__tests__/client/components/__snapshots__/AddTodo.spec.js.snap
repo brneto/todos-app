@@ -1,65 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/AddTodo should call handle methods 1`] = `
-.c0 {
-  position: absolute;
-  top: -155px;
-  width: 100%;
-  color: rgba(175,47,47,.15);
-  font-size: 100px;
-  font-weight: 100;
-  text-align: center;
-  text-rendering: optimizeLegibility;
-}
-
-.c1 {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  padding: 16px;
-  border: none;
-  background: rgba(0,0,0,.003);
-  color: inherit;
-  font-family: inherit;
-  font-size: 24px;
-  font-weight: inherit;
-  line-height: 1.4em;
-  box-shadow: inset 0 -2px 1px rgba(0,0,0,.03);
-}
-
-.c1::-webkit-input-placeholder {
-  color: #e6e6e6;
-  font-style: italic;
-  font-weight: 300;
-}
-
-.c1::-moz-placeholder {
-  color: #e6e6e6;
-  font-style: italic;
-  font-weight: 300;
-}
-
-.c1:-ms-input-placeholder {
-  color: #e6e6e6;
-  font-style: italic;
-  font-weight: 300;
-}
-
-.c1::placeholder {
-  color: #e6e6e6;
-  font-style: italic;
-  font-weight: 300;
-}
-
 <header>
   <h1
-    class="c0"
+    class="css-1ehvoim-Title e172j9ny0"
   >
     todos
   </h1>
   <input
-    class="c1"
+    class="css-1kf7jnq-Input e172j9ny1"
     name="todo"
     placeholder="What's need to be done?"
     value=""

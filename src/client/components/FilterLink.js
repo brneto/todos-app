@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { css } from '@emotion/core';
 
 const
-  StyledLink = styled(NavLink).attrs(() => ({
-    activeStyle: {
-      borderColor: 'rgba(175, 47, 47, .2)',
-      cursor: 'not-allowed',
-    }
-  }))`
+  linkStyle = css`
     position: relative;
     margin: 3px;
     padding: 3px 7px;
@@ -22,7 +17,11 @@ const
       color: inherit;
       pointer-events: none;
     }
-  `;
+  `,
+  activeStyle={
+    borderColor: 'rgba(175, 47, 47, .2)',
+    cursor: 'not-allowed',
+  };
 
 const
   propTypes = {
@@ -31,11 +30,14 @@ const
     onClick: PropTypes.func.isRequired,
   },
   FilterLink = ({ filter, children, onClick }) => (
-    <StyledLink exact to={`/${filter === 'all' ? '' : filter}`} onClick={onClick}>
+    <NavLink
+      css={linkStyle}
+      activeStyle={activeStyle}
+      exact to={`/${filter === 'all' ? '' : filter}`}
+      onClick={onClick}>
       {children}
-    </StyledLink>
+    </NavLink>
   );
-
 FilterLink.propTypes = propTypes;
 
 export default FilterLink;

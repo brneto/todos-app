@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import { css } from '@emotion/core';
 import { commands } from '../redux/actions';
 import FilterLink from './FilterLink';
 
 const
-  Foot = styled.footer`
+  footerStyle = css`
     height: 20px;
     padding: 10px 15px;
     border-top: 1px solid #e6e6e6;
@@ -24,11 +24,11 @@ function Footer({ createResource }) {
   const handleClick = f => () => createResource(f);
 
   return (
-    <Foot>
+    <footer css={footerStyle}>
       <FilterLink filter="all" onClick={handleClick('all')}>All</FilterLink>
       <FilterLink filter="active" onClick={handleClick('active')}>Active</FilterLink>
       <FilterLink filter="completed" onClick={handleClick('completed')}>Completed</FilterLink>
-    </Foot>
+    </footer>
   );
 }
 Footer.propTypes = propTypes;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes, css } from 'styled-components';
+import { css, keyframes } from '@emotion/core';
+import styled from '@emotion/styled';
 import moment from 'moment';
 import * as hooks from '../hooks';
 import LoadingDots from './LoadingDots';
@@ -22,7 +23,7 @@ const
     transition: height 2s ease-out 1s;
     background: white;
 
-    & > p:first-child {
+    & > p:first-of-type {
       position: absolute;
       top: 50%;
       left: 100%;

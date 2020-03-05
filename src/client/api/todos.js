@@ -1,4 +1,4 @@
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 // This is a fake in-memory implementation of something
 // that would be implemented by calling a REST server.

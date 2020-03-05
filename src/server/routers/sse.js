@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import uuid from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import express from 'express';
 import moment from 'moment';
 
@@ -62,7 +62,7 @@ function sseNoticeHandler(req, res) {
 
 function postNoticeHandler(req, res) {
   const data = {
-    id: uuid(),
+    id: uuidv4(),
     time: moment().format(),
     text: req.body.text,
   };

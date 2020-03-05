@@ -68,6 +68,7 @@ const commonConfig = {
           { loader: 'thread-loader' },
           { loader: 'babel-loader',
             options: {
+              extends: path.resolve('babel.config.json'),
               babelrc: false,
               configFile: false,
               compact: false,
@@ -78,8 +79,6 @@ const commonConfig = {
               cacheCompression: false,
               sourceMaps: false,
               presets: [
-                '@babel/preset-react',
-                '@babel/preset-typescript',
                 ['@babel/preset-env',  {
                   forceAllTransforms: !isInDev,
                   modules: false,
@@ -90,20 +89,7 @@ const commonConfig = {
               ],
               plugins: [
                 'react-hot-loader/babel',
-                ['@babel/plugin-proposal-decorators', { legacy: true }],
-                ['@babel/plugin-proposal-class-properties', { loose: true }],
-                ['@babel/plugin-proposal-private-methods', { loose: true }],
-                ['@babel/plugin-proposal-pipeline-operator', { proposal: 'fsharp' }],
-                '@babel/plugin-proposal-export-namespace-from',
-                '@babel/plugin-proposal-function-bind',
-                '@babel/plugin-proposal-optional-chaining',
-                '@babel/plugin-proposal-nullish-coalescing-operator',
-                '@babel/plugin-proposal-throw-expressions',
-                // It's required Babel Syntax Dynamic Import Plugin to
-                // Webpack Dynamic Imports work.
-                '@babel/plugin-syntax-dynamic-import',
-                'babel-plugin-styled-components',
-              ]
+              ],
             }
           },
           { loader: 'stylelint-custom-processor-loader',
