@@ -35,8 +35,8 @@ const
 
 const FilterLink = ({ filter, children, fetchTodos }) => (
   <NavLink
-    activeStyle={activeStyle}
     css={linkStyle}
+    activeStyle={activeStyle}
     exact to={`/${filter === 'all' ? '' : filter}`}
     onClick={() => fetchTodos(filter)}
   >{children}</NavLink>
