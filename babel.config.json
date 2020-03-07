@@ -1,20 +1,22 @@
+// https://devblogs.microsoft.com/typescript/typescript-and-babel-7/?ranMID=24542&ranEAID=je6NUbpObpQ&ranSiteID=je6NUbpObpQ-9Qp4yRmC1LZJPd02BkFxBQ&epi=je6NUbpObpQ-9Qp4yRmC1LZJPd02BkFxBQ&irgwc=1&OCID=AID2000142_aff_7593_1243925&tduid=(ir__vy0919kgsko6lmbmzbv2wue1qn2xlenjbcufhaty00)(7593)(1243925)(je6NUbpObpQ-9Qp4yRmC1LZJPd02BkFxBQ)()&irclickid=_vy0919kgsko6lmbmzbv2wue1qn2xlenjbcufhaty00
+// https://iamturns.com/typescript-babel/
 {
-  "presets": [
-    ["@babel/preset-env", {
-      "targets": { "node": "current" },
-      "useBuiltIns": "usage",
-      "corejs": 3
+  presets: [
+    ['@babel/preset-env', {
+      targets: { node: 'current' },
+      useBuiltIns: 'usage',
+      corejs: 3,
     }],
-    "@babel/preset-react",
-    "@emotion/babel-preset-css-prop"
+    '@babel/preset-react',
+    '@emotion/babel-preset-css-prop',
   ],
-  "plugins": [
-    ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    ["@babel/plugin-proposal-class-properties", { "loose": true }],
-    ["@babel/plugin-proposal-private-methods", { "loose": true }],
-    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "fsharp" }],
-    "@babel/plugin-proposal-export-namespace-from",
-    "@babel/plugin-proposal-function-bind",
-    "@babel/plugin-proposal-throw-expressions"
-  ]
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy': true }],
+    ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+    ['@babel/plugin-proposal-private-methods', { 'loose': true }],
+    ['@babel/plugin-proposal-pipeline-operator', { 'proposal': "fsharp" }],
+    '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-proposal-function-bind',
+    '@babel/plugin-proposal-throw-expressions',
+  ],
 }
