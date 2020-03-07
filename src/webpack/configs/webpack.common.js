@@ -57,7 +57,7 @@ const commonConfig = {
       // This loader parallelizes code compilation, it is optional but
       // improves compile time on larger projects
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         include: /[\\/]src[\\/]client[\\/](?!config\.js)/,
         use: [
           { loader: 'thread-loader' },
