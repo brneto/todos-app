@@ -6,8 +6,8 @@
       "corejs": 3
     }],
     "@babel/preset-react",
-    "@emotion/babel-preset-css-prop",
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    "@emotion/babel-preset-css-prop"
   ],
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
