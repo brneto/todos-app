@@ -8,6 +8,13 @@ parserOptions:
     impliedStrict: true
     jsx: true
 settings:
+  import/resolver:
+    node:
+      extensions:
+        - .js
+        - .jsx
+        - .ts
+        - .tsx
   react:
     version: detect
 env:
@@ -80,6 +87,7 @@ overrides:
       - '*.tsx'
     parser: '@typescript-eslint/parser'
     extends:
+      - plugin:import/typescript
       - plugin:@typescript-eslint/eslint-recommended
       - plugin:@typescript-eslint/recommended
   -
