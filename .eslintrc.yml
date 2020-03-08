@@ -1,5 +1,5 @@
 root: true
-parser: babel-eslint
+parser: '@typescript-eslint/parser'
 parserOptions:
   sourceType: module
   requireConfigFile: false
@@ -9,7 +9,7 @@ parserOptions:
     jsx: true
 settings:
   react:
-    version: "detect"
+    version: detect
 env:
   es6: true
   commonjs: true
@@ -24,22 +24,22 @@ plugins:
   - react-hooks
   - emotion
 extends:
-  - "eslint:recommended"
-  - "plugin:import/errors"
-  - "plugin:import/warnings"
-  - "plugin:react/recommended"
-  - "plugin:jsx-a11y/recommended"
-  - "plugin:ramda/recommended"
-  - "plugin:redux-saga/recommended"
+  - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
+  - plugin:ramda/recommended
+  - plugin:redux-saga/recommended
 rules:
   no-console: warn
   no-alert: warn
   no-debugger: warn
-  new-cap: "off"
-  no-invalid-this: "off"
-  object-curly-spacing: "off"
-  quotes: "off"
-  semi: "off"
+  new-cap: 'off'
+  no-invalid-this: 'off'
+  object-curly-spacing: 'off'
+  quotes: 'off'
+  semi: 'off'
   rest-spread-spacing: warn
   babel/new-cap: warn
   babel/no-invalid-this: warn
@@ -75,13 +75,19 @@ rules:
     - string
 overrides:
   - files:
+    - '*.ts'
+    - '*.tsx'
+    extends:
+      - plugin:@typescript-eslint/eslint-recommended
+      - plugin:@typescript-eslint/recommended
+  - files:
     - src/index.js
     - src/webpack/builders/**
     - src/server/**
     rules:
-      no-console: "off"
+      no-console: 'off'
       no-restricted-syntax:
         - error
         -
-          selector: "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]"
-          message: "Unexpected property on console object was called"
+          selector: CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]
+          message: Unexpected property on console object was called

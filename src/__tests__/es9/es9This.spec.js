@@ -26,14 +26,14 @@ describe('This', () => {
   it('should be setted to the bind object', () => {
     const myObj1 = new MyObj('First object created');
     const notBoundRun = myObj1.run;
-    const boundRun1 = ::myObj1.run;
+    const boundRun1 = myObj1.run.bind(myObj1);
 
     expect(myObj1.run()).toBe('First object created');
     expect(notBoundRun).toThrow(TypeError);
     expect(boundRun1()).toBe('First object created');
 
     const myObj2 = new MyObj('Second object created');
-    const boundRun2 = myObj2::notBoundRun;
+    const boundRun2 = notBoundRun.bind(myObj2);
 
     expect(myObj2.run()).toBe('Second object created');
     expect(boundRun2()).toBe('Second object created');
@@ -55,7 +55,7 @@ describe('This', () => {
     const cleanTable = room.cleanTable;
     expect(cleanTable).toThrow(TypeError);
 
-    const cleanGarageTable = garage::cleanTable;
+    const cleanGarageTable = cleanTable.bind(garage);
     expect(cleanGarageTable()).toBe('Cleanning garage\'s table');
   });
 

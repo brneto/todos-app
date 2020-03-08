@@ -95,20 +95,24 @@ describe('sagas/todosWorkers', () => {
       response = { id: 1, text: 'Test', completed: false },
       data = normalize(response, schema.todo);
 
-    testSaga(sagas.toggleTodo, effects.toggleTodo(id))
-    .next()
-    .select(selectors.getFilter)
-    .next(filter)
-    .call(api.todos.toggleTodo, id)
-    .next(response)
-    .all([
-      (commands.removeTodoFromList(data, 'completed') |> put),
-      (commands.addTodoToList(data, 'active') |> put)
-    ])
-    .next()
-    .put(documents.todoToggled(data, filter))
-    .next()
-    .isDone();
+    try {
+      testSaga(sagas.toggleTodo, effects.toggleTodo(id))
+      .next()
+      .select(selectors.getFilter)
+      .next(filter)
+      .call(api.todos.toggleTodo, id)
+      .next(response)
+      .all([
+        put(commands.removeTodoFromList(data, 'completed')),
+        put(commands.addTodoToList(data, 'active'))
+      ])
+      .next()
+      .put(documents.todoToggled(data, filter))
+      .next()
+      .isDone();
+    } catch (e) {
+      throw new Error('One of the Effects was rejected before all the effects complete: ' + e);
+    }
   });
 
   it('should call toggleTodo api with completed todo', () => {
@@ -118,19 +122,23 @@ describe('sagas/todosWorkers', () => {
       response = { id: 1, text: 'Test', completed: true },
       data = normalize(response, schema.todo);
 
-    testSaga(sagas.toggleTodo, effects.toggleTodo(id))
-    .next()
-    .select(selectors.getFilter)
-    .next(filter)
-    .call(api.todos.toggleTodo, id)
-    .next(response)
-    .all([
-      (commands.removeTodoFromList(data, 'active') |> put),
-      (commands.addTodoToList(data, 'completed') |> put)
-    ])
-    .next()
-    .put(documents.todoToggled(data, filter))
-    .next()
-    .isDone();
+    try {
+      testSaga(sagas.toggleTodo, effects.toggleTodo(id))
+      .next()
+      .select(selectors.getFilter)
+      .next(filter)
+      .call(api.todos.toggleTodo, id)
+      .next(response)
+      .all([
+        put(commands.removeTodoFromList(data, 'active')),
+        put(commands.addTodoToList(data, 'completed'))
+      ])
+      .next()
+      .put(documents.todoToggled(data, filter))
+      .next()
+      .isDone();
+    } catch (e) {
+      throw new Error('One of the Effects was rejected before all the effects complete: ' + e);
+    }
   });
 });
