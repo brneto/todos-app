@@ -3,12 +3,12 @@
 exports[`components/AddTodo should call handle methods 1`] = `
 <header>
   <h1
-    class="css-1ehvoim-Title e172j9ny0"
+    class="css-1ehvoim-Title etbphq10"
   >
     todos
   </h1>
   <input
-    class="css-1kf7jnq-Input e172j9ny1"
+    class="css-1kf7jnq-Input etbphq11"
     name="todo"
     placeholder="What needs to be done?"
     value=""

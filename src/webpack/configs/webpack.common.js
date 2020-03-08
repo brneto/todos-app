@@ -151,7 +151,7 @@ const commonConfig = {
   // https://github.com/gaearon/react-hot-loader/issues/1222
   resolve: {
     alias: { 'react-dom': '@hot-loader/react-dom' },
-    extensions: ['.wasm', '.mjs', '.js', '.json', '.ts', '.tsx'],
+    extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   plugins: [
     // Copies individual files, which already exist, to the build directory

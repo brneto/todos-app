@@ -9,7 +9,7 @@
   // `"*.extension": "html"`). These have precedence over the
   // default associations of the languages installed.
   "files.associations": {
-    "*.js": "javascriptreact"
+    "*.jsx": "javascriptreact"
   },
 
   "editor.tabSize": 2,
