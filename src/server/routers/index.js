@@ -1,2 +1,2 @@
-export { default as createSpa } from './spa';
-export { default as sse } from './sse';
+export createSpa from './spa';
+export sse from './sse';

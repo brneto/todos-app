@@ -1,5 +1,3 @@
-// https://github.com/babel/babel-eslint/issues/749
-// https://github.com/estree/estree/pull/180
 describe('Objects', () => {
 
   describe('In Array', () => {
@@ -111,7 +109,11 @@ describe('Objects', () => {
     });
   });
 
+// https://github.com/babel/babel-eslint/issues/749
+// https://github.com/estree/estree/pull/180
+// https://github.com/babel/eslint-plugin-babel/issues/166
   describe('Private methods', () => {
+    /* eslint-disable no-undef */
     class IncreasingCounter {
       #count = 0;
 
@@ -131,7 +133,6 @@ describe('Objects', () => {
         return this.#privateValue;
       }
 
-      // eslint-disable-next-line no-dupe-class-members
       #privateIncrement() {
         this.#count = this.value + 1;
       }

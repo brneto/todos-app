@@ -1,5 +1,5 @@
 root: true
-parser: '@typescript-eslint/parser'
+parser: babel-eslint
 parserOptions:
   sourceType: module
   requireConfigFile: false
@@ -74,16 +74,19 @@ rules:
     - warn
     - string
 overrides:
-  - files:
-    - '*.ts'
-    - '*.tsx'
+  -
+    files:
+      - '*.ts'
+      - '*.tsx'
+    parser: '@typescript-eslint/parser'
     extends:
       - plugin:@typescript-eslint/eslint-recommended
       - plugin:@typescript-eslint/recommended
-  - files:
-    - src/index.js
-    - src/webpack/builders/**
-    - src/server/**
+  -
+    files:
+      - src/index.js
+      - src/webpack/builders/**
+      - src/server/**
     rules:
       no-console: 'off'
       no-restricted-syntax:

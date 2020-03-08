@@ -2,11 +2,7 @@
 # https://github.com/styled-components/stylelint-processor-styled-components/issues/231
 # https://babeljs.io/docs/en/babel-parser#ecmascript-proposals-https-githubcom-babel-proposals
 processors:
-  -
-    - stylelint-processor-styled-components
-    - parserPlugins:
-        - jsx
-        - classProperties
+  - stylelint-processor-styled-components
 extends:
   - stylelint-config-recommended
   - stylelint-config-standard
