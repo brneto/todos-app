@@ -119,21 +119,21 @@ describe('Objects', () => {
         this.#count = value;
       }
 
+      set inicial(value = this.#count) {
+        this.#privateInicial = value;
+      }
+
       get #privateValue() {
         return this.#count;
+      }
+
+      get value() {
+        return this.#privateValue;
       }
 
       // eslint-disable-next-line no-dupe-class-members
       #privateIncrement() {
         this.#count = this.value + 1;
-      }
-
-      set inicial(value = this.#count) {
-        this.#privateInicial = value;
-      }
-
-      get value() {
-        return this.#privateValue;
       }
 
       increment() {
