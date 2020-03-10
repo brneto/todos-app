@@ -38,6 +38,11 @@ extends:
   - plugin:ramda/recommended
   - plugin:redux-saga/recommended
 rules:
+  max-len:
+    - 1
+    -
+      code: 100
+      ignoreComments: true
   no-console: warn
   no-alert: warn
   no-debugger: warn
