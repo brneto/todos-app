@@ -3,7 +3,6 @@ parser: babel-eslint
 parserOptions:
   sourceType: module
   requireConfigFile: false
-  ecmaVersion: 9
   ecmaFeatures:
     impliedStrict: true
     jsx: true
@@ -18,7 +17,7 @@ settings:
   react:
     version: detect
 env:
-  es6: true
+  es2020: true
   commonjs: true
   browser: true
   node: true
