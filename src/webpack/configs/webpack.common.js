@@ -73,6 +73,7 @@ const commonConfig = {
               cacheDirectory: true,
               cacheCompression: false,
               sourceMaps: false,
+              plugins: ['react-hot-loader/babel'],
               presets: [
                 ['@babel/preset-env',  {
                   forceAllTransforms: !isInDev,
@@ -81,9 +82,6 @@ const commonConfig = {
                   corejs: 3,
                   debug: false
                 }],
-              ],
-              plugins: [
-                'react-hot-loader/babel',
               ],
             }
           },
