@@ -23,6 +23,7 @@ const htmlPluginOptions = {
   xhtml: true
 };
 
+// ToDo: https://github.com/webpack-contrib/closure-webpack-plugin/blob/master/README.md
 const commonConfig = {
   target: 'web',
   bail: true,
