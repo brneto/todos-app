@@ -4,6 +4,7 @@
   "private": true,
   "description": "Add todos",
   "main": "dist/index.js",
+  "type": "module"
   "scripts": {
     "reach": "git pull && yarn && yarn outdated",
     "upgi": "yarn upgrade-interactive --latest",
