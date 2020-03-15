@@ -39,13 +39,13 @@ const createList = filter => {
 
   const fetchStatus = handleActions(
     {
-      [events.fetchStart]: produce((draft, { payload }) => {
+      [events.startedFetch]: produce((draft, { payload }) => {
         if (isFilter(payload)) return 'pending';
       }),
-      [events.fetchSuccess]: produce((draft, { payload }) => {
+      [events.succeedFetch]: produce((draft, { payload }) => {
         if (isFilter(payload)) return 'resolved';
       }),
-      [events.fetchFail]: produce((draft, { payload }) => {
+      [events.failedFetch]: produce((draft, { payload }) => {
         if (isFilter(payload)) return 'rejected';
       })
     },

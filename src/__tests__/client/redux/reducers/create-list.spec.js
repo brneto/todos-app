@@ -116,7 +116,7 @@ describe('reducers/createList', () => {
 
   it('should set fetch status to "pending"', () => {
     // when
-    const newState = listByFilter(baseState, events.fetchStart(filter));
+    const newState = listByFilter(baseState, events.startedFetch(filter));
 
     // then
     expect(newState.fetchStatus).toBe('pending');
@@ -124,7 +124,7 @@ describe('reducers/createList', () => {
 
   it('should set fetch status to "resolved"', () => {
     // when
-    const newState = listByFilter(baseState, events.fetchSuccess(filter));
+    const newState = listByFilter(baseState, events.succeedFetch(filter));
 
     // then
     expect(newState.fetchStatus).toBe('resolved');
@@ -132,7 +132,7 @@ describe('reducers/createList', () => {
 
   it('should set fetch status to "rejected"', () => {
     // when
-    const newState = listByFilter(baseState, events.fetchFail(filter));
+    const newState = listByFilter(baseState, events.failedFetch(filter));
 
     // then
     expect(newState.fetchStatus).toBe('rejected');

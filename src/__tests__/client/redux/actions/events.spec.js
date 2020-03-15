@@ -4,15 +4,15 @@ describe('Event action messages', () => {
   const filter = 'filterName';
 
   test('start fetching event', () => {
-    expect(events.fetchStart(filter)).toMatchSnapshot();
+    expect(events.startedFetch(filter)).toMatchSnapshot();
   });
 
   test('success fetching event', () => {
-    expect(events.fetchSuccess(filter)).toMatchSnapshot();
+    expect(events.succeedFetch(filter)).toMatchSnapshot();
   });
 
   test('fail fetching event', () => {
-    expect(events.fetchFail(filter)).toMatchSnapshot();
+    expect(events.failedFetch(filter)).toMatchSnapshot();
   });
 });
 

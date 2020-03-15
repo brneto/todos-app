@@ -11,17 +11,17 @@ function* fetchTodos({ payload: filter }) {
     if (fetchStatus.isLoading) yield cancel();
 
     if (!filter) filter = yield select(selectors.getFilter);
-    yield put(events.fetchStart(filter));
+    yield put(events.startedFetch(filter));
 
     const
       response = yield call(api.todos.fetchTodos, filter),
       data = normalize(response, schema.todoList);
 
     yield put(documents.todosFetched(data, filter));
-    yield put(events.fetchSuccess(filter));
+    yield put(events.succeedFetch(filter));
   } catch (error) {
     yield put(documents.todosFetched(error, filter));
-    yield put(events.fetchFail(filter));
+    yield put(events.failedFetch(filter));
   }
 }
 

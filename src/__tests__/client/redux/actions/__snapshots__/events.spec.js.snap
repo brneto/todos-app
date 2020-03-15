@@ -6,7 +6,7 @@ Object {
     "type": "EVENT",
   },
   "payload": "filterName",
-  "type": "FETCH_FAIL",
+  "type": "FAILED_FETCH",
 }
 `;
 
@@ -16,7 +16,7 @@ Object {
     "type": "EVENT",
   },
   "payload": "filterName",
-  "type": "FETCH_START",
+  "type": "STARTED_FETCH",
 }
 `;
 
@@ -26,6 +26,6 @@ Object {
     "type": "EVENT",
   },
   "payload": "filterName",
-  "type": "FETCH_SUCCESS",
+  "type": "SUCCEED_FETCH",
 }
 `;

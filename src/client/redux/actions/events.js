@@ -6,12 +6,11 @@ const actionFunction = createActionFunction('EVENT');
 // Event actions
 // Naming Convention:
 // - Instant event: <present-tense verb>
-// - Progressive event start: <present-continuous verb>[<subject>]
-// - Progressive event end: <past-tense verb>[<subject>]
+// - Progressive event: <past-tense verb>[<subject>]
 export const {
-  fetchStart, fetchSuccess, fetchFail,
+  startedFetch, succeedFetch, failedFetch,
 } = createActions({
-  'FETCH_START': actionFunction,
-  'FETCH_SUCCESS': actionFunction,
-  'FETCH_FAIL': actionFunction,
+  'STARTED_FETCH': actionFunction,
+  'SUCCEED_FETCH': actionFunction,
+  'FAILED_FETCH': actionFunction,
 });

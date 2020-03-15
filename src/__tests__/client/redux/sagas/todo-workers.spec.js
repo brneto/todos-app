@@ -27,13 +27,13 @@ describe('sagas/todosWorkers', () => {
       isResolved: false,
       isRejected: false,
     })
-    .put(events.fetchStart(filter))
+    .put(events.startedFetch(filter))
     .next()
     .call(api.todos.fetchTodos, filter)
     .next(response)
     .put(documents.todosFetched(data, filter))
     .next()
-    .put(events.fetchSuccess(filter))
+    .put(events.succeedFetch(filter))
     .next()
     .isDone();
   });
@@ -61,13 +61,13 @@ describe('sagas/todosWorkers', () => {
     })
     .select(selectors.getFilter)
     .next(filter)
-    .put(events.fetchStart(filter))
+    .put(events.startedFetch(filter))
     .next()
     .call(api.todos.fetchTodos, filter)
     .next(response)
     .put(documents.todosFetched(data, filter))
     .next()
-    .put(events.fetchSuccess(filter))
+    .put(events.succeedFetch(filter))
     .next()
     .isDone();
   });
