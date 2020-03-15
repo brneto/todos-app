@@ -52,18 +52,6 @@ const createList = filter => {
     'idle' // initial state
   );
 
-  const isFetching = handleActions(
-      {
-        [events.fetchingTodos]: produce((draft, { payload }) => {
-          if (isFilter(payload)) return true; //return an entirely new state
-        }),
-        [events.fetchedTodos]: produce((draft, { payload }) => {
-          if (isFilter(payload)) return false;
-        }),
-      },
-      false // Initial state
-    );
-
   const
     { todosFetched, todoAdded, todoToggled } = documents,
     error = handleActions(
@@ -80,7 +68,6 @@ const createList = filter => {
   return combineReducers({
     ids,
     fetchStatus,
-    isFetching,
     error,
   });
 };
@@ -95,13 +82,11 @@ const
     isResolved: status === 'resolved',
     isRejected: status === 'rejected',
   })),
-  getIsFetching = createSelector([prop('isFetching')], identity),
   getError = createSelector([prop('error')], identity);
 
 export {
   createList as default,
   getIds,
   getFetchStatus,
-  getIsFetching,
   getError,
 };

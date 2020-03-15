@@ -4,14 +4,16 @@ import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 import moment from 'moment';
 import * as hooks from '../hooks';
-import LoadingDots from './LoadingDots';
 
 const
+  dynamicHeight = ({ open }) => open && css`
+    height: 3em;
+  `,
   rollLeft = keyframes`
     0% { left: 100%; }
     100% { left: -100%; }
   `,
-  rollNotice = css`
+  dynamicAnimation = ({ open }) => open && css`
     animation: ${rollLeft} 40s linear 4s infinite;
   `,
   Tape = styled.div`
@@ -19,7 +21,7 @@ const
     bottom: 0;
     left: 0;
     width: 100%;
-    height: ${({ open }) => open && '3em'};
+    ${dynamicHeight};
     transition: height 2s ease-out 1s;
     background: white;
 
@@ -28,7 +30,7 @@ const
       top: 50%;
       left: 100%;
       margin: 0;
-      ${({ open }) => open && rollNotice}; /* stylelint-disable-line value-keyword-case */
+      ${dynamicAnimation};
       transform: translateY(-50%);
       color: black;
       font-size: 1rem;
@@ -55,11 +57,9 @@ function TickerTape({ url }) {
           )
           .join(' | ')}
       </p>
-      <LoadingDots>Testing</LoadingDots>
     </Tape>
   );
 }
-
 TickerTape.propTypes = propTypes;
 
 export default TickerTape;

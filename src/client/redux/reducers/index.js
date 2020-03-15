@@ -52,11 +52,6 @@ const getFetchStatus = createSelector(
   identity
 );
 
-const getIsFetching = createSelector(
-  [o(fromList.getIsFetching, getListByFilter)],
-  identity
-);
-
 const getError = createSelector(
   [o(fromList.getError, getListByFilter)],
   identity
@@ -67,6 +62,5 @@ export {
   getFilter,
   getVisibleTodos,
   getFetchStatus,
-  getIsFetching,
   getError,
 };

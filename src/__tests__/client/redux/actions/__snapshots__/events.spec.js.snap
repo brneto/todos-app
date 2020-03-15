@@ -1,21 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Event action messages fetchedTodos event 1`] = `
+exports[`Event action messages fail fetching event 1`] = `
 Object {
   "meta": Object {
     "type": "EVENT",
   },
   "payload": "filterName",
-  "type": "FETCHED_TODOS",
+  "type": "FETCH_FAIL",
 }
 `;
 
-exports[`Event action messages fetchingTodos event 1`] = `
+exports[`Event action messages start fetching event 1`] = `
 Object {
   "meta": Object {
     "type": "EVENT",
   },
   "payload": "filterName",
-  "type": "FETCHING_TODOS",
+  "type": "FETCH_START",
+}
+`;
+
+exports[`Event action messages success fetching event 1`] = `
+Object {
+  "meta": Object {
+    "type": "EVENT",
+  },
+  "payload": "filterName",
+  "type": "FETCH_SUCCESS",
 }
 `;

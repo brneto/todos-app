@@ -3,12 +3,16 @@ import { events } from '../../../../client/redux/actions';
 describe('Event action messages', () => {
   const filter = 'filterName';
 
-  test('fetchingTodos event', () => {
-    expect(events.fetchingTodos(filter)).toMatchSnapshot();
+  test('start fetching event', () => {
+    expect(events.fetchStart(filter)).toMatchSnapshot();
   });
 
-  test('fetchedTodos event', () => {
-    expect(events.fetchedTodos(filter)).toMatchSnapshot();
+  test('success fetching event', () => {
+    expect(events.fetchSuccess(filter)).toMatchSnapshot();
+  });
+
+  test('fail fetching event', () => {
+    expect(events.fetchFail(filter)).toMatchSnapshot();
   });
 });
 

@@ -18,7 +18,6 @@ function LoadingDots({ delay, length, children }) {
 
   return <span>{children + '.'.repeat(count)}&nbsp;</span>;
 }
-
 LoadingDots.defaultProps = defaultProps;
 LoadingDots.propTypes = propTypes;
 

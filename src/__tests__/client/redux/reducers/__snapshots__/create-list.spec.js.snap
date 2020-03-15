@@ -10,7 +10,6 @@ Object {
     3,
     5,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -19,7 +18,6 @@ Object {
   "error": [Error: Boom!],
   "fetchStatus": "idle",
   "ids": Array [],
-  "isFetching": false,
 }
 `;
 
@@ -32,7 +30,6 @@ Object {
     2,
     3,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -45,7 +42,6 @@ Object {
     5,
     6,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -58,7 +54,6 @@ Object {
     2,
     3,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -69,7 +64,6 @@ Object {
   "ids": Array [
     4,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -83,7 +77,6 @@ Object {
     3,
     4,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -95,7 +88,6 @@ Object {
     2,
     3,
   ],
-  "isFetching": false,
 }
 `;
 
@@ -108,6 +100,5 @@ Object {
     2,
     3,
   ],
-  "isFetching": false,
 }
 `;

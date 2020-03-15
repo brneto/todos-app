@@ -12,12 +12,8 @@ const
 // - Progressive event end: <past-tense verb>[<subject>]
 export const {
   fetchStart, fetchSuccess, fetchFail,
-  fetchingTodos, fetchedTodos
 } = createActions({
   'FETCH_START': actionFunction,
   'FETCH_SUCCESS': actionFunction,
   'FETCH_FAIL': actionFunction,
-
-  'FETCHING_TODOS': actionFunction,
-  'FETCHED_TODOS': actionFunction,
 });

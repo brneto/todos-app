@@ -137,20 +137,4 @@ describe('reducers/createList', () => {
     // then
     expect(newState.fetchStatus).toBe('rejected');
   });
-
-  it('should set fetching state to true', () => {
-    // when
-    const newState = listByFilter(baseState, events.fetchingTodos(filter));
-
-    // then
-    expect(newState.isFetching).toBe(true);
-  });
-
-  it('should set fetching state to false', () => {
-    // when
-    const newState = listByFilter(baseState, events.fetchedTodos(filter));
-
-    // then
-    expect(newState.isFetching).toBe(false);
-  });
 });

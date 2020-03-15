@@ -16,6 +16,13 @@ plugins:
   - stylelint-selector-bem-pattern
   - stylelint-order
 rules:
+  # Fix false positive on styled components props
+  # https://github.com/stylelint/stylelint/issues/3391
+  value-keyword-case:
+    - lower
+    -
+      ignoreKeywords:
+        - dummyValue
   # Follow best practices
   font-family-name-quotes: always-where-recommended
   # https://stackoverflow.com/a/34383157/467582

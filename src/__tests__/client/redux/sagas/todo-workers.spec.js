@@ -20,22 +20,20 @@ describe('sagas/todosWorkers', () => {
 
     testSaga(sagas.fetchTodos, effects.fetchTodos(filter))
     .next()
-    // .select(selectors.getFetchStatus)
-    // .next({
-    //   isIdle: true,
-    //   isLoading: false,
-    //   isResolved: false,
-    //   isRejected: false,
-    // })
-    .select(selectors.getIsFetching)
-    .next(false)
-    .put(events.fetchingTodos(filter))
+    .select(selectors.getFetchStatus)
+    .next({
+      isIdle: true,
+      isLoading: false,
+      isResolved: false,
+      isRejected: false,
+    })
+    .put(events.fetchStart(filter))
     .next()
     .call(api.todos.fetchTodos, filter)
     .next(response)
     .put(documents.todosFetched(data, filter))
     .next()
-    .put(events.fetchedTodos(filter))
+    .put(events.fetchSuccess(filter))
     .next()
     .isDone();
   });
@@ -54,24 +52,22 @@ describe('sagas/todosWorkers', () => {
     // when-then
     testSaga(sagas.fetchTodos, effects.fetchTodos())
     .next()
-    // .select(selectors.getFetchStatus)
-    // .next({
-    //   isIdle: true,
-    //   isLoading: false,
-    //   isResolved: false,
-    //   isRejected: false,
-    // })
-    .select(selectors.getIsFetching)
-    .next(false)
+    .select(selectors.getFetchStatus)
+    .next({
+      isIdle: true,
+      isLoading: false,
+      isResolved: false,
+      isRejected: false,
+    })
     .select(selectors.getFilter)
     .next(filter)
-    .put(events.fetchingTodos(filter))
+    .put(events.fetchStart(filter))
     .next()
     .call(api.todos.fetchTodos, filter)
     .next(response)
     .put(documents.todosFetched(data, filter))
     .next()
-    .put(events.fetchedTodos(filter))
+    .put(events.fetchSuccess(filter))
     .next()
     .isDone();
   });
@@ -79,15 +75,13 @@ describe('sagas/todosWorkers', () => {
   it('should not call fetchTodos api', () => {
     testSaga(sagas.fetchTodos, effects.fetchTodos())
     .next()
-    // .select(selectors.getFetchStatus)
-    // .next({
-    //   isIdle: false,
-    //   isLoading: true,
-    //   isResolved: false,
-    //   isRejected: false,
-    // })
-    .select(selectors.getIsFetching)
-    .next(true)
+    .select(selectors.getFetchStatus)
+    .next({
+      isIdle: false,
+      isLoading: true,
+      isResolved: false,
+      isRejected: false,
+    })
     .cancel();
   });
 

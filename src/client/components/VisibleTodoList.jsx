@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import styled from '@emotion/styled';
 import { effects } from '../redux/actions';
 import {
-  getIsFetching,
+  getFetchStatus,
   getError,
   getVisibleTodos } from '../redux/reducers';
 import TodoList from './TodoList';
+import LoadingDots from './LoadingDots';
 import FetchError from './FetchError';
 
 const
@@ -23,7 +24,7 @@ const
 const
   mapStateToProps = state => ({
     todos: getVisibleTodos(state),
-    isFetching: getIsFetching(state),
+    status: getFetchStatus(state),
     error: getError(state),
   }),
   mapDispatchToProps = {
@@ -36,7 +37,7 @@ const
   ),
   propTypes = {
     todos: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
+    status: PropTypes.object.isRequired,
     error: PropTypes.instanceOf(Error),
     fetchTodos: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired,
@@ -44,21 +45,25 @@ const
 
 // ToDo: https://kentcdodds.com/blog/stop-using-isloading-booleans
 function VisibleTodoList({
-  todos, isFetching, error,
-  fetchTodos, toggleTodo
+  todos, status, error,
+  fetchTodos, toggleTodo,
 }) {
   // https://github.com/facebook/react/issues/14920
   useEffect(() => void fetchTodos(), [fetchTodos]);
 
-  let render = todos.length
+  let render = <OnProgress>Nothing has been fetched yet!</OnProgress>;
+
+  if (status.isLoading) render = (
+    <OnProgress>
+      <LoadingDots>Loading</LoadingDots>
+    </OnProgress>
+  );
+
+  if (status.isResolved) render = todos.length
     ? <TodoList todos={todos} onClick={toggleTodo} />
     : <OnProgress>You have nothing to do yet!</OnProgress>;
 
-  if (error)
-    render = <FetchError error={error} onRetry={() => fetchTodos()} />;
-
-  if (isFetching)
-    render = <OnProgress>Loading...</OnProgress>;
+  if (status.isRejected) render = <FetchError error={error} onRetry={() => fetchTodos()} />;
 
   return <Section>{render}</Section>;
 }

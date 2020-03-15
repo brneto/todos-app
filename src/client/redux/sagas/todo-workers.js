@@ -7,23 +7,21 @@ import * as schema from '../../libs/schema';
 
 function* fetchTodos({ payload: filter }) {
   try {
-    // const fetchStatus = yield select(selectors.getFetchStatus);
-    // if (fetchStatus.isLoading) yield cancel();
-    const isFetching = yield select(selectors.getIsFetching);
-    if (isFetching) yield cancel();
+    const fetchStatus = yield select(selectors.getFetchStatus);
+    if (fetchStatus.isLoading) yield cancel();
 
     if (!filter) filter = yield select(selectors.getFilter);
-    yield put(events.fetchingTodos(filter));
+    yield put(events.fetchStart(filter));
 
     const
       response = yield call(api.todos.fetchTodos, filter),
       data = normalize(response, schema.todoList);
 
     yield put(documents.todosFetched(data, filter));
+    yield put(events.fetchSuccess(filter));
   } catch (error) {
     yield put(documents.todosFetched(error, filter));
-  } finally {
-    yield put(events.fetchedTodos(filter));
+    yield put(events.fetchFail(filter));
   }
 }
 
