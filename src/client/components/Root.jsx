@@ -18,6 +18,7 @@ const
     history: PropTypes.object.isRequired,
   },
   // https://medium.com/better-programming/react-router-v6-in-two-minutes-a7a2963e2340
+  // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/hooks.md
   Root = ({ history, store }) => (
     <ThemeProvider theme={themes.main}>
       <StrictMode>
