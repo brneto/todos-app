@@ -43,7 +43,7 @@ const
     toggleTodo: PropTypes.func.isRequired,
   };
 
-// ToDo: https://kentcdodds.com/blog/stop-using-isloading-booleans
+// https://kentcdodds.com/blog/stop-using-isloading-booleans
 function VisibleTodoList({
   todos, status, error,
   fetchTodos, toggleTodo,

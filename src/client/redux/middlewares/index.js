@@ -1,8 +1,8 @@
 import throttle from 'lodash/throttle';
 import { loadState, saveState } from './local-storage';
 
-const sampleMiddleware = () => next => action => {
-  // TODO: Implement the middleware
+const customMiddleware = () => next => action => {
+  // Custom middleware implementation
   next(action);
 };
 
@@ -31,7 +31,7 @@ const localStorageMiddleware = () => next => action => {
 };
 
 export {
-  sampleMiddleware,
+  customMiddleware,
   promiseMiddleware,
   thunkMiddleware,
   localStorageMiddleware,

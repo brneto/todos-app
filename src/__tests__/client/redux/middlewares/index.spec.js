@@ -1,4 +1,4 @@
-import { sampleMiddleware } from '../../../../client/redux/middlewares';
+import { customMiddleware } from '../../../../client/redux/middlewares';
 
 describe('middlewares/sampleMiddleware', () => {
   let next, dispatch, getState, middleware, dispatchCalls, nextCalls;
@@ -11,7 +11,7 @@ describe('middlewares/sampleMiddleware', () => {
     dispatchCalls = dispatch.mock.calls;
     nextCalls = next.mock.calls;
 
-    middleware = sampleMiddleware({ dispatch, getState })(next);
+    middleware = customMiddleware({ dispatch, getState })(next);
   });
 
   it('should process action', () => {

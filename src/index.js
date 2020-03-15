@@ -16,7 +16,7 @@ switch (env) {
     break;
 
   case 'building':
-    // TODO: Change to use webpack to also transpile the server code.
+    // ToDo: Change to use webpack to also transpile the server code.
     // https://github.com/yusinto/universal-hot-reload/blob/master/src/index.js
     // https://webpack.js.org/api/node/#watching
     // https://github.com/liady/webpack-node-externals
