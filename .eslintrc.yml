@@ -21,6 +21,7 @@ plugins:
   - ramda
   - redux-saga
   - react-hooks
+  - emotion
 extends:
   - "eslint:recommended"
   - "plugin:import/errors"
