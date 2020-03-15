@@ -1,9 +1,7 @@
 import { createActions } from 'redux-actions';
 import { createActionFunction } from './functions';
 
-const
-  messageType = 'DOCUMENT',
-  actionFunction = createActionFunction(messageType);
+const actionFunction = createActionFunction('DOCUMENT');
 
 // Document actions
 // Naming Convention: <subject><past-tense verb>

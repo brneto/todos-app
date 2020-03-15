@@ -1,9 +1,7 @@
 import { createActions } from 'redux-actions';
 import { createActionFunction } from './functions';
 
-const
-  messageType = 'EVENT',
-  actionFunction = createActionFunction(messageType);
+const actionFunction = createActionFunction('EVENT');
 
 // Event actions
 // Naming Convention:

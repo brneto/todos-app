@@ -49,7 +49,7 @@ const createList = filter => {
         if (isFilter(payload)) return 'rejected';
       })
     },
-    'idle' // initial state
+    'idle' // Initial state
   );
 
   const

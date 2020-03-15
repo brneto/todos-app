@@ -1,9 +1,7 @@
 import { createActions } from 'redux-actions';
 import { createActionFunction } from './functions';
 
-const
-  messageType = 'COMMAND',
-  actionFunction = createActionFunction(messageType);
+const actionFunction = createActionFunction('COMMAND');
 
 // Pure Command actions message
 // Naming Convention: <imperative verb><subject>

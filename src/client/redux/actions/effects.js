@@ -1,9 +1,7 @@
 import { createActions } from 'redux-actions';
 import { createActionFunction } from './functions';
 
-const
-  messageType = 'SIDE_EFFECT',
-  actionFunction = createActionFunction(messageType);
+const actionFunction = createActionFunction('SIDE_EFFECT');
 
 // Side Effect Command actions
 // Naming Convention: <imperative verb><subject>
