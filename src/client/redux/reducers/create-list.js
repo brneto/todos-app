@@ -37,6 +37,21 @@ const createList = filter => {
       [] // Initial state
     );
 
+  const fetchStatus = handleActions(
+    {
+      [events.fetchStart]: produce((draft, { payload }) => {
+        if (isFilter(payload)) return 'pending';
+      }),
+      [events.fetchSuccess]: produce((draft, { payload }) => {
+        if (isFilter(payload)) return 'resolved';
+      }),
+      [events.fetchFail]: produce((draft, { payload }) => {
+        if (isFilter(payload)) return 'rejected';
+      })
+    },
+    'idle' // initial state
+  );
+
   const isFetching = handleActions(
       {
         [events.fetchingTodos]: produce((draft, { payload }) => {
@@ -64,6 +79,7 @@ const createList = filter => {
 
   return combineReducers({
     ids,
+    fetchStatus,
     isFetching,
     error,
   });
@@ -73,12 +89,19 @@ const createList = filter => {
 // prop :: s -> {s: a} -> a | Undefined
 const
   getIds = createSelector([prop('ids')], identity),
+  getFetchStatus = createSelector([prop('fetchStatus')], status => ({
+    isIdle: status === 'idle',
+    isLoading: status === 'pending',
+    isResolved: status === 'resolved',
+    isRejected: status === 'rejected',
+  })),
   getIsFetching = createSelector([prop('isFetching')], identity),
   getError = createSelector([prop('error')], identity);
 
 export {
   createList as default,
   getIds,
+  getFetchStatus,
   getIsFetching,
   getError,
 };

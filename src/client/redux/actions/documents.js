@@ -1,14 +1,16 @@
 import { createActions } from 'redux-actions';
 import { createActionFunction } from './functions';
 
-const messageType = 'DOCUMENT';
+const
+  messageType = 'DOCUMENT',
+  actionFunction = createActionFunction(messageType);
 
 // Document actions
 // Naming Convention: <subject><past-tense verb>
 export const {
   todosFetched, todoAdded, todoToggled
 } = createActions({
-  TODOS_FETCHED: createActionFunction(messageType),
-  TODO_ADDED: createActionFunction(messageType),
-  TODO_TOGGLED: createActionFunction(messageType),
+  TODOS_FETCHED: actionFunction,
+  TODO_ADDED: actionFunction,
+  TODO_TOGGLED: actionFunction,
 });

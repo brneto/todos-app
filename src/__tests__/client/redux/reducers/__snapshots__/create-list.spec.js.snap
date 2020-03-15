@@ -3,6 +3,7 @@
 exports[`reducers/createList should add a todo to the list 1`] = `
 Object {
   "error": null,
+  "fetchStatus": "idle",
   "ids": Array [
     1,
     2,
@@ -16,6 +17,7 @@ Object {
 exports[`reducers/createList should add fetched todos saves error message 1`] = `
 Object {
   "error": [Error: Boom!],
+  "fetchStatus": "idle",
   "ids": Array [],
   "isFetching": false,
 }
@@ -24,6 +26,7 @@ Object {
 exports[`reducers/createList should add fetched todos to empty list 1`] = `
 Object {
   "error": null,
+  "fetchStatus": "idle",
   "ids": Array [
     1,
     2,
@@ -36,6 +39,7 @@ Object {
 exports[`reducers/createList should add fetched todos to non-empty list 1`] = `
 Object {
   "error": null,
+  "fetchStatus": "idle",
   "ids": Array [
     4,
     5,
@@ -48,6 +52,7 @@ Object {
 exports[`reducers/createList should add todo save error message 1`] = `
 Object {
   "error": [Error: Boom!],
+  "fetchStatus": "idle",
   "ids": Array [
     1,
     2,
@@ -60,6 +65,7 @@ Object {
 exports[`reducers/createList should add todo to empty list 1`] = `
 Object {
   "error": null,
+  "fetchStatus": "idle",
   "ids": Array [
     4,
   ],
@@ -70,6 +76,7 @@ Object {
 exports[`reducers/createList should add todo to non-empty list 1`] = `
 Object {
   "error": null,
+  "fetchStatus": "idle",
   "ids": Array [
     1,
     2,
@@ -83,6 +90,7 @@ Object {
 exports[`reducers/createList should remove a todo from the list 1`] = `
 Object {
   "error": null,
+  "fetchStatus": "idle",
   "ids": Array [
     2,
     3,
@@ -94,6 +102,7 @@ Object {
 exports[`reducers/createList should toggle todo saves error message 1`] = `
 Object {
   "error": [Error: Boom!],
+  "fetchStatus": "idle",
   "ids": Array [
     1,
     2,

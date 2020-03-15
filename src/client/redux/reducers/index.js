@@ -47,6 +47,11 @@ const getVisibleTodos = createSelector(
   map
 );
 
+const getFetchStatus = createSelector(
+  [o(fromList.getFetchStatus, getListByFilter)],
+  identity
+);
+
 const getIsFetching = createSelector(
   [o(fromList.getIsFetching, getListByFilter)],
   identity
@@ -61,6 +66,7 @@ export {
   createRootReducer as default,
   getFilter,
   getVisibleTodos,
+  getFetchStatus,
   getIsFetching,
   getError,
 };

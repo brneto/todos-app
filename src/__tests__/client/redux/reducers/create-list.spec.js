@@ -114,6 +114,30 @@ describe('reducers/createList', () => {
     expect(newState).toMatchSnapshot();
   });
 
+  it('should set fetch status to "pending"', () => {
+    // when
+    const newState = listByFilter(baseState, events.fetchStart(filter));
+
+    // then
+    expect(newState.fetchStatus).toBe('pending');
+  });
+
+  it('should set fetch status to "resolved"', () => {
+    // when
+    const newState = listByFilter(baseState, events.fetchSuccess(filter));
+
+    // then
+    expect(newState.fetchStatus).toBe('resolved');
+  });
+
+  it('should set fetch status to "rejected"', () => {
+    // when
+    const newState = listByFilter(baseState, events.fetchFail(filter));
+
+    // then
+    expect(newState.fetchStatus).toBe('rejected');
+  });
+
   it('should set fetching state to true', () => {
     // when
     const newState = listByFilter(baseState, events.fetchingTodos(filter));

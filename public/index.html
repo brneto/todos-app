@@ -19,7 +19,7 @@
       To create a production bundle, use `yarn build`.
     -->
     <script type="module">
-      import('/config.js').then(client => client?.title && document.title = client.title);
+      import('/config.js').then(client => client?.title && (document.title = client.title));
     </script>
   </body>
 </html>

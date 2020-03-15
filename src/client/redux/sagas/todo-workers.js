@@ -5,9 +5,10 @@ import * as selectors from '../reducers';
 import * as api from '../../api';
 import * as schema from '../../libs/schema';
 
-// ToDo: https://kentcdodds.com/blog/stop-using-isloading-booleans/
 function* fetchTodos({ payload: filter }) {
   try {
+    // const fetchStatus = yield select(selectors.getFetchStatus);
+    // if (fetchStatus.isLoading) yield cancel();
     const isFetching = yield select(selectors.getIsFetching);
     if (isFetching) yield cancel();
 
