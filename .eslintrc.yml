@@ -7,8 +7,15 @@ parserOptions:
     impliedStrict: true
     jsx: true
 settings:
+  import/resolver:
+    node:
+      extensions:
+        - .js
+        - .jsx
+        - .ts
+        - .tsx
   react:
-    version: "detect"
+    version: detect
 env:
   es2020: true
   commonjs: true
@@ -23,17 +30,27 @@ plugins:
   - react-hooks
   - emotion
 extends:
-  - "eslint:recommended"
-  - "plugin:import/errors"
-  - "plugin:import/warnings"
-  - "plugin:react/recommended"
-  - "plugin:jsx-a11y/recommended"
-  - "plugin:ramda/recommended"
-  - "plugin:redux-saga/recommended"
+  - eslint:recommended
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
+  - plugin:ramda/recommended
+  - plugin:redux-saga/recommended
 rules:
+  max-len:
+    - 1
+    -
+      code: 100
+      ignoreComments: true
   no-console: warn
   no-alert: warn
   no-debugger: warn
+  new-cap: 'off'
+  no-invalid-this: 'off'
+  object-curly-spacing: 'off'
+  quotes: 'off'
+  semi: 'off'
   rest-spread-spacing: warn
   babel/new-cap: warn
   babel/no-invalid-this: warn
@@ -61,15 +78,31 @@ rules:
   react/no-unused-state: warn
   react-hooks/rules-of-hooks: error
   react-hooks/exhaustive-deps: warn
+  emotion/no-vanilla: error
+  emotion/import-from-emotion: error
+  emotion/styled-import: error
+  emotion/syntax-preference:
+    - warn
+    - string
 overrides:
-  - files:
-    - src/index.js
-    - src/webpack/builders/**
-    - src/server/**
+  -
+    files:
+      - '*.ts'
+      - '*.tsx'
+    parser: '@typescript-eslint/parser'
+    extends:
+      - plugin:import/typescript
+      - plugin:@typescript-eslint/eslint-recommended
+      - plugin:@typescript-eslint/recommended
+  -
+    files:
+      - src/index.js
+      - src/webpack/builders/**
+      - src/server/**
     rules:
-      no-console: "off"
+      no-console: 'off'
       no-restricted-syntax:
         - error
         -
-          selector: "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]"
-          message: "Unexpected property on console object was called"
+          selector: CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]
+          message: Unexpected property on console object was called

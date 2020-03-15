@@ -7,6 +7,7 @@ import { identity } from 'ramda';
 //   meta: { type: type | [, filter: filter] }
 // }
 const
-  createActionFunction = type => [identity, (payload, filter) => filter ? ({ type, filter }) : ({ type })];
+  createActionFunction = type =>
+    [identity, (payload, filter) => filter ? ({ type, filter }) : ({ type })];
 
 export { createActionFunction };

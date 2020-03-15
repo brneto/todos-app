@@ -5,7 +5,7 @@ import * as workers from './todo-workers';
 
 function* rootSaga() {
   try {
-    yield getFilterPath() |> commands.createResource |> put;
+    yield put(commands.createResource(getFilterPath()));
     yield all({
       addTodoWatcher: takeEvery(effects.addTodo, workers.addTodo),
       toggleTodoWatcher: takeEvery(effects.toggleTodo, workers.toggleTodo),

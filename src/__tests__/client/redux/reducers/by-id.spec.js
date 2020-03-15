@@ -6,7 +6,7 @@ describe('reducers/byId', () => {
   // given
   const
     filter = 'all',
-    initialState = byId(undefined, { type: 'INIT' }) |> deepFreeze,
+    initialState = deepFreeze(byId(undefined, { type: 'INIT' })),
     baseData = { entities: {
         todos: {
           1: { id: 1, text: 'hey', completed: true },
@@ -14,9 +14,7 @@ describe('reducers/byId', () => {
           3: { id: 3, text: 'let\'s go', completed: false },
         }
     } },
-    baseState = documents.todosFetched(baseData, filter)
-      |> a => byId(initialState, a)
-      |> deepFreeze;
+    baseState = deepFreeze(byId(initialState, documents.todosFetched(baseData, filter)));
 
   it('should handle unknown actions', () => {
     // when
@@ -28,8 +26,7 @@ describe('reducers/byId', () => {
 
   it('should add fetched todos to empty map', () => {
     // when
-    const newState = documents.todosFetched(baseData, filter)
-      |> a => byId(initialState, a);
+    const newState = byId(initialState, documents.todosFetched(baseData, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -45,8 +42,7 @@ describe('reducers/byId', () => {
     } };
 
     // when
-    const newState = documents.todosFetched(testData, filter)
-      |> a => byId(baseState, a);
+    const newState = byId(baseState, documents.todosFetched(testData, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -59,8 +55,7 @@ describe('reducers/byId', () => {
     } };
 
     // when
-    const newState = documents.todoAdded(testData)
-      |> a => byId(initialState, a);
+    const newState = byId(initialState, documents.todoAdded(testData));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -73,8 +68,7 @@ describe('reducers/byId', () => {
     } };
 
     // when
-    const newState = documents.todoAdded(testData)
-      |> a => byId(baseState, a);
+    const newState = byId(baseState, documents.todoAdded(testData));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -87,8 +81,7 @@ describe('reducers/byId', () => {
     } };
 
     // when
-    const newState = documents.todoToggled(testData)
-      |> a => byId(baseState, a);
+    const newState = byId(baseState, documents.todoToggled(testData));
 
     // then
     expect(newState).toMatchSnapshot();

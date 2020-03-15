@@ -9,7 +9,7 @@
   // `"*.extension": "html"`). These have precedence over the
   // default associations of the languages installed.
   "files.associations": {
-    "*.js": "javascriptreact"
+    "*.jsx": "javascriptreact"
   },
 
   "editor.tabSize": 2,
@@ -18,11 +18,12 @@
 
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    // Render vertical rulers after a certain number of
-    // monospace characters. Use multiple values for multiple
-    // rulers. No rulers are drawn if array is empty.
-    "editor.rulers": [100]
   },
+
+  // Render vertical rulers after a certain number of
+  // monospace characters. Use multiple values for multiple
+  // rulers. No rulers are drawn if array is empty.
+  "editor.rulers": [100],
 
   "files.autoSave": "onFocusChange",
 

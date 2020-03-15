@@ -9,7 +9,7 @@ const resource = handleActions(
   {
     [commands.createResource]: {
       next: produce((draft, { payload: filter }) =>
-        api.todos.fetchTodos(filter) |> api.createResource), //return an entirely new state
+      api.createResource(api.todos.fetchTodos(filter))), //return an entirely new state
     }
   }, null // Initial state
 );

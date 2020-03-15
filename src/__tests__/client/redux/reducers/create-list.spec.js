@@ -6,12 +6,10 @@ describe('reducers/createList', () => {
   const
     filter = 'active',
     listByFilter = createList(filter),
-    initialState = listByFilter(undefined, { type: 'INIT' }) |> deepFreeze,
+    initialState = deepFreeze(listByFilter(undefined, { type: 'INIT' })),
     error = new Error('Boom!'),
     baseData = { result: [1, 2, 3] },
-    baseState = documents.todosFetched(baseData, filter)
-      |> a => listByFilter(initialState, a)
-      |> deepFreeze;
+    baseState = deepFreeze(listByFilter(initialState, documents.todosFetched(baseData, filter)));
 
   it('should handle unknown actions', () => {
     // when
@@ -23,8 +21,7 @@ describe('reducers/createList', () => {
 
   it('should add fetched todos to empty list', () => {
     // when
-    const newState = documents.todosFetched(baseData, filter)
-      |> a => listByFilter(initialState, a);
+    const newState = listByFilter(initialState, documents.todosFetched(baseData, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -35,8 +32,7 @@ describe('reducers/createList', () => {
     const testData = { result: [4, 5, 6] };
 
     // when
-    const newState = documents.todosFetched(testData, filter)
-      |> a => listByFilter(baseState,a);
+    const newState = listByFilter(baseState, documents.todosFetched(testData, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -44,8 +40,7 @@ describe('reducers/createList', () => {
 
   it('should add fetched todos saves error message', () => {
     // when
-    const newState = documents.todosFetched(error, filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, documents.todosFetched(error, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -56,8 +51,7 @@ describe('reducers/createList', () => {
     const testData = { result: 4 };
 
     // when
-    const newState = documents.todoAdded(testData, filter)
-      |> a => listByFilter(initialState, a);
+    const newState = listByFilter(initialState, documents.todoAdded(testData, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -68,8 +62,7 @@ describe('reducers/createList', () => {
     const testData = { result: 4 };
 
     // when
-    const newState = documents.todoAdded(testData, filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, documents.todoAdded(testData, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -77,8 +70,7 @@ describe('reducers/createList', () => {
 
   it('should add todo save error message', () => {
     // when
-    const newState = documents.todoAdded(error, filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, documents.todoAdded(error, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -89,8 +81,7 @@ describe('reducers/createList', () => {
     const data = { result: 5 };
 
     // when
-    const newState = commands.addTodoToList(data, filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, commands.addTodoToList(data, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -101,8 +92,7 @@ describe('reducers/createList', () => {
     const data = { result: 1 };
 
     // when
-    const newState = commands.removeTodoFromList(data, filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, commands.removeTodoFromList(data, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -113,15 +103,12 @@ describe('reducers/createList', () => {
     const
       filter = 'all',
       listByFilter = createList(filter),
-      initialState = listByFilter(undefined, { type: 'INIT' }) |> deepFreeze,
+      initialState = deepFreeze(listByFilter(undefined, { type: 'INIT' })),
       baseData = { result: [1, 2, 3] },
-      baseState = documents.todosFetched(baseData, filter)
-        |> a => listByFilter(initialState, a)
-        |> deepFreeze;
+      baseState = deepFreeze(listByFilter(initialState, documents.todosFetched(baseData, filter)));
 
     // when
-    const newState = documents.todoToggled(error, filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, documents.todoToggled(error, filter));
 
     // then
     expect(newState).toMatchSnapshot();
@@ -129,8 +116,7 @@ describe('reducers/createList', () => {
 
   it('should set fetching state to true', () => {
     // when
-    const newState = events.fetchingTodos(filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, events.fetchingTodos(filter));
 
     // then
     expect(newState.isFetching).toBe(true);
@@ -138,8 +124,7 @@ describe('reducers/createList', () => {
 
   it('should set fetching state to false', () => {
     // when
-    const newState = events.fetchedTodos(filter)
-      |> a => listByFilter(baseState, a);
+    const newState = listByFilter(baseState, events.fetchedTodos(filter));
 
     // then
     expect(newState.isFetching).toBe(false);
