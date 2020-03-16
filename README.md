@@ -114,6 +114,8 @@ This pattern is great for most cases but it have drawbacks when you dealing with
 
 [Babel](https://babeljs.io/)
 
+[TypeScript](https://www.typescriptlang.org/)
+
 [Webpack](https://webpack.js.org/)
 
 [PostCSS](https://postcss.org/)

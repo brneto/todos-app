@@ -15,6 +15,5 @@ max_line_length=100
 
 # Set trailing whitespace override for all Markdown files
 [*.md]
-end_of_line = crlf
 trim_trailing_whitespace = false
 
