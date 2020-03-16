@@ -2,6 +2,7 @@ type featureMap = {
   'use-new-feature'?: boolean;
 }
 
+// ToDo: https://basarat.gitbook.io/typescript/type-system/functions
 interface FeatureRouter {
   setFeature(featureName: keyof featureMap, isEnabled: boolean): void;
   featureIsEnabled(featureName: keyof featureMap): boolean;
