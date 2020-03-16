@@ -8,5 +8,5 @@ export default (featureConfig: FeatureMap) => ({
   setFeature(featureName: FeatureKey, isEnable: boolean): void {
     featureConfig[featureName] = typeof isEnabled === 'boolean' && isEnabled;
   },
-  featureIsEnabled: (featureName: FeatureKey): boolean => featureConfig[featureName] === true,
+  isFeatureEnabled: (featureName: FeatureKey): boolean => featureConfig[featureName] === true,
 });
