@@ -3,7 +3,7 @@ type FeatureMap = {
 }
 
 // ToDo: https://basarat.gitbook.io/typescript/type-system/functions
-interface FeatureRouter {
+type FeatureRouter = {
   setFeature(featureName: keyof FeatureMap, isEnabled: boolean): void;
   featureIsEnabled(featureName: keyof FeatureMap): boolean;
 }
