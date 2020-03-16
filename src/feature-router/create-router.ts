@@ -2,15 +2,17 @@ type FeatureMap = {
   'use-new-feature'?: boolean;
 }
 
-// ToDo: https://basarat.gitbook.io/typescript/type-system/functions
-type FeatureRouter = {
-  setFeature(featureName: keyof FeatureMap, isEnabled: boolean): void;
-  featureIsEnabled(featureName: keyof FeatureMap): boolean;
-}
+type FeatureKey = keyof FeatureMap;
 
-export default (featureConfig: FeatureMap): FeatureRouter => ({
-  setFeature: (featureName, isEnabled): void => {
+// ToDo: https://basarat.gitbook.io/typescript/type-system/functions
+// type FeatureRouter = {
+//   setFeature(featureName: keyof FeatureMap, isEnabled: boolean): void;
+//   featureIsEnabled(featureName: keyof FeatureMap): boolean;
+// }
+
+export default (featureConfig: FeatureMap) => ({
+  setFeature: (featureName: FeatureKey, isEnable: boolean): void => {
     featureConfig[featureName] = typeof isEnabled === 'boolean' && isEnabled;
   },
-  featureIsEnabled: (featureName): boolean => featureConfig[featureName] === true,
+  featureIsEnabled: (featureName: FeatureKey): boolean => featureConfig[featureName] === true,
 });
