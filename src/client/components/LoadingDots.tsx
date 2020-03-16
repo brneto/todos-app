@@ -2,9 +2,9 @@ import React from 'react';
 import * as hooks from '../hooks';
 
 type LoadingDotsProps = {
-  delay?: number;
-  length?: number;
-  children: string;
+  readonly delay?: number;
+  readonly length?: number;
+  readonly children: string;
 };
 
 const LoadingDots: RF<LoadingDotsProps> = ({ delay = 300, length = 3, children }) => {
