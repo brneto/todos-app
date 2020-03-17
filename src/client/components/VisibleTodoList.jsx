@@ -36,7 +36,7 @@ const
   };
 
 function VisibleTodoList({ resource, todos, createResource, todosFetched, toggleTodo }) {
-  const handleRetry = () => getFilterPath() |> createResource;
+  const handleRetry = () => createResource(getFilterPath());
 
   // Suspense works only for data fetching, not for data posting,
   // therefore remove all code not related to data fetching (eg. Redux)

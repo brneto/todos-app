@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { StrictMode } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'emotion-theming';
@@ -36,4 +35,4 @@ const
   );
 Root.propTypes = propTypes;
 
-export default hot(Root);
+export default Root;

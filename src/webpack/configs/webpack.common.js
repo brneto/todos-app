@@ -27,7 +27,7 @@ const commonConfig = {
   target: 'web',
   bail: true,
   context: path.resolve(__dirname, '../../../'),
-  entry: ['react-hot-loader/patch', './src/client/index.js'],
+  entry: ['./src/client/index.js'],
   output: {
     filename: `${filePrefix}.js`,
     chunkFilename: `${chunkPrefix}.js`,
@@ -52,7 +52,7 @@ const commonConfig = {
   // https://github.com/gaearon/react-hot-loader#react--dom
   // https://github.com/gaearon/react-hot-loader/issues/1222
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.wasm', '.mjs', '.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   module: {
     strictExportPresence: true,
@@ -86,9 +86,6 @@ const commonConfig = {
                   corejs: 3,
                   debug: false
                 }],
-              ],
-              plugins: [
-                'react-hot-loader/babel',
               ],
             }
           },

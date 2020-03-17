@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 //   document.getElementById('root')
 // );
 
-ReactDOM.unstable_createRoot(
+ReactDOM.createRoot(
   document.getElementById('root')
 ).render(<Root {...state} />);
 

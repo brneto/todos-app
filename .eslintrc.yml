@@ -97,7 +97,7 @@ overrides:
   -
     files:
       - src/index.js
-      - src/webpack/builders/**
+      - src/webpack/builder/**
       - src/server/**
     rules:
       no-console: 'off'
