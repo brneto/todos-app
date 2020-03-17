@@ -16,9 +16,7 @@
 
   "editor.detectIndentation": false,
 
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   // Render vertical rulers after a certain number of
   // monospace characters. Use multiple values for multiple
