@@ -98,6 +98,7 @@ overrides:
       - plugin:@typescript-eslint/recommended
     rules:
       react/prop-types: 'off'
+      '@typescript-eslint/explicit-function-return-type': 'off'
   -
     files:
       - src/index.js

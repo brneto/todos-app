@@ -9,10 +9,14 @@ interface FeatureRouter {
   isFeatureEnabled(featureKey: FeatureKey): boolean;
 }
 
-export default (featureConfig: FeatureMap): FeatureRouter => ({
-  setFeature(featureKey, isEnabled): void {
-    featureConfig[featureKey] = typeof isEnabled === 'boolean' && isEnabled;
+interface FeatureRouterCreator {
+  (featureConfig: FeatureMap): FeatureRouter;
+}
+
+export default (featureConfig => ({
+  setFeature(featureKey, isEnabled) {
+    featureConfig[featureKey] = typeof isEnabled === 'boolean' && isEnabled
   },
-  isFeatureEnabled: (featureKey): boolean => featureConfig[featureKey] === true,
-});
+  isFeatureEnabled: (featureKey) => featureConfig[featureKey] === true,
+})) as FeatureRouterCreator;
 
