@@ -5,8 +5,8 @@ type FeatureMap = {
 type FeatureKey = keyof FeatureMap;
 
 export default (featureConfig: FeatureMap) => ({
-  setFeature(featureName: FeatureKey, isEnable: boolean): void {
-    featureConfig[featureName] = typeof isEnabled === 'boolean' && isEnabled;
+  setFeature(featureKey: FeatureKey, isEnable: boolean): void {
+    featureConfig[featureKey] = typeof isEnabled === 'boolean' && isEnabled;
   },
-  isFeatureEnabled: (featureName: FeatureKey): boolean => featureConfig[featureName] === true,
+  isFeatureEnabled: (featureKey: FeatureKey): boolean => featureConfig[featureKey] === true,
 });
