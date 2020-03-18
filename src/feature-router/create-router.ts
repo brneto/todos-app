@@ -15,7 +15,7 @@ interface FeatureRouterCreator {
 
 export default (featureConfig => ({
   setFeature(featureKey, isEnabled) {
-    featureConfig[featureKey] = typeof isEnabled === 'boolean' && isEnabled
+    featureConfig[featureKey] = typeof isEnabled === 'boolean' && isEnabled;
   },
   isFeatureEnabled: (featureKey) => featureConfig[featureKey] === true,
 })) as FeatureRouterCreator;
