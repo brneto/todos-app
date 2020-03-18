@@ -4,9 +4,15 @@ type FeatureMap = {
 
 type FeatureKey = keyof FeatureMap;
 
-export default (featureConfig: FeatureMap) => ({
-  setFeature(featureKey: FeatureKey, isEnable: boolean): void {
+interface FeatureRouter {
+  setFeature(featureKey: FeatureKey, isEnabled: boolean): void;
+  isFeatureEnabled(featureKey: FeatureKey): boolean;
+}
+
+export default (featureConfig: FeatureMap): FeatureRouter => ({
+  setFeature(featureKey, isEnabled): void {
     featureConfig[featureKey] = typeof isEnabled === 'boolean' && isEnabled;
   },
-  isFeatureEnabled: (featureKey: FeatureKey): boolean => featureConfig[featureKey] === true,
+  isFeatureEnabled: (featureKey): boolean => featureConfig[featureKey] === true,
 });
+
