@@ -23,6 +23,9 @@ const webpackConfig = merge(commonConfig, {
         sourceMap: true,
         extractComments: true,
         terserOptions: {
+          // Change the output syntax to ES2017
+          ecma: 8,
+          warnings: true,
           compress: {
             warnings: true,
             // Disabled because of an issue with Uglify breaking seemingly valid code:
@@ -31,16 +34,13 @@ const webpackConfig = merge(commonConfig, {
             // https://github.com/mishoo/UglifyJS2/issues/2011
             comparisons: false
           },
-          mangle: {
-            safari10: true
-          },
           output: {
             // Turned on because emoji and regex is not minified properly using default
             // https://github.com/facebook/create-react-app/issues/2488
             ascii_only: true
           },
-          ecma: 8,
-          warnings: true,
+          // Tells Terser to preserve the workarounds
+          safari10: true,
         }
       }),
       new OptimizeCSSAssetsPlugin()
