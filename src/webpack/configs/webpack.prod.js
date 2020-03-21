@@ -39,7 +39,7 @@ const webpackConfig = merge(commonConfig, {
             // https://github.com/facebook/create-react-app/issues/2488
             ascii_only: true
           },
-          // Tells Terser to preserve the workarounds
+          // Tells Terser to preserve some Babel workarounds
           safari10: true,
         }
       }),
