@@ -1,4 +1,4 @@
-declare namespace NodeJS  {
+declare module NodeJS  {
   interface ProcessEnv {
     NODE_ENV: 'development' | 'production' | 'test';
     FEATURE?: boolean;
