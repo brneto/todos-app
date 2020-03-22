@@ -96,6 +96,7 @@ overrides:
       - plugin:@typescript-eslint/recommended
     rules:
       react/prop-types: 'off'
+      import/named: 'off'
       '@typescript-eslint/explicit-function-return-type': 'off'
       '@typescript-eslint/prefer-namespace-keyword': 'off'
   - files:
