@@ -40,8 +40,7 @@ extends:
 rules:
   max-len:
     - 1
-    -
-      code: 100
+    - code: 100
       ignoreComments: true
   no-console: warn
   no-alert: warn
@@ -85,8 +84,7 @@ rules:
     - warn
     - string
 overrides:
-  -
-    files:
+  - files:
       - '*.ts'
       - '*.tsx'
     parser: '@typescript-eslint/parser'
@@ -100,8 +98,7 @@ overrides:
       react/prop-types: 'off'
       '@typescript-eslint/explicit-function-return-type': 'off'
       '@typescript-eslint/prefer-namespace-keyword': 'off'
-  -
-    files:
+  - files:
       - src/index.*
       - src/webpack/builder/**
       - src/server/**
@@ -109,6 +106,5 @@ overrides:
       no-console: 'off'
       no-restricted-syntax:
         - error
-        -
-          selector: CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]
+        - selector: CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]
           message: Unexpected property on console object was called

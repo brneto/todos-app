@@ -1,4 +1,5 @@
 {
+  "parserOpts": { "strictMode": true },
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
@@ -16,7 +17,10 @@
       "bugfixes": true
     }],
     "@babel/preset-react",
-    "@babel/preset-typescript",
+    ["@babel/preset-typescript", {
+      "allowNamespaces": false,
+      "onlyRemoveTypeImports": true
+    }],
     "@emotion/babel-preset-css-prop"
   ]
 }

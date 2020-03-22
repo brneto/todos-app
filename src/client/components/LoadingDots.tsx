@@ -1,5 +1,5 @@
 import React from 'react';
-import * as hooks from '../hooks';
+import { timer } from '../hooks';
 
 type LoadingDotsProps = {
   readonly delay?: number;
@@ -8,7 +8,7 @@ type LoadingDotsProps = {
 };
 
 const LoadingDots: RF<LoadingDotsProps> = ({ delay = 300, length = 3, children }) => {
-  const count = hooks.timer.useCounterUp(delay) % (length + 1); // Custom Hook
+  const count = timer.useCounterUp(delay) % (length + 1); // Custom Hook
 
   return <span>{children + '.'.repeat(count)}&nbsp;</span>;
 };

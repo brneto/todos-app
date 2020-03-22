@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 import moment from 'moment';
-import * as hooks from '../hooks';
+import { sse } from '../hooks';
 
 const
   dynamicHeight = ({ open }) => open && css`
@@ -46,7 +46,7 @@ const
 
 // Server-sent Events component
 function TickerTape({ url }) {
-  const notices = hooks.sse.useNotices(url); // Custom Hook
+  const notices = sse.useNotices(url); // Custom Hook
 
   return (
     <Tape open={notices.length}>

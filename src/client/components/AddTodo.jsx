@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
-import * as hooks from '../hooks';
+import { todos } from '../hooks';
 
 const
   Title = styled.h1`
@@ -43,7 +43,7 @@ const
 
 export function AddTodoPresentation({ dispatch }) {
   // Custom hook:
-  const input = hooks.todos.useAddTodo(dispatch);
+  const input = todos.useAddTodo(dispatch);
 
   return (
     <header>

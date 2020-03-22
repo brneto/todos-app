@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useNotices(url) {
+export function useNotices(url) {
   const [notices, setNotice] = useState([]);
 
   const applyEventDataToState = stateMutator => event => {
@@ -51,5 +51,3 @@ function useNotices(url) {
 
   return notices;
 }
-
-export { useNotices };

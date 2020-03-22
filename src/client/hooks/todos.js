@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { effects } from '../redux/actions';
 
-function useAddTodo(dispatch) {
+export function useAddTodo(dispatch) {
   const
     [todo, setTodo] = useState(''),
     handleChange = ({ target }) => setTodo(target.value),
@@ -19,4 +19,3 @@ function useAddTodo(dispatch) {
   };
 }
 
-export { useAddTodo };

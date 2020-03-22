@@ -1,0 +1,17 @@
+apps:
+  - name: devApp
+    script: src/index.ts
+    interpreter: node_modules/.bin/babel-node
+    node_args: '-x .js,.jsx,.ts,.tsx'
+    autorestart: false
+    watch:
+      - src/index.js
+      - src/webpack
+      - src/server
+    ignore_watch: /__tests__/.*|(\\.|/)(test|spec)\\.[jt]sx?$
+    output: logs/app-out.log
+    error: logs/app-err.log
+    log: logs/app-outerr.log
+    env:
+      NODE_ENV: development
+

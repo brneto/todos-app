@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function useCounterUp(delay, initial = 1) {
+export function useCounterUp(delay, initial = 1) {
   const [count, setCount] = useState(initial);
 
   useEffect(() => {
@@ -17,5 +17,3 @@ function useCounterUp(delay, initial = 1) {
 
   return count;
 }
-
-export { useCounterUp };
