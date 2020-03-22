@@ -1,6 +1,8 @@
 {
   // Sets the package manager to use to install node modules
   "eslint.packageManager": "yarn",
+  "eslint.debug": true,
+  "tslint.enable": false,
 
   // Specifies the color theme used in the workbench.
   "workbench.colorTheme": "Oceanic Next (dimmed bg)",
