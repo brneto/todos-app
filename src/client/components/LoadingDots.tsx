@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/named
 import { timer } from '../hooks';
 
 type LoadingDotsProps = {
