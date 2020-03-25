@@ -81,6 +81,7 @@ const
     isLoading: status === 'pending',
     isResolved: status === 'resolved',
     isRejected: status === 'rejected',
+    ...status
   })),
   getError = createSelector([prop('error')], identity);
 
