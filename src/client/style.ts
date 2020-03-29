@@ -4,7 +4,6 @@ type Theme = {
   background: string;
   color: string;
   fontSize?: string;
-
 }
 
 const globalStyle = (theme: Theme) => css`
