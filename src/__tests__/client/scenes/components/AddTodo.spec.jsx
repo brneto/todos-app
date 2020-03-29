@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import { AddTodoPresentation } from '../../../client/components/AddTodo';
+import { AddTodoPresentation } from '../../../../client/scenes/todos/components';
 
 describe('components/AddTodo', () => {
   it('should call handle methods', () => {

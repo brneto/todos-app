@@ -1,5 +1,5 @@
 import { normalize } from 'normalizr';
-import { todo, todoList } from '../../../client/libs/schema';
+import { todo, todoList } from '../../../../client/redux/sagas/todo-schemas';
 
 describe('schema', () => {
   test('list of todos', () => {

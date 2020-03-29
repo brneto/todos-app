@@ -1,5 +1,5 @@
 import React from 'react';
-import { timer } from '../hooks';
+import { timer } from './hooks';
 
 type LoadingDotsProps = {
   readonly delay?: number;

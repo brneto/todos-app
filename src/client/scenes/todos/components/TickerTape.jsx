@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { css, keyframes } from '@emotion/core';
 import styled from '@emotion/styled';
 import moment from 'moment';
-import { sse } from '../hooks';
+import { sse } from './hooks';
 
 const
   dynamicHeight = ({ open }) => open && css`

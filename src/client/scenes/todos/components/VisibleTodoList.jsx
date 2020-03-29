@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from '@emotion/styled';
-import { effects } from '../redux/actions';
+import { effects } from '../../../redux/actions';
 import {
   getFetchStatus,
   getError,
-  getVisibleTodos } from '../redux/reducers';
+  getVisibleTodos } from '../../../redux/reducers';
+import { LoadingDots } from '../../../components';
 import TodoList from './TodoList';
-import LoadingDots from './LoadingDots';
 import FetchError from './FetchError';
 
 const

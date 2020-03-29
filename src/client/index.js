@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './components/Root';
+import App from './App';
 import * as state from './redux/store';
 import * as serviceWorker from './serviceWorker';
 
+// https://medium.com/@alexmngn/how-to-better-organize-your-react-applications-2fd3ea1920f1
 ReactDOM.render(
-  <Root {...state} />,
+  <App {...state} />,
   document.getElementById('root')
 );
 

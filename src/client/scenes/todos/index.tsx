@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import AddTodo from './AddTodo';
-import VisibleTodoList from './VisibleTodoList';
-import Footer from './Footer';
-import TickerTape from './TickerTape';
+import { AddTodo, VisibleTodoList, Footer, TickerTape } from './components';
 
 const
-  TodoApp = styled.div`
+  PageStyle = styled.div`
     position: relative;
     margin: 130px 0 40px 0;
     background: #fff;
@@ -16,13 +13,13 @@ const
   `;
 
 const
-  App = () => (
-    <TodoApp>
+  TodoPage = () => (
+    <PageStyle>
       <AddTodo />
       <VisibleTodoList />
       <Footer />
       <TickerTape url="api/sse" />
-    </TodoApp>
+    </PageStyle>
   );
 
-export default App;
+export default TodoPage;

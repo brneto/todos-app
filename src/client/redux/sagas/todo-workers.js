@@ -3,7 +3,7 @@ import { all, call, put, select, cancel } from 'redux-saga/effects';
 import { commands, events, documents } from '../actions';
 import * as selectors from '../reducers';
 import * as api from '../../api';
-import * as schema from '../../libs/schema';
+import * as schemas from './todo-schemas';
 
 function* fetchTodos({ payload: filter }) {
   try {
@@ -15,7 +15,7 @@ function* fetchTodos({ payload: filter }) {
 
     const
       response = yield call(api.todos.fetchTodos, filter),
-      data = normalize(response, schema.todoList);
+      data = normalize(response, schemas.todoList);
 
     yield put(documents.todosFetched(data, filter));
     yield put(events.succeedFetch(filter));
@@ -33,7 +33,7 @@ function* addTodo({ payload: text }) {
 
     const
       response = yield call(api.todos.addTodo, text),
-      data = normalize(response, schema.todo);
+      data = normalize(response, schemas.todo);
 
     yield put(documents.todoAdded(data, filter));
   } catch (error) {
@@ -49,7 +49,7 @@ function* toggleTodo({ payload: id }) {
 
     const
       response = yield call(api.todos.toggleTodo, id),
-      data = normalize(response, schema.todo);
+      data = normalize(response, schemas.todo);
 
     yield updateFilterLists(data);
     yield put(documents.todoToggled(data, filter));

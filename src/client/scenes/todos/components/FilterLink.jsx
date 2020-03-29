@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { css } from '@emotion/core';
-import { effects } from '../redux/actions';
+import { effects } from '../../../redux/actions';
 
 const
   linkStyle = css`

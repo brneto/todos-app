@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
-import { todos } from '../hooks';
+import { todos } from './hooks';
 
 const
   Title = styled.h1`

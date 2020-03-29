@@ -3,7 +3,7 @@ import { testSaga } from 'redux-saga-test-plan';
 import { normalize } from 'normalizr';
 import { effects, commands, events, documents } from '../../../../client/redux/actions';
 import * as selectors from '../../../../client/redux/reducers';
-import * as schema from '../../../../client/libs/schema';
+import * as schemas from '../../../../client/redux/sagas/todo-schemas';
 import * as sagas from '../../../../client/redux/sagas/todo-workers';
 import * as api from '../../../../client/api';
 
@@ -16,7 +16,7 @@ describe('sagas/todosWorkers', () => {
         { id: 2, text: 'ho', completed: true },
         { id: 3, text: 'let\'s go', completed: false },
       ],
-      data = normalize(response, schema.todoList);
+      data = normalize(response, schemas.todoList);
 
     testSaga(sagas.fetchTodos, effects.fetchTodos(filter))
     .next()
@@ -47,7 +47,7 @@ describe('sagas/todosWorkers', () => {
         { id: 2, text: 'ho', completed: true },
         { id: 3, text: 'let\'s go', completed: false },
       ],
-      data = normalize(response, schema.todoList);
+      data = normalize(response, schemas.todoList);
 
     // when-then
     testSaga(sagas.fetchTodos, effects.fetchTodos())
@@ -90,7 +90,7 @@ describe('sagas/todosWorkers', () => {
       filter = 'all',
       text = 'Test',
       response = { id: 1, text, completed: false },
-      data = normalize(response, schema.todo);
+      data = normalize(response, schemas.todo);
 
     testSaga(sagas.addTodo, effects.addTodo(text))
     .next()
@@ -108,7 +108,7 @@ describe('sagas/todosWorkers', () => {
       filter = 'all',
       id = 1,
       response = { id: 1, text: 'Test', completed: false },
-      data = normalize(response, schema.todo);
+      data = normalize(response, schemas.todo);
 
     try {
       testSaga(sagas.toggleTodo, effects.toggleTodo(id))
@@ -135,7 +135,7 @@ describe('sagas/todosWorkers', () => {
       filter = 'all',
       id = 1,
       response = { id: 1, text: 'Test', completed: true },
-      data = normalize(response, schema.todo);
+      data = normalize(response, schemas.todo);
 
     try {
       testSaga(sagas.toggleTodo, effects.toggleTodo(id))

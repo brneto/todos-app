@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { map, compose, o, prop, defaultTo, identity, juxt, apply } from 'ramda';
 import { connectRouter, createMatchSelector } from 'connected-react-router';
 import { createSelector } from 'reselect';
-import * as routes from '../../libs/routes';
+import * as routes from '../../routes';
 import byId, * as fromById from './by-id';
 import createList, * as fromList from './create-list';
 
