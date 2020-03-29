@@ -38,7 +38,7 @@ const globalStyle = (theme: Theme) => css`
   }
 `;
 
-const main = {
+const main: Theme = {
   background: '#f5f5f5',
   color: '#4d4d4d',
 };
