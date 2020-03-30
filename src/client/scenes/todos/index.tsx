@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { AddTodo, VisibleTodoList, Footer, TickerTape } from './components';
 
 const
-  Scene = styled.div`
+  Article = styled.article`
     position: relative;
     margin: 130px 0 40px 0;
     background: #fff;
@@ -14,12 +14,12 @@ const
 
 const
   TodoPage = () => (
-    <Scene>
+    <Article>
       <AddTodo />
       <VisibleTodoList />
       <Footer />
       <TickerTape url="api/sse" />
-    </Scene>
+    </Article>
   );
 
 export default TodoPage;

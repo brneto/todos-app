@@ -1,14 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/AddTodo should call handle methods 1`] = `
-<header>
-  <h1
-    class="css-1ehvoim-Title eh3xbd90"
-  >
+<header
+  class="css-mcermw-Header eh3xbd90"
+>
+  <h1>
     todos
   </h1>
   <input
-    class="css-1kf7jnq-Input eh3xbd91"
     name="todo"
     placeholder="What needs to be done?"
     value=""

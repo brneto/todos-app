@@ -8,7 +8,7 @@ import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import globalStyle, * as themes from './style';
 import * as routes from './routes';
-import { WithHooks, WithoutHooks, Todos } from './scenes';
+import { WithHooks, WithoutHooks, TodoPage } from './scenes';
 
 const
   propTypes = {
@@ -26,7 +26,7 @@ const
             <Switch>
               <Route {...routes.noHook} component={WithoutHooks} />
               <Route {...routes.hook} component={WithHooks} />
-              <Route {...routes.main} component={Todos} />
+              <Route {...routes.main} component={TodoPage} />
             </Switch>
           </ConnectedRouter>
         </Provider>
