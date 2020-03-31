@@ -62,6 +62,8 @@ rules:
     - single
     - allowTemplateLiterals: true
   babel/semi: error
+  # https://github.com/benmosher/eslint-plugin-import/issues/251
+  import/named: 'off'
   import/order:
     - warn
     - groups:
@@ -97,7 +99,6 @@ overrides:
       - plugin:@typescript-eslint/recommended
     rules:
       react/prop-types: 'off'
-      import/named: 'off'
       '@typescript-eslint/explicit-function-return-type': 'off'
       '@typescript-eslint/prefer-namespace-keyword': 'off'
   - files:
