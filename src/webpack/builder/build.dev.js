@@ -23,13 +23,12 @@ export default new Promise(resolve => {
     heartbeat: 1000
   });
 
+  const green = chalk.green;
   devMiddleware.waitUntilValid(() => {
-    console.info(chalk.green(
-      'Your app has been compiled in development mode and written into memory.'
-    ));
+    console.info(green('Your app has been compiled in development mode and written into memory.'));
     devMiddleware.fileSystem
       .readdirSync(configs.dev.output.path)
-      .forEach(f => console.info(chalk.green('build.dev:', 'devMiddlewareFileSystem =', f)));
+      .forEach(f => console.info(green('build.dev:', 'devMiddlewareFileSystem =', f)));
 
     const resourceBuffer =
       devMiddleware.fileSystem
