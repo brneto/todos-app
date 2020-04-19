@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { AddTodo, VisibleTodoList, Footer, TickerTape } from './components';
+import { AddTodo, VisibleTodoList, FilterList, TickerTape } from './components';
 
 const
   Article = styled.article`
@@ -17,7 +17,7 @@ const
     <Article>
       <AddTodo />
       <VisibleTodoList />
-      <Footer />
+      <FilterList />
       <TickerTape url="api/sse" />
     </Article>
   );

@@ -12,13 +12,13 @@ import TodoList from './TodoList';
 import FetchError from './FetchError';
 
 const
-  OnProgress = styled.p`
-    margin-left: 1em;
-  `,
   Section = styled.section`
     position: relative;
     border-top: 1px solid #e6e6e6;
     z-index: 2;
+  `,
+  OnProgress = styled.p`
+    margin-left: 1em;
   `;
 
 const

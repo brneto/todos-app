@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/AddTodo should call handle methods 1`] = `
-<header
-  class="css-mcermw-Header eh3xbd90"
+<section
+  class="css-1co91pt-Section eh3xbd90"
 >
   <h1>
     todos
@@ -12,5 +12,5 @@ exports[`components/AddTodo should call handle methods 1`] = `
     placeholder="What needs to be done?"
     value=""
   />
-</header>
+</section>
 `;

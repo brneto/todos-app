@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { todos } from './hooks';
 
 const
-  Header = styled.header`
+  Section = styled.section`
     & > h1 {
       position: absolute;
       top: -155px;
@@ -49,10 +49,10 @@ export function AddTodoPresentation({ dispatch }) {
   const input = todos.useAddTodo(dispatch);
 
   return (
-    <Header>
+    <Section>
       <h1>todos</h1>
       <input name="todo" placeholder="What needs to be done?" {...input} />
-    </Header>
+    </Section>
   );
 }
 AddTodoPresentation.propTypes = propTypes;
