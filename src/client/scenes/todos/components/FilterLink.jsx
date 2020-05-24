@@ -28,12 +28,12 @@ const
 const
   subscribe = connect(null, { fetchTodos: effects.fetchTodos }),
   propTypes = {
-    filter: PropTypes.string.isRequired,
     children: PropTypes.string.isRequired,
+    filter: PropTypes.string.isRequired,
     fetchTodos: PropTypes.func.isRequired,
   };
 
-const FilterLink = ({ filter, children, fetchTodos }) => (
+const FilterLink = ({ children, filter, fetchTodos }) => (
   <NavLink
     css={linkStyle}
     activeStyle={activeStyle}

@@ -12,14 +12,13 @@ const
       0 25px 50px 0 rgba(0, 0, 0, .1);
   `;
 
-const
-  TodoPage = () => (
-    <Article>
-      <AddTodo />
-      <VisibleTodoList />
-      <FilterList />
-      <TickerTape url="api/sse" />
-    </Article>
-  );
+const TodoPage = () => (
+  <Article>
+    <AddTodo />
+    <VisibleTodoList />
+    <FilterList />
+    <TickerTape url="api/sse" />
+  </Article>
+);
 
 export default TodoPage;
