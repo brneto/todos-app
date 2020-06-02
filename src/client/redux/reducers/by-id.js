@@ -1,8 +1,8 @@
 import { combineActions, handleActions } from 'redux-actions';
-import { flip, prop, identity } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import { documents } from '../actions';
+import { identity } from './util';
 
 const
   { todosFetched, todoAdded, todoToggled } = documents,
@@ -18,8 +18,10 @@ const
   );
 
 // SELECTORS
-// flip(prop) :: {s: a} -> s -> a | Undefined
-const createGetTodo = createSelector([flip(prop)], identity);
+const createGetTodo = createSelector(
+  identity,
+  state => id => state[id]
+);
 
 export {
   byId as default,

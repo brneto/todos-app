@@ -1,4 +1,4 @@
-import { identity } from 'ramda';
+import { identity } from '../reducers/util';
 
 // actionCreator :: type -> (data, filter | undefined) -> {
 //   type: 'COMMAND' | 'DOCUMENT' | 'EVENT' | 'SIDE_EFFECT',

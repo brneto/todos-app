@@ -154,7 +154,9 @@ const commonConfig = {
   },
   plugins: [
     // Copies individual files, which already exist, to the build directory
-    new CopyPlugin(['public/config.js']),
+    new CopyPlugin({
+      patterns: ['public/config.js']
+    }),
 
     // Generate an external css file
     new MiniCssExtractPlugin({

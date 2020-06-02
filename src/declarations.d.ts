@@ -7,9 +7,9 @@ declare module NodeJS  {
 
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/34237
 // Define a singular something (static typing)
-type RF<P = {}> = ReactFunction<P>;
+type RF<P = unknown> = ReactFunction<P>;
 
 // Define the shape of something (duck typing)
-interface ReactFunction<P = {}> {
+interface ReactFunction<P = unknown> {
   (props: P): React.ReactElement;
 }

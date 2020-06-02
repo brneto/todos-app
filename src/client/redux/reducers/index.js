@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { map, compose, o, prop, defaultTo, identity, juxt, apply } from 'ramda';
 import { connectRouter, createMatchSelector } from 'connected-react-router';
 import { createSelector } from 'reselect';
 import * as routes from '../../routes';
 import byId, * as fromById from './by-id';
 import createList, * as fromList from './create-list';
+import { identity } from './util';
 
 const listByFilter = combineReducers({
   all: createList('all'),
@@ -29,32 +29,31 @@ const getFilter = createSelector(
   //   strict, // optional, defaults to false
   //   exact // optional, defaults to false
   // }
-  [createMatchSelector({ ...routes.main })],
-  compose(defaultTo('all'), prop('filter'), prop('params'))
+  createMatchSelector({ ...routes.main }),
+  matchSelector => matchSelector.params.filter ?? 'all'
   //
 );
 
 const getListByFilter = createSelector(
-  [o(apply(prop), juxt([getFilter, prop('listByFilter')]))],
-  identity
+  identity,
+  getFilter,
+  (state, filter) => state.listByFilter[filter]
 );
 
 const getVisibleTodos = createSelector(
-  [
-    o(fromById.createGetTodo, prop('byId')),
-    o(fromList.getIds, getListByFilter),
-  ],
-  map
+  getListByFilter,
+  state => fromById.createGetTodo(state.byId),
+  (listByFilter, getTodo) => fromList.getIds(listByFilter).map(getTodo)
 );
 
 const getFetchStatus = createSelector(
-  [o(fromList.getFetchStatus, getListByFilter)],
-  identity
+  getListByFilter,
+  listByFilter => fromList.getFetchStatus(listByFilter)
 );
 
 const getError = createSelector(
-  [o(fromList.getError, getListByFilter)],
-  identity
+  getListByFilter,
+  listByFilter => fromList.getError(listByFilter)
 );
 
 export {

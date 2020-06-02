@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import { combineActions, handleActions } from 'redux-actions';
-import { prop, identity, equals, always } from 'ramda';
 import { produce } from 'immer';
 import { createSelector } from 'reselect';
 import { commands, events, documents } from '../actions';
+import { identity } from './util';
+
+const always = value => () => value;
 
 const createList = filter => {
-  const isFilter = equals(filter);
+  const isFilter = value => filter === value;
 
   const ids = handleActions(
       {
@@ -73,17 +75,25 @@ const createList = filter => {
 };
 
 // SELECTORS
-// prop :: s -> {s: a} -> a | Undefined
 const
-  getIds = createSelector([prop('ids')], identity),
-  getFetchStatus = createSelector([prop('fetchStatus')], status => ({
-    isIdle: status === 'idle',
-    isLoading: status === 'pending',
-    isResolved: status === 'resolved',
-    isRejected: status === 'rejected',
-    ...status
-  })),
-  getError = createSelector([prop('error')], identity);
+  getIds = createSelector(
+    identity,
+    state => state.ids
+  ),
+  getFetchStatus = createSelector(
+    state => state.fetchStatus,
+    status => ({
+      isIdle: status === 'idle',
+      isLoading: status === 'pending',
+      isResolved: status === 'resolved',
+      isRejected: status === 'rejected',
+      ...status
+    })
+  ),
+  getError = createSelector(
+    identity,
+    state => state.error
+  );
 
 export {
   createList as default,

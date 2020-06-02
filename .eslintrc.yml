@@ -25,7 +25,6 @@ env:
   jest: true
 plugins:
   - babel
-  - ramda
   - redux-saga
   - react-hooks
   - emotion
@@ -35,7 +34,6 @@ extends:
   - plugin:import/warnings
   - plugin:react/recommended
   - plugin:jsx-a11y/recommended
-  - plugin:ramda/recommended
   - plugin:redux-saga/recommended
 rules:
   max-len:
