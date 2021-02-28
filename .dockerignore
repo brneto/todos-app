@@ -1,0 +1,12 @@
+**
+!package.json
+!yarn.lock
+!ecosystem.config.yml
+!babel.config.json
+!.eslintrc.yml
+!.stylelintrc.yml
+!tsconfig.json
+!tests.setup.js
+!public/**
+!src/**
+
