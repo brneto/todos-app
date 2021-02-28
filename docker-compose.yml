@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  todos:
+    container_name: todos-app
+    image: todos-app:latest
+    build:
+      context: .
+      target: dev
+    ports:
+      - "3000:3000"
+    volumes:
+    - ./src/:/app/src

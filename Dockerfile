@@ -1,9 +1,11 @@
-FROM node:12.2.0
-WORKDIR /app
-COPY . ./
+FROM node:12.2.0 as base
 
-RUN yarn global add pm2 npm-run-all eslint
+WORKDIR /app
+
+COPY . /app/
 RUN yarn
 
+################ NEW IMAGE: DEVELOPMENT ##################
+FROM base as dev
 EXPOSE 3000
 ENTRYPOINT ["yarn", "start"]
