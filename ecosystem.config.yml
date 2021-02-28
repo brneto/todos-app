@@ -1,6 +1,6 @@
 apps:
   - name: devApp
-    script: src/index.ts
+    script: src/index.js
     interpreter: node_modules/.bin/babel-node
     node_args: '-x .js,.jsx,.ts,.tsx'
     autorestart: false

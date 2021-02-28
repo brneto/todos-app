@@ -9,7 +9,7 @@
     "reach": "git pull && yarn && yarn outdated",
     "upgi": "yarn upgrade-interactive --latest",
     "lint": "run-s lint:*",
-    "lint:js": "eslint src",
+    "lint:js": "eslint src/*",
     "lint:css": "stylelint src/client/**/*.js",
     "test": "jest",
     "watch:test": "TERM=dumb yarn test --watch",
