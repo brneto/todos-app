@@ -3,8 +3,9 @@ A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React
 
 ## Table of Contents
 - [Getting Started](#getting-started)
+  - [Requirements](#requirements) 
   - [Usage](#usage)
-  - [Build](#build)
+  - [Production](#Production)
 - [Documentation](#documentation)
   - [Introduction](#introduction)
   - [Reducer + Flux = Redux](#reducer-flux-redux)
@@ -18,35 +19,33 @@ A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React
 
 ## Getting Started
 
+### Requirements
+
+:whale: [Docker](https://www.docker.com)
+
+[Docker-Compose](https://docs.docker.com/compose)
+
 ### Usage
-Download modules:
-```
-$ yarn
-```
-
-Run app server in development:
-
-On Linux:
-```
-$ yarn start
-```  
-On Windows:
-```
-$ npx babel-node src/index.js
+Run app server in development mode:
+```shell
+$ docker-compose up -d
 ```
 
 Stop app server:
-```
-$ yarn stop
-```
-
-### Build
-```
-$ yarn build
+```shell
+$ docker-compose stop todos
 ```
 
-Generated files will be in the `dist` folder.
+### Production
+Build:
+```shell
+$ docker build -t todos-app:latest --target prod .
+```
 
+Run:
+```shell
+$ docker run --rm --name todos-app todos-app:latest
+```
 ## Documentation
 
 ### Introduction
@@ -75,17 +74,17 @@ The **Controller** receives the User requests, manipulate the **Model** and **Vi
 
 This pattern is great for most cases but it have drawbacks when you dealing with a complex UI with huge numbers of Views. For more information about some of those drawbacks [take a look on this Facebook presentation](https://www.youtube.com/watch?v=nYkdrAPrdcw&list=PL0quQQvRxrDy-OFYe-ZNmD9f1onAHSUNH).
 ## Libraries
-:atom_symbol: [React](https://reactjs.org/)
+:atom_symbol: [React](https://reactjs.org)
 
-:hammer_and_wrench: [Lodash](https://lodash.com/)
+:hammer_and_wrench: [Lodash](https://lodash.com)
 
-:ram: [Ramda](https://ramdajs.com/)
+:ram: [Ramda](https://ramdajs.com)
 
-:woman_singer: [Emotion](https://emotion.sh/)
+:woman_singer: [Emotion](https://emotion.sh)
 
 :gift: [React Router v4](https://github.com/ReactTraining/react-router)
 
-:electron: [Redux](https://redux.js.org/)
+:electron: [Redux](https://redux.js.org)
 
 :gem: [Immer](https://github.com/mweststrate/immer)
 
@@ -93,49 +92,50 @@ This pattern is great for most cases but it have drawbacks when you dealing with
 
 :robot: [Reselect](https://github.com/reduxjs/reselect)
 
-:punch: [Redux Actions](https://redux-actions.js.org/)
+:punch: [Redux Actions](https://redux-actions.js.org)
 
-:atom: [Redux Saga](https://redux-saga.js.org/)
+:atom: [Redux Saga](https://redux-saga.js.org)
 
 :wavy_dash: [Connected React Router](https://github.com/supasate/connected-react-router)
 
-:hourglass: [Moment](https://github.com/moment/moment/)
+:hourglass: [Moment](https://github.com/moment/moment)
 
-:running: [Express](http://expressjs.com/)
+:running: [Express](http://expressjs.com)
 
 :satellite: [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events)
 
 :package: [ES Module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 ## Development Aid Tools
-[ESLint](https://eslint.org/)
 
-[Stylelint](https://stylelint.io/)
+[ESLint](https://eslint.org)
 
-[Babel](https://babeljs.io/)
+[Stylelint](https://stylelint.io)
 
-[TypeScript](https://www.typescriptlang.org/)
+[Babel](https://babeljs.io)
 
-[Webpack](https://webpack.js.org/)
+[TypeScript](https://www.typescriptlang.org)
 
-[PostCSS](https://postcss.org/)
+[Webpack](https://webpack.js.org)
+
+[PostCSS](https://postcss.org)
 
 [Hard Source Webpack Plugin](https://github.com/mzgoddard/hard-source-webpack-plugin)
 
-[Workbox](https://developers.google.com/web/tools/workbox/)
+[Workbox](https://developers.google.com/web/tools/workbox)
 
 [Autoprefixer](https://github.com/postcss/autoprefixer)
 
 [CSS Hot Loader](https://github.com/shepherdwind/css-hot-loader)
 
-[PM2](http://pm2.keymetrics.io/)
+[PM2](http://pm2.keymetrics.io)
 
 [Redux Logger](https://github.com/evgenyrodionov/redux-logger)
 
 [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ## Testing Tools
-:black_joker: [Jest](https://jestjs.io/)
+:black_joker: [Jest](https://jestjs.io)
 
 :goat: [React Testing Library](https://github.com/kentcdodds/react-testing-library)
 
@@ -145,9 +145,9 @@ This pattern is great for most cases but it have drawbacks when you dealing with
 
 :snowflake: [Deep Freeze](https://github.com/substack/deep-freeze)
 
-:book: [Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com/)
+:book: [Redux Saga Test Plan](http://redux-saga-test-plan.jeremyfairbank.com)
 
-[Watchman](https://facebook.github.io/watchman/)
+[Watchman](https://facebook.github.io/watchman)
 
 ## Contributing
 Bugs, feature requests and more, in [GitHub Issues](https://github.com/brneto/todos-app/issues).
