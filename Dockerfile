@@ -11,6 +11,7 @@ FROM base AS dev
 RUN yarn global add pm2@4.3.0 npm-run-all@4.1.5 eslint@7.1.0
 RUN yarn
 
+EXPOSE 9229
 ENV NODE_ENV=development
 ENTRYPOINT ["yarn", "start"]
 

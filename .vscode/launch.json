@@ -8,8 +8,10 @@
         "type": "node",
         "request": "launch",
         "name": "Node",
+        "address": "localhost",
+        "port": 9229,
         "program": "${workspaceFolder}/src/index.js",
-        "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/babel-node",
+        // "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/babel-node",
         "console": "integratedTerminal",
         "env": {
           "NODE_ENV": "development"
