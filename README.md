@@ -31,7 +31,7 @@ Run app server in development mode:
 $ docker-compose up -d
 ```
 
-Stop app server:
+Stop the development app server:
 ```shell
 $ docker-compose stop todos
 ```
@@ -44,7 +44,12 @@ $ docker build -t todos-app:latest --target prod .
 
 Run:
 ```shell
-$ docker run --rm --name todos-app todos-app:latest
+$ docker run --rm --name todos-app -p 3000:3000 -d todos-app:latest
+```
+
+Stop:
+```shell
+$ docker stop todos-app
 ```
 ## Documentation
 
