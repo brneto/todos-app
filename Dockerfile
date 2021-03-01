@@ -5,7 +5,17 @@ WORKDIR /app
 COPY . /app/
 RUN yarn
 
-################ NEW IMAGE: DEVELOPMENT ##################
-FROM base as dev
 EXPOSE 3000
+
+################ IMAGE-STAGE: DEVELOPMENT ##################
+FROM base as dev
 ENTRYPOINT ["yarn", "start"]
+
+################ IMAGE-STAGE: PRODUCTION ##################
+FROM base as prod
+
+RUN yarn build
+RUN rm -rf /app/src
+
+ENV NODE_ENV=production
+ENTRYPOINT ["node", "/app/dist/index.js"]
