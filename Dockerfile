@@ -1,23 +1,28 @@
-FROM node:12.2.0 as base
+FROM node:12.2.0 AS base
 
-WORKDIR /app
-
-COPY . /app/
-RUN yarn
+WORKDIR /app/base
+COPY . /app/base/
 
 EXPOSE 3000
 
 ################ IMAGE-STAGE: DEVELOPMENT ##################
-FROM base as dev
+FROM base AS dev
+
+RUN yarn global add pm2@4.3.0 npm-run-all@4.1.5 eslint@7.1.0
+RUN yarn
+
+ENV NODE_ENV=development
 ENTRYPOINT ["yarn", "start"]
 
 ################ IMAGE-STAGE: PRODUCTION ##################
-FROM base as prod
+FROM base AS prod
 
 RUN yarn build
-RUN rm -rf /app/src
-COPY ./src/webpack /app/
+
+WORKDIR /app
+RUN mv ./base/package.json ./base/dist/* .
+RUN rm -rf ./base
+RUN yarn --prod
 
 ENV NODE_ENV=production
-# ENTRYPOINT ["node", "/app/dist/index.js"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["node", "index.js"]
