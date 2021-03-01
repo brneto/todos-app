@@ -16,6 +16,8 @@ FROM base as prod
 
 RUN yarn build
 RUN rm -rf /app/src
+COPY ./src/webpack /app/
 
 ENV NODE_ENV=production
-ENTRYPOINT ["node", "/app/dist/index.js"]
+# ENTRYPOINT ["node", "/app/dist/index.js"]
+ENTRYPOINT ["/bin/bash"]
