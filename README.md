@@ -133,7 +133,7 @@ This pattern is great for most cases but it have drawbacks when you dealing with
 
 [CSS Hot Loader](https://github.com/shepherdwind/css-hot-loader)
 
-[PM2](http://pm2.keymetrics.io)
+[nodemon](https://nodemon.io)
 
 [Redux Logger](https://github.com/evgenyrodionov/redux-logger)
 
