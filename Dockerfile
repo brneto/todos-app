@@ -2,7 +2,7 @@ FROM node:12.2.0 AS base
 
 WORKDIR /app/base
 COPY . /app/base/
-RUN yarn global add pm2@4.3.0 npm-run-all@4.1.5 eslint@7.1.0
+RUN yarn global add npm-run-all@4.1.5 eslint@7.1.0
 RUN yarn
 EXPOSE 3000
 
