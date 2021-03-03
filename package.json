@@ -15,7 +15,7 @@
     "watch:test": "TERM=dumb yarn test --watch",
     "rmcache": "rm -rf node_modules/.cache dist",
     "prestart": "yarn rmcache && yarn lint && yarn test",
-    "start": "nodemon -V -w 'src/webpack' -w 'src/server' -x 'babel-node -x .js,.jsx,.ts,.tsx' src/index.js",
+    "start": "nodemon -V -w 'src/webpack' -w 'src/server' -x 'babel-node --inspect=0.0.0.0 -x .js,.jsx,.ts,.tsx' src/index.js",
     "prebuild": "yarn prestart",
     "build": "run-s build:*",
     "build:client": "NODE_ENV=building babel-node src/index.js",

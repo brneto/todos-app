@@ -6,10 +6,10 @@
     "configurations": [
       {
         "address": "localhost",
-        "localRoot": "${workspaceFolder}",
+        "localRoot": "${workspaceFolder}/src/server",
         "name": "Node",
         "port": 9229,
-        "remoteRoot": "${workspaceFolder}",
+        "remoteRoot": "/app/base/src/server",
         "request": "attach",
         "skipFiles": [
           "<node_internals>/**"
