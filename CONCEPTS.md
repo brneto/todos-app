@@ -97,7 +97,7 @@ let newObj = new MyClass();
 newObj.arrowFunc(); // MyClass {...}
 ```
 
-## Implications of `this` keyword in function vs arrow function
+## Implications of `this` keyword in _function_ vs _arrow function_
 ```javascript
 class MyClass { // Does create a new scope
     ordinaryFunc() {
