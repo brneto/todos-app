@@ -1,4 +1,4 @@
-# Basic JavaScript
+# JavaScript Concepts
 
 ## Scope
 In JavaScript is the same as the current _"context of execution"_.
