@@ -3,7 +3,7 @@
 ## Scope
 In JavaScript is the same as the current _"context of execution"_.
 Because of the single thread nature of JavaScript language,
-**only function declarations create a new scope** or _"execution context"_.
+**only function declarations create a new scope or _"execution context"_**.
 
 ## Closure
 Is a technique in which a language stores a function together with its
@@ -46,21 +46,23 @@ function ordinaryFunc() { // Creates a new scope (execution context)
 ordinaryFunc(); // undefined, window {...} (or the global object)
 ```
 
+Unbound inner function:
+```javascript
+function func() { // Creates a new scope (execution context)
+    const innerFunc = function() { // Creates a new scope (execution context)
+        console.log(this);
+    }
+    innerFunc();
+}
+const obj = { x: 'bar', y: 'foo' };
+innerFunc.call(obj); // undefined, window {...} (or the global object)
+```
 Object bound function:
 ```javascript
-let obj = { // Does not create a new scope (execution context)
+const obj = { // Does not create a new scope (execution context)
     ordinaryFunc() { console.log(this); }
 }
 obj.ordinayFunc(); // obj {...}
-```
-
-Class bound function:
-```javascript
-class MyClass { // Creates a new scope (execution context)
-    ordinaryFunc() { console.log(this); }
-}
-const newObj = new MyClass();
-newObj.ordinayFunc(); // MyClass {...}
 ```
 
 ## `this` keyword in arrow function
@@ -69,8 +71,18 @@ they are defined within.
 
 Unbound arrow function:
 ```javascript
-let arrowFunc = () => console.log(this);
+const arrowFunc = () => console.log(this);
 arrowFunc(); // undefined, window {...} (or the global object)
+```
+
+Unbound inner arrow function:
+```javascript
+function func() { // Creates a new scope (execution context)
+    const arrowFunc = () => console.log(this);
+    arrowFunc();
+}
+const obj = { x: 'bar', y: 'foo' };
+innerFunc.call(obj); // { x: 'bar', y: 'foo' }
 ```
 
 Object bound arrow function:
@@ -79,39 +91,4 @@ let obj = { // Does not create a new scope (execution context)
     arrowFunc: () => console.log(this),
 }
 obj.arrowFunc(); // undefined, window {...} (or the global object)
-```
-
-Lazily bound inner arrow function:
-```javascript
-function innerArrowFunc() { // Creates a new scope (execution context)
-    let arrowFunc = () => console.log(this);
-    arrowFunc();
-}
-const obj = { x: 'bar', y: 'foo' };
-innerArrowFunc.call(obj); // { x: 'bar', y: 'foo' }
-```
-
-Class bound arrow function:
-```javascript
-class MyClass { // Creates a new scope (execution context)
-    arrowFunc = () => console.log(this);
-}
-let newObj = new MyClass();
-newObj.arrowFunc(); // MyClass {...}
-```
-
-## Implications of `this` keyword in _function_ and _arrow function_ within a class
-```javascript
-class MyClass { // Creates a new scope (execution context)
-    ordinaryFunc() {
-        let innerFunc = function() { console.log(this); }
-        const innerArrowFunc = () => console.log(this);
-        
-        innerFunc(); // undefined
-        innerArrowFunc(); // MyClass {...}
-        console.log(this); // MyClass {...}
-    };
-}
-let newObj = new MyClass();
-newObj.ordinaryFunc();
 ```
