@@ -77,7 +77,7 @@ myObj.myFunc(); // undefined, window {...} (or the global object)
 Arrow functions establish `this` based on its enclosing _lexical context_
 (lexical scope or static scope).
 
-Arrow function bound `this` during its creation and retains it:
+`this` is bound during creation and retains its value:
 ```javascript
 // Lexical context
 const myObj = { // Does not create a new scope
