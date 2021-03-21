@@ -62,7 +62,7 @@ Object bound function:
 const myObj = { // Does not create a new scope (execution context)
     myFunc() { console.log(this); }
 }
-myObj.myFunc(); // obj {...}
+myObj.myFunc(); // myObj {...}
 ```
 
 ## `this` keyword in arrow function
@@ -81,8 +81,8 @@ function myFunc() { // Creates a new scope (execution context)
     const arrowFunc = () => console.log(this);
     arrowFunc();
 }
-const obj = { x: 'bar', y: 'foo' };
-myFunc.call(obj); // { x: 'bar', y: 'foo' }
+const myObj = { x: 'bar', y: 'foo' };
+myFunc.call(myObj); // { x: 'bar', y: 'foo' }
 ```
 
 Object bound arrow function:
