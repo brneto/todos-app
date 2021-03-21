@@ -31,7 +31,7 @@ console.log(y); // ReferenceError: y is not defined
 Ordinary functions normally establish `this` by how the function is called (runtime binding).
 `this` is defined depending on its _execution context_ (dynamic scope).
 
-Unbound function set `this` to:
+Unbound function bound `this` to:
 * undefined in strict mode
 * window object in browser
 * global object in Node.js
