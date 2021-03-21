@@ -49,7 +49,7 @@ myFunc(); // undefined, window {...} (or the global object)
 Unbound inner function:
 ```javascript
 function myFunc() { // Creates a new scope (execution context)
-    const innerFunc = function() { // Creates a new scope (execution context)
+    function innerFunc() { // Creates a new scope (execution context)
         console.log(this);
     }
     innerFunc();
