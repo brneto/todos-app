@@ -46,7 +46,8 @@ const myObj = { // Does not create a new scope
 };
 const myFunc = myObj.myFunc;
 
-// Execution context and bound 'this'
+// Execution context
+// Bound 'this'
 myFunc(); // undefined, window {...} (or the global object)
 myObj.myFunc(); // { name: 'myObj', ... }
 ```
@@ -60,7 +61,8 @@ const myObj = { // Does not create a new scope
     function innerFunc() { // Creates a new scope
       console.log(this);
     }
-    // Execution context and bound 'this'
+    // Execution context
+    // Bound 'this'
     innerFunc();
   }
 };
