@@ -32,7 +32,7 @@ console.log(y); // ReferenceError: y is not defined
 
 
 ## `this` keyword
-In JavaScript `this` is normally determined by how a function is called (runtime binding).
+Ordinary functions normally establish `this` by how the function is called (runtime binding).
 
 Unbound function set `this` to:
 * undefined in strict mode
