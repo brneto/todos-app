@@ -40,29 +40,29 @@ Unbound function set `this` to:
 * global object in Node.js
 
 ```javascript
-function ordinaryFunc() { // Creates a new scope (execution context)
+function myFunc() { // Creates a new scope (execution context)
     console.log(this);
 }
-ordinaryFunc(); // undefined, window {...} (or the global object)
+myFunc(); // undefined, window {...} (or the global object)
 ```
 
 Unbound inner function:
 ```javascript
-function func() { // Creates a new scope (execution context)
+function myFunc() { // Creates a new scope (execution context)
     const innerFunc = function() { // Creates a new scope (execution context)
         console.log(this);
     }
     innerFunc();
 }
 const obj = { x: 'bar', y: 'foo' };
-innerFunc.call(obj); // undefined, window {...} (or the global object)
+myFunc.call(obj); // undefined, window {...} (or the global object)
 ```
 Object bound function:
 ```javascript
-const obj = { // Does not create a new scope (execution context)
-    ordinaryFunc() { console.log(this); }
+const myObj = { // Does not create a new scope (execution context)
+    myFunc() { console.log(this); }
 }
-obj.ordinayFunc(); // obj {...}
+myObj.myFunc(); // obj {...}
 ```
 
 ## `this` keyword in arrow function
@@ -77,18 +77,18 @@ arrowFunc(); // undefined, window {...} (or the global object)
 
 Unbound inner arrow function:
 ```javascript
-function func() { // Creates a new scope (execution context)
+function myFunc() { // Creates a new scope (execution context)
     const arrowFunc = () => console.log(this);
     arrowFunc();
 }
 const obj = { x: 'bar', y: 'foo' };
-innerFunc.call(obj); // { x: 'bar', y: 'foo' }
+myFunc.call(obj); // { x: 'bar', y: 'foo' }
 ```
 
 Object bound arrow function:
 ```javascript
-let obj = { // Does not create a new scope (execution context)
-    arrowFunc: () => console.log(this),
+let myObj = { // Does not create a new scope (execution context)
+    myFunc: () => console.log(this)
 }
-obj.arrowFunc(); // undefined, window {...} (or the global object)
+myObj.myFunc(); // undefined, window {...} (or the global object)
 ```
