@@ -110,5 +110,5 @@ myObj.objectArrowFunc(); // {name: 'myObj', ...}
 ```
 
 ## References
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
-https://en.wikipedia.org/wiki/Scope_(computer_science)
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+* https://en.wikipedia.org/wiki/Scope_(computer_science)
