@@ -27,7 +27,7 @@ console.log(y); // ReferenceError: y is not defined
 ```
 
 
-## `this` for ordinary functions
+## `this` in functions
 Ordinary functions normally establish `this` by how the function is called (runtime binding).
 `this` is defined depending on its _execution context_ (dynamic scope).
 
@@ -71,7 +71,7 @@ myFunc(); // undefined, window {...} (or the global object)
 myObj.myFunc(); // undefined, window {...} (or the global object)
 ```
 
-## `this` for arrow functions
+## `this` in arrow functions
 Arrow functions establish `this` based on its enclosing _lexical context_
 (lexical scope or static scope). It is bound when the arrow function is created
 and retain its value.
