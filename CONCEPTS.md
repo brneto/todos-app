@@ -26,7 +26,6 @@ console.log(x); // bar
 console.log(y); // ReferenceError: y is not defined
 ```
 
-
 ## `this` in functions
 Ordinary functions normally establish `this` by how the function is called (runtime binding).
 `this` is defined depending on its _execution context_ (dynamic scope).
