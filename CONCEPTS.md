@@ -81,7 +81,7 @@ Arrow functions establish `this` based on its enclosing _lexical context_
 // Lexical context
 const myObj = { // Does not create a new scope
   name: 'myObj',
-  arrowFunc: () => console.log(this) // Creates arrow function and bound 'this' 
+  arrowFunc: () => console.log(this) // Creates arrow function and bind 'this' 
 };
 const arrowFunc = myObj.arrowFunc;
 
