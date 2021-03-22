@@ -60,7 +60,7 @@ const myObj = { // Does not create a new scope
     function innerFunc() { // Creates a new scope
       console.log(this);
     }
-    // Execution context
+    // Inner execution context
     // Bind 'this'
     innerFunc();
   }
