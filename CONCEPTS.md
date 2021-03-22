@@ -46,7 +46,7 @@ const myObj = { // Does not create a new scope
 const myFunc = myObj.myFunc;
 
 // Execution context
-// Bound 'this'
+// Bind 'this'
 myFunc(); // undefined, window {...} (or the global object)
 myObj.myFunc(); // { name: 'myObj', ... }
 ```
@@ -61,7 +61,7 @@ const myObj = { // Does not create a new scope
       console.log(this);
     }
     // Execution context
-    // Bound 'this'
+    // Bind 'this'
     innerFunc();
   }
 };
@@ -101,7 +101,7 @@ const myObj = { // Does not create a new scope
 };
 const myFunc = myObj.myFunc;
 
-// Creates arrow function and bound 'this' 
+// Creates arrow function and bind 'this' 
 myObj.globalArrowFunc = myFunc();
 myObj.objectArrowFunc = myObj.myFunc();
 
