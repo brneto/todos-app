@@ -21,9 +21,9 @@ function run() {
         var x = 'bar';
         let y = 'foo';
     }
+    console.log(x); // bar
+    console.log(y); // ReferenceError: y is not defined
 }
-console.log(x); // bar
-console.log(y); // ReferenceError: y is not defined
 ```
 
 ## `this` in functions
