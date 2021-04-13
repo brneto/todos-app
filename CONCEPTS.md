@@ -111,7 +111,7 @@ myObj.objectArrowFunc(); // {name: 'myObj', ...}
 ```
 
 ## `null` data type
-In JavaScript the data types can be break down into 2 major groups, *immutable* and *mutable*
+In JavaScript the data types can be broken down into 2 major groups, *immutable* and *mutable*
 
 The *immutable* data types includes all the primitive values,
 which are:
