@@ -110,6 +110,34 @@ myObj.globalArrowFunc(); // undefined, window {...} (or the global object)
 myObj.objectArrowFunc(); // {name: 'myObj', ...}
 ```
 
+## `null` data type
+In JavaScript the data types can be break down into 2 major groups, *immutable* and *mutable*
+
+The *immutable* data types includes all the primitive values,
+which are:
+* string
+* number
+* bigint
+* boolean
+* undefined
+* symbol
+* `null`
+
+The *mutable* data types includes:
+* objects
+* methods
+
+Note that, although in most languages
+a `null` value represents a reference that
+points to a nonexistent or invalid object
+or address, in JavaScript `null` *is a primitive
+value* even though `typeof null`, incorrectly
+returns the value `'object'` (_bug from the
+first version of JavaScript_).
+
 ## References
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 * https://en.wikipedia.org/wiki/Scope_(computer_science)
+* https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+* https://developer.mozilla.org/en-US/docs/Glossary/Null
+* https://2ality.com/2013/10/typeof-null.html
