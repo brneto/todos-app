@@ -29,7 +29,7 @@ function run() {
 ## `this` in functions
 Ordinary functions normally establish `this` by how the function is called (runtime binding).
 
-`this` is bound during function execution and is defined depending of its _execution context_ (dynamic scope).
+`this` is bound during function execution and it's defined depending of its _execution context_ (dynamic scope).
 
 Unbound function bound `this` to:
 * undefined in strict mode
