@@ -28,7 +28,7 @@ A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React
 ### Usage
 Run app server in development mode:
 ```shell
-$ docker-compose up -d
+$ docker-compose up --build -d
 ```
 
 Stop the development app server:
