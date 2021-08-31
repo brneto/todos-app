@@ -23,17 +23,15 @@ A small [PWA](https://en.m.wikipedia.org/wiki/Progressive_web_application) React
 
 :whale: [Docker](https://www.docker.com)
 
-[Docker-Compose](https://docs.docker.com/compose)
-
 ### Usage
 Run app server in development mode:
 ```shell
-$ docker-compose up --build -d
+$ docker compose up --build -d
 ```
 
 Stop the development app server:
 ```shell
-$ docker-compose stop todos
+$ docker compose stop todos
 ```
 
 ### Production
