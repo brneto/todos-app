@@ -1,8 +1,8 @@
 {
 	"name": "Node.js",
 	"build": {
-		"dockerfile": "../Dockerfile",
-		"context": "../",
+		"dockerfile": "./Dockerfile",
+		"context": "./",
 		"target": "dev",
 		"args": { "VARIANT": "alpine3.14" }
 	},
