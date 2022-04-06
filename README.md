@@ -71,7 +71,13 @@ Before start talking about Redux itself in more details, I believe it would be a
 - View: displays the model in the UI
 - Controller: interfaces between View and Model
 
-![MVC Architecture Diagram][mvc-diagram]
+```mermaid
+flowchart TD
+View([View]) --> |Requests|Controller([Controller])
+Controller --> |Manipulate|Model([Model])
+Controller --> |Render|View
+View --> |Display|Model
+```
 
 The **Controller** receives the User requests, manipulate the **Model** and **View** to render back a **new View** to the User in response.
 
